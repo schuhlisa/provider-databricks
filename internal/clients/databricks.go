@@ -15,7 +15,7 @@ import (
 
 	"github.com/crossplane/upjet/pkg/terraform"
 
-	"github.com/upbound/upjet-provider-template/apis/v1beta1"
+	"github.com/glalanne/provider-databricks/apis/v1beta1"
 )
 
 const (
@@ -24,7 +24,14 @@ const (
 	errGetProviderConfig    = "cannot get referenced ProviderConfig"
 	errTrackUsage           = "cannot track ProviderConfig usage"
 	errExtractCredentials   = "cannot extract credentials"
-	errUnmarshalCredentials = "cannot unmarshal template credentials as JSON"
+	errUnmarshalCredentials = "cannot unmarshal databricks credentials as JSON"
+
+	keyHost                     = "host"
+	keyAzureWorkspaceResourceID = "azure_workspace_resource_id"
+	keyAzureUseMsi              = "azure_use_msi"
+	keyAzureClientId            = "azure_client_id"
+	keyAzureClientSecret        = "azure_client_secret"
+	keyAzureTenantId            = "azure_tenant_id"
 )
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
@@ -63,10 +70,26 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		}
 
 		// Set credentials in Terraform provider configuration.
-		/*ps.Configuration = map[string]any{
-			"username": creds["username"],
-			"password": creds["password"],
-		}*/
+		ps.Configuration = map[string]any{}
+		if v, ok := creds[keyHost]; ok {
+			ps.Configuration[keyHost] = v
+		}
+		if v, ok := creds[keyAzureWorkspaceResourceID]; ok {
+			ps.Configuration[keyAzureWorkspaceResourceID] = v
+		}
+		if v, ok := creds[keyAzureUseMsi]; ok {
+			ps.Configuration[keyAzureUseMsi] = v
+		}
+		if v, ok := creds[keyAzureClientId]; ok {
+			ps.Configuration[keyAzureClientId] = v
+		}
+		if v, ok := creds[keyAzureClientSecret]; ok {
+			ps.Configuration[keyAzureClientSecret] = v
+		}
+		if v, ok := creds[keyAzureTenantId]; ok {
+			ps.Configuration[keyAzureTenantId] = v
+		}
+
 		return ps, nil
 	}
 }

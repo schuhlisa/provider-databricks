@@ -10,12 +10,19 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/pkg/config"
 
-	"github.com/upbound/upjet-provider-template/config/null"
+	"github.com/glalanne/provider-databricks/config/cluster"
+	"github.com/glalanne/provider-databricks/config/cluster_policy"
+	"github.com/glalanne/provider-databricks/config/instance_pool"
+	"github.com/glalanne/provider-databricks/config/job"
+	"github.com/glalanne/provider-databricks/config/notebook"
+	"github.com/glalanne/provider-databricks/config/secret"
+	"github.com/glalanne/provider-databricks/config/secret_scope"
+	"github.com/glalanne/provider-databricks/config/token"
 )
 
 const (
-	resourcePrefix = "template"
-	modulePath     = "github.com/upbound/upjet-provider-template"
+	resourcePrefix = "databricks"
+	modulePath     = "github.com/glalanne/provider-databricks"
 )
 
 //go:embed schema.json
@@ -27,7 +34,7 @@ var providerMetadata string
 // GetProvider returns provider configuration
 func GetProvider() *ujconfig.Provider {
 	pc := ujconfig.NewProvider([]byte(providerSchema), resourcePrefix, modulePath, []byte(providerMetadata),
-		ujconfig.WithRootGroup("template.upbound.io"),
+		ujconfig.WithRootGroup("databricks.crossplane.io"),
 		ujconfig.WithIncludeList(ExternalNameConfigured()),
 		ujconfig.WithFeaturesPackage("internal/features"),
 		ujconfig.WithDefaultResourceOptions(
@@ -36,7 +43,15 @@ func GetProvider() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
-		null.Configure,
+		// add custom config functions
+		cluster.Configure,
+		cluster_policy.Configure,
+		token.Configure,
+		secret.Configure,
+		secret_scope.Configure,
+		notebook.Configure,
+		job.Configure,
+		instance_pool.Configure,
 	} {
 		configure(pc)
 	}

@@ -12,9 +12,9 @@ include ../../../build/makelib/imagelight.mk
 # Targets
 
 img.build:
-	@$(INFO) docker build $(IMAGE)
+	@$(INFO) docker buildx build $(IMAGE)
 	@$(MAKE) BUILD_ARGS="--load" img.build.shared
-	@$(OK) docker build $(IMAGE)
+	@$(OK) docker buildx build $(IMAGE)
 
 img.publish:
 	@$(INFO) Skipping image publish for $(IMAGE)

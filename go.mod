@@ -1,4 +1,4 @@
-module github.com/upbound/upjet-provider-template
+module github.com/glalanne/provider-databricks
 
 go 1.21
 
