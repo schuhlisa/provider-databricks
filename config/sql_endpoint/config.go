@@ -1,4 +1,4 @@
-package cluster
+package sql_endpoint
 
 import "github.com/crossplane/upjet/pkg/config"
 

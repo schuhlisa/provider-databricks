@@ -1,4 +1,4 @@
-package cluster
+package permissions
 
 import "github.com/crossplane/upjet/pkg/config"
 

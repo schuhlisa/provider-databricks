@@ -20,7 +20,6 @@ import (
 	"github.com/glalanne/provider-databricks/config/secret_scope"
 	"github.com/glalanne/provider-databricks/config/sql_endpoint"
 	"github.com/glalanne/provider-databricks/config/token"
-	"github.com/glalanne/provider-databricks/internal/controller/databricks/permissions"
 )
 
 const (
