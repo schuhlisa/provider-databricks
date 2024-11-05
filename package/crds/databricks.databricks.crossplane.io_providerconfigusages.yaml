@@ -4,9 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
-  name: providerconfigusages.databricks.upbound.io
+  name: providerconfigusages.databricks.databricks.crossplane.io
 spec:
-  group: databricks.upbound.io
+  group: databricks.databricks.crossplane.io
   names:
     categories:
     - crossplane

@@ -15,9 +15,12 @@ import (
 	"github.com/glalanne/provider-databricks/config/instance_pool"
 	"github.com/glalanne/provider-databricks/config/job"
 	"github.com/glalanne/provider-databricks/config/notebook"
+	"github.com/glalanne/provider-databricks/config/permissions"
 	"github.com/glalanne/provider-databricks/config/secret"
 	"github.com/glalanne/provider-databricks/config/secret_scope"
+	"github.com/glalanne/provider-databricks/config/sql_endpoint"
 	"github.com/glalanne/provider-databricks/config/token"
+	"github.com/glalanne/provider-databricks/internal/controller/databricks/permissions"
 )
 
 const (
@@ -34,7 +37,7 @@ var providerMetadata string
 // GetProvider returns provider configuration
 func GetProvider() *ujconfig.Provider {
 	pc := ujconfig.NewProvider([]byte(providerSchema), resourcePrefix, modulePath, []byte(providerMetadata),
-		ujconfig.WithRootGroup("databricks.crossplane.io"),
+		ujconfig.WithRootGroup("crossplane.io"),
 		ujconfig.WithIncludeList(ExternalNameConfigured()),
 		ujconfig.WithFeaturesPackage("internal/features"),
 		ujconfig.WithDefaultResourceOptions(
@@ -52,6 +55,8 @@ func GetProvider() *ujconfig.Provider {
 		notebook.Configure,
 		job.Configure,
 		instance_pool.Configure,
+		permissions.Configure,
+		sql_endpoint.Configure,
 	} {
 		configure(pc)
 	}
