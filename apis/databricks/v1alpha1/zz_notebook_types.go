@@ -129,7 +129,7 @@ type NotebookStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Notebook is the Schema for the Notebooks API. |page_title: "databricks_notebook Resource"
+// Notebook is the Schema for the Notebooks API. ""subcategory: "Workspace"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

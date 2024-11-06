@@ -248,7 +248,7 @@ type ClusterPolicyStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ClusterPolicy is the Schema for the ClusterPolicys API. |page_title: "databricks_cluster_policy Resource"
+// ClusterPolicy is the Schema for the ClusterPolicys API. ""subcategory: "Compute"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

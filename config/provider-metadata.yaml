@@ -2,7 +2,7 @@ name: databricks/databricks
 resources:
     databricks_access_control_rule_set:
         subCategory: Security
-        description: '|page_title: "databricks_access_control_rule_set Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_access_control_rule_set
         title: databricks_access_control_rule_set Resource
         examples:
@@ -145,7 +145,7 @@ resources:
         importStatements: []
     databricks_alert:
         subCategory: Databricks SQL
-        description: '|page_title: "databricks_alert Resource"'
+        description: '""subcategory: "Databricks SQL"'
         name: databricks_alert
         title: databricks_alert Resource
         examples:
@@ -268,7 +268,7 @@ resources:
         importStatements: []
     databricks_artifact_allowlist:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_artifact_allowlist Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_artifact_allowlist
         title: databricks_artifact_allowlist Resource
         examples:
@@ -294,7 +294,7 @@ resources:
         importStatements: []
     databricks_automatic_cluster_update_setting Resource:
         subCategory: Settings
-        description: '|page_title: "databricks_automatic_cluster_update_setting Resource"'
+        description: '""subcategory: "Settings"'
         name: databricks_automatic_cluster_update_setting Resource
         title: databricks_automatic_cluster_update_setting Resource
         argumentDocs:
@@ -311,7 +311,7 @@ resources:
         importStatements: []
     databricks_budget:
         subCategory: FinOps
-        description: '|page_title: "databricks_budget Resource"'
+        description: '""subcategory: "FinOps"'
         name: databricks_budget
         title: databricks_budget Resource
         examples:
@@ -390,7 +390,7 @@ resources:
         importStatements: []
     databricks_catalog:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_catalog Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_catalog
         title: databricks_catalog Resource
         examples:
@@ -421,7 +421,7 @@ resources:
         importStatements: []
     databricks_catalog_workspace_binding:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_catalog_workspace_binding Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_catalog_workspace_binding
         title: databricks_catalog_workspace_binding Resource
         examples:
@@ -448,7 +448,7 @@ resources:
         importStatements: []
     databricks_cluster:
         subCategory: Compute
-        description: '|page_title: "databricks_cluster Resource"'
+        description: '""subcategory: "Compute"'
         name: databricks_cluster
         title: databricks_cluster Resource
         examples:
@@ -729,7 +729,7 @@ resources:
         importStatements: []
     databricks_cluster_policy:
         subCategory: Compute
-        description: '|page_title: "databricks_cluster_policy Resource"'
+        description: '""subcategory: "Compute"'
         name: databricks_cluster_policy
         title: databricks_cluster_policy Resource
         examples:
@@ -787,7 +787,7 @@ resources:
         importStatements: []
     databricks_compliance_security_profile_setting Resource:
         subCategory: Settings
-        description: '|page_title: "databricks_compliance_security_profile_setting Resource"'
+        description: '""subcategory: "Settings"'
         name: databricks_compliance_security_profile_setting Resource
         title: databricks_compliance_security_profile_setting Resource
         argumentDocs:
@@ -797,7 +797,7 @@ resources:
         importStatements: []
     databricks_connection:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_connection Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_connection
         title: databricks_connection Resource
         examples:
@@ -841,7 +841,7 @@ resources:
         importStatements: []
     databricks_custom_app_integration:
         subCategory: Apps
-        description: '|page_title: "databricks_custom_app_integration Resource"'
+        description: '""subcategory: "Apps"'
         name: databricks_custom_app_integration
         title: databricks_custom_app_integration Resource
         examples:
@@ -875,7 +875,7 @@ resources:
         importStatements: []
     databricks_dashboard:
         subCategory: Workspace
-        description: '|page_title: "databricks_dashboard Resource"'
+        description: '""subcategory: "Workspace"'
         name: databricks_dashboard
         title: databricks_dashboard Resource
         examples:
@@ -912,7 +912,7 @@ resources:
         importStatements: []
     databricks_dbfs_file:
         subCategory: Storage
-        description: '|page_title: "databricks_dbfs_file Resource"'
+        description: '""subcategory: "Storage"'
         name: databricks_dbfs_file
         title: databricks_dbfs_file Resource
         examples:
@@ -952,7 +952,7 @@ resources:
         importStatements: []
     databricks_default_namespace_setting:
         subCategory: Settings
-        description: '|page_title: "databricks_default_namespace_setting Resource"'
+        description: '""subcategory: "Settings"'
         name: databricks_default_namespace_setting
         title: databricks_default_namespace_setting Resource
         examples:
@@ -971,7 +971,7 @@ resources:
         importStatements: []
     databricks_directory:
         subCategory: Workspace
-        description: '|page_title: "databricks_directory Resource"'
+        description: '""subcategory: "Workspace"'
         name: databricks_directory
         title: databricks_directory Resource
         examples:
@@ -990,7 +990,7 @@ resources:
         importStatements: []
     databricks_enhanced_security_monitoring_setting Resource:
         subCategory: Settings
-        description: '|page_title: "databricks_enhanced_security_monitoring_setting Resource"'
+        description: '""subcategory: "Settings"'
         name: databricks_enhanced_security_monitoring_setting Resource
         title: databricks_enhanced_security_monitoring_setting Resource
         argumentDocs:
@@ -999,7 +999,7 @@ resources:
         importStatements: []
     databricks_entitlements:
         subCategory: Security
-        description: '|page_title: "databricks_entitlements Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_entitlements
         title: databricks_entitlements Resource
         examples:
@@ -1044,7 +1044,7 @@ resources:
         importStatements: []
     databricks_external_location:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_external_location Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_external_location
         title: databricks_external_location Resource
         examples:
@@ -1160,7 +1160,7 @@ resources:
         importStatements: []
     databricks_file:
         subCategory: Storage
-        description: '|page_title: "databricks_file Resource"'
+        description: '""subcategory: "Storage"'
         name: databricks_file
         title: databricks_file Resource
         examples:
@@ -1213,7 +1213,7 @@ resources:
         importStatements: []
     databricks_git_credential:
         subCategory: Workspace
-        description: '|page_title: "databricks_git_credential Resource"'
+        description: '""subcategory: "Workspace"'
         name: databricks_git_credential
         title: databricks_git_credential Resource
         examples:
@@ -1233,7 +1233,7 @@ resources:
         importStatements: []
     databricks_global_init_script:
         subCategory: Workspace
-        description: '|page_title: "databricks_global_init_script Resource"'
+        description: '""subcategory: "Workspace"'
         name: databricks_global_init_script
         title: databricks_global_init_script Resource
         examples:
@@ -1260,7 +1260,7 @@ resources:
         importStatements: []
     databricks_grant:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_grant Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_grant
         title: databricks_grant Resource
         examples:
@@ -1649,7 +1649,7 @@ resources:
         importStatements: []
     databricks_grants:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_grants Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_grants
         title: databricks_grants Resource
         examples:
@@ -2013,7 +2013,7 @@ resources:
         importStatements: []
     databricks_group:
         subCategory: Security
-        description: '|page_title: "databricks_group Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_group
         title: databricks_group Resource
         examples:
@@ -2070,7 +2070,7 @@ resources:
         importStatements: []
     databricks_group_instance_profile:
         subCategory: Security
-        description: '|page_title: "databricks_group_instance_profile Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_group_instance_profile
         title: databricks_group_instance_profile Resource
         examples:
@@ -2099,7 +2099,7 @@ resources:
         importStatements: []
     databricks_group_member:
         subCategory: Security
-        description: '|page_title: "databricks_group_member Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_group_member
         title: databricks_group_member Resource
         examples:
@@ -2154,7 +2154,7 @@ resources:
         importStatements: []
     databricks_group_role:
         subCategory: Security
-        description: '|page_title: "databricks_group_role Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_group_role
         title: databricks_group_role Resource
         examples:
@@ -2196,7 +2196,7 @@ resources:
         importStatements: []
     databricks_instance_pool:
         subCategory: Compute
-        description: '|page_title: "databricks_instance_pool Resource"'
+        description: '""subcategory: "Compute"'
         name: databricks_instance_pool
         title: databricks_instance_pool Resource
         examples:
@@ -2285,7 +2285,7 @@ resources:
         importStatements: []
     databricks_instance_profile:
         subCategory: Deployment
-        description: '|page_title: "databricks_instance_profile Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_instance_profile
         title: databricks_instance_profile Resource
         examples:
@@ -2383,7 +2383,7 @@ resources:
         importStatements: []
     databricks_ip_access_list:
         subCategory: Security
-        description: '|page_title: "databricks_ip_access_list Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_ip_access_list
         title: databricks_ip_access_list Resource
         examples:
@@ -2418,7 +2418,7 @@ resources:
         importStatements: []
     databricks_job:
         subCategory: Compute
-        description: '|page_title: "databricks_job Resource"'
+        description: '""subcategory: "Compute"'
         name: databricks_job
         title: databricks_job Resource
         examples:
@@ -2734,7 +2734,7 @@ resources:
         importStatements: []
     databricks_lakehouse_monitor:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_lakehouse_monitor Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_lakehouse_monitor
         title: databricks_lakehouse_monitor Resource
         examples:
@@ -2856,7 +2856,7 @@ resources:
         importStatements: []
     databricks_library:
         subCategory: Compute
-        description: '|page_title: "databricks_library Resource"'
+        description: '""subcategory: "Compute"'
         name: databricks_library
         title: databricks_library Resource
         examples:
@@ -2971,7 +2971,7 @@ resources:
         importStatements: []
     databricks_metastore:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_metastore Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_metastore
         title: databricks_metastore Resource
         examples:
@@ -3035,7 +3035,7 @@ resources:
         importStatements: []
     databricks_metastore_assignment:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_metastore_assignment Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_metastore_assignment
         title: databricks_metastore_assignment Resource
         examples:
@@ -3065,7 +3065,7 @@ resources:
         importStatements: []
     databricks_metastore_data_access:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_metastore_data_access Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_metastore_data_access
         title: databricks_metastore_data_access Resource
         examples:
@@ -3124,7 +3124,7 @@ resources:
         importStatements: []
     databricks_mlflow_experiment:
         subCategory: MLflow
-        description: '|page_title: "databricks_mlflow_experiment Resource"'
+        description: '""subcategory: "MLflow"'
         name: databricks_mlflow_experiment
         title: databricks_mlflow_experiment Resource
         examples:
@@ -3143,7 +3143,7 @@ resources:
         importStatements: []
     databricks_mlflow_model:
         subCategory: MLflow
-        description: '|page_title: "databricks_mlflow_model Resource"'
+        description: '""subcategory: "MLflow"'
         name: databricks_mlflow_model
         title: databricks_mlflow_model Resource
         examples:
@@ -3171,7 +3171,7 @@ resources:
         importStatements: []
     databricks_mlflow_webhook:
         subCategory: MLflow
-        description: '|page_title: "databricks_mlflow_webhook Resource"'
+        description: '""subcategory: "MLflow"'
         name: databricks_mlflow_webhook
         title: databricks_mlflow_webhook Resource
         examples:
@@ -3257,7 +3257,7 @@ resources:
         importStatements: []
     databricks_model_serving:
         subCategory: Serving
-        description: '|page_title: "databricks_model_serving Resource"'
+        description: '""subcategory: "Serving"'
         name: databricks_model_serving
         title: databricks_model_serving Resource
         examples:
@@ -3402,7 +3402,7 @@ resources:
         importStatements: []
     databricks_mount:
         subCategory: Storage
-        description: '|page_title: "databricks_mount Resource"'
+        description: '""subcategory: "Storage"'
         name: databricks_mount
         title: databricks_mount Resource
         examples:
@@ -3642,7 +3642,7 @@ resources:
         importStatements: []
     databricks_mws_credentials:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_credentials Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_credentials
         title: databricks_mws_credentials Resource
         examples:
@@ -3679,7 +3679,7 @@ resources:
         importStatements: []
     databricks_mws_customer_managed_keys:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_customer_managed_keys Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_customer_managed_keys
         title: databricks_mws_customer_managed_keys Resource
         examples:
@@ -3789,7 +3789,7 @@ resources:
         importStatements: []
     databricks_mws_log_delivery:
         subCategory: Log Delivery
-        description: '|page_title: "databricks_mws_log_delivery Resource"'
+        description: '""subcategory: "Log Delivery"'
         name: databricks_mws_log_delivery
         title: databricks_mws_log_delivery Resource
         examples:
@@ -3961,7 +3961,7 @@ resources:
         importStatements: []
     databricks_mws_ncc_binding:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_ncc_binding Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_ncc_binding
         title: databricks_mws_ncc_binding Resource
         examples:
@@ -3989,7 +3989,7 @@ resources:
         importStatements: []
     databricks_mws_ncc_private_endpoint_rule:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_ncc_private_endpoint_rule Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_ncc_private_endpoint_rule
         title: databricks_mws_ncc_private_endpoint_rule Resource
         examples:
@@ -4031,7 +4031,7 @@ resources:
         importStatements: []
     databricks_mws_network_connectivity_config:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_network_connectivity_config Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_network_connectivity_config
         title: databricks_mws_network_connectivity_config Resource
         examples:
@@ -4070,7 +4070,7 @@ resources:
         importStatements: []
     databricks_mws_networks:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_networks Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_networks
         title: databricks_mws_networks Resource
         examples:
@@ -4235,7 +4235,7 @@ resources:
         importStatements: []
     databricks_mws_permission_assignment:
         subCategory: Security
-        description: '|page_title: "databricks_mws_permission_assignment Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_mws_permission_assignment
         title: databricks_mws_permission_assignment Resource
         examples:
@@ -4300,7 +4300,7 @@ resources:
         importStatements: []
     databricks_mws_private_access_settings:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_private_access_settings Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_private_access_settings
         title: databricks_mws_private_access_settings Resource
         examples:
@@ -4329,7 +4329,7 @@ resources:
         importStatements: []
     databricks_mws_storage_configurations:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_storage_configurations Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_storage_configurations
         title: databricks_mws_storage_configurations Resource
         examples:
@@ -4369,7 +4369,7 @@ resources:
         importStatements: []
     databricks_mws_vpc_endpoint:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_vpc_endpoint Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_vpc_endpoint
         title: databricks_mws_vpc_endpoint Resource
         examples:
@@ -4463,7 +4463,7 @@ resources:
         importStatements: []
     databricks_mws_workspaces:
         subCategory: Deployment
-        description: '|page_title: "databricks_mws_workspaces Resource"'
+        description: '""subcategory: "Deployment"'
         name: databricks_mws_workspaces
         title: databricks_mws_workspaces Resource
         examples:
@@ -4729,7 +4729,7 @@ resources:
         importStatements: []
     databricks_notebook:
         subCategory: Workspace
-        description: '|page_title: "databricks_notebook Resource"'
+        description: '""subcategory: "Workspace"'
         name: databricks_notebook
         title: databricks_notebook Resource
         examples:
@@ -4764,7 +4764,7 @@ resources:
         importStatements: []
     databricks_notification_destination:
         subCategory: Workspace
-        description: '|page_title: "databricks_notification_destination Resource"'
+        description: '""subcategory: "Workspace"'
         name: databricks_notification_destination
         title: databricks_notification_destination Resource
         examples:
@@ -4860,7 +4860,7 @@ resources:
         importStatements: []
     databricks_obo_token:
         subCategory: Security
-        description: '|page_title: "databricks_obo_token Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_obo_token
         title: databricks_obo_token Resource
         examples:
@@ -4922,7 +4922,7 @@ resources:
         importStatements: []
     databricks_online_table:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_online_table Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_online_table
         title: databricks_online_table Resource
         examples:
@@ -4961,7 +4961,7 @@ resources:
         importStatements: []
     databricks_permission_assignment:
         subCategory: Security
-        description: '|page_title: "databricks_permission_assignment Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_permission_assignment
         title: databricks_permission_assignment Resource
         examples:
@@ -5010,7 +5010,7 @@ resources:
         importStatements: []
     databricks_permissions:
         subCategory: Security
-        description: '|page_title: "databricks_permissions Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_permissions
         title: databricks_permissions Resource
         examples:
@@ -5866,7 +5866,7 @@ resources:
         importStatements: []
     databricks_pipeline:
         subCategory: Compute
-        description: '|page_title: "databricks_pipeline Resource"'
+        description: '""subcategory: "Compute"'
         name: databricks_pipeline
         title: databricks_pipeline Resource
         examples:
@@ -5976,7 +5976,7 @@ resources:
         importStatements: []
     databricks_provider:
         subCategory: Delta Sharing
-        description: '|page_title: "databricks_provider Resource"'
+        description: '""subcategory: "Delta Sharing"'
         name: databricks_provider
         title: databricks_provider Resource
         examples:
@@ -5997,7 +5997,7 @@ resources:
         importStatements: []
     databricks_quality_monitor:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_quality_monitor Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_quality_monitor
         title: databricks_quality_monitor Resource
         examples:
@@ -6118,7 +6118,7 @@ resources:
         importStatements: []
     databricks_query:
         subCategory: Databricks SQL
-        description: '|page_title: "databricks_query Resource"'
+        description: '""subcategory: "Databricks SQL"'
         name: databricks_query
         title: databricks_query Resource
         examples:
@@ -6213,7 +6213,7 @@ resources:
         importStatements: []
     databricks_recipient:
         subCategory: Delta Sharing
-        description: '|page_title: "databricks_recipient Resource"'
+        description: '""subcategory: "Delta Sharing"'
         name: databricks_recipient
         title: databricks_recipient Resource
         examples:
@@ -6282,7 +6282,7 @@ resources:
         importStatements: []
     databricks_registered_model:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_registered_model Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_registered_model
         title: databricks_registered_model Resource
         examples:
@@ -6305,7 +6305,7 @@ resources:
         importStatements: []
     databricks_repo:
         subCategory: Workspace
-        description: '|page_title: "databricks_repo Resource"'
+        description: '""subcategory: "Workspace"'
         name: databricks_repo
         title: databricks_repo Resource
         examples:
@@ -6327,7 +6327,7 @@ resources:
         importStatements: []
     databricks_restrict_workspace_admins_setting:
         subCategory: Settings
-        description: '|page_title: "databricks_restrict_workspace_admins_setting Resource"'
+        description: '""subcategory: "Settings"'
         name: databricks_restrict_workspace_admins_setting
         title: databricks_restrict_workspace_admins_setting Resource
         examples:
@@ -6346,7 +6346,7 @@ resources:
         importStatements: []
     databricks_schema:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_schema Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_schema
         title: databricks_schema Resource
         examples:
@@ -6384,7 +6384,7 @@ resources:
         importStatements: []
     databricks_secret:
         subCategory: Security
-        description: '|page_title: "databricks_secret Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_secret
         title: databricks_secret Resource
         examples:
@@ -6419,7 +6419,7 @@ resources:
         importStatements: []
     databricks_secret_acl:
         subCategory: Security
-        description: '|page_title: "databricks_secret_acl Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_secret_acl
         title: databricks_secret_acl Resource
         examples:
@@ -6458,7 +6458,7 @@ resources:
         importStatements: []
     databricks_secret_scope:
         subCategory: Security
-        description: '|page_title: "databricks_secret_scope Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_secret_scope
         title: databricks_secret_scope Resource
         examples:
@@ -6513,7 +6513,7 @@ resources:
         importStatements: []
     databricks_service_principal:
         subCategory: Security
-        description: '|page_title: "databricks_service_principal Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_service_principal
         title: databricks_service_principal Resource
         examples:
@@ -6576,7 +6576,7 @@ resources:
         importStatements: []
     databricks_service_principal_role:
         subCategory: Security
-        description: '|page_title: "databricks_service_principal_role Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_service_principal_role
         title: databricks_service_principal_role Resource
         examples:
@@ -6605,7 +6605,7 @@ resources:
         importStatements: []
     databricks_service_principal_secret:
         subCategory: Security
-        description: '|page_title: "databricks_service_principal_secret Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_service_principal_secret
         title: databricks_service_principal_secret Resource
         examples:
@@ -6623,7 +6623,7 @@ resources:
         importStatements: []
     databricks_share:
         subCategory: Delta Sharing
-        description: '|page_title: "databricks_share Resource"'
+        description: '""subcategory: "Delta Sharing"'
         name: databricks_share
         title: databricks_share Resource
         examples:
@@ -6716,7 +6716,7 @@ resources:
         importStatements: []
     databricks_sql_alert:
         subCategory: Databricks SQL
-        description: '|page_title: "databricks_sql_alert Resource"'
+        description: '""subcategory: "Databricks SQL"'
         name: databricks_sql_alert
         title: databricks_sql_alert Resource
         examples:
@@ -6767,7 +6767,7 @@ resources:
         importStatements: []
     databricks_sql_dashboard:
         subCategory: Databricks SQL
-        description: '|page_title: "databricks_sql_dashboard Resource"'
+        description: '""subcategory: "Databricks SQL"'
         name: databricks_sql_dashboard
         title: databricks_sql_dashboard Resource
         examples:
@@ -6791,7 +6791,7 @@ resources:
         importStatements: []
     databricks_sql_endpoint:
         subCategory: Databricks SQL
-        description: '|page_title: "databricks_sql_endpoint Resource"'
+        description: '""subcategory: "Databricks SQL"'
         name: databricks_sql_endpoint
         title: databricks_sql_endpoint Resource
         examples:
@@ -6839,7 +6839,7 @@ resources:
         importStatements: []
     databricks_sql_global_config:
         subCategory: Databricks SQL
-        description: '|page_title: "databricks_sql_global_config Resource"'
+        description: '""subcategory: "Databricks SQL"'
         name: databricks_sql_global_config
         title: databricks_sql_global_config Resource
         examples:
@@ -6876,7 +6876,7 @@ resources:
         importStatements: []
     databricks_sql_permissions:
         subCategory: Security
-        description: '|page_title: "databricks_sql_permissions Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_sql_permissions
         title: databricks_sql_permissions Resource
         examples:
@@ -6933,7 +6933,7 @@ resources:
         importStatements: []
     databricks_sql_query:
         subCategory: Databricks SQL
-        description: '|page_title: "databricks_sql_query Resource"'
+        description: '""subcategory: "Databricks SQL"'
         name: databricks_sql_query
         title: databricks_sql_query Resource
         examples:
@@ -7011,7 +7011,7 @@ resources:
         importStatements: []
     databricks_sql_table:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_sql_table Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_sql_table
         title: databricks_sql_table Resource
         examples:
@@ -7224,7 +7224,7 @@ resources:
         importStatements: []
     databricks_sql_visualization:
         subCategory: Databricks SQL
-        description: '|page_title: "databricks_sql_visualization Resource"'
+        description: '""subcategory: "Databricks SQL"'
         name: databricks_sql_visualization
         title: databricks_sql_visualization Resource
         examples:
@@ -7265,7 +7265,7 @@ resources:
         importStatements: []
     databricks_sql_widget:
         subCategory: Databricks SQL
-        description: '|page_title: "databricks_sql_widget Resource"'
+        description: '""subcategory: "Databricks SQL"'
         name: databricks_sql_widget
         title: databricks_sql_widget Resource
         examples:
@@ -7306,7 +7306,7 @@ resources:
         importStatements: []
     databricks_storage_credential:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_storage_credential Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_storage_credential
         title: databricks_storage_credential Resource
         examples:
@@ -7409,7 +7409,7 @@ resources:
         importStatements: []
     databricks_system_schema:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_system_schema Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_system_schema
         title: databricks_system_schema Resource
         examples:
@@ -7426,7 +7426,7 @@ resources:
         importStatements: []
     databricks_token:
         subCategory: Security
-        description: '|page_title: "databricks_token Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_token
         title: databricks_token Resource
         examples:
@@ -7458,7 +7458,7 @@ resources:
         importStatements: []
     databricks_user:
         subCategory: Security
-        description: '|page_title: "databricks_user Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_user
         title: databricks_user Resource
         examples:
@@ -7522,7 +7522,7 @@ resources:
         importStatements: []
     databricks_user_instance_profile:
         subCategory: Security
-        description: '|page_title: "databricks_user_instance_profile Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_user_instance_profile
         title: databricks_user_instance_profile Resource
         examples:
@@ -7551,7 +7551,7 @@ resources:
         importStatements: []
     databricks_user_role:
         subCategory: Security
-        description: '|page_title: "databricks_user_role Resource"'
+        description: '""subcategory: "Security"'
         name: databricks_user_role
         title: databricks_user_role Resource
         examples:
@@ -7593,7 +7593,7 @@ resources:
         importStatements: []
     databricks_vector_search_endpoint:
         subCategory: Mosaic AI Vector Search
-        description: '|page_title: "databricks_vector_search_endpoint Resource"'
+        description: '""subcategory: "Mosaic AI Vector Search"'
         name: databricks_vector_search_endpoint
         title: databricks_vector_search_endpoint Resource
         examples:
@@ -7619,7 +7619,7 @@ resources:
         importStatements: []
     databricks_vector_search_index:
         subCategory: Mosaic AI Vector Search
-        description: '|page_title: "databricks_vector_search_index Resource"'
+        description: '""subcategory: "Mosaic AI Vector Search"'
         name: databricks_vector_search_index
         title: databricks_vector_search_index Resource
         examples:
@@ -7676,7 +7676,7 @@ resources:
         importStatements: []
     databricks_volume:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_volume Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_volume
         title: databricks_volume Resource
         examples:
@@ -7743,7 +7743,7 @@ resources:
         importStatements: []
     databricks_workspace_binding:
         subCategory: Unity Catalog
-        description: '|page_title: "databricks_workspace_binding Resource"'
+        description: '""subcategory: "Unity Catalog"'
         name: databricks_workspace_binding
         title: databricks_workspace_binding Resource
         examples:
@@ -7770,7 +7770,7 @@ resources:
         importStatements: []
     databricks_workspace_conf:
         subCategory: Workspace
-        description: '|page_title: "databricks_workspace_conf Resource"'
+        description: '""subcategory: "Workspace"'
         name: databricks_workspace_conf
         title: databricks_workspace_conf Resource
         examples:
@@ -7791,7 +7791,7 @@ resources:
         importStatements: []
     databricks_workspace_file:
         subCategory: Workspace
-        description: '|page_title: "databricks_workspace_file Resource"'
+        description: '""subcategory: "Workspace"'
         name: databricks_workspace_file
         title: databricks_workspace_file Resource
         examples:

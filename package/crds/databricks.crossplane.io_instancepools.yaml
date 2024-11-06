@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'InstancePool is the Schema for the InstancePools API. |page_title:
-          "databricks_instance_pool Resource"'
+        description: 'InstancePool is the Schema for the InstancePools API. ""subcategory:
+          "Compute"'
         properties:
           apiVersion:
             description: |-

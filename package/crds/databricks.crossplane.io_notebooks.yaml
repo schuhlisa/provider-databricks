@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Notebook is the Schema for the Notebooks API. |page_title: "databricks_notebook
-          Resource"'
+        description: 'Notebook is the Schema for the Notebooks API. ""subcategory:
+          "Workspace"'
         properties:
           apiVersion:
             description: |-

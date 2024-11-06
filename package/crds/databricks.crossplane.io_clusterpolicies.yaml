@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'ClusterPolicy is the Schema for the ClusterPolicys API. |page_title:
-          "databricks_cluster_policy Resource"'
+        description: 'ClusterPolicy is the Schema for the ClusterPolicys API. ""subcategory:
+          "Compute"'
         properties:
           apiVersion:
             description: |-

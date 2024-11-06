@@ -118,7 +118,7 @@ type SecretScopeStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// SecretScope is the Schema for the SecretScopes API. |page_title: "databricks_secret_scope Resource"
+// SecretScope is the Schema for the SecretScopes API. ""subcategory: "Security"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

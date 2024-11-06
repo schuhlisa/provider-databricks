@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Token is the Schema for the Tokens API. |page_title: "databricks_token
-          Resource"'
+        description: 'Token is the Schema for the Tokens API. ""subcategory: "Security"'
         properties:
           apiVersion:
             description: |-

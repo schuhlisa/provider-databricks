@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Permissions is the Schema for the Permissionss API. |page_title:
-          "databricks_permissions Resource"'
+        description: 'Permissions is the Schema for the Permissionss API. ""subcategory:
+          "Security"'
         properties:
           apiVersion:
             description: |-
