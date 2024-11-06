@@ -14,33 +14,43 @@ import (
 )
 
 type TokenInitParameters struct {
+
+	// (String) Comment that will appear on the user’s settings page for this token.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
 	CreationTime *float64 `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
 
 	ExpiryTime *float64 `json:"expiryTime,omitempty" tf:"expiry_time,omitempty"`
 
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
 	LifetimeSeconds *float64 `json:"lifetimeSeconds,omitempty" tf:"lifetime_seconds,omitempty"`
 
+	// Canonical unique identifier for the token.
 	TokenID *string `json:"tokenId,omitempty" tf:"token_id,omitempty"`
 }
 
 type TokenObservation struct {
+
+	// (String) Comment that will appear on the user’s settings page for this token.
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
 	CreationTime *float64 `json:"creationTime,omitempty" tf:"creation_time,omitempty"`
 
 	ExpiryTime *float64 `json:"expiryTime,omitempty" tf:"expiry_time,omitempty"`
 
+	// Canonical unique identifier for the token.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
 	LifetimeSeconds *float64 `json:"lifetimeSeconds,omitempty" tf:"lifetime_seconds,omitempty"`
 
+	// Canonical unique identifier for the token.
 	TokenID *string `json:"tokenId,omitempty" tf:"token_id,omitempty"`
 }
 
 type TokenParameters struct {
 
+	// (String) Comment that will appear on the user’s settings page for this token.
 	// +kubebuilder:validation:Optional
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
@@ -50,9 +60,11 @@ type TokenParameters struct {
 	// +kubebuilder:validation:Optional
 	ExpiryTime *float64 `json:"expiryTime,omitempty" tf:"expiry_time,omitempty"`
 
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
 	// +kubebuilder:validation:Optional
 	LifetimeSeconds *float64 `json:"lifetimeSeconds,omitempty" tf:"lifetime_seconds,omitempty"`
 
+	// Canonical unique identifier for the token.
 	// +kubebuilder:validation:Optional
 	TokenID *string `json:"tokenId,omitempty" tf:"token_id,omitempty"`
 }
@@ -84,7 +96,7 @@ type TokenStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Token is the Schema for the Tokens API. <no value>
+// Token is the Schema for the Tokens API. |page_title: "databricks_token Resource"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

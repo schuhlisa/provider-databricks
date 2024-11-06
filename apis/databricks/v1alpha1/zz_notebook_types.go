@@ -14,70 +14,90 @@ import (
 )
 
 type NotebookInitParameters struct {
+
+	// The base64-encoded notebook source code. Conflicts with source.
 	ContentBase64 *string `json:"contentBase64,omitempty" tf:"content_base64,omitempty"`
 
 	Format *string `json:"format,omitempty" tf:"format,omitempty"`
 
+	// One of SCALA, PYTHON, SQL, R.
 	Language *string `json:"language,omitempty" tf:"language,omitempty"`
 
 	Md5 *string `json:"md5,omitempty" tf:"md5,omitempty"`
 
+	// Unique identifier for a NOTEBOOK
 	ObjectID *float64 `json:"objectId,omitempty" tf:"object_id,omitempty"`
 
 	ObjectType *string `json:"objectType,omitempty" tf:"object_type,omitempty"`
 
+	// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// Path to notebook in source code format on local filesystem. Conflicts with content_base64.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type NotebookObservation struct {
+
+	// The base64-encoded notebook source code. Conflicts with source.
 	ContentBase64 *string `json:"contentBase64,omitempty" tf:"content_base64,omitempty"`
 
 	Format *string `json:"format,omitempty" tf:"format,omitempty"`
 
+	// Path of notebook on workspace
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// One of SCALA, PYTHON, SQL, R.
 	Language *string `json:"language,omitempty" tf:"language,omitempty"`
 
 	Md5 *string `json:"md5,omitempty" tf:"md5,omitempty"`
 
+	// Unique identifier for a NOTEBOOK
 	ObjectID *float64 `json:"objectId,omitempty" tf:"object_id,omitempty"`
 
 	ObjectType *string `json:"objectType,omitempty" tf:"object_type,omitempty"`
 
+	// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// Path to notebook in source code format on local filesystem. Conflicts with content_base64.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// Routable URL of the notebook
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 
+	// path on Workspace File System (WSFS) in form of /Workspace + path
 	WorkspacePath *string `json:"workspacePath,omitempty" tf:"workspace_path,omitempty"`
 }
 
 type NotebookParameters struct {
 
+	// The base64-encoded notebook source code. Conflicts with source.
 	// +kubebuilder:validation:Optional
 	ContentBase64 *string `json:"contentBase64,omitempty" tf:"content_base64,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Format *string `json:"format,omitempty" tf:"format,omitempty"`
 
+	// One of SCALA, PYTHON, SQL, R.
 	// +kubebuilder:validation:Optional
 	Language *string `json:"language,omitempty" tf:"language,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Md5 *string `json:"md5,omitempty" tf:"md5,omitempty"`
 
+	// Unique identifier for a NOTEBOOK
 	// +kubebuilder:validation:Optional
 	ObjectID *float64 `json:"objectId,omitempty" tf:"object_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	ObjectType *string `json:"objectType,omitempty" tf:"object_type,omitempty"`
 
+	// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
 	// +kubebuilder:validation:Optional
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// Path to notebook in source code format on local filesystem. Conflicts with content_base64.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
@@ -109,7 +129,7 @@ type NotebookStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Notebook is the Schema for the Notebooks API. <no value>
+// Notebook is the Schema for the Notebooks API. |page_title: "databricks_notebook Resource"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -14,50 +14,69 @@ import (
 )
 
 type AlertInitParameters struct {
+
+	// (String) identifier of the Databricks Alert (databricks_alert).
 	AlertID *string `json:"alertId,omitempty" tf:"alert_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	Subscriptions []SubscriptionsInitParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type AlertObservation struct {
+
+	// (String) identifier of the Databricks Alert (databricks_alert).
 	AlertID *string `json:"alertId,omitempty" tf:"alert_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	Subscriptions []SubscriptionsObservation `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type AlertParameters struct {
 
+	// (String) identifier of the Databricks Alert (databricks_alert).
 	// +kubebuilder:validation:Optional
 	AlertID *string `json:"alertId" tf:"alert_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	// +kubebuilder:validation:Optional
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	// +kubebuilder:validation:Optional
 	Subscriptions []SubscriptionsParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type AlertSubscriptionsInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type AlertSubscriptionsObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type AlertSubscriptionsParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	// +kubebuilder:validation:Optional
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
@@ -65,12 +84,14 @@ type AlertSubscriptionsParameters struct {
 type AzureAttributesLogAnalyticsInfoInitParameters struct {
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
 type AzureAttributesLogAnalyticsInfoObservation struct {
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
@@ -79,6 +100,7 @@ type AzureAttributesLogAnalyticsInfoParameters struct {
 	// +kubebuilder:validation:Optional
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
@@ -175,176 +197,245 @@ type ClusterMountInfoNetworkFilesystemInfoParameters struct {
 }
 
 type ConditionTaskInitParameters struct {
+
+	// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 	Left *string `json:"left,omitempty" tf:"left,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 	Right *string `json:"right,omitempty" tf:"right,omitempty"`
 }
 
 type ConditionTaskObservation struct {
+
+	// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 	Left *string `json:"left,omitempty" tf:"left,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 	Right *string `json:"right,omitempty" tf:"right,omitempty"`
 }
 
 type ConditionTaskParameters struct {
 
+	// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 	// +kubebuilder:validation:Optional
 	Left *string `json:"left" tf:"left,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	// +kubebuilder:validation:Optional
 	Op *string `json:"op" tf:"op,omitempty"`
 
+	// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 	// +kubebuilder:validation:Optional
 	Right *string `json:"right" tf:"right,omitempty"`
 }
 
 type ContinuousInitParameters struct {
+
+	// Indicate whether this continuous job is paused or not. Either PAUSED or UNPAUSED. When the pause_status field is omitted in the block, the server will default to using UNPAUSED as a value for pause_status.
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 }
 
 type ContinuousObservation struct {
+
+	// Indicate whether this continuous job is paused or not. Either PAUSED or UNPAUSED. When the pause_status field is omitted in the block, the server will default to using UNPAUSED as a value for pause_status.
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 }
 
 type ContinuousParameters struct {
 
+	// Indicate whether this continuous job is paused or not. Either PAUSED or UNPAUSED. When the pause_status field is omitted in the block, the server will default to using UNPAUSED as a value for pause_status.
 	// +kubebuilder:validation:Optional
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 }
 
 type DashboardInitParameters struct {
+
+	// string specifying a custom subject of email sent.
 	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
 
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	Subscriptions []DashboardSubscriptionsInitParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type DashboardObservation struct {
+
+	// string specifying a custom subject of email sent.
 	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
 
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	Subscriptions []DashboardSubscriptionsObservation `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type DashboardParameters struct {
 
+	// string specifying a custom subject of email sent.
 	// +kubebuilder:validation:Optional
 	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
 
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	// +kubebuilder:validation:Optional
 	DashboardID *string `json:"dashboardId" tf:"dashboard_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	// +kubebuilder:validation:Optional
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	// +kubebuilder:validation:Optional
 	Subscriptions []DashboardSubscriptionsParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type DashboardSubscriptionsInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type DashboardSubscriptionsObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type DashboardSubscriptionsParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	// +kubebuilder:validation:Optional
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type DbtTaskInitParameters struct {
+
+	// The name of the catalog to use inside Unity Catalog.
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	Commands []*string `json:"commands,omitempty" tf:"commands,omitempty"`
 
+	// The relative path to the directory in the repository specified by git_source where dbt should look in for the profiles.yml file. If not specified, defaults to the repository's root directory. Equivalent to passing --profile-dir to a dbt command.
 	ProfilesDirectory *string `json:"profilesDirectory,omitempty" tf:"profiles_directory,omitempty"`
 
+	// The path where dbt should look for dbt_project.yml. Equivalent to passing --project-dir to the dbt CLI.
 	ProjectDirectory *string `json:"projectDirectory,omitempty" tf:"project_directory,omitempty"`
 
+	// The name of the schema dbt should run in. Defaults to default.
 	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type DbtTaskObservation struct {
+
+	// The name of the catalog to use inside Unity Catalog.
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	Commands []*string `json:"commands,omitempty" tf:"commands,omitempty"`
 
+	// The relative path to the directory in the repository specified by git_source where dbt should look in for the profiles.yml file. If not specified, defaults to the repository's root directory. Equivalent to passing --profile-dir to a dbt command.
 	ProfilesDirectory *string `json:"profilesDirectory,omitempty" tf:"profiles_directory,omitempty"`
 
+	// The path where dbt should look for dbt_project.yml. Equivalent to passing --project-dir to the dbt CLI.
 	ProjectDirectory *string `json:"projectDirectory,omitempty" tf:"project_directory,omitempty"`
 
+	// The name of the schema dbt should run in. Defaults to default.
 	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type DbtTaskParameters struct {
 
+	// The name of the catalog to use inside Unity Catalog.
 	// +kubebuilder:validation:Optional
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	// +kubebuilder:validation:Optional
 	Commands []*string `json:"commands" tf:"commands,omitempty"`
 
+	// The relative path to the directory in the repository specified by git_source where dbt should look in for the profiles.yml file. If not specified, defaults to the repository's root directory. Equivalent to passing --profile-dir to a dbt command.
 	// +kubebuilder:validation:Optional
 	ProfilesDirectory *string `json:"profilesDirectory,omitempty" tf:"profiles_directory,omitempty"`
 
+	// The path where dbt should look for dbt_project.yml. Equivalent to passing --project-dir to the dbt CLI.
 	// +kubebuilder:validation:Optional
 	ProjectDirectory *string `json:"projectDirectory,omitempty" tf:"project_directory,omitempty"`
 
+	// The name of the schema dbt should run in. Defaults to default.
 	// +kubebuilder:validation:Optional
 	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	// +kubebuilder:validation:Optional
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type DependsOnInitParameters struct {
+
+	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are "true" or "false".
 	Outcome *string `json:"outcome,omitempty" tf:"outcome,omitempty"`
 
+	// string specifying an unique key for a given task.
 	TaskKey *string `json:"taskKey,omitempty" tf:"task_key,omitempty"`
 }
 
 type DependsOnObservation struct {
+
+	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are "true" or "false".
 	Outcome *string `json:"outcome,omitempty" tf:"outcome,omitempty"`
 
+	// string specifying an unique key for a given task.
 	TaskKey *string `json:"taskKey,omitempty" tf:"task_key,omitempty"`
 }
 
 type DependsOnParameters struct {
 
+	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are "true" or "false".
 	// +kubebuilder:validation:Optional
 	Outcome *string `json:"outcome,omitempty" tf:"outcome,omitempty"`
 
+	// string specifying an unique key for a given task.
 	// +kubebuilder:validation:Optional
 	TaskKey *string `json:"taskKey" tf:"task_key,omitempty"`
 }
@@ -352,12 +443,14 @@ type DependsOnParameters struct {
 type DeploymentInitParameters struct {
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	MetadataFilePath *string `json:"metadataFilePath,omitempty" tf:"metadata_file_path,omitempty"`
 }
 
 type DeploymentObservation struct {
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	MetadataFilePath *string `json:"metadataFilePath,omitempty" tf:"metadata_file_path,omitempty"`
 }
 
@@ -366,6 +459,7 @@ type DeploymentParameters struct {
 	// +kubebuilder:validation:Optional
 	Kind *string `json:"kind" tf:"kind,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	MetadataFilePath *string `json:"metadataFilePath,omitempty" tf:"metadata_file_path,omitempty"`
 }
@@ -373,10 +467,13 @@ type DeploymentParameters struct {
 type DockerImageBasicAuthInitParameters struct {
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// An optional name for the job. The default value is Untitled.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type DockerImageBasicAuthObservation struct {
+
+	// An optional name for the job. The default value is Untitled.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
@@ -385,552 +482,767 @@ type DockerImageBasicAuthParameters struct {
 	// +kubebuilder:validation:Optional
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	Username *string `json:"username" tf:"username,omitempty"`
 }
 
 type EmailNotificationsInitParameters struct {
+
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []*string `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []*string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []*string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []*string `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []*string `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type EmailNotificationsObservation struct {
+
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []*string `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []*string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []*string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []*string `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []*string `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type EmailNotificationsParameters struct {
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	// +kubebuilder:validation:Optional
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	// +kubebuilder:validation:Optional
 	OnDurationWarningThresholdExceeded []*string `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnFailure []*string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnStart []*string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	OnStreamingBacklogExceeded []*string `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnSuccess []*string `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type EnvironmentInitParameters struct {
+
+	// identifier of an environment block that is used to specify libraries.  Required for some tasks (spark_python_task, python_wheel_task, ...) running on serverless compute.
 	EnvironmentKey *string `json:"environmentKey,omitempty" tf:"environment_key,omitempty"`
 
+	// block describing the Environment. Consists of following attributes:
 	Spec []SpecInitParameters `json:"spec,omitempty" tf:"spec,omitempty"`
 }
 
 type EnvironmentObservation struct {
+
+	// identifier of an environment block that is used to specify libraries.  Required for some tasks (spark_python_task, python_wheel_task, ...) running on serverless compute.
 	EnvironmentKey *string `json:"environmentKey,omitempty" tf:"environment_key,omitempty"`
 
+	// block describing the Environment. Consists of following attributes:
 	Spec []SpecObservation `json:"spec,omitempty" tf:"spec,omitempty"`
 }
 
 type EnvironmentParameters struct {
 
+	// identifier of an environment block that is used to specify libraries.  Required for some tasks (spark_python_task, python_wheel_task, ...) running on serverless compute.
 	// +kubebuilder:validation:Optional
 	EnvironmentKey *string `json:"environmentKey" tf:"environment_key,omitempty"`
 
+	// block describing the Environment. Consists of following attributes:
 	// +kubebuilder:validation:Optional
 	Spec []SpecParameters `json:"spec,omitempty" tf:"spec,omitempty"`
 }
 
 type FileArrivalInitParameters struct {
+
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *float64 `json:"minTimeBetweenTriggersSeconds,omitempty" tf:"min_time_between_triggers_seconds,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
 
 type FileArrivalObservation struct {
+
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *float64 `json:"minTimeBetweenTriggersSeconds,omitempty" tf:"min_time_between_triggers_seconds,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
 
 type FileArrivalParameters struct {
 
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	// +kubebuilder:validation:Optional
 	MinTimeBetweenTriggersSeconds *float64 `json:"minTimeBetweenTriggersSeconds,omitempty" tf:"min_time_between_triggers_seconds,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	// +kubebuilder:validation:Optional
 	URL *string `json:"url" tf:"url,omitempty"`
 
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	// +kubebuilder:validation:Optional
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
 
 type ForEachTaskInitParameters struct {
+
+	// Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
 	Concurrency *float64 `json:"concurrency,omitempty" tf:"concurrency,omitempty"`
 
+	// (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
 	Inputs *string `json:"inputs,omitempty" tf:"inputs,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	Task []ForEachTaskTaskInitParameters `json:"task,omitempty" tf:"task,omitempty"`
 }
 
 type ForEachTaskObservation struct {
+
+	// Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
 	Concurrency *float64 `json:"concurrency,omitempty" tf:"concurrency,omitempty"`
 
+	// (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
 	Inputs *string `json:"inputs,omitempty" tf:"inputs,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	Task []ForEachTaskTaskObservation `json:"task,omitempty" tf:"task,omitempty"`
 }
 
 type ForEachTaskParameters struct {
 
+	// Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
 	// +kubebuilder:validation:Optional
 	Concurrency *float64 `json:"concurrency,omitempty" tf:"concurrency,omitempty"`
 
+	// (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
 	// +kubebuilder:validation:Optional
 	Inputs *string `json:"inputs" tf:"inputs,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Task []ForEachTaskTaskParameters `json:"task" tf:"task,omitempty"`
 }
 
 type ForEachTaskTaskDbtTaskInitParameters struct {
+
+	// The name of the catalog to use inside Unity Catalog.
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	Commands []*string `json:"commands,omitempty" tf:"commands,omitempty"`
 
+	// The relative path to the directory in the repository specified by git_source where dbt should look in for the profiles.yml file. If not specified, defaults to the repository's root directory. Equivalent to passing --profile-dir to a dbt command.
 	ProfilesDirectory *string `json:"profilesDirectory,omitempty" tf:"profiles_directory,omitempty"`
 
+	// The path where dbt should look for dbt_project.yml. Equivalent to passing --project-dir to the dbt CLI.
 	ProjectDirectory *string `json:"projectDirectory,omitempty" tf:"project_directory,omitempty"`
 
+	// The name of the schema dbt should run in. Defaults to default.
 	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type ForEachTaskTaskDbtTaskObservation struct {
+
+	// The name of the catalog to use inside Unity Catalog.
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	Commands []*string `json:"commands,omitempty" tf:"commands,omitempty"`
 
+	// The relative path to the directory in the repository specified by git_source where dbt should look in for the profiles.yml file. If not specified, defaults to the repository's root directory. Equivalent to passing --profile-dir to a dbt command.
 	ProfilesDirectory *string `json:"profilesDirectory,omitempty" tf:"profiles_directory,omitempty"`
 
+	// The path where dbt should look for dbt_project.yml. Equivalent to passing --project-dir to the dbt CLI.
 	ProjectDirectory *string `json:"projectDirectory,omitempty" tf:"project_directory,omitempty"`
 
+	// The name of the schema dbt should run in. Defaults to default.
 	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type ForEachTaskTaskDbtTaskParameters struct {
 
+	// The name of the catalog to use inside Unity Catalog.
 	// +kubebuilder:validation:Optional
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	// +kubebuilder:validation:Optional
 	Commands []*string `json:"commands" tf:"commands,omitempty"`
 
+	// The relative path to the directory in the repository specified by git_source where dbt should look in for the profiles.yml file. If not specified, defaults to the repository's root directory. Equivalent to passing --profile-dir to a dbt command.
 	// +kubebuilder:validation:Optional
 	ProfilesDirectory *string `json:"profilesDirectory,omitempty" tf:"profiles_directory,omitempty"`
 
+	// The path where dbt should look for dbt_project.yml. Equivalent to passing --project-dir to the dbt CLI.
 	// +kubebuilder:validation:Optional
 	ProjectDirectory *string `json:"projectDirectory,omitempty" tf:"project_directory,omitempty"`
 
+	// The name of the schema dbt should run in. Defaults to default.
 	// +kubebuilder:validation:Optional
 	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	// +kubebuilder:validation:Optional
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type ForEachTaskTaskEmailNotificationsInitParameters struct {
+
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []*string `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []*string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []*string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []*string `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []*string `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type ForEachTaskTaskEmailNotificationsObservation struct {
+
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []*string `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []*string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []*string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []*string `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []*string `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type ForEachTaskTaskEmailNotificationsParameters struct {
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	// +kubebuilder:validation:Optional
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	// +kubebuilder:validation:Optional
 	OnDurationWarningThresholdExceeded []*string `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnFailure []*string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnStart []*string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	OnStreamingBacklogExceeded []*string `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnSuccess []*string `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type ForEachTaskTaskInitParameters struct {
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	ConditionTask []TaskConditionTaskInitParameters `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	DbtTask []ForEachTaskTaskDbtTaskInitParameters `json:"dbtTask,omitempty" tf:"dbt_task,omitempty"`
 
+	// block specifying dependency(-ies) for a given task.
 	DependsOn []TaskDependsOnInitParameters `json:"dependsOn,omitempty" tf:"depends_on,omitempty"`
 
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// A flag to disable auto optimization in serverless tasks.
 	DisableAutoOptimization *bool `json:"disableAutoOptimization,omitempty" tf:"disable_auto_optimization,omitempty"`
 
+	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications []ForEachTaskTaskEmailNotificationsInitParameters `json:"emailNotifications,omitempty" tf:"email_notifications,omitempty"`
 
+	// identifier of an environment block that is used to specify libraries.  Required for some tasks (spark_python_task, python_wheel_task, ...) running on serverless compute.
 	EnvironmentKey *string `json:"environmentKey,omitempty" tf:"environment_key,omitempty"`
 
+	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use new_cluster for greater reliability.
 	ExistingClusterID *string `json:"existingClusterId,omitempty" tf:"existing_cluster_id,omitempty"`
 
+	// An optional block that specifies the health conditions for the job documented below.
 	Health []TaskHealthInitParameters `json:"health,omitempty" tf:"health,omitempty"`
 
+	// Identifier of the Job cluster specified in the job_cluster block.
 	JobClusterKey *string `json:"jobClusterKey,omitempty" tf:"job_cluster_key,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []TaskLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR.
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *float64 `json:"minRetryIntervalMillis,omitempty" tf:"min_retry_interval_millis,omitempty"`
 
+	// Task will run on a dedicated cluster.  See databricks_cluster documentation for specification. Some parameters, such as
 	NewCluster []TaskNewClusterInitParameters `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	NotebookTask []TaskNotebookTaskInitParameters `json:"notebookTask,omitempty" tf:"notebook_task,omitempty"`
 
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings []TaskNotificationSettingsInitParameters `json:"notificationSettings,omitempty" tf:"notification_settings,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PipelineTask []TaskPipelineTaskInitParameters `json:"pipelineTask,omitempty" tf:"pipeline_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PythonWheelTask []TaskPythonWheelTaskInitParameters `json:"pythonWheelTask,omitempty" tf:"python_wheel_task,omitempty"`
 
+	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `json:"retryOnTimeout,omitempty" tf:"retry_on_timeout,omitempty"`
 
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of ALL_SUCCESS, AT_LEAST_ONE_SUCCESS, NONE_FAILED, ALL_DONE, AT_LEAST_ONE_FAILED or ALL_FAILED. When omitted, defaults to ALL_SUCCESS.
 	RunIf *string `json:"runIf,omitempty" tf:"run_if,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	RunJobTask []TaskRunJobTaskInitParameters `json:"runJobTask,omitempty" tf:"run_job_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SQLTask []SQLTaskInitParameters `json:"sqlTask,omitempty" tf:"sql_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkJarTask []TaskSparkJarTaskInitParameters `json:"sparkJarTask,omitempty" tf:"spark_jar_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkPythonTask []TaskSparkPythonTaskInitParameters `json:"sparkPythonTask,omitempty" tf:"spark_python_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkSubmitTask []TaskSparkSubmitTaskInitParameters `json:"sparkSubmitTask,omitempty" tf:"spark_submit_task,omitempty"`
 
+	// string specifying an unique key for a given task.
 	TaskKey *string `json:"taskKey,omitempty" tf:"task_key,omitempty"`
 
+	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications []WebhookNotificationsInitParameters `json:"webhookNotifications,omitempty" tf:"webhook_notifications,omitempty"`
 }
 
 type ForEachTaskTaskObservation struct {
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	ConditionTask []TaskConditionTaskObservation `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	DbtTask []ForEachTaskTaskDbtTaskObservation `json:"dbtTask,omitempty" tf:"dbt_task,omitempty"`
 
+	// block specifying dependency(-ies) for a given task.
 	DependsOn []TaskDependsOnObservation `json:"dependsOn,omitempty" tf:"depends_on,omitempty"`
 
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// A flag to disable auto optimization in serverless tasks.
 	DisableAutoOptimization *bool `json:"disableAutoOptimization,omitempty" tf:"disable_auto_optimization,omitempty"`
 
+	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications []ForEachTaskTaskEmailNotificationsObservation `json:"emailNotifications,omitempty" tf:"email_notifications,omitempty"`
 
+	// identifier of an environment block that is used to specify libraries.  Required for some tasks (spark_python_task, python_wheel_task, ...) running on serverless compute.
 	EnvironmentKey *string `json:"environmentKey,omitempty" tf:"environment_key,omitempty"`
 
+	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use new_cluster for greater reliability.
 	ExistingClusterID *string `json:"existingClusterId,omitempty" tf:"existing_cluster_id,omitempty"`
 
+	// An optional block that specifies the health conditions for the job documented below.
 	Health []TaskHealthObservation `json:"health,omitempty" tf:"health,omitempty"`
 
+	// Identifier of the Job cluster specified in the job_cluster block.
 	JobClusterKey *string `json:"jobClusterKey,omitempty" tf:"job_cluster_key,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []TaskLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR.
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *float64 `json:"minRetryIntervalMillis,omitempty" tf:"min_retry_interval_millis,omitempty"`
 
+	// Task will run on a dedicated cluster.  See databricks_cluster documentation for specification. Some parameters, such as
 	NewCluster []TaskNewClusterObservation `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	NotebookTask []TaskNotebookTaskObservation `json:"notebookTask,omitempty" tf:"notebook_task,omitempty"`
 
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings []TaskNotificationSettingsObservation `json:"notificationSettings,omitempty" tf:"notification_settings,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PipelineTask []TaskPipelineTaskObservation `json:"pipelineTask,omitempty" tf:"pipeline_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PythonWheelTask []TaskPythonWheelTaskObservation `json:"pythonWheelTask,omitempty" tf:"python_wheel_task,omitempty"`
 
+	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `json:"retryOnTimeout,omitempty" tf:"retry_on_timeout,omitempty"`
 
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of ALL_SUCCESS, AT_LEAST_ONE_SUCCESS, NONE_FAILED, ALL_DONE, AT_LEAST_ONE_FAILED or ALL_FAILED. When omitted, defaults to ALL_SUCCESS.
 	RunIf *string `json:"runIf,omitempty" tf:"run_if,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	RunJobTask []TaskRunJobTaskObservation `json:"runJobTask,omitempty" tf:"run_job_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SQLTask []SQLTaskObservation `json:"sqlTask,omitempty" tf:"sql_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkJarTask []TaskSparkJarTaskObservation `json:"sparkJarTask,omitempty" tf:"spark_jar_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkPythonTask []TaskSparkPythonTaskObservation `json:"sparkPythonTask,omitempty" tf:"spark_python_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkSubmitTask []TaskSparkSubmitTaskObservation `json:"sparkSubmitTask,omitempty" tf:"spark_submit_task,omitempty"`
 
+	// string specifying an unique key for a given task.
 	TaskKey *string `json:"taskKey,omitempty" tf:"task_key,omitempty"`
 
+	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications []WebhookNotificationsObservation `json:"webhookNotifications,omitempty" tf:"webhook_notifications,omitempty"`
 }
 
 type ForEachTaskTaskParameters struct {
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	ConditionTask []TaskConditionTaskParameters `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	DbtTask []ForEachTaskTaskDbtTaskParameters `json:"dbtTask,omitempty" tf:"dbt_task,omitempty"`
 
+	// block specifying dependency(-ies) for a given task.
 	// +kubebuilder:validation:Optional
 	DependsOn []TaskDependsOnParameters `json:"dependsOn,omitempty" tf:"depends_on,omitempty"`
 
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// A flag to disable auto optimization in serverless tasks.
 	// +kubebuilder:validation:Optional
 	DisableAutoOptimization *bool `json:"disableAutoOptimization,omitempty" tf:"disable_auto_optimization,omitempty"`
 
+	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	// +kubebuilder:validation:Optional
 	EmailNotifications []ForEachTaskTaskEmailNotificationsParameters `json:"emailNotifications,omitempty" tf:"email_notifications,omitempty"`
 
+	// identifier of an environment block that is used to specify libraries.  Required for some tasks (spark_python_task, python_wheel_task, ...) running on serverless compute.
 	// +kubebuilder:validation:Optional
 	EnvironmentKey *string `json:"environmentKey,omitempty" tf:"environment_key,omitempty"`
 
+	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use new_cluster for greater reliability.
 	// +kubebuilder:validation:Optional
 	ExistingClusterID *string `json:"existingClusterId,omitempty" tf:"existing_cluster_id,omitempty"`
 
+	// An optional block that specifies the health conditions for the job documented below.
 	// +kubebuilder:validation:Optional
 	Health []TaskHealthParameters `json:"health,omitempty" tf:"health,omitempty"`
 
+	// Identifier of the Job cluster specified in the job_cluster block.
 	// +kubebuilder:validation:Optional
 	JobClusterKey *string `json:"jobClusterKey,omitempty" tf:"job_cluster_key,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []TaskLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR.
 	// +kubebuilder:validation:Optional
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	// +kubebuilder:validation:Optional
 	MinRetryIntervalMillis *float64 `json:"minRetryIntervalMillis,omitempty" tf:"min_retry_interval_millis,omitempty"`
 
+	// Task will run on a dedicated cluster.  See databricks_cluster documentation for specification. Some parameters, such as
 	// +kubebuilder:validation:Optional
 	NewCluster []TaskNewClusterParameters `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	NotebookTask []TaskNotebookTaskParameters `json:"notebookTask,omitempty" tf:"notebook_task,omitempty"`
 
+	// An optional block controlling the notification settings on the job level documented below.
 	// +kubebuilder:validation:Optional
 	NotificationSettings []TaskNotificationSettingsParameters `json:"notificationSettings,omitempty" tf:"notification_settings,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	PipelineTask []TaskPipelineTaskParameters `json:"pipelineTask,omitempty" tf:"pipeline_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	PythonWheelTask []TaskPythonWheelTaskParameters `json:"pythonWheelTask,omitempty" tf:"python_wheel_task,omitempty"`
 
+	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	// +kubebuilder:validation:Optional
 	RetryOnTimeout *bool `json:"retryOnTimeout,omitempty" tf:"retry_on_timeout,omitempty"`
 
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of ALL_SUCCESS, AT_LEAST_ONE_SUCCESS, NONE_FAILED, ALL_DONE, AT_LEAST_ONE_FAILED or ALL_FAILED. When omitted, defaults to ALL_SUCCESS.
 	// +kubebuilder:validation:Optional
 	RunIf *string `json:"runIf,omitempty" tf:"run_if,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	RunJobTask []TaskRunJobTaskParameters `json:"runJobTask,omitempty" tf:"run_job_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SQLTask []SQLTaskParameters `json:"sqlTask,omitempty" tf:"sql_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SparkJarTask []TaskSparkJarTaskParameters `json:"sparkJarTask,omitempty" tf:"spark_jar_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SparkPythonTask []TaskSparkPythonTaskParameters `json:"sparkPythonTask,omitempty" tf:"spark_python_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SparkSubmitTask []TaskSparkSubmitTaskParameters `json:"sparkSubmitTask,omitempty" tf:"spark_submit_task,omitempty"`
 
+	// string specifying an unique key for a given task.
 	// +kubebuilder:validation:Optional
 	TaskKey *string `json:"taskKey" tf:"task_key,omitempty"`
 
+	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	// +kubebuilder:validation:Optional
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	// +kubebuilder:validation:Optional
 	WebhookNotifications []WebhookNotificationsParameters `json:"webhookNotifications,omitempty" tf:"webhook_notifications,omitempty"`
 }
 
 type GitSnapshotInitParameters struct {
+
+	// hash of Git commit to use. Conflicts with branch and tag.
 	UsedCommit *string `json:"usedCommit,omitempty" tf:"used_commit,omitempty"`
 }
 
 type GitSnapshotObservation struct {
+
+	// hash of Git commit to use. Conflicts with branch and tag.
 	UsedCommit *string `json:"usedCommit,omitempty" tf:"used_commit,omitempty"`
 }
 
 type GitSnapshotParameters struct {
 
+	// hash of Git commit to use. Conflicts with branch and tag.
 	// +kubebuilder:validation:Optional
 	UsedCommit *string `json:"usedCommit,omitempty" tf:"used_commit,omitempty"`
 }
 
 type GitSourceInitParameters struct {
+
+	// name of the Git branch to use. Conflicts with tag and commit.
 	Branch *string `json:"branch,omitempty" tf:"branch,omitempty"`
 
+	// hash of Git commit to use. Conflicts with branch and tag.
 	Commit *string `json:"commit,omitempty" tf:"commit,omitempty"`
 
 	GitSnapshot []GitSnapshotInitParameters `json:"gitSnapshot,omitempty" tf:"git_snapshot,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	JobSource []JobSourceInitParameters `json:"jobSource,omitempty" tf:"job_source,omitempty"`
 
+	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult Repos API documentation): gitHub, gitHubEnterprise, bitbucketCloud, bitbucketServer, azureDevOpsServices, gitLab, gitLabEnterpriseEdition.
 	Provider *string `json:"provider,omitempty" tf:"provider,omitempty"`
 
+	// name of the Git branch to use. Conflicts with branch and commit.
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type GitSourceObservation struct {
+
+	// name of the Git branch to use. Conflicts with tag and commit.
 	Branch *string `json:"branch,omitempty" tf:"branch,omitempty"`
 
+	// hash of Git commit to use. Conflicts with branch and tag.
 	Commit *string `json:"commit,omitempty" tf:"commit,omitempty"`
 
 	GitSnapshot []GitSnapshotObservation `json:"gitSnapshot,omitempty" tf:"git_snapshot,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	JobSource []JobSourceObservation `json:"jobSource,omitempty" tf:"job_source,omitempty"`
 
+	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult Repos API documentation): gitHub, gitHubEnterprise, bitbucketCloud, bitbucketServer, azureDevOpsServices, gitLab, gitLabEnterpriseEdition.
 	Provider *string `json:"provider,omitempty" tf:"provider,omitempty"`
 
+	// name of the Git branch to use. Conflicts with branch and commit.
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type GitSourceParameters struct {
 
+	// name of the Git branch to use. Conflicts with tag and commit.
 	// +kubebuilder:validation:Optional
 	Branch *string `json:"branch,omitempty" tf:"branch,omitempty"`
 
+	// hash of Git commit to use. Conflicts with branch and tag.
 	// +kubebuilder:validation:Optional
 	Commit *string `json:"commit,omitempty" tf:"commit,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	GitSnapshot []GitSnapshotParameters `json:"gitSnapshot,omitempty" tf:"git_snapshot,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	JobSource []JobSourceParameters `json:"jobSource,omitempty" tf:"job_source,omitempty"`
 
+	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult Repos API documentation): gitHub, gitHubEnterprise, bitbucketCloud, bitbucketServer, azureDevOpsServices, gitLab, gitLabEnterpriseEdition.
 	// +kubebuilder:validation:Optional
 	Provider *string `json:"provider,omitempty" tf:"provider,omitempty"`
 
+	// name of the Git branch to use. Conflicts with branch and commit.
 	// +kubebuilder:validation:Optional
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	// +kubebuilder:validation:Optional
 	URL *string `json:"url" tf:"url,omitempty"`
 }
 
 type HealthInitParameters struct {
+
+	// (List) list of rules that are represented as objects with the following attributes:
 	Rules []RulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type HealthObservation struct {
+
+	// (List) list of rules that are represented as objects with the following attributes:
 	Rules []RulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type HealthParameters struct {
 
+	// (List) list of rules that are represented as objects with the following attributes:
 	// +kubebuilder:validation:Optional
 	Rules []RulesParameters `json:"rules" tf:"rules,omitempty"`
 }
 
 type HealthRulesInitParameters struct {
+
+	// string specifying the metric to check.  The only supported metric is RUN_DURATION_SECONDS (check Jobs REST API documentation for the latest information).
 	Metric *string `json:"metric,omitempty" tf:"metric,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// integer value used to compare to the given metric.
 	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type HealthRulesObservation struct {
+
+	// string specifying the metric to check.  The only supported metric is RUN_DURATION_SECONDS (check Jobs REST API documentation for the latest information).
 	Metric *string `json:"metric,omitempty" tf:"metric,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// integer value used to compare to the given metric.
 	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type HealthRulesParameters struct {
 
+	// string specifying the metric to check.  The only supported metric is RUN_DURATION_SECONDS (check Jobs REST API documentation for the latest information).
 	// +kubebuilder:validation:Optional
 	Metric *string `json:"metric" tf:"metric,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	// +kubebuilder:validation:Optional
 	Op *string `json:"op" tf:"op,omitempty"`
 
+	// integer value used to compare to the given metric.
 	// +kubebuilder:validation:Optional
 	Value *float64 `json:"value" tf:"value,omitempty"`
 }
@@ -1006,104 +1318,148 @@ type InitScriptsWorkspaceParameters struct {
 }
 
 type JobClusterInitParameters struct {
+
+	// Identifier that can be referenced in task block, so that cluster is shared between tasks
 	JobClusterKey *string `json:"jobClusterKey,omitempty" tf:"job_cluster_key,omitempty"`
 
+	// Block with almost the same set of parameters as for databricks_cluster resource, except following (check the REST API documentation for full list of supported parameters):
 	NewCluster []NewClusterInitParameters `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 }
 
 type JobClusterObservation struct {
+
+	// Identifier that can be referenced in task block, so that cluster is shared between tasks
 	JobClusterKey *string `json:"jobClusterKey,omitempty" tf:"job_cluster_key,omitempty"`
 
+	// Block with almost the same set of parameters as for databricks_cluster resource, except following (check the REST API documentation for full list of supported parameters):
 	NewCluster []NewClusterObservation `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 }
 
 type JobClusterParameters struct {
 
+	// Identifier that can be referenced in task block, so that cluster is shared between tasks
 	// +kubebuilder:validation:Optional
 	JobClusterKey *string `json:"jobClusterKey" tf:"job_cluster_key,omitempty"`
 
+	// Block with almost the same set of parameters as for databricks_cluster resource, except following (check the REST API documentation for full list of supported parameters):
 	// +kubebuilder:validation:Optional
 	NewCluster []NewClusterParameters `json:"newCluster" tf:"new_cluster,omitempty"`
 }
 
 type JobInitParameters struct {
+
+	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with parameters specified in spark_jar_task or spark_submit_task or spark_python_task or notebook_task blocks.
 	AlwaysRunning *bool `json:"alwaysRunning,omitempty" tf:"always_running,omitempty"`
 
+	// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
 	BudgetPolicyID *string `json:"budgetPolicyId,omitempty" tf:"budget_policy_id,omitempty"`
 
+	// Configuration block to configure pause status. See continuous Configuration Block.
 	Continuous []ContinuousInitParameters `json:"continuous,omitempty" tf:"continuous,omitempty"`
 
+	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the pause_status by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	ControlRunState *bool `json:"controlRunState,omitempty" tf:"control_run_state,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	DbtTask []DbtTaskInitParameters `json:"dbtTask,omitempty" tf:"dbt_task,omitempty"`
 
 	Deployment []DeploymentInitParameters `json:"deployment,omitempty" tf:"deployment,omitempty"`
 
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	EditMode *string `json:"editMode,omitempty" tf:"edit_mode,omitempty"`
 
+	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications []EmailNotificationsInitParameters `json:"emailNotifications,omitempty" tf:"email_notifications,omitempty"`
 
 	Environment []EnvironmentInitParameters `json:"environment,omitempty" tf:"environment,omitempty"`
 
+	// Identifier of the interactive cluster to run job on.  Note: running tasks on interactive clusters may lead to increased costs!
 	ExistingClusterID *string `json:"existingClusterId,omitempty" tf:"existing_cluster_id,omitempty"`
 
 	Format *string `json:"format,omitempty" tf:"format,omitempty"`
 
+	// Specifices the a Git repository for task source code. See git_source Configuration Block below.
 	GitSource []GitSourceInitParameters `json:"gitSource,omitempty" tf:"git_source,omitempty"`
 
+	// An optional block that specifies the health conditions for the job documented below.
 	Health []HealthInitParameters `json:"health,omitempty" tf:"health,omitempty"`
 
+	// A list of job databricks_cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. Multi-task syntax
 	JobCluster []JobClusterInitParameters `json:"jobCluster,omitempty" tf:"job_cluster,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to 1.
 	MaxConcurrentRuns *float64 `json:"maxConcurrentRuns,omitempty" tf:"max_concurrent_runs,omitempty"`
 
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR.
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *float64 `json:"minRetryIntervalMillis,omitempty" tf:"min_retry_interval_millis,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// Task will run on a dedicated cluster.  See databricks_cluster documentation for specification. Some parameters, such as
 	NewCluster []JobNewClusterInitParameters `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	NotebookTask []NotebookTaskInitParameters `json:"notebookTask,omitempty" tf:"notebook_task,omitempty"`
 
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings []NotificationSettingsInitParameters `json:"notificationSettings,omitempty" tf:"notification_settings,omitempty"`
 
+	// Specifices job parameter for the job. See parameter Configuration Block
 	Parameter []ParameterInitParameters `json:"parameter,omitempty" tf:"parameter,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PipelineTask []PipelineTaskInitParameters `json:"pipelineTask,omitempty" tf:"pipeline_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PythonWheelTask []PythonWheelTaskInitParameters `json:"pythonWheelTask,omitempty" tf:"python_wheel_task,omitempty"`
 
+	// The queue status for the job. See queue Configuration Block below.
 	Queue []QueueInitParameters `json:"queue,omitempty" tf:"queue,omitempty"`
 
+	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `json:"retryOnTimeout,omitempty" tf:"retry_on_timeout,omitempty"`
 
+	// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
 	RunAs []RunAsInitParameters `json:"runAs,omitempty" tf:"run_as,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	RunJobTask []RunJobTaskInitParameters `json:"runJobTask,omitempty" tf:"run_job_task,omitempty"`
 
+	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
 	Schedule []ScheduleInitParameters `json:"schedule,omitempty" tf:"schedule,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkJarTask []SparkJarTaskInitParameters `json:"sparkJarTask,omitempty" tf:"spark_jar_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkPythonTask []SparkPythonTaskInitParameters `json:"sparkPythonTask,omitempty" tf:"spark_python_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkSubmitTask []SparkSubmitTaskInitParameters `json:"sparkSubmitTask,omitempty" tf:"spark_submit_task,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	Task []TaskInitParameters `json:"task,omitempty" tf:"task,omitempty"`
 
+	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 
+	// The conditions that triggers the job to start. See trigger Configuration Block below.
 	Trigger []TriggerInitParameters `json:"trigger,omitempty" tf:"trigger,omitempty"`
 
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications []JobWebhookNotificationsInitParameters `json:"webhookNotifications,omitempty" tf:"webhook_notifications,omitempty"`
 }
 
@@ -1273,6 +1629,7 @@ type JobNewClusterAwsAttributesInitParameters struct {
 
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -1295,6 +1652,7 @@ type JobNewClusterAwsAttributesObservation struct {
 
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -1327,6 +1685,7 @@ type JobNewClusterAwsAttributesParameters struct {
 	// +kubebuilder:validation:Optional
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -1388,29 +1747,37 @@ type JobNewClusterClusterLogConfParameters struct {
 }
 
 type JobNewClusterClusterMountInfoInitParameters struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	LocalMountDirPath *string `json:"localMountDirPath,omitempty" tf:"local_mount_dir_path,omitempty"`
 
 	NetworkFilesystemInfo []NewClusterClusterMountInfoNetworkFilesystemInfoInitParameters `json:"networkFilesystemInfo,omitempty" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
 
 type JobNewClusterClusterMountInfoObservation struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	LocalMountDirPath *string `json:"localMountDirPath,omitempty" tf:"local_mount_dir_path,omitempty"`
 
 	NetworkFilesystemInfo []NewClusterClusterMountInfoNetworkFilesystemInfoObservation `json:"networkFilesystemInfo,omitempty" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
 
 type JobNewClusterClusterMountInfoParameters struct {
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	LocalMountDirPath *string `json:"localMountDirPath" tf:"local_mount_dir_path,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	NetworkFilesystemInfo []NewClusterClusterMountInfoNetworkFilesystemInfoParameters `json:"networkFilesystemInfo" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
@@ -1418,12 +1785,14 @@ type JobNewClusterClusterMountInfoParameters struct {
 type JobNewClusterDockerImageInitParameters struct {
 	BasicAuth []NewClusterDockerImageBasicAuthInitParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type JobNewClusterDockerImageObservation struct {
 	BasicAuth []NewClusterDockerImageBasicAuthObservation `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
@@ -1432,6 +1801,7 @@ type JobNewClusterDockerImageParameters struct {
 	// +kubebuilder:validation:Optional
 	BasicAuth []NewClusterDockerImageBasicAuthParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	// +kubebuilder:validation:Optional
 	URL *string `json:"url" tf:"url,omitempty"`
 }
@@ -1447,6 +1817,7 @@ type JobNewClusterGCPAttributesInitParameters struct {
 
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -1461,6 +1832,7 @@ type JobNewClusterGCPAttributesObservation struct {
 
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -1481,6 +1853,7 @@ type JobNewClusterGCPAttributesParameters struct {
 	// +kubebuilder:validation:Optional
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -1494,14 +1867,17 @@ type JobNewClusterInitParameters struct {
 
 	AzureAttributes []JobNewClusterAzureAttributesInitParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	ClusterLogConf []JobNewClusterClusterLogConfInitParameters `json:"clusterLogConf,omitempty" tf:"cluster_log_conf,omitempty"`
 
 	ClusterMountInfo []JobNewClusterClusterMountInfoInitParameters `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
@@ -1509,8 +1885,10 @@ type JobNewClusterInitParameters struct {
 
 	DockerImage []JobNewClusterDockerImageInitParameters `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
@@ -1523,20 +1901,25 @@ type JobNewClusterInitParameters struct {
 
 	InitScripts []JobNewClusterInitScriptsInitParameters `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobNewClusterLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
 	RuntimeEngine *string `json:"runtimeEngine,omitempty" tf:"runtime_engine,omitempty"`
 
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
 	// +mapType=granular
@@ -1545,8 +1928,10 @@ type JobNewClusterInitParameters struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	WorkloadType []JobNewClusterWorkloadTypeInitParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
 
@@ -1569,6 +1954,7 @@ type JobNewClusterInitScriptsInitParameters struct {
 
 	Dbfs []JobNewClusterInitScriptsDbfsInitParameters `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	File []NewClusterInitScriptsFileInitParameters `json:"file,omitempty" tf:"file,omitempty"`
 
 	Gcs []NewClusterInitScriptsGcsInitParameters `json:"gcs,omitempty" tf:"gcs,omitempty"`
@@ -1585,6 +1971,7 @@ type JobNewClusterInitScriptsObservation struct {
 
 	Dbfs []JobNewClusterInitScriptsDbfsObservation `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	File []NewClusterInitScriptsFileObservation `json:"file,omitempty" tf:"file,omitempty"`
 
 	Gcs []NewClusterInitScriptsGcsObservation `json:"gcs,omitempty" tf:"gcs,omitempty"`
@@ -1604,6 +1991,7 @@ type JobNewClusterInitScriptsParameters struct {
 	// +kubebuilder:validation:Optional
 	Dbfs []JobNewClusterInitScriptsDbfsParameters `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	// +kubebuilder:validation:Optional
 	File []NewClusterInitScriptsFileParameters `json:"file,omitempty" tf:"file,omitempty"`
 
@@ -1741,14 +2129,17 @@ type JobNewClusterObservation struct {
 
 	AzureAttributes []JobNewClusterAzureAttributesObservation `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	ClusterLogConf []JobNewClusterClusterLogConfObservation `json:"clusterLogConf,omitempty" tf:"cluster_log_conf,omitempty"`
 
 	ClusterMountInfo []JobNewClusterClusterMountInfoObservation `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
@@ -1756,8 +2147,10 @@ type JobNewClusterObservation struct {
 
 	DockerImage []JobNewClusterDockerImageObservation `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
@@ -1770,20 +2163,25 @@ type JobNewClusterObservation struct {
 
 	InitScripts []JobNewClusterInitScriptsObservation `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobNewClusterLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
 	RuntimeEngine *string `json:"runtimeEngine,omitempty" tf:"runtime_engine,omitempty"`
 
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
 	// +mapType=granular
@@ -1792,8 +2190,10 @@ type JobNewClusterObservation struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	WorkloadType []JobNewClusterWorkloadTypeObservation `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
 
@@ -1811,6 +2211,7 @@ type JobNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	AzureAttributes []JobNewClusterAzureAttributesParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
@@ -1820,9 +2221,11 @@ type JobNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	ClusterMountInfo []JobNewClusterClusterMountInfoParameters `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
@@ -1833,9 +2236,11 @@ type JobNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	DockerImage []JobNewClusterDockerImageParameters `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
@@ -1854,18 +2259,22 @@ type JobNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	InitScripts []JobNewClusterInitScriptsParameters `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []JobNewClusterLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
@@ -1875,6 +2284,7 @@ type JobNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
@@ -1886,9 +2296,11 @@ type JobNewClusterParameters struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	// +kubebuilder:validation:Optional
 	SparkVersion *string `json:"sparkVersion" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	// +kubebuilder:validation:Optional
 	WorkloadType []JobNewClusterWorkloadTypeParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
@@ -1908,207 +2320,280 @@ type JobNewClusterWorkloadTypeParameters struct {
 }
 
 type JobObservation struct {
+
+	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with parameters specified in spark_jar_task or spark_submit_task or spark_python_task or notebook_task blocks.
 	AlwaysRunning *bool `json:"alwaysRunning,omitempty" tf:"always_running,omitempty"`
 
+	// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
 	BudgetPolicyID *string `json:"budgetPolicyId,omitempty" tf:"budget_policy_id,omitempty"`
 
+	// Configuration block to configure pause status. See continuous Configuration Block.
 	Continuous []ContinuousObservation `json:"continuous,omitempty" tf:"continuous,omitempty"`
 
+	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the pause_status by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	ControlRunState *bool `json:"controlRunState,omitempty" tf:"control_run_state,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	DbtTask []DbtTaskObservation `json:"dbtTask,omitempty" tf:"dbt_task,omitempty"`
 
 	Deployment []DeploymentObservation `json:"deployment,omitempty" tf:"deployment,omitempty"`
 
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	EditMode *string `json:"editMode,omitempty" tf:"edit_mode,omitempty"`
 
+	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications []EmailNotificationsObservation `json:"emailNotifications,omitempty" tf:"email_notifications,omitempty"`
 
 	Environment []EnvironmentObservation `json:"environment,omitempty" tf:"environment,omitempty"`
 
+	// Identifier of the interactive cluster to run job on.  Note: running tasks on interactive clusters may lead to increased costs!
 	ExistingClusterID *string `json:"existingClusterId,omitempty" tf:"existing_cluster_id,omitempty"`
 
 	Format *string `json:"format,omitempty" tf:"format,omitempty"`
 
+	// Specifices the a Git repository for task source code. See git_source Configuration Block below.
 	GitSource []GitSourceObservation `json:"gitSource,omitempty" tf:"git_source,omitempty"`
 
+	// An optional block that specifies the health conditions for the job documented below.
 	Health []HealthObservation `json:"health,omitempty" tf:"health,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// A list of job databricks_cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. Multi-task syntax
 	JobCluster []JobClusterObservation `json:"jobCluster,omitempty" tf:"job_cluster,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
+	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to 1.
 	MaxConcurrentRuns *float64 `json:"maxConcurrentRuns,omitempty" tf:"max_concurrent_runs,omitempty"`
 
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR.
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *float64 `json:"minRetryIntervalMillis,omitempty" tf:"min_retry_interval_millis,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// Task will run on a dedicated cluster.  See databricks_cluster documentation for specification. Some parameters, such as
 	NewCluster []JobNewClusterObservation `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	NotebookTask []NotebookTaskObservation `json:"notebookTask,omitempty" tf:"notebook_task,omitempty"`
 
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings []NotificationSettingsObservation `json:"notificationSettings,omitempty" tf:"notification_settings,omitempty"`
 
+	// Specifices job parameter for the job. See parameter Configuration Block
 	Parameter []ParameterObservation `json:"parameter,omitempty" tf:"parameter,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PipelineTask []PipelineTaskObservation `json:"pipelineTask,omitempty" tf:"pipeline_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PythonWheelTask []PythonWheelTaskObservation `json:"pythonWheelTask,omitempty" tf:"python_wheel_task,omitempty"`
 
+	// The queue status for the job. See queue Configuration Block below.
 	Queue []QueueObservation `json:"queue,omitempty" tf:"queue,omitempty"`
 
+	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `json:"retryOnTimeout,omitempty" tf:"retry_on_timeout,omitempty"`
 
+	// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
 	RunAs []RunAsObservation `json:"runAs,omitempty" tf:"run_as,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	RunJobTask []RunJobTaskObservation `json:"runJobTask,omitempty" tf:"run_job_task,omitempty"`
 
+	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
 	Schedule []ScheduleObservation `json:"schedule,omitempty" tf:"schedule,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkJarTask []SparkJarTaskObservation `json:"sparkJarTask,omitempty" tf:"spark_jar_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkPythonTask []SparkPythonTaskObservation `json:"sparkPythonTask,omitempty" tf:"spark_python_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkSubmitTask []SparkSubmitTaskObservation `json:"sparkSubmitTask,omitempty" tf:"spark_submit_task,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	Task []TaskObservation `json:"task,omitempty" tf:"task,omitempty"`
 
+	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 
+	// The conditions that triggers the job to start. See trigger Configuration Block below.
 	Trigger []TriggerObservation `json:"trigger,omitempty" tf:"trigger,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications []JobWebhookNotificationsObservation `json:"webhookNotifications,omitempty" tf:"webhook_notifications,omitempty"`
 }
 
 type JobParameters struct {
 
+	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with parameters specified in spark_jar_task or spark_submit_task or spark_python_task or notebook_task blocks.
 	// +kubebuilder:validation:Optional
 	AlwaysRunning *bool `json:"alwaysRunning,omitempty" tf:"always_running,omitempty"`
 
+	// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
 	// +kubebuilder:validation:Optional
 	BudgetPolicyID *string `json:"budgetPolicyId,omitempty" tf:"budget_policy_id,omitempty"`
 
+	// Configuration block to configure pause status. See continuous Configuration Block.
 	// +kubebuilder:validation:Optional
 	Continuous []ContinuousParameters `json:"continuous,omitempty" tf:"continuous,omitempty"`
 
+	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the pause_status by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	// +kubebuilder:validation:Optional
 	ControlRunState *bool `json:"controlRunState,omitempty" tf:"control_run_state,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	DbtTask []DbtTaskParameters `json:"dbtTask,omitempty" tf:"dbt_task,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Deployment []DeploymentParameters `json:"deployment,omitempty" tf:"deployment,omitempty"`
 
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	EditMode *string `json:"editMode,omitempty" tf:"edit_mode,omitempty"`
 
+	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	// +kubebuilder:validation:Optional
 	EmailNotifications []EmailNotificationsParameters `json:"emailNotifications,omitempty" tf:"email_notifications,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Environment []EnvironmentParameters `json:"environment,omitempty" tf:"environment,omitempty"`
 
+	// Identifier of the interactive cluster to run job on.  Note: running tasks on interactive clusters may lead to increased costs!
 	// +kubebuilder:validation:Optional
 	ExistingClusterID *string `json:"existingClusterId,omitempty" tf:"existing_cluster_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Format *string `json:"format,omitempty" tf:"format,omitempty"`
 
+	// Specifices the a Git repository for task source code. See git_source Configuration Block below.
 	// +kubebuilder:validation:Optional
 	GitSource []GitSourceParameters `json:"gitSource,omitempty" tf:"git_source,omitempty"`
 
+	// An optional block that specifies the health conditions for the job documented below.
 	// +kubebuilder:validation:Optional
 	Health []HealthParameters `json:"health,omitempty" tf:"health,omitempty"`
 
+	// A list of job databricks_cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. Multi-task syntax
 	// +kubebuilder:validation:Optional
 	JobCluster []JobClusterParameters `json:"jobCluster,omitempty" tf:"job_cluster,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []JobLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to 1.
 	// +kubebuilder:validation:Optional
 	MaxConcurrentRuns *float64 `json:"maxConcurrentRuns,omitempty" tf:"max_concurrent_runs,omitempty"`
 
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR.
 	// +kubebuilder:validation:Optional
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	// +kubebuilder:validation:Optional
 	MinRetryIntervalMillis *float64 `json:"minRetryIntervalMillis,omitempty" tf:"min_retry_interval_millis,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// Task will run on a dedicated cluster.  See databricks_cluster documentation for specification. Some parameters, such as
 	// +kubebuilder:validation:Optional
 	NewCluster []JobNewClusterParameters `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	NotebookTask []NotebookTaskParameters `json:"notebookTask,omitempty" tf:"notebook_task,omitempty"`
 
+	// An optional block controlling the notification settings on the job level documented below.
 	// +kubebuilder:validation:Optional
 	NotificationSettings []NotificationSettingsParameters `json:"notificationSettings,omitempty" tf:"notification_settings,omitempty"`
 
+	// Specifices job parameter for the job. See parameter Configuration Block
 	// +kubebuilder:validation:Optional
 	Parameter []ParameterParameters `json:"parameter,omitempty" tf:"parameter,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	PipelineTask []PipelineTaskParameters `json:"pipelineTask,omitempty" tf:"pipeline_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	PythonWheelTask []PythonWheelTaskParameters `json:"pythonWheelTask,omitempty" tf:"python_wheel_task,omitempty"`
 
+	// The queue status for the job. See queue Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Queue []QueueParameters `json:"queue,omitempty" tf:"queue,omitempty"`
 
+	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	// +kubebuilder:validation:Optional
 	RetryOnTimeout *bool `json:"retryOnTimeout,omitempty" tf:"retry_on_timeout,omitempty"`
 
+	// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
 	// +kubebuilder:validation:Optional
 	RunAs []RunAsParameters `json:"runAs,omitempty" tf:"run_as,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	RunJobTask []RunJobTaskParameters `json:"runJobTask,omitempty" tf:"run_job_task,omitempty"`
 
+	// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Schedule []ScheduleParameters `json:"schedule,omitempty" tf:"schedule,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SparkJarTask []SparkJarTaskParameters `json:"sparkJarTask,omitempty" tf:"spark_jar_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SparkPythonTask []SparkPythonTaskParameters `json:"sparkPythonTask,omitempty" tf:"spark_python_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SparkSubmitTask []SparkSubmitTaskParameters `json:"sparkSubmitTask,omitempty" tf:"spark_submit_task,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Task []TaskParameters `json:"task,omitempty" tf:"task,omitempty"`
 
+	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	// +kubebuilder:validation:Optional
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 
+	// The conditions that triggers the job to start. See trigger Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Trigger []TriggerParameters `json:"trigger,omitempty" tf:"trigger,omitempty"`
 
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	// +kubebuilder:validation:Optional
 	WebhookNotifications []JobWebhookNotificationsParameters `json:"webhookNotifications,omitempty" tf:"webhook_notifications,omitempty"`
 }
@@ -2116,16 +2601,20 @@ type JobParameters struct {
 type JobSourceInitParameters struct {
 	DirtyState *string `json:"dirtyState,omitempty" tf:"dirty_state,omitempty"`
 
+	// name of the Git branch to use. Conflicts with tag and commit.
 	ImportFromGitBranch *string `json:"importFromGitBranch,omitempty" tf:"import_from_git_branch,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	JobConfigPath *string `json:"jobConfigPath,omitempty" tf:"job_config_path,omitempty"`
 }
 
 type JobSourceObservation struct {
 	DirtyState *string `json:"dirtyState,omitempty" tf:"dirty_state,omitempty"`
 
+	// name of the Git branch to use. Conflicts with tag and commit.
 	ImportFromGitBranch *string `json:"importFromGitBranch,omitempty" tf:"import_from_git_branch,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	JobConfigPath *string `json:"jobConfigPath,omitempty" tf:"job_config_path,omitempty"`
 }
 
@@ -2134,23 +2623,30 @@ type JobSourceParameters struct {
 	// +kubebuilder:validation:Optional
 	DirtyState *string `json:"dirtyState,omitempty" tf:"dirty_state,omitempty"`
 
+	// name of the Git branch to use. Conflicts with tag and commit.
 	// +kubebuilder:validation:Optional
 	ImportFromGitBranch *string `json:"importFromGitBranch" tf:"import_from_git_branch,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	JobConfigPath *string `json:"jobConfigPath" tf:"job_config_path,omitempty"`
 }
 
 type JobTaskHealthInitParameters struct {
+
+	// (List) list of rules that are represented as objects with the following attributes:
 	Rules []TaskHealthRulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type JobTaskHealthObservation struct {
+
+	// (List) list of rules that are represented as objects with the following attributes:
 	Rules []TaskHealthRulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type JobTaskHealthParameters struct {
 
+	// (List) list of rules that are represented as objects with the following attributes:
 	// +kubebuilder:validation:Optional
 	Rules []TaskHealthRulesParameters `json:"rules" tf:"rules,omitempty"`
 }
@@ -2321,6 +2817,7 @@ type JobTaskNewClusterAwsAttributesInitParameters struct {
 
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -2343,6 +2840,7 @@ type JobTaskNewClusterAwsAttributesObservation struct {
 
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -2375,6 +2873,7 @@ type JobTaskNewClusterAwsAttributesParameters struct {
 	// +kubebuilder:validation:Optional
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -2392,12 +2891,14 @@ type JobTaskNewClusterAzureAttributesInitParameters struct {
 type JobTaskNewClusterAzureAttributesLogAnalyticsInfoInitParameters struct {
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
 type JobTaskNewClusterAzureAttributesLogAnalyticsInfoObservation struct {
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
@@ -2406,6 +2907,7 @@ type JobTaskNewClusterAzureAttributesLogAnalyticsInfoParameters struct {
 	// +kubebuilder:validation:Optional
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
@@ -2527,10 +3029,13 @@ type JobTaskNewClusterClusterLogConfS3Parameters struct {
 }
 
 type JobTaskNewClusterClusterMountInfoInitParameters struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	LocalMountDirPath *string `json:"localMountDirPath,omitempty" tf:"local_mount_dir_path,omitempty"`
 
 	NetworkFilesystemInfo []JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoInitParameters `json:"networkFilesystemInfo,omitempty" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
 
@@ -2556,21 +3061,26 @@ type JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoParameters struct {
 }
 
 type JobTaskNewClusterClusterMountInfoObservation struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	LocalMountDirPath *string `json:"localMountDirPath,omitempty" tf:"local_mount_dir_path,omitempty"`
 
 	NetworkFilesystemInfo []JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoObservation `json:"networkFilesystemInfo,omitempty" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
 
 type JobTaskNewClusterClusterMountInfoParameters struct {
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	LocalMountDirPath *string `json:"localMountDirPath" tf:"local_mount_dir_path,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	NetworkFilesystemInfo []JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoParameters `json:"networkFilesystemInfo" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
@@ -2578,10 +3088,13 @@ type JobTaskNewClusterClusterMountInfoParameters struct {
 type JobTaskNewClusterDockerImageBasicAuthInitParameters struct {
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// An optional name for the job. The default value is Untitled.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type JobTaskNewClusterDockerImageBasicAuthObservation struct {
+
+	// An optional name for the job. The default value is Untitled.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
@@ -2590,6 +3103,7 @@ type JobTaskNewClusterDockerImageBasicAuthParameters struct {
 	// +kubebuilder:validation:Optional
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	Username *string `json:"username" tf:"username,omitempty"`
 }
@@ -2597,12 +3111,14 @@ type JobTaskNewClusterDockerImageBasicAuthParameters struct {
 type JobTaskNewClusterDockerImageInitParameters struct {
 	BasicAuth []JobTaskNewClusterDockerImageBasicAuthInitParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type JobTaskNewClusterDockerImageObservation struct {
 	BasicAuth []JobTaskNewClusterDockerImageBasicAuthObservation `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
@@ -2611,6 +3127,7 @@ type JobTaskNewClusterDockerImageParameters struct {
 	// +kubebuilder:validation:Optional
 	BasicAuth []JobTaskNewClusterDockerImageBasicAuthParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	// +kubebuilder:validation:Optional
 	URL *string `json:"url" tf:"url,omitempty"`
 }
@@ -2626,6 +3143,7 @@ type JobTaskNewClusterGCPAttributesInitParameters struct {
 
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -2640,6 +3158,7 @@ type JobTaskNewClusterGCPAttributesObservation struct {
 
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -2660,6 +3179,7 @@ type JobTaskNewClusterGCPAttributesParameters struct {
 	// +kubebuilder:validation:Optional
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -2673,14 +3193,17 @@ type JobTaskNewClusterInitParameters struct {
 
 	AzureAttributes []JobTaskNewClusterAzureAttributesInitParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	ClusterLogConf []JobTaskNewClusterClusterLogConfInitParameters `json:"clusterLogConf,omitempty" tf:"cluster_log_conf,omitempty"`
 
 	ClusterMountInfo []JobTaskNewClusterClusterMountInfoInitParameters `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
@@ -2688,8 +3211,10 @@ type JobTaskNewClusterInitParameters struct {
 
 	DockerImage []JobTaskNewClusterDockerImageInitParameters `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
@@ -2702,20 +3227,25 @@ type JobTaskNewClusterInitParameters struct {
 
 	InitScripts []JobTaskNewClusterInitScriptsInitParameters `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobTaskNewClusterLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
 	RuntimeEngine *string `json:"runtimeEngine,omitempty" tf:"runtime_engine,omitempty"`
 
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
 	// +mapType=granular
@@ -2724,8 +3254,10 @@ type JobTaskNewClusterInitParameters struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	WorkloadType []JobTaskNewClusterWorkloadTypeInitParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
 
@@ -2790,6 +3322,7 @@ type JobTaskNewClusterInitScriptsInitParameters struct {
 
 	Dbfs []JobTaskNewClusterInitScriptsDbfsInitParameters `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	File []JobTaskNewClusterInitScriptsFileInitParameters `json:"file,omitempty" tf:"file,omitempty"`
 
 	Gcs []JobTaskNewClusterInitScriptsGcsInitParameters `json:"gcs,omitempty" tf:"gcs,omitempty"`
@@ -2806,6 +3339,7 @@ type JobTaskNewClusterInitScriptsObservation struct {
 
 	Dbfs []JobTaskNewClusterInitScriptsDbfsObservation `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	File []JobTaskNewClusterInitScriptsFileObservation `json:"file,omitempty" tf:"file,omitempty"`
 
 	Gcs []JobTaskNewClusterInitScriptsGcsObservation `json:"gcs,omitempty" tf:"gcs,omitempty"`
@@ -2825,6 +3359,7 @@ type JobTaskNewClusterInitScriptsParameters struct {
 	// +kubebuilder:validation:Optional
 	Dbfs []JobTaskNewClusterInitScriptsDbfsParameters `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	// +kubebuilder:validation:Optional
 	File []JobTaskNewClusterInitScriptsFileParameters `json:"file,omitempty" tf:"file,omitempty"`
 
@@ -3060,14 +3595,17 @@ type JobTaskNewClusterObservation struct {
 
 	AzureAttributes []JobTaskNewClusterAzureAttributesObservation `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	ClusterLogConf []JobTaskNewClusterClusterLogConfObservation `json:"clusterLogConf,omitempty" tf:"cluster_log_conf,omitempty"`
 
 	ClusterMountInfo []JobTaskNewClusterClusterMountInfoObservation `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
@@ -3075,8 +3613,10 @@ type JobTaskNewClusterObservation struct {
 
 	DockerImage []JobTaskNewClusterDockerImageObservation `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
@@ -3089,20 +3629,25 @@ type JobTaskNewClusterObservation struct {
 
 	InitScripts []JobTaskNewClusterInitScriptsObservation `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobTaskNewClusterLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
 	RuntimeEngine *string `json:"runtimeEngine,omitempty" tf:"runtime_engine,omitempty"`
 
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
 	// +mapType=granular
@@ -3111,8 +3656,10 @@ type JobTaskNewClusterObservation struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	WorkloadType []JobTaskNewClusterWorkloadTypeObservation `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
 
@@ -3130,6 +3677,7 @@ type JobTaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	AzureAttributes []JobTaskNewClusterAzureAttributesParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
@@ -3139,9 +3687,11 @@ type JobTaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	ClusterMountInfo []JobTaskNewClusterClusterMountInfoParameters `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
@@ -3152,9 +3702,11 @@ type JobTaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	DockerImage []JobTaskNewClusterDockerImageParameters `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
@@ -3173,18 +3725,22 @@ type JobTaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	InitScripts []JobTaskNewClusterInitScriptsParameters `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []JobTaskNewClusterLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
@@ -3194,6 +3750,7 @@ type JobTaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
@@ -3205,9 +3762,11 @@ type JobTaskNewClusterParameters struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	// +kubebuilder:validation:Optional
 	SparkVersion *string `json:"sparkVersion" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	// +kubebuilder:validation:Optional
 	WorkloadType []JobTaskNewClusterWorkloadTypeParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
@@ -3249,138 +3808,187 @@ type JobTaskNewClusterWorkloadTypeParameters struct {
 
 type JobTaskNotebookTaskInitParameters struct {
 
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
 	// +mapType=granular
 	BaseParameters map[string]*string `json:"baseParameters,omitempty" tf:"base_parameters,omitempty"`
 
+	// The path of the databricks_notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath *string `json:"notebookPath,omitempty" tf:"notebook_path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type JobTaskNotebookTaskObservation struct {
 
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
 	// +mapType=granular
 	BaseParameters map[string]*string `json:"baseParameters,omitempty" tf:"base_parameters,omitempty"`
 
+	// The path of the databricks_notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath *string `json:"notebookPath,omitempty" tf:"notebook_path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type JobTaskNotebookTaskParameters struct {
 
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	BaseParameters map[string]*string `json:"baseParameters,omitempty" tf:"base_parameters,omitempty"`
 
+	// The path of the databricks_notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	// +kubebuilder:validation:Optional
 	NotebookPath *string `json:"notebookPath" tf:"notebook_path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	// +kubebuilder:validation:Optional
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type JobTaskNotificationSettingsInitParameters struct {
+
+	// (Bool) do not send notifications to recipients specified in on_start for the retried runs and do not send notifications to recipients specified in on_failure until the last retry of the run.
 	AlertOnLastAttempt *bool `json:"alertOnLastAttempt,omitempty" tf:"alert_on_last_attempt,omitempty"`
 
+	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns *bool `json:"noAlertForCanceledRuns,omitempty" tf:"no_alert_for_canceled_runs,omitempty"`
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 }
 
 type JobTaskNotificationSettingsObservation struct {
+
+	// (Bool) do not send notifications to recipients specified in on_start for the retried runs and do not send notifications to recipients specified in on_failure until the last retry of the run.
 	AlertOnLastAttempt *bool `json:"alertOnLastAttempt,omitempty" tf:"alert_on_last_attempt,omitempty"`
 
+	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns *bool `json:"noAlertForCanceledRuns,omitempty" tf:"no_alert_for_canceled_runs,omitempty"`
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 }
 
 type JobTaskNotificationSettingsParameters struct {
 
+	// (Bool) do not send notifications to recipients specified in on_start for the retried runs and do not send notifications to recipients specified in on_failure until the last retry of the run.
 	// +kubebuilder:validation:Optional
 	AlertOnLastAttempt *bool `json:"alertOnLastAttempt,omitempty" tf:"alert_on_last_attempt,omitempty"`
 
+	// (Bool) don't send alert for cancelled runs.
 	// +kubebuilder:validation:Optional
 	NoAlertForCanceledRuns *bool `json:"noAlertForCanceledRuns,omitempty" tf:"no_alert_for_canceled_runs,omitempty"`
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	// +kubebuilder:validation:Optional
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 }
 
 type JobTaskPipelineTaskInitParameters struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 
+	// The pipeline's unique ID.
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 }
 
 type JobTaskPipelineTaskObservation struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 
+	// The pipeline's unique ID.
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 }
 
 type JobTaskPipelineTaskParameters struct {
 
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	// +kubebuilder:validation:Optional
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 
+	// The pipeline's unique ID.
 	// +kubebuilder:validation:Optional
 	PipelineID *string `json:"pipelineId" tf:"pipeline_id,omitempty"`
 }
 
 type JobTaskPythonWheelTaskInitParameters struct {
+
+	// Python function as entry point for the task
 	EntryPoint *string `json:"entryPoint,omitempty" tf:"entry_point,omitempty"`
 
+	// Named parameters for the task
 	// +mapType=granular
 	NamedParameters map[string]*string `json:"namedParameters,omitempty" tf:"named_parameters,omitempty"`
 
+	// Name of Python package
 	PackageName *string `json:"packageName,omitempty" tf:"package_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type JobTaskPythonWheelTaskObservation struct {
+
+	// Python function as entry point for the task
 	EntryPoint *string `json:"entryPoint,omitempty" tf:"entry_point,omitempty"`
 
+	// Named parameters for the task
 	// +mapType=granular
 	NamedParameters map[string]*string `json:"namedParameters,omitempty" tf:"named_parameters,omitempty"`
 
+	// Name of Python package
 	PackageName *string `json:"packageName,omitempty" tf:"package_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type JobTaskPythonWheelTaskParameters struct {
 
+	// Python function as entry point for the task
 	// +kubebuilder:validation:Optional
 	EntryPoint *string `json:"entryPoint,omitempty" tf:"entry_point,omitempty"`
 
+	// Named parameters for the task
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	NamedParameters map[string]*string `json:"namedParameters,omitempty" tf:"named_parameters,omitempty"`
 
+	// Name of Python package
 	// +kubebuilder:validation:Optional
 	PackageName *string `json:"packageName,omitempty" tf:"package_name,omitempty"`
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type JobTaskRunJobTaskInitParameters struct {
+
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	DbtCommands []*string `json:"dbtCommands,omitempty" tf:"dbt_commands,omitempty"`
 
 	JarParams []*string `json:"jarParams,omitempty" tf:"jar_params,omitempty"`
 
+	// (String) ID of the job
 	JobID *float64 `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
+	// (Map) Job parameters for the task
 	// +mapType=granular
 	JobParameters map[string]*string `json:"jobParameters,omitempty" tf:"job_parameters,omitempty"`
 
@@ -3401,12 +4009,16 @@ type JobTaskRunJobTaskInitParameters struct {
 }
 
 type JobTaskRunJobTaskObservation struct {
+
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	DbtCommands []*string `json:"dbtCommands,omitempty" tf:"dbt_commands,omitempty"`
 
 	JarParams []*string `json:"jarParams,omitempty" tf:"jar_params,omitempty"`
 
+	// (String) ID of the job
 	JobID *float64 `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
+	// (Map) Job parameters for the task
 	// +mapType=granular
 	JobParameters map[string]*string `json:"jobParameters,omitempty" tf:"job_parameters,omitempty"`
 
@@ -3428,15 +4040,18 @@ type JobTaskRunJobTaskObservation struct {
 
 type JobTaskRunJobTaskParameters struct {
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	// +kubebuilder:validation:Optional
 	DbtCommands []*string `json:"dbtCommands,omitempty" tf:"dbt_commands,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	JarParams []*string `json:"jarParams,omitempty" tf:"jar_params,omitempty"`
 
+	// (String) ID of the job
 	// +kubebuilder:validation:Optional
 	JobID *float64 `json:"jobId" tf:"job_id,omitempty"`
 
+	// (Map) Job parameters for the task
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	JobParameters map[string]*string `json:"jobParameters,omitempty" tf:"job_parameters,omitempty"`
@@ -3466,16 +4081,20 @@ type JobTaskRunJobTaskParameters struct {
 type JobTaskSparkJarTaskInitParameters struct {
 	JarURI *string `json:"jarUri,omitempty" tf:"jar_uri,omitempty"`
 
+	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use SparkContext.getOrCreate to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName *string `json:"mainClassName,omitempty" tf:"main_class_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type JobTaskSparkJarTaskObservation struct {
 	JarURI *string `json:"jarUri,omitempty" tf:"jar_uri,omitempty"`
 
+	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use SparkContext.getOrCreate to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName *string `json:"mainClassName,omitempty" tf:"main_class_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
@@ -3484,163 +4103,220 @@ type JobTaskSparkJarTaskParameters struct {
 	// +kubebuilder:validation:Optional
 	JarURI *string `json:"jarUri,omitempty" tf:"jar_uri,omitempty"`
 
+	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use SparkContext.getOrCreate to obtain a Spark context; otherwise, runs of the job will fail.
 	// +kubebuilder:validation:Optional
 	MainClassName *string `json:"mainClassName,omitempty" tf:"main_class_name,omitempty"`
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type JobTaskSparkPythonTaskInitParameters struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. s3:/, abfss:/, gs:/), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with /Repos. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile *string `json:"pythonFile,omitempty" tf:"python_file,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type JobTaskSparkPythonTaskObservation struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. s3:/, abfss:/, gs:/), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with /Repos. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile *string `json:"pythonFile,omitempty" tf:"python_file,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type JobTaskSparkPythonTaskParameters struct {
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. s3:/, abfss:/, gs:/), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with /Repos. For files stored in a remote repository, the path must be relative. This field is required.
 	// +kubebuilder:validation:Optional
 	PythonFile *string `json:"pythonFile" tf:"python_file,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type JobTaskSparkSubmitTaskInitParameters struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type JobTaskSparkSubmitTaskObservation struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type JobTaskSparkSubmitTaskParameters struct {
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type JobWebhookNotificationsInitParameters struct {
+
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []JobWebhookNotificationsOnDurationWarningThresholdExceededInitParameters `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []JobWebhookNotificationsOnFailureInitParameters `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []JobWebhookNotificationsOnStartInitParameters `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []JobWebhookNotificationsOnStreamingBacklogExceededInitParameters `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []JobWebhookNotificationsOnSuccessInitParameters `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type JobWebhookNotificationsObservation struct {
+
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []JobWebhookNotificationsOnDurationWarningThresholdExceededObservation `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []JobWebhookNotificationsOnFailureObservation `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []JobWebhookNotificationsOnStartObservation `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []JobWebhookNotificationsOnStreamingBacklogExceededObservation `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []JobWebhookNotificationsOnSuccessObservation `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceededInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceededObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceededParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnFailureInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnFailureObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnFailureParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnStartInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnStartObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnStartParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnStreamingBacklogExceededInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnStreamingBacklogExceededObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnStreamingBacklogExceededParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnSuccessInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnSuccessObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsOnSuccessParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type JobWebhookNotificationsParameters struct {
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	// +kubebuilder:validation:Optional
 	OnDurationWarningThresholdExceeded []JobWebhookNotificationsOnDurationWarningThresholdExceededParameters `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnFailure []JobWebhookNotificationsOnFailureParameters `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnStart []JobWebhookNotificationsOnStartParameters `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	OnStreamingBacklogExceeded []JobWebhookNotificationsOnStreamingBacklogExceededParameters `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnSuccess []JobWebhookNotificationsOnSuccessParameters `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
@@ -3755,6 +4431,7 @@ type NewClusterAwsAttributesInitParameters struct {
 
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -3777,6 +4454,7 @@ type NewClusterAwsAttributesObservation struct {
 
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -3809,6 +4487,7 @@ type NewClusterAwsAttributesParameters struct {
 	// +kubebuilder:validation:Optional
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -3826,12 +4505,14 @@ type NewClusterAzureAttributesInitParameters struct {
 type NewClusterAzureAttributesLogAnalyticsInfoInitParameters struct {
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
 type NewClusterAzureAttributesLogAnalyticsInfoObservation struct {
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
@@ -3840,6 +4521,7 @@ type NewClusterAzureAttributesLogAnalyticsInfoParameters struct {
 	// +kubebuilder:validation:Optional
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
@@ -3961,10 +4643,13 @@ type NewClusterClusterLogConfS3Parameters struct {
 }
 
 type NewClusterClusterMountInfoInitParameters struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	LocalMountDirPath *string `json:"localMountDirPath,omitempty" tf:"local_mount_dir_path,omitempty"`
 
 	NetworkFilesystemInfo []ClusterMountInfoNetworkFilesystemInfoInitParameters `json:"networkFilesystemInfo,omitempty" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
 
@@ -3990,21 +4675,26 @@ type NewClusterClusterMountInfoNetworkFilesystemInfoParameters struct {
 }
 
 type NewClusterClusterMountInfoObservation struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	LocalMountDirPath *string `json:"localMountDirPath,omitempty" tf:"local_mount_dir_path,omitempty"`
 
 	NetworkFilesystemInfo []ClusterMountInfoNetworkFilesystemInfoObservation `json:"networkFilesystemInfo,omitempty" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
 
 type NewClusterClusterMountInfoParameters struct {
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	LocalMountDirPath *string `json:"localMountDirPath" tf:"local_mount_dir_path,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	NetworkFilesystemInfo []ClusterMountInfoNetworkFilesystemInfoParameters `json:"networkFilesystemInfo" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
@@ -4012,10 +4702,13 @@ type NewClusterClusterMountInfoParameters struct {
 type NewClusterDockerImageBasicAuthInitParameters struct {
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// An optional name for the job. The default value is Untitled.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type NewClusterDockerImageBasicAuthObservation struct {
+
+	// An optional name for the job. The default value is Untitled.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
@@ -4024,6 +4717,7 @@ type NewClusterDockerImageBasicAuthParameters struct {
 	// +kubebuilder:validation:Optional
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	Username *string `json:"username" tf:"username,omitempty"`
 }
@@ -4031,12 +4725,14 @@ type NewClusterDockerImageBasicAuthParameters struct {
 type NewClusterDockerImageInitParameters struct {
 	BasicAuth []DockerImageBasicAuthInitParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type NewClusterDockerImageObservation struct {
 	BasicAuth []DockerImageBasicAuthObservation `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
@@ -4045,6 +4741,7 @@ type NewClusterDockerImageParameters struct {
 	// +kubebuilder:validation:Optional
 	BasicAuth []DockerImageBasicAuthParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	// +kubebuilder:validation:Optional
 	URL *string `json:"url" tf:"url,omitempty"`
 }
@@ -4060,6 +4757,7 @@ type NewClusterGCPAttributesInitParameters struct {
 
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -4074,6 +4772,7 @@ type NewClusterGCPAttributesObservation struct {
 
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -4094,6 +4793,7 @@ type NewClusterGCPAttributesParameters struct {
 	// +kubebuilder:validation:Optional
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -4107,14 +4807,17 @@ type NewClusterInitParameters struct {
 
 	AzureAttributes []NewClusterAzureAttributesInitParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	ClusterLogConf []NewClusterClusterLogConfInitParameters `json:"clusterLogConf,omitempty" tf:"cluster_log_conf,omitempty"`
 
 	ClusterMountInfo []NewClusterClusterMountInfoInitParameters `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
@@ -4122,8 +4825,10 @@ type NewClusterInitParameters struct {
 
 	DockerImage []NewClusterDockerImageInitParameters `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
@@ -4136,20 +4841,25 @@ type NewClusterInitParameters struct {
 
 	InitScripts []NewClusterInitScriptsInitParameters `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []NewClusterLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
 	RuntimeEngine *string `json:"runtimeEngine,omitempty" tf:"runtime_engine,omitempty"`
 
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
 	// +mapType=granular
@@ -4158,8 +4868,10 @@ type NewClusterInitParameters struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	WorkloadType []NewClusterWorkloadTypeInitParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
 
@@ -4224,6 +4936,7 @@ type NewClusterInitScriptsInitParameters struct {
 
 	Dbfs []NewClusterInitScriptsDbfsInitParameters `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	File []InitScriptsFileInitParameters `json:"file,omitempty" tf:"file,omitempty"`
 
 	Gcs []InitScriptsGcsInitParameters `json:"gcs,omitempty" tf:"gcs,omitempty"`
@@ -4240,6 +4953,7 @@ type NewClusterInitScriptsObservation struct {
 
 	Dbfs []NewClusterInitScriptsDbfsObservation `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	File []InitScriptsFileObservation `json:"file,omitempty" tf:"file,omitempty"`
 
 	Gcs []InitScriptsGcsObservation `json:"gcs,omitempty" tf:"gcs,omitempty"`
@@ -4259,6 +4973,7 @@ type NewClusterInitScriptsParameters struct {
 	// +kubebuilder:validation:Optional
 	Dbfs []NewClusterInitScriptsDbfsParameters `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	// +kubebuilder:validation:Optional
 	File []InitScriptsFileParameters `json:"file,omitempty" tf:"file,omitempty"`
 
@@ -4494,14 +5209,17 @@ type NewClusterObservation struct {
 
 	AzureAttributes []NewClusterAzureAttributesObservation `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	ClusterLogConf []NewClusterClusterLogConfObservation `json:"clusterLogConf,omitempty" tf:"cluster_log_conf,omitempty"`
 
 	ClusterMountInfo []NewClusterClusterMountInfoObservation `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
@@ -4509,8 +5227,10 @@ type NewClusterObservation struct {
 
 	DockerImage []NewClusterDockerImageObservation `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
@@ -4523,20 +5243,25 @@ type NewClusterObservation struct {
 
 	InitScripts []NewClusterInitScriptsObservation `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []NewClusterLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
 	RuntimeEngine *string `json:"runtimeEngine,omitempty" tf:"runtime_engine,omitempty"`
 
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
 	// +mapType=granular
@@ -4545,8 +5270,10 @@ type NewClusterObservation struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	WorkloadType []NewClusterWorkloadTypeObservation `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
 
@@ -4564,6 +5291,7 @@ type NewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	AzureAttributes []NewClusterAzureAttributesParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
@@ -4573,9 +5301,11 @@ type NewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	ClusterMountInfo []NewClusterClusterMountInfoParameters `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
@@ -4586,9 +5316,11 @@ type NewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	DockerImage []NewClusterDockerImageParameters `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
@@ -4607,18 +5339,22 @@ type NewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	InitScripts []NewClusterInitScriptsParameters `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []NewClusterLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
@@ -4628,6 +5364,7 @@ type NewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
@@ -4639,9 +5376,11 @@ type NewClusterParameters struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	// +kubebuilder:validation:Optional
 	SparkVersion *string `json:"sparkVersion" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	// +kubebuilder:validation:Optional
 	WorkloadType []NewClusterWorkloadTypeParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
@@ -4683,560 +5422,767 @@ type NewClusterWorkloadTypeParameters struct {
 
 type NotebookTaskInitParameters struct {
 
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
 	// +mapType=granular
 	BaseParameters map[string]*string `json:"baseParameters,omitempty" tf:"base_parameters,omitempty"`
 
+	// The path of the databricks_notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath *string `json:"notebookPath,omitempty" tf:"notebook_path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type NotebookTaskObservation struct {
 
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
 	// +mapType=granular
 	BaseParameters map[string]*string `json:"baseParameters,omitempty" tf:"base_parameters,omitempty"`
 
+	// The path of the databricks_notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath *string `json:"notebookPath,omitempty" tf:"notebook_path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type NotebookTaskParameters struct {
 
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	BaseParameters map[string]*string `json:"baseParameters,omitempty" tf:"base_parameters,omitempty"`
 
+	// The path of the databricks_notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	// +kubebuilder:validation:Optional
 	NotebookPath *string `json:"notebookPath" tf:"notebook_path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	// +kubebuilder:validation:Optional
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type NotificationSettingsInitParameters struct {
+
+	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns *bool `json:"noAlertForCanceledRuns,omitempty" tf:"no_alert_for_canceled_runs,omitempty"`
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 }
 
 type NotificationSettingsObservation struct {
+
+	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns *bool `json:"noAlertForCanceledRuns,omitempty" tf:"no_alert_for_canceled_runs,omitempty"`
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 }
 
 type NotificationSettingsParameters struct {
 
+	// (Bool) don't send alert for cancelled runs.
 	// +kubebuilder:validation:Optional
 	NoAlertForCanceledRuns *bool `json:"noAlertForCanceledRuns,omitempty" tf:"no_alert_for_canceled_runs,omitempty"`
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	// +kubebuilder:validation:Optional
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 }
 
 type OnDurationWarningThresholdExceededInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnDurationWarningThresholdExceededObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnDurationWarningThresholdExceededParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type OnFailureInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnFailureObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnFailureParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type OnStartInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnStartObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnStartParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type OnStreamingBacklogExceededInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnStreamingBacklogExceededObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnStreamingBacklogExceededParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type OnSuccessInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnSuccessObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type OnSuccessParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type ParameterInitParameters struct {
+
+	// Default value of the parameter.
 	Default *string `json:"default,omitempty" tf:"default,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type ParameterObservation struct {
+
+	// Default value of the parameter.
 	Default *string `json:"default,omitempty" tf:"default,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type ParameterParameters struct {
 
+	// Default value of the parameter.
 	// +kubebuilder:validation:Optional
 	Default *string `json:"default" tf:"default,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 }
 
 type PeriodicInitParameters struct {
+
+	// Specifies the interval at which the job should run. This value is required.
 	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// Options are {"DAYS", "HOURS", "WEEKS"}.
 	Unit *string `json:"unit,omitempty" tf:"unit,omitempty"`
 }
 
 type PeriodicObservation struct {
+
+	// Specifies the interval at which the job should run. This value is required.
 	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
+	// Options are {"DAYS", "HOURS", "WEEKS"}.
 	Unit *string `json:"unit,omitempty" tf:"unit,omitempty"`
 }
 
 type PeriodicParameters struct {
 
+	// Specifies the interval at which the job should run. This value is required.
 	// +kubebuilder:validation:Optional
 	Interval *float64 `json:"interval" tf:"interval,omitempty"`
 
+	// Options are {"DAYS", "HOURS", "WEEKS"}.
 	// +kubebuilder:validation:Optional
 	Unit *string `json:"unit" tf:"unit,omitempty"`
 }
 
 type PipelineParamsInitParameters struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 }
 
 type PipelineParamsObservation struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 }
 
 type PipelineParamsParameters struct {
 
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	// +kubebuilder:validation:Optional
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 }
 
 type PipelineTaskInitParameters struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 
+	// The pipeline's unique ID.
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 }
 
 type PipelineTaskObservation struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 
+	// The pipeline's unique ID.
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 }
 
 type PipelineTaskParameters struct {
 
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	// +kubebuilder:validation:Optional
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 
+	// The pipeline's unique ID.
 	// +kubebuilder:validation:Optional
 	PipelineID *string `json:"pipelineId" tf:"pipeline_id,omitempty"`
 }
 
 type PythonWheelTaskInitParameters struct {
+
+	// Python function as entry point for the task
 	EntryPoint *string `json:"entryPoint,omitempty" tf:"entry_point,omitempty"`
 
+	// Named parameters for the task
 	// +mapType=granular
 	NamedParameters map[string]*string `json:"namedParameters,omitempty" tf:"named_parameters,omitempty"`
 
+	// Name of Python package
 	PackageName *string `json:"packageName,omitempty" tf:"package_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type PythonWheelTaskObservation struct {
+
+	// Python function as entry point for the task
 	EntryPoint *string `json:"entryPoint,omitempty" tf:"entry_point,omitempty"`
 
+	// Named parameters for the task
 	// +mapType=granular
 	NamedParameters map[string]*string `json:"namedParameters,omitempty" tf:"named_parameters,omitempty"`
 
+	// Name of Python package
 	PackageName *string `json:"packageName,omitempty" tf:"package_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type PythonWheelTaskParameters struct {
 
+	// Python function as entry point for the task
 	// +kubebuilder:validation:Optional
 	EntryPoint *string `json:"entryPoint,omitempty" tf:"entry_point,omitempty"`
 
+	// Named parameters for the task
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	NamedParameters map[string]*string `json:"namedParameters,omitempty" tf:"named_parameters,omitempty"`
 
+	// Name of Python package
 	// +kubebuilder:validation:Optional
 	PackageName *string `json:"packageName,omitempty" tf:"package_name,omitempty"`
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type QueryInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	QueryID *string `json:"queryId,omitempty" tf:"query_id,omitempty"`
 }
 
 type QueryObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	QueryID *string `json:"queryId,omitempty" tf:"query_id,omitempty"`
 }
 
 type QueryParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	QueryID *string `json:"queryId" tf:"query_id,omitempty"`
 }
 
 type QueueInitParameters struct {
+
+	// If true, enable queueing for the job.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 }
 
 type QueueObservation struct {
+
+	// If true, enable queueing for the job.
 	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
 }
 
 type QueueParameters struct {
 
+	// If true, enable queueing for the job.
 	// +kubebuilder:validation:Optional
 	Enabled *bool `json:"enabled" tf:"enabled,omitempty"`
 }
 
 type RulesInitParameters struct {
+
+	// string specifying the metric to check.  The only supported metric is RUN_DURATION_SECONDS (check Jobs REST API documentation for the latest information).
 	Metric *string `json:"metric,omitempty" tf:"metric,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// integer value used to compare to the given metric.
 	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type RulesObservation struct {
+
+	// string specifying the metric to check.  The only supported metric is RUN_DURATION_SECONDS (check Jobs REST API documentation for the latest information).
 	Metric *string `json:"metric,omitempty" tf:"metric,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// integer value used to compare to the given metric.
 	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type RulesParameters struct {
 
+	// string specifying the metric to check.  The only supported metric is RUN_DURATION_SECONDS (check Jobs REST API documentation for the latest information).
 	// +kubebuilder:validation:Optional
 	Metric *string `json:"metric" tf:"metric,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	// +kubebuilder:validation:Optional
 	Op *string `json:"op" tf:"op,omitempty"`
 
+	// integer value used to compare to the given metric.
 	// +kubebuilder:validation:Optional
 	Value *float64 `json:"value" tf:"value,omitempty"`
 }
 
 type RunAsInitParameters struct {
+
+	// The application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type RunAsObservation struct {
+
+	// The application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type RunAsParameters struct {
 
+	// The application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
 	// +kubebuilder:validation:Optional
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	// +kubebuilder:validation:Optional
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type RunJobTaskInitParameters struct {
+
+	// (String) ID of the job
 	JobID *float64 `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
+	// (Map) Job parameters for the task
 	// +mapType=granular
 	JobParameters map[string]*string `json:"jobParameters,omitempty" tf:"job_parameters,omitempty"`
 }
 
 type RunJobTaskObservation struct {
+
+	// (String) ID of the job
 	JobID *float64 `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
+	// (Map) Job parameters for the task
 	// +mapType=granular
 	JobParameters map[string]*string `json:"jobParameters,omitempty" tf:"job_parameters,omitempty"`
 }
 
 type RunJobTaskParameters struct {
 
+	// (String) ID of the job
 	// +kubebuilder:validation:Optional
 	JobID *float64 `json:"jobId" tf:"job_id,omitempty"`
 
+	// (Map) Job parameters for the task
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	JobParameters map[string]*string `json:"jobParameters,omitempty" tf:"job_parameters,omitempty"`
 }
 
 type RunJobTaskPipelineParamsInitParameters struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 }
 
 type RunJobTaskPipelineParamsObservation struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 }
 
 type RunJobTaskPipelineParamsParameters struct {
 
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	// +kubebuilder:validation:Optional
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 }
 
 type SQLTaskAlertInitParameters struct {
+
+	// (String) identifier of the Databricks Alert (databricks_alert).
 	AlertID *string `json:"alertId,omitempty" tf:"alert_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	Subscriptions []AlertSubscriptionsInitParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type SQLTaskAlertObservation struct {
+
+	// (String) identifier of the Databricks Alert (databricks_alert).
 	AlertID *string `json:"alertId,omitempty" tf:"alert_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	Subscriptions []AlertSubscriptionsObservation `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type SQLTaskAlertParameters struct {
 
+	// (String) identifier of the Databricks Alert (databricks_alert).
 	// +kubebuilder:validation:Optional
 	AlertID *string `json:"alertId" tf:"alert_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	// +kubebuilder:validation:Optional
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	// +kubebuilder:validation:Optional
 	Subscriptions []AlertSubscriptionsParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type SQLTaskDashboardInitParameters struct {
+
+	// string specifying a custom subject of email sent.
 	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
 
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	Subscriptions []SQLTaskDashboardSubscriptionsInitParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type SQLTaskDashboardObservation struct {
+
+	// string specifying a custom subject of email sent.
 	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
 
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	Subscriptions []SQLTaskDashboardSubscriptionsObservation `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type SQLTaskDashboardParameters struct {
 
+	// string specifying a custom subject of email sent.
 	// +kubebuilder:validation:Optional
 	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
 
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	// +kubebuilder:validation:Optional
 	DashboardID *string `json:"dashboardId" tf:"dashboard_id,omitempty"`
 
+	// flag that specifies if subscriptions are paused or not.
 	// +kubebuilder:validation:Optional
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	// +kubebuilder:validation:Optional
 	Subscriptions []SQLTaskDashboardSubscriptionsParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type SQLTaskDashboardSubscriptionsInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type SQLTaskDashboardSubscriptionsObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type SQLTaskDashboardSubscriptionsParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	// +kubebuilder:validation:Optional
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type SQLTaskFileInitParameters struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type SQLTaskFileObservation struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type SQLTaskFileParameters struct {
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	Path *string `json:"path" tf:"path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type SQLTaskInitParameters struct {
+
+	// block consisting of following fields:
 	Alert []AlertInitParameters `json:"alert,omitempty" tf:"alert,omitempty"`
 
+	// block consisting of following fields:
 	Dashboard []DashboardInitParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
+	// block consisting of single string fields:
 	File []SQLTaskFileInitParameters `json:"file,omitempty" tf:"file,omitempty"`
 
+	// Parameters for the task
 	// +mapType=granular
 	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// block consisting of single string field: query_id - identifier of the Databricks Query (databricks_query).
 	Query []QueryInitParameters `json:"query,omitempty" tf:"query,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type SQLTaskObservation struct {
+
+	// block consisting of following fields:
 	Alert []AlertObservation `json:"alert,omitempty" tf:"alert,omitempty"`
 
+	// block consisting of following fields:
 	Dashboard []DashboardObservation `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
+	// block consisting of single string fields:
 	File []SQLTaskFileObservation `json:"file,omitempty" tf:"file,omitempty"`
 
+	// Parameters for the task
 	// +mapType=granular
 	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// block consisting of single string field: query_id - identifier of the Databricks Query (databricks_query).
 	Query []QueryObservation `json:"query,omitempty" tf:"query,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type SQLTaskParameters struct {
 
+	// block consisting of following fields:
 	// +kubebuilder:validation:Optional
 	Alert []AlertParameters `json:"alert,omitempty" tf:"alert,omitempty"`
 
+	// block consisting of following fields:
 	// +kubebuilder:validation:Optional
 	Dashboard []DashboardParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
+	// block consisting of single string fields:
 	// +kubebuilder:validation:Optional
 	File []SQLTaskFileParameters `json:"file,omitempty" tf:"file,omitempty"`
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// block consisting of single string field: query_id - identifier of the Databricks Query (databricks_query).
 	// +kubebuilder:validation:Optional
 	Query []QueryParameters `json:"query,omitempty" tf:"query,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	// +kubebuilder:validation:Optional
 	WarehouseID *string `json:"warehouseId" tf:"warehouse_id,omitempty"`
 }
 
 type SQLTaskQueryInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	QueryID *string `json:"queryId,omitempty" tf:"query_id,omitempty"`
 }
 
 type SQLTaskQueryObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	QueryID *string `json:"queryId,omitempty" tf:"query_id,omitempty"`
 }
 
 type SQLTaskQueryParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	QueryID *string `json:"queryId" tf:"query_id,omitempty"`
 }
 
 type ScheduleInitParameters struct {
+
+	// Indicate whether this schedule is paused or not. Either PAUSED or UNPAUSED. When the pause_status field is omitted and a schedule is provided, the server will default to using UNPAUSED as a value for pause_status.
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 
+	// A Cron expression using Quartz syntax that describes the schedule for a job. This field is required.
 	QuartzCronExpression *string `json:"quartzCronExpression,omitempty" tf:"quartz_cron_expression,omitempty"`
 
+	// A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
 	TimezoneID *string `json:"timezoneId,omitempty" tf:"timezone_id,omitempty"`
 }
 
 type ScheduleObservation struct {
+
+	// Indicate whether this schedule is paused or not. Either PAUSED or UNPAUSED. When the pause_status field is omitted and a schedule is provided, the server will default to using UNPAUSED as a value for pause_status.
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 
+	// A Cron expression using Quartz syntax that describes the schedule for a job. This field is required.
 	QuartzCronExpression *string `json:"quartzCronExpression,omitempty" tf:"quartz_cron_expression,omitempty"`
 
+	// A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
 	TimezoneID *string `json:"timezoneId,omitempty" tf:"timezone_id,omitempty"`
 }
 
 type ScheduleParameters struct {
 
+	// Indicate whether this schedule is paused or not. Either PAUSED or UNPAUSED. When the pause_status field is omitted and a schedule is provided, the server will default to using UNPAUSED as a value for pause_status.
 	// +kubebuilder:validation:Optional
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 
+	// A Cron expression using Quartz syntax that describes the schedule for a job. This field is required.
 	// +kubebuilder:validation:Optional
 	QuartzCronExpression *string `json:"quartzCronExpression" tf:"quartz_cron_expression,omitempty"`
 
+	// A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
 	// +kubebuilder:validation:Optional
 	TimezoneID *string `json:"timezoneId" tf:"timezone_id,omitempty"`
 }
@@ -5244,16 +6190,20 @@ type ScheduleParameters struct {
 type SparkJarTaskInitParameters struct {
 	JarURI *string `json:"jarUri,omitempty" tf:"jar_uri,omitempty"`
 
+	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use SparkContext.getOrCreate to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName *string `json:"mainClassName,omitempty" tf:"main_class_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type SparkJarTaskObservation struct {
 	JarURI *string `json:"jarUri,omitempty" tf:"jar_uri,omitempty"`
 
+	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use SparkContext.getOrCreate to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName *string `json:"mainClassName,omitempty" tf:"main_class_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
@@ -5262,93 +6212,127 @@ type SparkJarTaskParameters struct {
 	// +kubebuilder:validation:Optional
 	JarURI *string `json:"jarUri,omitempty" tf:"jar_uri,omitempty"`
 
+	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use SparkContext.getOrCreate to obtain a Spark context; otherwise, runs of the job will fail.
 	// +kubebuilder:validation:Optional
 	MainClassName *string `json:"mainClassName,omitempty" tf:"main_class_name,omitempty"`
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type SparkPythonTaskInitParameters struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. s3:/, abfss:/, gs:/), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with /Repos. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile *string `json:"pythonFile,omitempty" tf:"python_file,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type SparkPythonTaskObservation struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. s3:/, abfss:/, gs:/), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with /Repos. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile *string `json:"pythonFile,omitempty" tf:"python_file,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type SparkPythonTaskParameters struct {
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. s3:/, abfss:/, gs:/), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with /Repos. For files stored in a remote repository, the path must be relative. This field is required.
 	// +kubebuilder:validation:Optional
 	PythonFile *string `json:"pythonFile" tf:"python_file,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type SparkSubmitTaskInitParameters struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type SparkSubmitTaskObservation struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type SparkSubmitTaskParameters struct {
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type SpecInitParameters struct {
+
+	// client version used by the environment.
 	Client *string `json:"client,omitempty" tf:"client,omitempty"`
 
+	// (list of strings) List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See API docs for more information.
 	Dependencies []*string `json:"dependencies,omitempty" tf:"dependencies,omitempty"`
 }
 
 type SpecObservation struct {
+
+	// client version used by the environment.
 	Client *string `json:"client,omitempty" tf:"client,omitempty"`
 
+	// (list of strings) List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See API docs for more information.
 	Dependencies []*string `json:"dependencies,omitempty" tf:"dependencies,omitempty"`
 }
 
 type SpecParameters struct {
 
+	// client version used by the environment.
 	// +kubebuilder:validation:Optional
 	Client *string `json:"client" tf:"client,omitempty"`
 
+	// (list of strings) List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See API docs for more information.
 	// +kubebuilder:validation:Optional
 	Dependencies []*string `json:"dependencies,omitempty" tf:"dependencies,omitempty"`
 }
 
 type SubscriptionsInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type SubscriptionsObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type SubscriptionsParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DestinationID *string `json:"destinationId,omitempty" tf:"destination_id,omitempty"`
 
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	// +kubebuilder:validation:Optional
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
@@ -5356,20 +6340,24 @@ type SubscriptionsParameters struct {
 type TableInitParameters struct {
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *float64 `json:"minTimeBetweenTriggersSeconds,omitempty" tf:"min_time_between_triggers_seconds,omitempty"`
 
 	TableNames []*string `json:"tableNames,omitempty" tf:"table_names,omitempty"`
 
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
 
 type TableObservation struct {
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *float64 `json:"minTimeBetweenTriggersSeconds,omitempty" tf:"min_time_between_triggers_seconds,omitempty"`
 
 	TableNames []*string `json:"tableNames,omitempty" tf:"table_names,omitempty"`
 
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
 
@@ -5378,12 +6366,14 @@ type TableParameters struct {
 	// +kubebuilder:validation:Optional
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	// +kubebuilder:validation:Optional
 	MinTimeBetweenTriggersSeconds *float64 `json:"minTimeBetweenTriggersSeconds,omitempty" tf:"min_time_between_triggers_seconds,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	TableNames []*string `json:"tableNames,omitempty" tf:"table_names,omitempty"`
 
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	// +kubebuilder:validation:Optional
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
@@ -5391,20 +6381,24 @@ type TableParameters struct {
 type TableUpdateInitParameters struct {
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *float64 `json:"minTimeBetweenTriggersSeconds,omitempty" tf:"min_time_between_triggers_seconds,omitempty"`
 
 	TableNames []*string `json:"tableNames,omitempty" tf:"table_names,omitempty"`
 
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
 
 type TableUpdateObservation struct {
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *float64 `json:"minTimeBetweenTriggersSeconds,omitempty" tf:"min_time_between_triggers_seconds,omitempty"`
 
 	TableNames []*string `json:"tableNames,omitempty" tf:"table_names,omitempty"`
 
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
 
@@ -5413,269 +6407,376 @@ type TableUpdateParameters struct {
 	// +kubebuilder:validation:Optional
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	// +kubebuilder:validation:Optional
 	MinTimeBetweenTriggersSeconds *float64 `json:"minTimeBetweenTriggersSeconds,omitempty" tf:"min_time_between_triggers_seconds,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	TableNames []*string `json:"tableNames" tf:"table_names,omitempty"`
 
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	// +kubebuilder:validation:Optional
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
 
 type TaskConditionTaskInitParameters struct {
+
+	// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 	Left *string `json:"left,omitempty" tf:"left,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 	Right *string `json:"right,omitempty" tf:"right,omitempty"`
 }
 
 type TaskConditionTaskObservation struct {
+
+	// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 	Left *string `json:"left,omitempty" tf:"left,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 	Right *string `json:"right,omitempty" tf:"right,omitempty"`
 }
 
 type TaskConditionTaskParameters struct {
 
+	// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 	// +kubebuilder:validation:Optional
 	Left *string `json:"left" tf:"left,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	// +kubebuilder:validation:Optional
 	Op *string `json:"op" tf:"op,omitempty"`
 
+	// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 	// +kubebuilder:validation:Optional
 	Right *string `json:"right" tf:"right,omitempty"`
 }
 
 type TaskDbtTaskInitParameters struct {
+
+	// The name of the catalog to use inside Unity Catalog.
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	Commands []*string `json:"commands,omitempty" tf:"commands,omitempty"`
 
+	// The relative path to the directory in the repository specified by git_source where dbt should look in for the profiles.yml file. If not specified, defaults to the repository's root directory. Equivalent to passing --profile-dir to a dbt command.
 	ProfilesDirectory *string `json:"profilesDirectory,omitempty" tf:"profiles_directory,omitempty"`
 
+	// The path where dbt should look for dbt_project.yml. Equivalent to passing --project-dir to the dbt CLI.
 	ProjectDirectory *string `json:"projectDirectory,omitempty" tf:"project_directory,omitempty"`
 
+	// The name of the schema dbt should run in. Defaults to default.
 	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type TaskDbtTaskObservation struct {
+
+	// The name of the catalog to use inside Unity Catalog.
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	Commands []*string `json:"commands,omitempty" tf:"commands,omitempty"`
 
+	// The relative path to the directory in the repository specified by git_source where dbt should look in for the profiles.yml file. If not specified, defaults to the repository's root directory. Equivalent to passing --profile-dir to a dbt command.
 	ProfilesDirectory *string `json:"profilesDirectory,omitempty" tf:"profiles_directory,omitempty"`
 
+	// The path where dbt should look for dbt_project.yml. Equivalent to passing --project-dir to the dbt CLI.
 	ProjectDirectory *string `json:"projectDirectory,omitempty" tf:"project_directory,omitempty"`
 
+	// The name of the schema dbt should run in. Defaults to default.
 	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type TaskDbtTaskParameters struct {
 
+	// The name of the catalog to use inside Unity Catalog.
 	// +kubebuilder:validation:Optional
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	// +kubebuilder:validation:Optional
 	Commands []*string `json:"commands" tf:"commands,omitempty"`
 
+	// The relative path to the directory in the repository specified by git_source where dbt should look in for the profiles.yml file. If not specified, defaults to the repository's root directory. Equivalent to passing --profile-dir to a dbt command.
 	// +kubebuilder:validation:Optional
 	ProfilesDirectory *string `json:"profilesDirectory,omitempty" tf:"profiles_directory,omitempty"`
 
+	// The path where dbt should look for dbt_project.yml. Equivalent to passing --project-dir to the dbt CLI.
 	// +kubebuilder:validation:Optional
 	ProjectDirectory *string `json:"projectDirectory,omitempty" tf:"project_directory,omitempty"`
 
+	// The name of the schema dbt should run in. Defaults to default.
 	// +kubebuilder:validation:Optional
 	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	// +kubebuilder:validation:Optional
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type TaskDependsOnInitParameters struct {
+
+	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are "true" or "false".
 	Outcome *string `json:"outcome,omitempty" tf:"outcome,omitempty"`
 
+	// string specifying an unique key for a given task.
 	TaskKey *string `json:"taskKey,omitempty" tf:"task_key,omitempty"`
 }
 
 type TaskDependsOnObservation struct {
+
+	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are "true" or "false".
 	Outcome *string `json:"outcome,omitempty" tf:"outcome,omitempty"`
 
+	// string specifying an unique key for a given task.
 	TaskKey *string `json:"taskKey,omitempty" tf:"task_key,omitempty"`
 }
 
 type TaskDependsOnParameters struct {
 
+	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are "true" or "false".
 	// +kubebuilder:validation:Optional
 	Outcome *string `json:"outcome,omitempty" tf:"outcome,omitempty"`
 
+	// string specifying an unique key for a given task.
 	// +kubebuilder:validation:Optional
 	TaskKey *string `json:"taskKey" tf:"task_key,omitempty"`
 }
 
 type TaskEmailNotificationsInitParameters struct {
+
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []*string `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []*string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []*string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []*string `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []*string `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type TaskEmailNotificationsObservation struct {
+
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []*string `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []*string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []*string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []*string `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []*string `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type TaskEmailNotificationsParameters struct {
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	// +kubebuilder:validation:Optional
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	// +kubebuilder:validation:Optional
 	OnDurationWarningThresholdExceeded []*string `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnFailure []*string `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnStart []*string `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	OnStreamingBacklogExceeded []*string `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnSuccess []*string `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type TaskHealthInitParameters struct {
+
+	// (List) list of rules that are represented as objects with the following attributes:
 	Rules []HealthRulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type TaskHealthObservation struct {
+
+	// (List) list of rules that are represented as objects with the following attributes:
 	Rules []HealthRulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 }
 
 type TaskHealthParameters struct {
 
+	// (List) list of rules that are represented as objects with the following attributes:
 	// +kubebuilder:validation:Optional
 	Rules []HealthRulesParameters `json:"rules" tf:"rules,omitempty"`
 }
 
 type TaskHealthRulesInitParameters struct {
+
+	// string specifying the metric to check.  The only supported metric is RUN_DURATION_SECONDS (check Jobs REST API documentation for the latest information).
 	Metric *string `json:"metric,omitempty" tf:"metric,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// integer value used to compare to the given metric.
 	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type TaskHealthRulesObservation struct {
+
+	// string specifying the metric to check.  The only supported metric is RUN_DURATION_SECONDS (check Jobs REST API documentation for the latest information).
 	Metric *string `json:"metric,omitempty" tf:"metric,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	Op *string `json:"op,omitempty" tf:"op,omitempty"`
 
+	// integer value used to compare to the given metric.
 	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type TaskHealthRulesParameters struct {
 
+	// string specifying the metric to check.  The only supported metric is RUN_DURATION_SECONDS (check Jobs REST API documentation for the latest information).
 	// +kubebuilder:validation:Optional
 	Metric *string `json:"metric" tf:"metric,omitempty"`
 
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL. (Check the API docs for the latest information).
 	// +kubebuilder:validation:Optional
 	Op *string `json:"op" tf:"op,omitempty"`
 
+	// integer value used to compare to the given metric.
 	// +kubebuilder:validation:Optional
 	Value *float64 `json:"value" tf:"value,omitempty"`
 }
 
 type TaskInitParameters struct {
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	ConditionTask []ConditionTaskInitParameters `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	DbtTask []TaskDbtTaskInitParameters `json:"dbtTask,omitempty" tf:"dbt_task,omitempty"`
 
+	// block specifying dependency(-ies) for a given task.
 	DependsOn []DependsOnInitParameters `json:"dependsOn,omitempty" tf:"depends_on,omitempty"`
 
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// A flag to disable auto optimization in serverless tasks.
 	DisableAutoOptimization *bool `json:"disableAutoOptimization,omitempty" tf:"disable_auto_optimization,omitempty"`
 
+	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications []TaskEmailNotificationsInitParameters `json:"emailNotifications,omitempty" tf:"email_notifications,omitempty"`
 
+	// identifier of an environment block that is used to specify libraries.  Required for some tasks (spark_python_task, python_wheel_task, ...) running on serverless compute.
 	EnvironmentKey *string `json:"environmentKey,omitempty" tf:"environment_key,omitempty"`
 
+	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use new_cluster for greater reliability.
 	ExistingClusterID *string `json:"existingClusterId,omitempty" tf:"existing_cluster_id,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	ForEachTask []ForEachTaskInitParameters `json:"forEachTask,omitempty" tf:"for_each_task,omitempty"`
 
+	// An optional block that specifies the health conditions for the job documented below.
 	Health []JobTaskHealthInitParameters `json:"health,omitempty" tf:"health,omitempty"`
 
+	// Identifier of the Job cluster specified in the job_cluster block.
 	JobClusterKey *string `json:"jobClusterKey,omitempty" tf:"job_cluster_key,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobTaskLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR.
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *float64 `json:"minRetryIntervalMillis,omitempty" tf:"min_retry_interval_millis,omitempty"`
 
+	// Task will run on a dedicated cluster.  See databricks_cluster documentation for specification. Some parameters, such as
 	NewCluster []JobTaskNewClusterInitParameters `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	NotebookTask []JobTaskNotebookTaskInitParameters `json:"notebookTask,omitempty" tf:"notebook_task,omitempty"`
 
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings []JobTaskNotificationSettingsInitParameters `json:"notificationSettings,omitempty" tf:"notification_settings,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PipelineTask []JobTaskPipelineTaskInitParameters `json:"pipelineTask,omitempty" tf:"pipeline_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PythonWheelTask []JobTaskPythonWheelTaskInitParameters `json:"pythonWheelTask,omitempty" tf:"python_wheel_task,omitempty"`
 
+	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `json:"retryOnTimeout,omitempty" tf:"retry_on_timeout,omitempty"`
 
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of ALL_SUCCESS, AT_LEAST_ONE_SUCCESS, NONE_FAILED, ALL_DONE, AT_LEAST_ONE_FAILED or ALL_FAILED. When omitted, defaults to ALL_SUCCESS.
 	RunIf *string `json:"runIf,omitempty" tf:"run_if,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	RunJobTask []JobTaskRunJobTaskInitParameters `json:"runJobTask,omitempty" tf:"run_job_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SQLTask []TaskSQLTaskInitParameters `json:"sqlTask,omitempty" tf:"sql_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkJarTask []JobTaskSparkJarTaskInitParameters `json:"sparkJarTask,omitempty" tf:"spark_jar_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkPythonTask []JobTaskSparkPythonTaskInitParameters `json:"sparkPythonTask,omitempty" tf:"spark_python_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkSubmitTask []JobTaskSparkSubmitTaskInitParameters `json:"sparkSubmitTask,omitempty" tf:"spark_submit_task,omitempty"`
 
+	// string specifying an unique key for a given task.
 	TaskKey *string `json:"taskKey,omitempty" tf:"task_key,omitempty"`
 
+	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications []TaskWebhookNotificationsInitParameters `json:"webhookNotifications,omitempty" tf:"webhook_notifications,omitempty"`
 }
 
@@ -5845,6 +6946,7 @@ type TaskNewClusterAwsAttributesInitParameters struct {
 
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -5867,6 +6969,7 @@ type TaskNewClusterAwsAttributesObservation struct {
 
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -5899,6 +7002,7 @@ type TaskNewClusterAwsAttributesParameters struct {
 	// +kubebuilder:validation:Optional
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -5916,12 +7020,14 @@ type TaskNewClusterAzureAttributesInitParameters struct {
 type TaskNewClusterAzureAttributesLogAnalyticsInfoInitParameters struct {
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
 type TaskNewClusterAzureAttributesLogAnalyticsInfoObservation struct {
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
@@ -5930,6 +7036,7 @@ type TaskNewClusterAzureAttributesLogAnalyticsInfoParameters struct {
 	// +kubebuilder:validation:Optional
 	LogAnalyticsPrimaryKey *string `json:"logAnalyticsPrimaryKey,omitempty" tf:"log_analytics_primary_key,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
@@ -6051,10 +7158,13 @@ type TaskNewClusterClusterLogConfS3Parameters struct {
 }
 
 type TaskNewClusterClusterMountInfoInitParameters struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	LocalMountDirPath *string `json:"localMountDirPath,omitempty" tf:"local_mount_dir_path,omitempty"`
 
 	NetworkFilesystemInfo []TaskNewClusterClusterMountInfoNetworkFilesystemInfoInitParameters `json:"networkFilesystemInfo,omitempty" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
 
@@ -6080,21 +7190,26 @@ type TaskNewClusterClusterMountInfoNetworkFilesystemInfoParameters struct {
 }
 
 type TaskNewClusterClusterMountInfoObservation struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	LocalMountDirPath *string `json:"localMountDirPath,omitempty" tf:"local_mount_dir_path,omitempty"`
 
 	NetworkFilesystemInfo []TaskNewClusterClusterMountInfoNetworkFilesystemInfoObservation `json:"networkFilesystemInfo,omitempty" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
 
 type TaskNewClusterClusterMountInfoParameters struct {
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	LocalMountDirPath *string `json:"localMountDirPath" tf:"local_mount_dir_path,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	NetworkFilesystemInfo []TaskNewClusterClusterMountInfoNetworkFilesystemInfoParameters `json:"networkFilesystemInfo" tf:"network_filesystem_info,omitempty"`
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	RemoteMountDirPath *string `json:"remoteMountDirPath,omitempty" tf:"remote_mount_dir_path,omitempty"`
 }
@@ -6102,10 +7217,13 @@ type TaskNewClusterClusterMountInfoParameters struct {
 type TaskNewClusterDockerImageBasicAuthInitParameters struct {
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// An optional name for the job. The default value is Untitled.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
 type TaskNewClusterDockerImageBasicAuthObservation struct {
+
+	// An optional name for the job. The default value is Untitled.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
 
@@ -6114,6 +7232,7 @@ type TaskNewClusterDockerImageBasicAuthParameters struct {
 	// +kubebuilder:validation:Optional
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	Username *string `json:"username" tf:"username,omitempty"`
 }
@@ -6121,12 +7240,14 @@ type TaskNewClusterDockerImageBasicAuthParameters struct {
 type TaskNewClusterDockerImageInitParameters struct {
 	BasicAuth []TaskNewClusterDockerImageBasicAuthInitParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type TaskNewClusterDockerImageObservation struct {
 	BasicAuth []TaskNewClusterDockerImageBasicAuthObservation `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
@@ -6135,6 +7256,7 @@ type TaskNewClusterDockerImageParameters struct {
 	// +kubebuilder:validation:Optional
 	BasicAuth []TaskNewClusterDockerImageBasicAuthParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (/).
 	// +kubebuilder:validation:Optional
 	URL *string `json:"url" tf:"url,omitempty"`
 }
@@ -6150,6 +7272,7 @@ type TaskNewClusterGCPAttributesInitParameters struct {
 
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -6164,6 +7287,7 @@ type TaskNewClusterGCPAttributesObservation struct {
 
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -6184,6 +7308,7 @@ type TaskNewClusterGCPAttributesParameters struct {
 	// +kubebuilder:validation:Optional
 	UsePreemptibleExecutors *bool `json:"usePreemptibleExecutors,omitempty" tf:"use_preemptible_executors,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -6197,14 +7322,17 @@ type TaskNewClusterInitParameters struct {
 
 	AzureAttributes []TaskNewClusterAzureAttributesInitParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	ClusterLogConf []TaskNewClusterClusterLogConfInitParameters `json:"clusterLogConf,omitempty" tf:"cluster_log_conf,omitempty"`
 
 	ClusterMountInfo []TaskNewClusterClusterMountInfoInitParameters `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
@@ -6212,8 +7340,10 @@ type TaskNewClusterInitParameters struct {
 
 	DockerImage []TaskNewClusterDockerImageInitParameters `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
@@ -6226,20 +7356,25 @@ type TaskNewClusterInitParameters struct {
 
 	InitScripts []TaskNewClusterInitScriptsInitParameters `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []TaskNewClusterLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
 	RuntimeEngine *string `json:"runtimeEngine,omitempty" tf:"runtime_engine,omitempty"`
 
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
 	// +mapType=granular
@@ -6248,8 +7383,10 @@ type TaskNewClusterInitParameters struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	WorkloadType []TaskNewClusterWorkloadTypeInitParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
 
@@ -6314,6 +7451,7 @@ type TaskNewClusterInitScriptsInitParameters struct {
 
 	Dbfs []TaskNewClusterInitScriptsDbfsInitParameters `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	File []TaskNewClusterInitScriptsFileInitParameters `json:"file,omitempty" tf:"file,omitempty"`
 
 	Gcs []TaskNewClusterInitScriptsGcsInitParameters `json:"gcs,omitempty" tf:"gcs,omitempty"`
@@ -6330,6 +7468,7 @@ type TaskNewClusterInitScriptsObservation struct {
 
 	Dbfs []TaskNewClusterInitScriptsDbfsObservation `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	File []TaskNewClusterInitScriptsFileObservation `json:"file,omitempty" tf:"file,omitempty"`
 
 	Gcs []TaskNewClusterInitScriptsGcsObservation `json:"gcs,omitempty" tf:"gcs,omitempty"`
@@ -6349,6 +7488,7 @@ type TaskNewClusterInitScriptsParameters struct {
 	// +kubebuilder:validation:Optional
 	Dbfs []TaskNewClusterInitScriptsDbfsParameters `json:"dbfs,omitempty" tf:"dbfs,omitempty"`
 
+	// block consisting of single string fields:
 	// +kubebuilder:validation:Optional
 	File []TaskNewClusterInitScriptsFileParameters `json:"file,omitempty" tf:"file,omitempty"`
 
@@ -6584,14 +7724,17 @@ type TaskNewClusterObservation struct {
 
 	AzureAttributes []TaskNewClusterAzureAttributesObservation `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	ClusterLogConf []TaskNewClusterClusterLogConfObservation `json:"clusterLogConf,omitempty" tf:"cluster_log_conf,omitempty"`
 
 	ClusterMountInfo []TaskNewClusterClusterMountInfoObservation `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
@@ -6599,8 +7742,10 @@ type TaskNewClusterObservation struct {
 
 	DockerImage []TaskNewClusterDockerImageObservation `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
@@ -6613,20 +7758,25 @@ type TaskNewClusterObservation struct {
 
 	InitScripts []TaskNewClusterInitScriptsObservation `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []TaskNewClusterLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
 	RuntimeEngine *string `json:"runtimeEngine,omitempty" tf:"runtime_engine,omitempty"`
 
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
 	// +mapType=granular
@@ -6635,8 +7785,10 @@ type TaskNewClusterObservation struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	WorkloadType []TaskNewClusterWorkloadTypeObservation `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
 
@@ -6654,6 +7806,7 @@ type TaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	AzureAttributes []TaskNewClusterAzureAttributesParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
@@ -6663,9 +7816,11 @@ type TaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	ClusterMountInfo []TaskNewClusterClusterMountInfoParameters `json:"clusterMountInfo,omitempty" tf:"cluster_mount_info,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
+	// An optional map of the tags associated with the job. See tags Configuration Map
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
@@ -6676,9 +7831,11 @@ type TaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	DockerImage []TaskNewClusterDockerImageParameters `json:"dockerImage,omitempty" tf:"docker_image,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DriverInstancePoolID *string `json:"driverInstancePoolId,omitempty" tf:"driver_instance_pool_id,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	DriverNodeTypeID *string `json:"driverNodeTypeId,omitempty" tf:"driver_node_type_id,omitempty"`
 
@@ -6697,18 +7854,22 @@ type TaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	InitScripts []TaskNewClusterInitScriptsParameters `json:"initScripts,omitempty" tf:"init_scripts,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []TaskNewClusterLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	NumWorkers *float64 `json:"numWorkers,omitempty" tf:"num_workers,omitempty"`
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 
@@ -6718,6 +7879,7 @@ type TaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
+	// An optional name for the job. The default value is Untitled.
 	// +kubebuilder:validation:Optional
 	SingleUserName *string `json:"singleUserName,omitempty" tf:"single_user_name,omitempty"`
 
@@ -6729,9 +7891,11 @@ type TaskNewClusterParameters struct {
 	// +mapType=granular
 	SparkEnvVars map[string]*string `json:"sparkEnvVars,omitempty" tf:"spark_env_vars,omitempty"`
 
+	// parameter in databricks_cluster and other resources.
 	// +kubebuilder:validation:Optional
 	SparkVersion *string `json:"sparkVersion" tf:"spark_version,omitempty"`
 
+	// isn't supported
 	// +kubebuilder:validation:Optional
 	WorkloadType []TaskNewClusterWorkloadTypeParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
@@ -6773,288 +7937,396 @@ type TaskNewClusterWorkloadTypeParameters struct {
 
 type TaskNotebookTaskInitParameters struct {
 
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
 	// +mapType=granular
 	BaseParameters map[string]*string `json:"baseParameters,omitempty" tf:"base_parameters,omitempty"`
 
+	// The path of the databricks_notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath *string `json:"notebookPath,omitempty" tf:"notebook_path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type TaskNotebookTaskObservation struct {
 
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
 	// +mapType=granular
 	BaseParameters map[string]*string `json:"baseParameters,omitempty" tf:"base_parameters,omitempty"`
 
+	// The path of the databricks_notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath *string `json:"notebookPath,omitempty" tf:"notebook_path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type TaskNotebookTaskParameters struct {
 
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	BaseParameters map[string]*string `json:"baseParameters,omitempty" tf:"base_parameters,omitempty"`
 
+	// The path of the databricks_notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	// +kubebuilder:validation:Optional
 	NotebookPath *string `json:"notebookPath" tf:"notebook_path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	// +kubebuilder:validation:Optional
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type TaskNotificationSettingsInitParameters struct {
+
+	// (Bool) do not send notifications to recipients specified in on_start for the retried runs and do not send notifications to recipients specified in on_failure until the last retry of the run.
 	AlertOnLastAttempt *bool `json:"alertOnLastAttempt,omitempty" tf:"alert_on_last_attempt,omitempty"`
 
+	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns *bool `json:"noAlertForCanceledRuns,omitempty" tf:"no_alert_for_canceled_runs,omitempty"`
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 }
 
 type TaskNotificationSettingsObservation struct {
+
+	// (Bool) do not send notifications to recipients specified in on_start for the retried runs and do not send notifications to recipients specified in on_failure until the last retry of the run.
 	AlertOnLastAttempt *bool `json:"alertOnLastAttempt,omitempty" tf:"alert_on_last_attempt,omitempty"`
 
+	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns *bool `json:"noAlertForCanceledRuns,omitempty" tf:"no_alert_for_canceled_runs,omitempty"`
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 }
 
 type TaskNotificationSettingsParameters struct {
 
+	// (Bool) do not send notifications to recipients specified in on_start for the retried runs and do not send notifications to recipients specified in on_failure until the last retry of the run.
 	// +kubebuilder:validation:Optional
 	AlertOnLastAttempt *bool `json:"alertOnLastAttempt,omitempty" tf:"alert_on_last_attempt,omitempty"`
 
+	// (Bool) don't send alert for cancelled runs.
 	// +kubebuilder:validation:Optional
 	NoAlertForCanceledRuns *bool `json:"noAlertForCanceledRuns,omitempty" tf:"no_alert_for_canceled_runs,omitempty"`
 
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the notification_settings configuration block).
 	// +kubebuilder:validation:Optional
 	NoAlertForSkippedRuns *bool `json:"noAlertForSkippedRuns,omitempty" tf:"no_alert_for_skipped_runs,omitempty"`
 }
 
 type TaskObservation struct {
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	ConditionTask []ConditionTaskObservation `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	DbtTask []TaskDbtTaskObservation `json:"dbtTask,omitempty" tf:"dbt_task,omitempty"`
 
+	// block specifying dependency(-ies) for a given task.
 	DependsOn []DependsOnObservation `json:"dependsOn,omitempty" tf:"depends_on,omitempty"`
 
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// A flag to disable auto optimization in serverless tasks.
 	DisableAutoOptimization *bool `json:"disableAutoOptimization,omitempty" tf:"disable_auto_optimization,omitempty"`
 
+	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications []TaskEmailNotificationsObservation `json:"emailNotifications,omitempty" tf:"email_notifications,omitempty"`
 
+	// identifier of an environment block that is used to specify libraries.  Required for some tasks (spark_python_task, python_wheel_task, ...) running on serverless compute.
 	EnvironmentKey *string `json:"environmentKey,omitempty" tf:"environment_key,omitempty"`
 
+	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use new_cluster for greater reliability.
 	ExistingClusterID *string `json:"existingClusterId,omitempty" tf:"existing_cluster_id,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	ForEachTask []ForEachTaskObservation `json:"forEachTask,omitempty" tf:"for_each_task,omitempty"`
 
+	// An optional block that specifies the health conditions for the job documented below.
 	Health []JobTaskHealthObservation `json:"health,omitempty" tf:"health,omitempty"`
 
+	// Identifier of the Job cluster specified in the job_cluster block.
 	JobClusterKey *string `json:"jobClusterKey,omitempty" tf:"job_cluster_key,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobTaskLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR.
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *float64 `json:"minRetryIntervalMillis,omitempty" tf:"min_retry_interval_millis,omitempty"`
 
+	// Task will run on a dedicated cluster.  See databricks_cluster documentation for specification. Some parameters, such as
 	NewCluster []JobTaskNewClusterObservation `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	NotebookTask []JobTaskNotebookTaskObservation `json:"notebookTask,omitempty" tf:"notebook_task,omitempty"`
 
+	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings []JobTaskNotificationSettingsObservation `json:"notificationSettings,omitempty" tf:"notification_settings,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PipelineTask []JobTaskPipelineTaskObservation `json:"pipelineTask,omitempty" tf:"pipeline_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	PythonWheelTask []JobTaskPythonWheelTaskObservation `json:"pythonWheelTask,omitempty" tf:"python_wheel_task,omitempty"`
 
+	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `json:"retryOnTimeout,omitempty" tf:"retry_on_timeout,omitempty"`
 
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of ALL_SUCCESS, AT_LEAST_ONE_SUCCESS, NONE_FAILED, ALL_DONE, AT_LEAST_ONE_FAILED or ALL_FAILED. When omitted, defaults to ALL_SUCCESS.
 	RunIf *string `json:"runIf,omitempty" tf:"run_if,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	RunJobTask []JobTaskRunJobTaskObservation `json:"runJobTask,omitempty" tf:"run_job_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SQLTask []TaskSQLTaskObservation `json:"sqlTask,omitempty" tf:"sql_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkJarTask []JobTaskSparkJarTaskObservation `json:"sparkJarTask,omitempty" tf:"spark_jar_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkPythonTask []JobTaskSparkPythonTaskObservation `json:"sparkPythonTask,omitempty" tf:"spark_python_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	SparkSubmitTask []JobTaskSparkSubmitTaskObservation `json:"sparkSubmitTask,omitempty" tf:"spark_submit_task,omitempty"`
 
+	// string specifying an unique key for a given task.
 	TaskKey *string `json:"taskKey,omitempty" tf:"task_key,omitempty"`
 
+	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications []TaskWebhookNotificationsObservation `json:"webhookNotifications,omitempty" tf:"webhook_notifications,omitempty"`
 }
 
 type TaskParameters struct {
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	ConditionTask []ConditionTaskParameters `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	DbtTask []TaskDbtTaskParameters `json:"dbtTask,omitempty" tf:"dbt_task,omitempty"`
 
+	// block specifying dependency(-ies) for a given task.
 	// +kubebuilder:validation:Optional
 	DependsOn []DependsOnParameters `json:"dependsOn,omitempty" tf:"depends_on,omitempty"`
 
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// A flag to disable auto optimization in serverless tasks.
 	// +kubebuilder:validation:Optional
 	DisableAutoOptimization *bool `json:"disableAutoOptimization,omitempty" tf:"disable_auto_optimization,omitempty"`
 
+	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	// +kubebuilder:validation:Optional
 	EmailNotifications []TaskEmailNotificationsParameters `json:"emailNotifications,omitempty" tf:"email_notifications,omitempty"`
 
+	// identifier of an environment block that is used to specify libraries.  Required for some tasks (spark_python_task, python_wheel_task, ...) running on serverless compute.
 	// +kubebuilder:validation:Optional
 	EnvironmentKey *string `json:"environmentKey,omitempty" tf:"environment_key,omitempty"`
 
+	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use new_cluster for greater reliability.
 	// +kubebuilder:validation:Optional
 	ExistingClusterID *string `json:"existingClusterId,omitempty" tf:"existing_cluster_id,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	ForEachTask []ForEachTaskParameters `json:"forEachTask,omitempty" tf:"for_each_task,omitempty"`
 
+	// An optional block that specifies the health conditions for the job documented below.
 	// +kubebuilder:validation:Optional
 	Health []JobTaskHealthParameters `json:"health,omitempty" tf:"health,omitempty"`
 
+	// Identifier of the Job cluster specified in the job_cluster block.
 	// +kubebuilder:validation:Optional
 	JobClusterKey *string `json:"jobClusterKey,omitempty" tf:"job_cluster_key,omitempty"`
 
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []JobTaskLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
 
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR.
 	// +kubebuilder:validation:Optional
 	MaxRetries *float64 `json:"maxRetries,omitempty" tf:"max_retries,omitempty"`
 
+	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	// +kubebuilder:validation:Optional
 	MinRetryIntervalMillis *float64 `json:"minRetryIntervalMillis,omitempty" tf:"min_retry_interval_millis,omitempty"`
 
+	// Task will run on a dedicated cluster.  See databricks_cluster documentation for specification. Some parameters, such as
 	// +kubebuilder:validation:Optional
 	NewCluster []JobTaskNewClusterParameters `json:"newCluster,omitempty" tf:"new_cluster,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	NotebookTask []JobTaskNotebookTaskParameters `json:"notebookTask,omitempty" tf:"notebook_task,omitempty"`
 
+	// An optional block controlling the notification settings on the job level documented below.
 	// +kubebuilder:validation:Optional
 	NotificationSettings []JobTaskNotificationSettingsParameters `json:"notificationSettings,omitempty" tf:"notification_settings,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	PipelineTask []JobTaskPipelineTaskParameters `json:"pipelineTask,omitempty" tf:"pipeline_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	PythonWheelTask []JobTaskPythonWheelTaskParameters `json:"pythonWheelTask,omitempty" tf:"python_wheel_task,omitempty"`
 
+	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	// +kubebuilder:validation:Optional
 	RetryOnTimeout *bool `json:"retryOnTimeout,omitempty" tf:"retry_on_timeout,omitempty"`
 
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of ALL_SUCCESS, AT_LEAST_ONE_SUCCESS, NONE_FAILED, ALL_DONE, AT_LEAST_ONE_FAILED or ALL_FAILED. When omitted, defaults to ALL_SUCCESS.
 	// +kubebuilder:validation:Optional
 	RunIf *string `json:"runIf,omitempty" tf:"run_if,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	RunJobTask []JobTaskRunJobTaskParameters `json:"runJobTask,omitempty" tf:"run_job_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SQLTask []TaskSQLTaskParameters `json:"sqlTask,omitempty" tf:"sql_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SparkJarTask []JobTaskSparkJarTaskParameters `json:"sparkJarTask,omitempty" tf:"spark_jar_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SparkPythonTask []JobTaskSparkPythonTaskParameters `json:"sparkPythonTask,omitempty" tf:"spark_python_task,omitempty"`
 
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
 	SparkSubmitTask []JobTaskSparkSubmitTaskParameters `json:"sparkSubmitTask,omitempty" tf:"spark_submit_task,omitempty"`
 
+	// string specifying an unique key for a given task.
 	// +kubebuilder:validation:Optional
 	TaskKey *string `json:"taskKey" tf:"task_key,omitempty"`
 
+	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	// +kubebuilder:validation:Optional
 	TimeoutSeconds *float64 `json:"timeoutSeconds,omitempty" tf:"timeout_seconds,omitempty"`
 
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	// +kubebuilder:validation:Optional
 	WebhookNotifications []TaskWebhookNotificationsParameters `json:"webhookNotifications,omitempty" tf:"webhook_notifications,omitempty"`
 }
 
 type TaskPipelineTaskInitParameters struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 
+	// The pipeline's unique ID.
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 }
 
 type TaskPipelineTaskObservation struct {
+
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 
+	// The pipeline's unique ID.
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 }
 
 type TaskPipelineTaskParameters struct {
 
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	// +kubebuilder:validation:Optional
 	FullRefresh *bool `json:"fullRefresh,omitempty" tf:"full_refresh,omitempty"`
 
+	// The pipeline's unique ID.
 	// +kubebuilder:validation:Optional
 	PipelineID *string `json:"pipelineId" tf:"pipeline_id,omitempty"`
 }
 
 type TaskPythonWheelTaskInitParameters struct {
+
+	// Python function as entry point for the task
 	EntryPoint *string `json:"entryPoint,omitempty" tf:"entry_point,omitempty"`
 
+	// Named parameters for the task
 	// +mapType=granular
 	NamedParameters map[string]*string `json:"namedParameters,omitempty" tf:"named_parameters,omitempty"`
 
+	// Name of Python package
 	PackageName *string `json:"packageName,omitempty" tf:"package_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type TaskPythonWheelTaskObservation struct {
+
+	// Python function as entry point for the task
 	EntryPoint *string `json:"entryPoint,omitempty" tf:"entry_point,omitempty"`
 
+	// Named parameters for the task
 	// +mapType=granular
 	NamedParameters map[string]*string `json:"namedParameters,omitempty" tf:"named_parameters,omitempty"`
 
+	// Name of Python package
 	PackageName *string `json:"packageName,omitempty" tf:"package_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type TaskPythonWheelTaskParameters struct {
 
+	// Python function as entry point for the task
 	// +kubebuilder:validation:Optional
 	EntryPoint *string `json:"entryPoint,omitempty" tf:"entry_point,omitempty"`
 
+	// Named parameters for the task
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	NamedParameters map[string]*string `json:"namedParameters,omitempty" tf:"named_parameters,omitempty"`
 
+	// Name of Python package
 	// +kubebuilder:validation:Optional
 	PackageName *string `json:"packageName,omitempty" tf:"package_name,omitempty"`
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type TaskRunJobTaskInitParameters struct {
+
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	DbtCommands []*string `json:"dbtCommands,omitempty" tf:"dbt_commands,omitempty"`
 
 	JarParams []*string `json:"jarParams,omitempty" tf:"jar_params,omitempty"`
 
+	// (String) ID of the job
 	JobID *float64 `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
+	// (Map) Job parameters for the task
 	// +mapType=granular
 	JobParameters map[string]*string `json:"jobParameters,omitempty" tf:"job_parameters,omitempty"`
 
@@ -7075,12 +8347,16 @@ type TaskRunJobTaskInitParameters struct {
 }
 
 type TaskRunJobTaskObservation struct {
+
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	DbtCommands []*string `json:"dbtCommands,omitempty" tf:"dbt_commands,omitempty"`
 
 	JarParams []*string `json:"jarParams,omitempty" tf:"jar_params,omitempty"`
 
+	// (String) ID of the job
 	JobID *float64 `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
+	// (Map) Job parameters for the task
 	// +mapType=granular
 	JobParameters map[string]*string `json:"jobParameters,omitempty" tf:"job_parameters,omitempty"`
 
@@ -7102,15 +8378,18 @@ type TaskRunJobTaskObservation struct {
 
 type TaskRunJobTaskParameters struct {
 
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 	// +kubebuilder:validation:Optional
 	DbtCommands []*string `json:"dbtCommands,omitempty" tf:"dbt_commands,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	JarParams []*string `json:"jarParams,omitempty" tf:"jar_params,omitempty"`
 
+	// (String) ID of the job
 	// +kubebuilder:validation:Optional
 	JobID *float64 `json:"jobId" tf:"job_id,omitempty"`
 
+	// (Map) Job parameters for the task
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	JobParameters map[string]*string `json:"jobParameters,omitempty" tf:"job_parameters,omitempty"`
@@ -7138,74 +8417,102 @@ type TaskRunJobTaskParameters struct {
 }
 
 type TaskSQLTaskFileInitParameters struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type TaskSQLTaskFileObservation struct {
+
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type TaskSQLTaskFileParameters struct {
 
+	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
 	// +kubebuilder:validation:Optional
 	Path *string `json:"path" tf:"path,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type TaskSQLTaskInitParameters struct {
+
+	// block consisting of following fields:
 	Alert []SQLTaskAlertInitParameters `json:"alert,omitempty" tf:"alert,omitempty"`
 
+	// block consisting of following fields:
 	Dashboard []SQLTaskDashboardInitParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
+	// block consisting of single string fields:
 	File []TaskSQLTaskFileInitParameters `json:"file,omitempty" tf:"file,omitempty"`
 
+	// Parameters for the task
 	// +mapType=granular
 	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// block consisting of single string field: query_id - identifier of the Databricks Query (databricks_query).
 	Query []SQLTaskQueryInitParameters `json:"query,omitempty" tf:"query,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type TaskSQLTaskObservation struct {
+
+	// block consisting of following fields:
 	Alert []SQLTaskAlertObservation `json:"alert,omitempty" tf:"alert,omitempty"`
 
+	// block consisting of following fields:
 	Dashboard []SQLTaskDashboardObservation `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
+	// block consisting of single string fields:
 	File []TaskSQLTaskFileObservation `json:"file,omitempty" tf:"file,omitempty"`
 
+	// Parameters for the task
 	// +mapType=granular
 	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// block consisting of single string field: query_id - identifier of the Databricks Query (databricks_query).
 	Query []SQLTaskQueryObservation `json:"query,omitempty" tf:"query,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 }
 
 type TaskSQLTaskParameters struct {
 
+	// block consisting of following fields:
 	// +kubebuilder:validation:Optional
 	Alert []SQLTaskAlertParameters `json:"alert,omitempty" tf:"alert,omitempty"`
 
+	// block consisting of following fields:
 	// +kubebuilder:validation:Optional
 	Dashboard []SQLTaskDashboardParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
+	// block consisting of single string fields:
 	// +kubebuilder:validation:Optional
 	File []TaskSQLTaskFileParameters `json:"file,omitempty" tf:"file,omitempty"`
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// block consisting of single string field: query_id - identifier of the Databricks Query (databricks_query).
 	// +kubebuilder:validation:Optional
 	Query []SQLTaskQueryParameters `json:"query,omitempty" tf:"query,omitempty"`
 
+	// The ID of the SQL warehouse that dbt should execute against.
 	// +kubebuilder:validation:Optional
 	WarehouseID *string `json:"warehouseId" tf:"warehouse_id,omitempty"`
 }
@@ -7213,16 +8520,20 @@ type TaskSQLTaskParameters struct {
 type TaskSparkJarTaskInitParameters struct {
 	JarURI *string `json:"jarUri,omitempty" tf:"jar_uri,omitempty"`
 
+	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use SparkContext.getOrCreate to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName *string `json:"mainClassName,omitempty" tf:"main_class_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type TaskSparkJarTaskObservation struct {
 	JarURI *string `json:"jarUri,omitempty" tf:"jar_uri,omitempty"`
 
+	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use SparkContext.getOrCreate to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName *string `json:"mainClassName,omitempty" tf:"main_class_name,omitempty"`
 
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
@@ -7231,102 +8542,138 @@ type TaskSparkJarTaskParameters struct {
 	// +kubebuilder:validation:Optional
 	JarURI *string `json:"jarUri,omitempty" tf:"jar_uri,omitempty"`
 
+	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use SparkContext.getOrCreate to obtain a Spark context; otherwise, runs of the job will fail.
 	// +kubebuilder:validation:Optional
 	MainClassName *string `json:"mainClassName,omitempty" tf:"main_class_name,omitempty"`
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type TaskSparkPythonTaskInitParameters struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. s3:/, abfss:/, gs:/), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with /Repos. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile *string `json:"pythonFile,omitempty" tf:"python_file,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type TaskSparkPythonTaskObservation struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. s3:/, abfss:/, gs:/), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with /Repos. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile *string `json:"pythonFile,omitempty" tf:"python_file,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type TaskSparkPythonTaskParameters struct {
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. s3:/, abfss:/, gs:/), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with /Repos. For files stored in a remote repository, the path must be relative. This field is required.
 	// +kubebuilder:validation:Optional
 	PythonFile *string `json:"pythonFile" tf:"python_file,omitempty"`
 
+	// The source of the project. Possible values are WORKSPACE and GIT.  Defaults to GIT if a git_source block is present in the job definition.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
 type TaskSparkSubmitTaskInitParameters struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type TaskSparkSubmitTaskObservation struct {
+
+	// Parameters for the task
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type TaskSparkSubmitTaskParameters struct {
 
+	// Parameters for the task
 	// +kubebuilder:validation:Optional
 	Parameters []*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type TaskWebhookNotificationsInitParameters struct {
+
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []WebhookNotificationsOnDurationWarningThresholdExceededInitParameters `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []WebhookNotificationsOnFailureInitParameters `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []WebhookNotificationsOnStartInitParameters `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []WebhookNotificationsOnStreamingBacklogExceededInitParameters `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []WebhookNotificationsOnSuccessInitParameters `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type TaskWebhookNotificationsObservation struct {
+
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []WebhookNotificationsOnDurationWarningThresholdExceededObservation `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []WebhookNotificationsOnFailureObservation `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []WebhookNotificationsOnStartObservation `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []WebhookNotificationsOnStreamingBacklogExceededObservation `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []WebhookNotificationsOnSuccessObservation `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type TaskWebhookNotificationsParameters struct {
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	// +kubebuilder:validation:Optional
 	OnDurationWarningThresholdExceeded []WebhookNotificationsOnDurationWarningThresholdExceededParameters `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnFailure []WebhookNotificationsOnFailureParameters `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnStart []WebhookNotificationsOnStartParameters `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	OnStreamingBacklogExceeded []WebhookNotificationsOnStreamingBacklogExceededParameters `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnSuccess []WebhookNotificationsOnSuccessParameters `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type TriggerInitParameters struct {
+
+	// configuration block to define a trigger for File Arrival events consisting of following attributes:
 	FileArrival []FileArrivalInitParameters `json:"fileArrival,omitempty" tf:"file_arrival,omitempty"`
 
+	// Indicate whether this trigger is paused or not. Either PAUSED or UNPAUSED. When the pause_status field is omitted in the block, the server will default to using UNPAUSED as a value for pause_status.
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 
+	// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
 	Periodic []PeriodicInitParameters `json:"periodic,omitempty" tf:"periodic,omitempty"`
 
 	Table []TableInitParameters `json:"table,omitempty" tf:"table,omitempty"`
@@ -7335,10 +8682,14 @@ type TriggerInitParameters struct {
 }
 
 type TriggerObservation struct {
+
+	// configuration block to define a trigger for File Arrival events consisting of following attributes:
 	FileArrival []FileArrivalObservation `json:"fileArrival,omitempty" tf:"file_arrival,omitempty"`
 
+	// Indicate whether this trigger is paused or not. Either PAUSED or UNPAUSED. When the pause_status field is omitted in the block, the server will default to using UNPAUSED as a value for pause_status.
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 
+	// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
 	Periodic []PeriodicObservation `json:"periodic,omitempty" tf:"periodic,omitempty"`
 
 	Table []TableObservation `json:"table,omitempty" tf:"table,omitempty"`
@@ -7348,12 +8699,15 @@ type TriggerObservation struct {
 
 type TriggerParameters struct {
 
+	// configuration block to define a trigger for File Arrival events consisting of following attributes:
 	// +kubebuilder:validation:Optional
 	FileArrival []FileArrivalParameters `json:"fileArrival,omitempty" tf:"file_arrival,omitempty"`
 
+	// Indicate whether this trigger is paused or not. Either PAUSED or UNPAUSED. When the pause_status field is omitted in the block, the server will default to using UNPAUSED as a value for pause_status.
 	// +kubebuilder:validation:Optional
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 
+	// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
 	// +kubebuilder:validation:Optional
 	Periodic []PeriodicParameters `json:"periodic,omitempty" tf:"periodic,omitempty"`
 
@@ -7365,113 +8719,152 @@ type TriggerParameters struct {
 }
 
 type WebhookNotificationsInitParameters struct {
+
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []OnDurationWarningThresholdExceededInitParameters `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []OnFailureInitParameters `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []OnStartInitParameters `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []OnStreamingBacklogExceededInitParameters `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []OnSuccessInitParameters `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type WebhookNotificationsObservation struct {
+
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	OnDurationWarningThresholdExceeded []OnDurationWarningThresholdExceededObservation `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailure []OnFailureObservation `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStart []OnStartObservation `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	OnStreamingBacklogExceeded []OnStreamingBacklogExceededObservation `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccess []OnSuccessObservation `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
 
 type WebhookNotificationsOnDurationWarningThresholdExceededInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnDurationWarningThresholdExceededObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnDurationWarningThresholdExceededParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnFailureInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnFailureObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnFailureParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnStartInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnStartObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnStartParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnStreamingBacklogExceededInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnStreamingBacklogExceededObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnStreamingBacklogExceededParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnSuccessInitParameters struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnSuccessObservation struct {
+
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsOnSuccessParameters struct {
 
+	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id" tf:"id,omitempty"`
 }
 
 type WebhookNotificationsParameters struct {
 
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the RUN_DURATION_SECONDS metric in the health block.
 	// +kubebuilder:validation:Optional
 	OnDurationWarningThresholdExceeded []OnDurationWarningThresholdExceededParameters `json:"onDurationWarningThresholdExceeded,omitempty" tf:"on_duration_warning_threshold_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnFailure []OnFailureParameters `json:"onFailure,omitempty" tf:"on_failure,omitempty"`
 
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnStart []OnStartParameters `json:"onStart,omitempty" tf:"on_start,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	OnStreamingBacklogExceeded []OnStreamingBacklogExceededParameters `json:"onStreamingBacklogExceeded,omitempty" tf:"on_streaming_backlog_exceeded,omitempty"`
 
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	// +kubebuilder:validation:Optional
 	OnSuccess []OnSuccessParameters `json:"onSuccess,omitempty" tf:"on_success,omitempty"`
 }
@@ -7524,7 +8917,7 @@ type JobStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Job is the Schema for the Jobs API. <no value>
+// Job is the Schema for the Jobs API. |page_title: "databricks_job Resource"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

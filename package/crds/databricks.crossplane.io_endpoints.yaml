@@ -34,7 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Endpoint is the Schema for the Endpoints API. <no value>
+        description: 'Endpoint is the Schema for the Endpoints API. |page_title: "databricks_sql_endpoint
+          Resource"'
         properties:
           apiVersion:
             description: |-
@@ -73,38 +74,69 @@ spec:
               forProvider:
                 properties:
                   autoStopMins:
+                    description: Time in minutes until an idle SQL warehouse terminates
+                      all clusters and stops. This field is optional. The default
+                      is 120, set to 0 to disable the auto stop.
                     type: number
                   channel:
+                    description: 'block, consisting of following fields:'
                     items:
                       properties:
                         dbsqlVersion:
                           type: string
                         name:
+                          description: 'Name of the Databricks SQL release channel.
+                            Possible values are: CHANNEL_NAME_PREVIEW and CHANNEL_NAME_CURRENT.
+                            Default is CHANNEL_NAME_CURRENT.'
                           type: string
                       type: object
                     type: array
                   clusterSize:
+                    description: 'The size of the clusters allocated to the endpoint:
+                      "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large",
+                      "2X-Large", "3X-Large", "4X-Large".'
                     type: string
                   dataSourceId:
+                    description: ID of the data source for this endpoint. This is
+                      used to bind an Databricks SQL query to an endpoint.
                     type: string
                   enablePhoton:
+                    description: Whether to enable Photon. This field is optional
+                      and is enabled by default.
                     type: boolean
                   enableServerlessCompute:
+                    description: Whether this SQL warehouse is a serverless endpoint.
+                      See below for details about the default values. To avoid ambiguity,
+                      especially for organizations with many workspaces, Databricks
+                      recommends that you always set this field explicitly.
                     type: boolean
                   instanceProfileArn:
                     type: string
                   maxNumClusters:
+                    description: Maximum number of clusters available when a SQL warehouse
+                      is running. This field is required. If multi-cluster load balancing
+                      is not enabled, this is default to 1.
                     type: number
                   minNumClusters:
+                    description: Minimum number of clusters available when a SQL warehouse
+                      is running. The default is 1.
                     type: number
                   name:
+                    description: Name of the SQL warehouse. Must be unique.
                     type: string
                   spotInstancePolicy:
+                    description: 'The spot policy to use for allocating instances
+                      to clusters: COST_OPTIMIZED or RELIABILITY_OPTIMIZED. This field
+                      is optional. Default is COST_OPTIMIZED.'
                     type: string
                   tags:
+                    description: Databricks tags all endpoint resources with these
+                      tags.
                     items:
                       properties:
                         customTags:
+                          description: Databricks tags all endpoint resources with
+                            these tags.
                           items:
                             properties:
                               key:
@@ -116,6 +148,12 @@ spec:
                       type: object
                     type: array
                   warehouseType:
+                    description: SQL warehouse type. See for AWS or Azure. Set to
+                      PRO or CLASSIC. If the field enable_serverless_compute has the
+                      value true either explicitly or through the default logic (see
+                      that field above for details), the default is PRO, which is
+                      required for serverless SQL warehouses. Otherwise, the default
+                      is CLASSIC.
                     type: string
                 type: object
               initProvider:
@@ -132,38 +170,69 @@ spec:
                   autoscaler.
                 properties:
                   autoStopMins:
+                    description: Time in minutes until an idle SQL warehouse terminates
+                      all clusters and stops. This field is optional. The default
+                      is 120, set to 0 to disable the auto stop.
                     type: number
                   channel:
+                    description: 'block, consisting of following fields:'
                     items:
                       properties:
                         dbsqlVersion:
                           type: string
                         name:
+                          description: 'Name of the Databricks SQL release channel.
+                            Possible values are: CHANNEL_NAME_PREVIEW and CHANNEL_NAME_CURRENT.
+                            Default is CHANNEL_NAME_CURRENT.'
                           type: string
                       type: object
                     type: array
                   clusterSize:
+                    description: 'The size of the clusters allocated to the endpoint:
+                      "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large",
+                      "2X-Large", "3X-Large", "4X-Large".'
                     type: string
                   dataSourceId:
+                    description: ID of the data source for this endpoint. This is
+                      used to bind an Databricks SQL query to an endpoint.
                     type: string
                   enablePhoton:
+                    description: Whether to enable Photon. This field is optional
+                      and is enabled by default.
                     type: boolean
                   enableServerlessCompute:
+                    description: Whether this SQL warehouse is a serverless endpoint.
+                      See below for details about the default values. To avoid ambiguity,
+                      especially for organizations with many workspaces, Databricks
+                      recommends that you always set this field explicitly.
                     type: boolean
                   instanceProfileArn:
                     type: string
                   maxNumClusters:
+                    description: Maximum number of clusters available when a SQL warehouse
+                      is running. This field is required. If multi-cluster load balancing
+                      is not enabled, this is default to 1.
                     type: number
                   minNumClusters:
+                    description: Minimum number of clusters available when a SQL warehouse
+                      is running. The default is 1.
                     type: number
                   name:
+                    description: Name of the SQL warehouse. Must be unique.
                     type: string
                   spotInstancePolicy:
+                    description: 'The spot policy to use for allocating instances
+                      to clusters: COST_OPTIMIZED or RELIABILITY_OPTIMIZED. This field
+                      is optional. Default is COST_OPTIMIZED.'
                     type: string
                   tags:
+                    description: Databricks tags all endpoint resources with these
+                      tags.
                     items:
                       properties:
                         customTags:
+                          description: Databricks tags all endpoint resources with
+                            these tags.
                           items:
                             properties:
                               key:
@@ -175,6 +244,12 @@ spec:
                       type: object
                     type: array
                   warehouseType:
+                    description: SQL warehouse type. See for AWS or Azure. Set to
+                      PRO or CLASSIC. If the field enable_serverless_compute has the
+                      value true either explicitly or through the default logic (see
+                      that field above for details), the default is PRO, which is
+                      required for serverless SQL warehouses. Otherwise, the default
+                      is CLASSIC.
                     type: string
                 type: object
               managementPolicies:
@@ -359,27 +434,47 @@ spec:
               atProvider:
                 properties:
                   autoStopMins:
+                    description: Time in minutes until an idle SQL warehouse terminates
+                      all clusters and stops. This field is optional. The default
+                      is 120, set to 0 to disable the auto stop.
                     type: number
                   channel:
+                    description: 'block, consisting of following fields:'
                     items:
                       properties:
                         dbsqlVersion:
                           type: string
                         name:
+                          description: 'Name of the Databricks SQL release channel.
+                            Possible values are: CHANNEL_NAME_PREVIEW and CHANNEL_NAME_CURRENT.
+                            Default is CHANNEL_NAME_CURRENT.'
                           type: string
                       type: object
                     type: array
                   clusterSize:
+                    description: 'The size of the clusters allocated to the endpoint:
+                      "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large",
+                      "2X-Large", "3X-Large", "4X-Large".'
                     type: string
                   creatorName:
+                    description: The username of the user who created the endpoint.
                     type: string
                   dataSourceId:
+                    description: ID of the data source for this endpoint. This is
+                      used to bind an Databricks SQL query to an endpoint.
                     type: string
                   enablePhoton:
+                    description: Whether to enable Photon. This field is optional
+                      and is enabled by default.
                     type: boolean
                   enableServerlessCompute:
+                    description: Whether this SQL warehouse is a serverless endpoint.
+                      See below for details about the default values. To avoid ambiguity,
+                      especially for organizations with many workspaces, Databricks
+                      recommends that you always set this field explicitly.
                     type: boolean
                   health:
+                    description: Health status of the endpoint.
                     items:
                       properties:
                         details:
@@ -407,25 +502,38 @@ spec:
                       type: object
                     type: array
                   id:
+                    description: the unique ID of the SQL warehouse.
                     type: string
                   instanceProfileArn:
                     type: string
                   jdbcUrl:
+                    description: JDBC connection string.
                     type: string
                   maxNumClusters:
+                    description: Maximum number of clusters available when a SQL warehouse
+                      is running. This field is required. If multi-cluster load balancing
+                      is not enabled, this is default to 1.
                     type: number
                   minNumClusters:
+                    description: Minimum number of clusters available when a SQL warehouse
+                      is running. The default is 1.
                     type: number
                   name:
+                    description: Name of the SQL warehouse. Must be unique.
                     type: string
                   numActiveSessions:
+                    description: The current number of clusters used by the endpoint.
                     type: number
                   numClusters:
+                    description: The current number of clusters used by the endpoint.
                     type: number
                   odbcParams:
+                    description: 'ODBC connection params: odbc_params.hostname, odbc_params.path,
+                      odbc_params.protocol, and odbc_params.port.'
                     items:
                       properties:
                         hostname:
+                          description: Name of the SQL warehouse. Must be unique.
                           type: string
                         path:
                           type: string
@@ -436,13 +544,21 @@ spec:
                       type: object
                     type: array
                   spotInstancePolicy:
+                    description: 'The spot policy to use for allocating instances
+                      to clusters: COST_OPTIMIZED or RELIABILITY_OPTIMIZED. This field
+                      is optional. Default is COST_OPTIMIZED.'
                     type: string
                   state:
+                    description: The current state of the endpoint.
                     type: string
                   tags:
+                    description: Databricks tags all endpoint resources with these
+                      tags.
                     items:
                       properties:
                         customTags:
+                          description: Databricks tags all endpoint resources with
+                            these tags.
                           items:
                             properties:
                               key:
@@ -454,6 +570,12 @@ spec:
                       type: object
                     type: array
                   warehouseType:
+                    description: SQL warehouse type. See for AWS or Azure. Set to
+                      PRO or CLASSIC. If the field enable_serverless_compute has the
+                      value true either explicitly or through the default logic (see
+                      that field above for details), the default is PRO, which is
+                      required for serverless SQL warehouses. Otherwise, the default
+                      is CLASSIC.
                     type: string
                 type: object
               conditions:

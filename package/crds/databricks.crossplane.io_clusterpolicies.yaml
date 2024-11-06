@@ -34,7 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: ClusterPolicy is the Schema for the ClusterPolicys API. <no value>
+        description: 'ClusterPolicy is the Schema for the ClusterPolicys API. |page_title:
+          "databricks_cluster_policy Resource"'
         properties:
           apiVersion:
             description: |-
@@ -73,8 +74,12 @@ spec:
               forProvider:
                 properties:
                   definition:
+                    description: 'Policy definition: JSON document expressed in Databricks
+                      Policy Definition Language. Cannot be used with policy_family_id'
                     type: string
                   description:
+                    description: Additional human-readable description of the cluster
+                      policy.
                     type: string
                   libraries:
                     items:
@@ -121,12 +126,19 @@ spec:
                       type: object
                     type: array
                   maxClustersPerUser:
+                    description: Maximum number of clusters allowed per user. When
+                      omitted, there is no limit. If specified, value must be greater
+                      than zero.
                     type: number
                   name:
+                    description: the name of the built-in cluster policy.
                     type: string
                   policyFamilyDefinitionOverrides:
+                    description: settings to override in the built-in cluster policy.
                     type: string
                   policyFamilyId:
+                    description: the ID of the cluster policy family used for built-in
+                      cluster policy.
                     type: string
                 type: object
               initProvider:
@@ -143,8 +155,12 @@ spec:
                   autoscaler.
                 properties:
                   definition:
+                    description: 'Policy definition: JSON document expressed in Databricks
+                      Policy Definition Language. Cannot be used with policy_family_id'
                     type: string
                   description:
+                    description: Additional human-readable description of the cluster
+                      policy.
                     type: string
                   libraries:
                     items:
@@ -191,12 +207,19 @@ spec:
                       type: object
                     type: array
                   maxClustersPerUser:
+                    description: Maximum number of clusters allowed per user. When
+                      omitted, there is no limit. If specified, value must be greater
+                      than zero.
                     type: number
                   name:
+                    description: the name of the built-in cluster policy.
                     type: string
                   policyFamilyDefinitionOverrides:
+                    description: settings to override in the built-in cluster policy.
                     type: string
                   policyFamilyId:
+                    description: the ID of the cluster policy family used for built-in
+                      cluster policy.
                     type: string
                 type: object
               managementPolicies:
@@ -372,10 +395,16 @@ spec:
               atProvider:
                 properties:
                   definition:
+                    description: 'Policy definition: JSON document expressed in Databricks
+                      Policy Definition Language. Cannot be used with policy_family_id'
                     type: string
                   description:
+                    description: Additional human-readable description of the cluster
+                      policy.
                     type: string
                   id:
+                    description: Canonical unique identifier for the cluster policy.
+                      This is equal to policy_id.
                     type: string
                   libraries:
                     items:
@@ -422,14 +451,22 @@ spec:
                       type: object
                     type: array
                   maxClustersPerUser:
+                    description: Maximum number of clusters allowed per user. When
+                      omitted, there is no limit. If specified, value must be greater
+                      than zero.
                     type: number
                   name:
+                    description: the name of the built-in cluster policy.
                     type: string
                   policyFamilyDefinitionOverrides:
+                    description: settings to override in the built-in cluster policy.
                     type: string
                   policyFamilyId:
+                    description: the ID of the cluster policy family used for built-in
+                      cluster policy.
                     type: string
                   policyId:
+                    description: Canonical unique identifier for the cluster policy.
                     type: string
                 type: object
               conditions:

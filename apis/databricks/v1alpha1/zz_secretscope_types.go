@@ -14,59 +14,79 @@ import (
 )
 
 type KeyvaultMetadataInitParameters struct {
+
+	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	DNSName *string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 
+	// The id for the secret scope object.
 	ResourceID *string `json:"resourceId,omitempty" tf:"resource_id,omitempty"`
 }
 
 type KeyvaultMetadataObservation struct {
+
+	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	DNSName *string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 
+	// The id for the secret scope object.
 	ResourceID *string `json:"resourceId,omitempty" tf:"resource_id,omitempty"`
 }
 
 type KeyvaultMetadataParameters struct {
 
+	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	// +kubebuilder:validation:Optional
 	DNSName *string `json:"dnsName" tf:"dns_name,omitempty"`
 
+	// The id for the secret scope object.
 	// +kubebuilder:validation:Optional
 	ResourceID *string `json:"resourceId" tf:"resource_id,omitempty"`
 }
 
 type SecretScopeInitParameters struct {
+
+	// Either DATABRICKS or AZURE_KEYVAULT
 	BackendType *string `json:"backendType,omitempty" tf:"backend_type,omitempty"`
 
+	// The principal with the only possible value users that is initially granted MANAGE permission to the created scope.  If it's omitted, then the databricks_secret_acl with MANAGE permission applied to the scope is assigned to the API request issuer's user identity (see documentation). This part of the state cannot be imported.
 	InitialManagePrincipal *string `json:"initialManagePrincipal,omitempty" tf:"initial_manage_principal,omitempty"`
 
 	KeyvaultMetadata []KeyvaultMetadataInitParameters `json:"keyvaultMetadata,omitempty" tf:"keyvault_metadata,omitempty"`
 
+	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type SecretScopeObservation struct {
+
+	// Either DATABRICKS or AZURE_KEYVAULT
 	BackendType *string `json:"backendType,omitempty" tf:"backend_type,omitempty"`
 
+	// The id for the secret scope object.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// The principal with the only possible value users that is initially granted MANAGE permission to the created scope.  If it's omitted, then the databricks_secret_acl with MANAGE permission applied to the scope is assigned to the API request issuer's user identity (see documentation). This part of the state cannot be imported.
 	InitialManagePrincipal *string `json:"initialManagePrincipal,omitempty" tf:"initial_manage_principal,omitempty"`
 
 	KeyvaultMetadata []KeyvaultMetadataObservation `json:"keyvaultMetadata,omitempty" tf:"keyvault_metadata,omitempty"`
 
+	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type SecretScopeParameters struct {
 
+	// Either DATABRICKS or AZURE_KEYVAULT
 	// +kubebuilder:validation:Optional
 	BackendType *string `json:"backendType,omitempty" tf:"backend_type,omitempty"`
 
+	// The principal with the only possible value users that is initially granted MANAGE permission to the created scope.  If it's omitted, then the databricks_secret_acl with MANAGE permission applied to the scope is assigned to the API request issuer's user identity (see documentation). This part of the state cannot be imported.
 	// +kubebuilder:validation:Optional
 	InitialManagePrincipal *string `json:"initialManagePrincipal,omitempty" tf:"initial_manage_principal,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	KeyvaultMetadata []KeyvaultMetadataParameters `json:"keyvaultMetadata,omitempty" tf:"keyvault_metadata,omitempty"`
 
+	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -98,7 +118,7 @@ type SecretScopeStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// SecretScope is the Schema for the SecretScopes API. <no value>
+// SecretScope is the Schema for the SecretScopes API. |page_title: "databricks_secret_scope Resource"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

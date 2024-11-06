@@ -14,16 +14,22 @@ import (
 )
 
 type DiskSpecInitParameters struct {
+
+	// (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
 	DiskCount *float64 `json:"diskCount,omitempty" tf:"disk_count,omitempty"`
 
+	// (Integer) The size of each disk (in GiB) to attach.
 	DiskSize *float64 `json:"diskSize,omitempty" tf:"disk_size,omitempty"`
 
 	DiskType []DiskTypeInitParameters `json:"diskType,omitempty" tf:"disk_type,omitempty"`
 }
 
 type DiskSpecObservation struct {
+
+	// (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
 	DiskCount *float64 `json:"diskCount,omitempty" tf:"disk_count,omitempty"`
 
+	// (Integer) The size of each disk (in GiB) to attach.
 	DiskSize *float64 `json:"diskSize,omitempty" tf:"disk_size,omitempty"`
 
 	DiskType []DiskTypeObservation `json:"diskType,omitempty" tf:"disk_type,omitempty"`
@@ -31,9 +37,11 @@ type DiskSpecObservation struct {
 
 type DiskSpecParameters struct {
 
+	// (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
 	// +kubebuilder:validation:Optional
 	DiskCount *float64 `json:"diskCount,omitempty" tf:"disk_count,omitempty"`
 
+	// (Integer) The size of each disk (in GiB) to attach.
 	// +kubebuilder:validation:Optional
 	DiskSize *float64 `json:"diskSize,omitempty" tf:"disk_size,omitempty"`
 
@@ -105,50 +113,69 @@ type FleetSpotOptionParameters struct {
 }
 
 type InstancePoolAwsAttributesInitParameters struct {
+
+	// Availability type used for all nodes. Valid values are SPOT_AZURE and ON_DEMAND_AZURE.
 	Availability *string `json:"availability,omitempty" tf:"availability,omitempty"`
 
+	// (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the default value is 100. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. For safety, this field cannot be greater than 10000.
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like "us-west-2a". The provided availability zone must be in the same region as the Databricks deployment. For example, "us-west-2a" is not a valid zone ID if the Databricks deployment resides in the "us-east-1" region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the List Zones API.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type InstancePoolAwsAttributesObservation struct {
+
+	// Availability type used for all nodes. Valid values are SPOT_AZURE and ON_DEMAND_AZURE.
 	Availability *string `json:"availability,omitempty" tf:"availability,omitempty"`
 
+	// (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the default value is 100. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. For safety, this field cannot be greater than 10000.
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like "us-west-2a". The provided availability zone must be in the same region as the Databricks deployment. For example, "us-west-2a" is not a valid zone ID if the Databricks deployment resides in the "us-east-1" region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the List Zones API.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type InstancePoolAwsAttributesParameters struct {
 
+	// Availability type used for all nodes. Valid values are SPOT_AZURE and ON_DEMAND_AZURE.
 	// +kubebuilder:validation:Optional
 	Availability *string `json:"availability,omitempty" tf:"availability,omitempty"`
 
+	// (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the default value is 100. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. For safety, this field cannot be greater than 10000.
 	// +kubebuilder:validation:Optional
 	SpotBidPricePercent *float64 `json:"spotBidPricePercent,omitempty" tf:"spot_bid_price_percent,omitempty"`
 
+	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like "us-west-2a". The provided availability zone must be in the same region as the Databricks deployment. For example, "us-west-2a" is not a valid zone ID if the Databricks deployment resides in the "us-east-1" region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the List Zones API.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type InstancePoolAzureAttributesInitParameters struct {
+
+	// Availability type used for all nodes. Valid values are SPOT_AZURE and ON_DEMAND_AZURE.
 	Availability *string `json:"availability,omitempty" tf:"availability,omitempty"`
 
+	// The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to -1, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
 	SpotBidMaxPrice *float64 `json:"spotBidMaxPrice,omitempty" tf:"spot_bid_max_price,omitempty"`
 }
 
 type InstancePoolAzureAttributesObservation struct {
+
+	// Availability type used for all nodes. Valid values are SPOT_AZURE and ON_DEMAND_AZURE.
 	Availability *string `json:"availability,omitempty" tf:"availability,omitempty"`
 
+	// The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to -1, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
 	SpotBidMaxPrice *float64 `json:"spotBidMaxPrice,omitempty" tf:"spot_bid_max_price,omitempty"`
 }
 
 type InstancePoolAzureAttributesParameters struct {
 
+	// Availability type used for all nodes. Valid values are SPOT_AZURE and ON_DEMAND_AZURE.
 	// +kubebuilder:validation:Optional
 	Availability *string `json:"availability,omitempty" tf:"availability,omitempty"`
 
+	// The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to -1, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
 	// +kubebuilder:validation:Optional
 	SpotBidMaxPrice *float64 `json:"spotBidMaxPrice,omitempty" tf:"spot_bid_max_price,omitempty"`
 }
@@ -182,29 +209,40 @@ type InstancePoolFleetAttributesParameters struct {
 }
 
 type InstancePoolGCPAttributesInitParameters struct {
+
+	// Availability type used for all nodes. Valid values are PREEMPTIBLE_GCP, PREEMPTIBLE_WITH_FALLBACK_GCP and ON_DEMAND_GCP, default: ON_DEMAND_GCP.
 	GCPAvailability *string `json:"gcpAvailability,omitempty" tf:"gcp_availability,omitempty"`
 
+	// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
 	LocalSsdCount *float64 `json:"localSsdCount,omitempty" tf:"local_ssd_count,omitempty"`
 
+	// Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like us-central1-a. The provided availability zone must be in the same region as the Databricks workspace.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type InstancePoolGCPAttributesObservation struct {
+
+	// Availability type used for all nodes. Valid values are PREEMPTIBLE_GCP, PREEMPTIBLE_WITH_FALLBACK_GCP and ON_DEMAND_GCP, default: ON_DEMAND_GCP.
 	GCPAvailability *string `json:"gcpAvailability,omitempty" tf:"gcp_availability,omitempty"`
 
+	// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
 	LocalSsdCount *float64 `json:"localSsdCount,omitempty" tf:"local_ssd_count,omitempty"`
 
+	// Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like us-central1-a. The provided availability zone must be in the same region as the Databricks workspace.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
 type InstancePoolGCPAttributesParameters struct {
 
+	// Availability type used for all nodes. Valid values are PREEMPTIBLE_GCP, PREEMPTIBLE_WITH_FALLBACK_GCP and ON_DEMAND_GCP, default: ON_DEMAND_GCP.
 	// +kubebuilder:validation:Optional
 	GCPAvailability *string `json:"gcpAvailability,omitempty" tf:"gcp_availability,omitempty"`
 
+	// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
 	// +kubebuilder:validation:Optional
 	LocalSsdCount *float64 `json:"localSsdCount,omitempty" tf:"local_ssd_count,omitempty"`
 
+	// Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like us-central1-a. The provided availability zone must be in the same region as the Databricks workspace.
 	// +kubebuilder:validation:Optional
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
@@ -214,31 +252,40 @@ type InstancePoolInitParameters struct {
 
 	AzureAttributes []InstancePoolAzureAttributesInitParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the official documentation). Attempting to set the same tags in both cluster and instance pool will raise an error. Databricks allows at most 43 custom tags.
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
 	DiskSpec []DiskSpecInitParameters `json:"diskSpec,omitempty" tf:"disk_spec,omitempty"`
 
+	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
 
 	GCPAttributes []InstancePoolGCPAttributesInitParameters `json:"gcpAttributes,omitempty" tf:"gcp_attributes,omitempty"`
 
+	// (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
 	IdleInstanceAutoterminationMinutes *float64 `json:"idleInstanceAutoterminationMinutes,omitempty" tf:"idle_instance_autotermination_minutes,omitempty"`
 
 	InstancePoolFleetAttributes []InstancePoolFleetAttributesInitParameters `json:"instancePoolFleetAttributes,omitempty" tf:"instance_pool_fleet_attributes,omitempty"`
 
+	// Canonical unique identifier for the instance pool.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
 	InstancePoolName *string `json:"instancePoolName,omitempty" tf:"instance_pool_name,omitempty"`
 
+	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a best practice, this should be set based on anticipated usage.
 	MaxCapacity *float64 `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
 
+	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances *float64 `json:"minIdleInstances,omitempty" tf:"min_idle_instances,omitempty"`
 
+	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the List Node Types API call.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	PreloadedDockerImage []PreloadedDockerImageInitParameters `json:"preloadedDockerImage,omitempty" tf:"preloaded_docker_image,omitempty"`
 
+	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks_spark_version data source or via  Runtime Versions API call.
 	PreloadedSparkVersions []*string `json:"preloadedSparkVersions,omitempty" tf:"preloaded_spark_versions,omitempty"`
 }
 
@@ -247,33 +294,43 @@ type InstancePoolObservation struct {
 
 	AzureAttributes []InstancePoolAzureAttributesObservation `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the official documentation). Attempting to set the same tags in both cluster and instance pool will raise an error. Databricks allows at most 43 custom tags.
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 
 	DiskSpec []DiskSpecObservation `json:"diskSpec,omitempty" tf:"disk_spec,omitempty"`
 
+	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
 
 	GCPAttributes []InstancePoolGCPAttributesObservation `json:"gcpAttributes,omitempty" tf:"gcp_attributes,omitempty"`
 
+	// Canonical unique identifier for the instance pool.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
 	IdleInstanceAutoterminationMinutes *float64 `json:"idleInstanceAutoterminationMinutes,omitempty" tf:"idle_instance_autotermination_minutes,omitempty"`
 
 	InstancePoolFleetAttributes []InstancePoolFleetAttributesObservation `json:"instancePoolFleetAttributes,omitempty" tf:"instance_pool_fleet_attributes,omitempty"`
 
+	// Canonical unique identifier for the instance pool.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
 	InstancePoolName *string `json:"instancePoolName,omitempty" tf:"instance_pool_name,omitempty"`
 
+	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a best practice, this should be set based on anticipated usage.
 	MaxCapacity *float64 `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
 
+	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances *float64 `json:"minIdleInstances,omitempty" tf:"min_idle_instances,omitempty"`
 
+	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the List Node Types API call.
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	PreloadedDockerImage []PreloadedDockerImageObservation `json:"preloadedDockerImage,omitempty" tf:"preloaded_docker_image,omitempty"`
 
+	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks_spark_version data source or via  Runtime Versions API call.
 	PreloadedSparkVersions []*string `json:"preloadedSparkVersions,omitempty" tf:"preloaded_spark_versions,omitempty"`
 }
 
@@ -285,6 +342,7 @@ type InstancePoolParameters struct {
 	// +kubebuilder:validation:Optional
 	AzureAttributes []InstancePoolAzureAttributesParameters `json:"azureAttributes,omitempty" tf:"azure_attributes,omitempty"`
 
+	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the official documentation). Attempting to set the same tags in both cluster and instance pool will raise an error. Databricks allows at most 43 custom tags.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	CustomTags map[string]*string `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
@@ -292,36 +350,44 @@ type InstancePoolParameters struct {
 	// +kubebuilder:validation:Optional
 	DiskSpec []DiskSpecParameters `json:"diskSpec,omitempty" tf:"disk_spec,omitempty"`
 
+	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
 	// +kubebuilder:validation:Optional
 	EnableElasticDisk *bool `json:"enableElasticDisk,omitempty" tf:"enable_elastic_disk,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	GCPAttributes []InstancePoolGCPAttributesParameters `json:"gcpAttributes,omitempty" tf:"gcp_attributes,omitempty"`
 
+	// (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
 	// +kubebuilder:validation:Optional
 	IdleInstanceAutoterminationMinutes *float64 `json:"idleInstanceAutoterminationMinutes,omitempty" tf:"idle_instance_autotermination_minutes,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	InstancePoolFleetAttributes []InstancePoolFleetAttributesParameters `json:"instancePoolFleetAttributes,omitempty" tf:"instance_pool_fleet_attributes,omitempty"`
 
+	// Canonical unique identifier for the instance pool.
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
 	// +kubebuilder:validation:Optional
 	InstancePoolName *string `json:"instancePoolName,omitempty" tf:"instance_pool_name,omitempty"`
 
+	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a best practice, this should be set based on anticipated usage.
 	// +kubebuilder:validation:Optional
 	MaxCapacity *float64 `json:"maxCapacity,omitempty" tf:"max_capacity,omitempty"`
 
+	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	// +kubebuilder:validation:Optional
 	MinIdleInstances *float64 `json:"minIdleInstances,omitempty" tf:"min_idle_instances,omitempty"`
 
+	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the List Node Types API call.
 	// +kubebuilder:validation:Optional
 	NodeTypeID *string `json:"nodeTypeId,omitempty" tf:"node_type_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	PreloadedDockerImage []PreloadedDockerImageParameters `json:"preloadedDockerImage,omitempty" tf:"preloaded_docker_image,omitempty"`
 
+	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks_spark_version data source or via  Runtime Versions API call.
 	// +kubebuilder:validation:Optional
 	PreloadedSparkVersions []*string `json:"preloadedSparkVersions,omitempty" tf:"preloaded_spark_versions,omitempty"`
 }
@@ -367,22 +433,30 @@ type PreloadedDockerImageBasicAuthParameters struct {
 }
 
 type PreloadedDockerImageInitParameters struct {
+
+	// basic_auth.username and basic_auth.password for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 	BasicAuth []PreloadedDockerImageBasicAuthInitParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL for the Docker image
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type PreloadedDockerImageObservation struct {
+
+	// basic_auth.username and basic_auth.password for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 	BasicAuth []PreloadedDockerImageBasicAuthObservation `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL for the Docker image
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
 }
 
 type PreloadedDockerImageParameters struct {
 
+	// basic_auth.username and basic_auth.password for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
 	// +kubebuilder:validation:Optional
 	BasicAuth []PreloadedDockerImageBasicAuthParameters `json:"basicAuth,omitempty" tf:"basic_auth,omitempty"`
 
+	// URL for the Docker image
 	// +kubebuilder:validation:Optional
 	URL *string `json:"url" tf:"url,omitempty"`
 }
@@ -414,7 +488,7 @@ type InstancePoolStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// InstancePool is the Schema for the InstancePools API. <no value>
+// InstancePool is the Schema for the InstancePools API. |page_title: "databricks_instance_pool Resource"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -1,0 +1,38 @@
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Permissions
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/permissions
+  labels:
+    testing.upbound.io/example-name: cluster_usage
+  name: cluster-usage
+spec:
+  forProvider:
+    accessControl:
+    - groupName: ${databricks_group.auto.display_name}
+      permissionLevel: CAN_ATTACH_TO
+    - groupName: ${databricks_group.eng.display_name}
+      permissionLevel: CAN_RESTART
+    - groupName: ${databricks_group.ds.display_name}
+      permissionLevel: CAN_MANAGE
+    clusterId: ${databricks_cluster.shared_autoscaling.id}
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Cluster
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/permissions
+  labels:
+    testing.upbound.io/example-name: shared_autoscaling
+  name: shared-autoscaling
+spec:
+  forProvider:
+    autoscale:
+    - maxWorkers: 10
+      minWorkers: 1
+    autoterminationMinutes: 60
+    clusterName: Shared Autoscaling
+    nodeTypeId: ${data.databricks_node_type.smallest.id}
+    sparkVersion: ${data.databricks_spark_version.latest.id}

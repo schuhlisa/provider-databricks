@@ -13,10 +13,11 @@ do
     base_name=$(echo $base_name | cut -d"." -f1);
     echo $base_name;
     sed -i '' '2a\
-page_title: "'"$base_name"' Resource - terraform-provider-databricks"\
+page_title: "databricks_'"$base_name"' Resource"\
 ' "$file"
     sed -i '' '2a\
-description: ""
+description: |
+
 ' "$file"
   fi
 done

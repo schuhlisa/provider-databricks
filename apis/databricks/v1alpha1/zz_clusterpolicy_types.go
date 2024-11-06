@@ -14,61 +14,83 @@ import (
 )
 
 type ClusterPolicyInitParameters struct {
+
+	// Policy definition: JSON document expressed in Databricks Policy Definition Language. Cannot be used with policy_family_id
 	Definition *string `json:"definition,omitempty" tf:"definition,omitempty"`
 
+	// Additional human-readable description of the cluster policy.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	Libraries []LibrariesInitParameters `json:"libraries,omitempty" tf:"libraries,omitempty"`
 
+	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser *float64 `json:"maxClustersPerUser,omitempty" tf:"max_clusters_per_user,omitempty"`
 
+	// the name of the built-in cluster policy.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// settings to override in the built-in cluster policy.
 	PolicyFamilyDefinitionOverrides *string `json:"policyFamilyDefinitionOverrides,omitempty" tf:"policy_family_definition_overrides,omitempty"`
 
+	// the ID of the cluster policy family used for built-in cluster policy.
 	PolicyFamilyID *string `json:"policyFamilyId,omitempty" tf:"policy_family_id,omitempty"`
 }
 
 type ClusterPolicyObservation struct {
+
+	// Policy definition: JSON document expressed in Databricks Policy Definition Language. Cannot be used with policy_family_id
 	Definition *string `json:"definition,omitempty" tf:"definition,omitempty"`
 
+	// Additional human-readable description of the cluster policy.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// Canonical unique identifier for the cluster policy. This is equal to policy_id.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	Libraries []LibrariesObservation `json:"libraries,omitempty" tf:"libraries,omitempty"`
 
+	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser *float64 `json:"maxClustersPerUser,omitempty" tf:"max_clusters_per_user,omitempty"`
 
+	// the name of the built-in cluster policy.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// settings to override in the built-in cluster policy.
 	PolicyFamilyDefinitionOverrides *string `json:"policyFamilyDefinitionOverrides,omitempty" tf:"policy_family_definition_overrides,omitempty"`
 
+	// the ID of the cluster policy family used for built-in cluster policy.
 	PolicyFamilyID *string `json:"policyFamilyId,omitempty" tf:"policy_family_id,omitempty"`
 
+	// Canonical unique identifier for the cluster policy.
 	PolicyID *string `json:"policyId,omitempty" tf:"policy_id,omitempty"`
 }
 
 type ClusterPolicyParameters struct {
 
+	// Policy definition: JSON document expressed in Databricks Policy Definition Language. Cannot be used with policy_family_id
 	// +kubebuilder:validation:Optional
 	Definition *string `json:"definition,omitempty" tf:"definition,omitempty"`
 
+	// Additional human-readable description of the cluster policy.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Libraries []LibrariesParameters `json:"libraries,omitempty" tf:"libraries,omitempty"`
 
+	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	// +kubebuilder:validation:Optional
 	MaxClustersPerUser *float64 `json:"maxClustersPerUser,omitempty" tf:"max_clusters_per_user,omitempty"`
 
+	// the name of the built-in cluster policy.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// settings to override in the built-in cluster policy.
 	// +kubebuilder:validation:Optional
 	PolicyFamilyDefinitionOverrides *string `json:"policyFamilyDefinitionOverrides,omitempty" tf:"policy_family_definition_overrides,omitempty"`
 
+	// the ID of the cluster policy family used for built-in cluster policy.
 	// +kubebuilder:validation:Optional
 	PolicyFamilyID *string `json:"policyFamilyId,omitempty" tf:"policy_family_id,omitempty"`
 }
@@ -226,7 +248,7 @@ type ClusterPolicyStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ClusterPolicy is the Schema for the ClusterPolicys API. <no value>
+// ClusterPolicy is the Schema for the ClusterPolicys API. |page_title: "databricks_cluster_policy Resource"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

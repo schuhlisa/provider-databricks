@@ -34,7 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Token is the Schema for the Tokens API. <no value>
+        description: 'Token is the Schema for the Tokens API. |page_title: "databricks_token
+          Resource"'
         properties:
           apiVersion:
             description: |-
@@ -73,14 +74,19 @@ spec:
               forProvider:
                 properties:
                   comment:
+                    description: (String) Comment that will appear on the user’s settings
+                      page for this token.
                     type: string
                   creationTime:
                     type: number
                   expiryTime:
                     type: number
                   lifetimeSeconds:
+                    description: (Integer) The lifetime of the token, in seconds.
+                      If no lifetime is specified, the token remains valid indefinitely.
                     type: number
                   tokenId:
+                    description: Canonical unique identifier for the token.
                     type: string
                 type: object
               initProvider:
@@ -97,14 +103,19 @@ spec:
                   autoscaler.
                 properties:
                   comment:
+                    description: (String) Comment that will appear on the user’s settings
+                      page for this token.
                     type: string
                   creationTime:
                     type: number
                   expiryTime:
                     type: number
                   lifetimeSeconds:
+                    description: (Integer) The lifetime of the token, in seconds.
+                      If no lifetime is specified, the token remains valid indefinitely.
                     type: number
                   tokenId:
+                    description: Canonical unique identifier for the token.
                     type: string
                 type: object
               managementPolicies:
@@ -280,16 +291,22 @@ spec:
               atProvider:
                 properties:
                   comment:
+                    description: (String) Comment that will appear on the user’s settings
+                      page for this token.
                     type: string
                   creationTime:
                     type: number
                   expiryTime:
                     type: number
                   id:
+                    description: Canonical unique identifier for the token.
                     type: string
                   lifetimeSeconds:
+                    description: (Integer) The lifetime of the token, in seconds.
+                      If no lifetime is specified, the token remains valid indefinitely.
                     type: number
                   tokenId:
+                    description: Canonical unique identifier for the token.
                     type: string
                 type: object
               conditions:

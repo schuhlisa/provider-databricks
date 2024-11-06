@@ -14,36 +14,50 @@ import (
 )
 
 type AccessControlInitParameters struct {
+
+	// name of the group. We recommend setting permissions on groups.
 	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
 
+	// permission level according to specific resource. See examples above for the reference.
 	PermissionLevel *string `json:"permissionLevel,omitempty" tf:"permission_level,omitempty"`
 
+	// Application ID of the service_principal.
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
 
+	// name of the user.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type AccessControlObservation struct {
+
+	// name of the group. We recommend setting permissions on groups.
 	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
 
+	// permission level according to specific resource. See examples above for the reference.
 	PermissionLevel *string `json:"permissionLevel,omitempty" tf:"permission_level,omitempty"`
 
+	// Application ID of the service_principal.
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
 
+	// name of the user.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
 
 type AccessControlParameters struct {
 
+	// name of the group. We recommend setting permissions on groups.
 	// +kubebuilder:validation:Optional
 	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
 
+	// permission level according to specific resource. See examples above for the reference.
 	// +kubebuilder:validation:Optional
 	PermissionLevel *string `json:"permissionLevel,omitempty" tf:"permission_level,omitempty"`
 
+	// Application ID of the service_principal.
 	// +kubebuilder:validation:Optional
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
 
+	// name of the user.
 	// +kubebuilder:validation:Optional
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
 }
@@ -51,48 +65,70 @@ type AccessControlParameters struct {
 type PermissionsInitParameters struct {
 	AccessControl []AccessControlInitParameters `json:"accessControl,omitempty" tf:"access_control,omitempty"`
 
+	// either tokens or passwords.
 	Authorization *string `json:"authorization,omitempty" tf:"authorization,omitempty"`
 
+	// cluster id
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
+	// cluster policy id
 	ClusterPolicyID *string `json:"clusterPolicyId,omitempty" tf:"cluster_policy_id,omitempty"`
 
+	// Canonical unique identifier for the permissions in form of /<object type>/<object id>.
 	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
 
+	// directory id
 	DirectoryID *string `json:"directoryId,omitempty" tf:"directory_id,omitempty"`
 
+	// path of directory
 	DirectoryPath *string `json:"directoryPath,omitempty" tf:"directory_path,omitempty"`
 
+	// MLflow experiment id
 	ExperimentID *string `json:"experimentId,omitempty" tf:"experiment_id,omitempty"`
 
+	// instance pool id
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// job id
 	JobID *string `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
+	// ID of notebook within workspace
 	NotebookID *string `json:"notebookId,omitempty" tf:"notebook_id,omitempty"`
 
+	// path of notebook
 	NotebookPath *string `json:"notebookPath,omitempty" tf:"notebook_path,omitempty"`
 
+	// type of permissions.
 	ObjectType *string `json:"objectType,omitempty" tf:"object_type,omitempty"`
 
+	// pipeline id
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 
+	// MLflow registered model id
 	RegisteredModelID *string `json:"registeredModelId,omitempty" tf:"registered_model_id,omitempty"`
 
+	// repo id
 	RepoID *string `json:"repoId,omitempty" tf:"repo_id,omitempty"`
 
+	// path of databricks repo directory(/Repos/<username>/...)
 	RepoPath *string `json:"repoPath,omitempty" tf:"repo_path,omitempty"`
 
+	// SQL alert id
 	SQLAlertID *string `json:"sqlAlertId,omitempty" tf:"sql_alert_id,omitempty"`
 
+	// SQL dashboard id
 	SQLDashboardID *string `json:"sqlDashboardId,omitempty" tf:"sql_dashboard_id,omitempty"`
 
+	// SQL warehouse id
 	SQLEndpointID *string `json:"sqlEndpointId,omitempty" tf:"sql_endpoint_id,omitempty"`
 
+	// SQL query id
 	SQLQueryID *string `json:"sqlQueryId,omitempty" tf:"sql_query_id,omitempty"`
 
+	// Model Serving endpoint id.
 	ServingEndpointID *string `json:"servingEndpointId,omitempty" tf:"serving_endpoint_id,omitempty"`
 
+	// Canonical unique identifier for the permissions in form of /<object type>/<object id>.
 	WorkspaceFileID *string `json:"workspaceFileId,omitempty" tf:"workspace_file_id,omitempty"`
 
 	WorkspaceFilePath *string `json:"workspaceFilePath,omitempty" tf:"workspace_file_path,omitempty"`
@@ -101,50 +137,73 @@ type PermissionsInitParameters struct {
 type PermissionsObservation struct {
 	AccessControl []AccessControlObservation `json:"accessControl,omitempty" tf:"access_control,omitempty"`
 
+	// either tokens or passwords.
 	Authorization *string `json:"authorization,omitempty" tf:"authorization,omitempty"`
 
+	// cluster id
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
+	// cluster policy id
 	ClusterPolicyID *string `json:"clusterPolicyId,omitempty" tf:"cluster_policy_id,omitempty"`
 
+	// Canonical unique identifier for the permissions in form of /<object type>/<object id>.
 	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
 
+	// directory id
 	DirectoryID *string `json:"directoryId,omitempty" tf:"directory_id,omitempty"`
 
+	// path of directory
 	DirectoryPath *string `json:"directoryPath,omitempty" tf:"directory_path,omitempty"`
 
+	// MLflow experiment id
 	ExperimentID *string `json:"experimentId,omitempty" tf:"experiment_id,omitempty"`
 
+	// Canonical unique identifier for the permissions in form of /<object type>/<object id>.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// instance pool id
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// job id
 	JobID *string `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
+	// ID of notebook within workspace
 	NotebookID *string `json:"notebookId,omitempty" tf:"notebook_id,omitempty"`
 
+	// path of notebook
 	NotebookPath *string `json:"notebookPath,omitempty" tf:"notebook_path,omitempty"`
 
+	// type of permissions.
 	ObjectType *string `json:"objectType,omitempty" tf:"object_type,omitempty"`
 
+	// pipeline id
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 
+	// MLflow registered model id
 	RegisteredModelID *string `json:"registeredModelId,omitempty" tf:"registered_model_id,omitempty"`
 
+	// repo id
 	RepoID *string `json:"repoId,omitempty" tf:"repo_id,omitempty"`
 
+	// path of databricks repo directory(/Repos/<username>/...)
 	RepoPath *string `json:"repoPath,omitempty" tf:"repo_path,omitempty"`
 
+	// SQL alert id
 	SQLAlertID *string `json:"sqlAlertId,omitempty" tf:"sql_alert_id,omitempty"`
 
+	// SQL dashboard id
 	SQLDashboardID *string `json:"sqlDashboardId,omitempty" tf:"sql_dashboard_id,omitempty"`
 
+	// SQL warehouse id
 	SQLEndpointID *string `json:"sqlEndpointId,omitempty" tf:"sql_endpoint_id,omitempty"`
 
+	// SQL query id
 	SQLQueryID *string `json:"sqlQueryId,omitempty" tf:"sql_query_id,omitempty"`
 
+	// Model Serving endpoint id.
 	ServingEndpointID *string `json:"servingEndpointId,omitempty" tf:"serving_endpoint_id,omitempty"`
 
+	// Canonical unique identifier for the permissions in form of /<object type>/<object id>.
 	WorkspaceFileID *string `json:"workspaceFileId,omitempty" tf:"workspace_file_id,omitempty"`
 
 	WorkspaceFilePath *string `json:"workspaceFilePath,omitempty" tf:"workspace_file_path,omitempty"`
@@ -155,69 +214,91 @@ type PermissionsParameters struct {
 	// +kubebuilder:validation:Optional
 	AccessControl []AccessControlParameters `json:"accessControl,omitempty" tf:"access_control,omitempty"`
 
+	// either tokens or passwords.
 	// +kubebuilder:validation:Optional
 	Authorization *string `json:"authorization,omitempty" tf:"authorization,omitempty"`
 
+	// cluster id
 	// +kubebuilder:validation:Optional
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
+	// cluster policy id
 	// +kubebuilder:validation:Optional
 	ClusterPolicyID *string `json:"clusterPolicyId,omitempty" tf:"cluster_policy_id,omitempty"`
 
+	// Canonical unique identifier for the permissions in form of /<object type>/<object id>.
 	// +kubebuilder:validation:Optional
 	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
 
+	// directory id
 	// +kubebuilder:validation:Optional
 	DirectoryID *string `json:"directoryId,omitempty" tf:"directory_id,omitempty"`
 
+	// path of directory
 	// +kubebuilder:validation:Optional
 	DirectoryPath *string `json:"directoryPath,omitempty" tf:"directory_path,omitempty"`
 
+	// MLflow experiment id
 	// +kubebuilder:validation:Optional
 	ExperimentID *string `json:"experimentId,omitempty" tf:"experiment_id,omitempty"`
 
+	// instance pool id
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// job id
 	// +kubebuilder:validation:Optional
 	JobID *string `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
+	// ID of notebook within workspace
 	// +kubebuilder:validation:Optional
 	NotebookID *string `json:"notebookId,omitempty" tf:"notebook_id,omitempty"`
 
+	// path of notebook
 	// +kubebuilder:validation:Optional
 	NotebookPath *string `json:"notebookPath,omitempty" tf:"notebook_path,omitempty"`
 
+	// type of permissions.
 	// +kubebuilder:validation:Optional
 	ObjectType *string `json:"objectType,omitempty" tf:"object_type,omitempty"`
 
+	// pipeline id
 	// +kubebuilder:validation:Optional
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 
+	// MLflow registered model id
 	// +kubebuilder:validation:Optional
 	RegisteredModelID *string `json:"registeredModelId,omitempty" tf:"registered_model_id,omitempty"`
 
+	// repo id
 	// +kubebuilder:validation:Optional
 	RepoID *string `json:"repoId,omitempty" tf:"repo_id,omitempty"`
 
+	// path of databricks repo directory(/Repos/<username>/...)
 	// +kubebuilder:validation:Optional
 	RepoPath *string `json:"repoPath,omitempty" tf:"repo_path,omitempty"`
 
+	// SQL alert id
 	// +kubebuilder:validation:Optional
 	SQLAlertID *string `json:"sqlAlertId,omitempty" tf:"sql_alert_id,omitempty"`
 
+	// SQL dashboard id
 	// +kubebuilder:validation:Optional
 	SQLDashboardID *string `json:"sqlDashboardId,omitempty" tf:"sql_dashboard_id,omitempty"`
 
+	// SQL warehouse id
 	// +kubebuilder:validation:Optional
 	SQLEndpointID *string `json:"sqlEndpointId,omitempty" tf:"sql_endpoint_id,omitempty"`
 
+	// SQL query id
 	// +kubebuilder:validation:Optional
 	SQLQueryID *string `json:"sqlQueryId,omitempty" tf:"sql_query_id,omitempty"`
 
+	// Model Serving endpoint id.
 	// +kubebuilder:validation:Optional
 	ServingEndpointID *string `json:"servingEndpointId,omitempty" tf:"serving_endpoint_id,omitempty"`
 
+	// Canonical unique identifier for the permissions in form of /<object type>/<object id>.
 	// +kubebuilder:validation:Optional
 	WorkspaceFileID *string `json:"workspaceFileId,omitempty" tf:"workspace_file_id,omitempty"`
 
@@ -252,7 +333,7 @@ type PermissionsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Permissions is the Schema for the Permissionss API. <no value>
+// Permissions is the Schema for the Permissionss API. |page_title: "databricks_permissions Resource"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

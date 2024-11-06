@@ -16,12 +16,14 @@ import (
 type ChannelInitParameters struct {
 	DbsqlVersion *string `json:"dbsqlVersion,omitempty" tf:"dbsql_version,omitempty"`
 
+	// Name of the Databricks SQL release channel. Possible values are: CHANNEL_NAME_PREVIEW and CHANNEL_NAME_CURRENT. Default is CHANNEL_NAME_CURRENT.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type ChannelObservation struct {
 	DbsqlVersion *string `json:"dbsqlVersion,omitempty" tf:"dbsql_version,omitempty"`
 
+	// Name of the Databricks SQL release channel. Possible values are: CHANNEL_NAME_PREVIEW and CHANNEL_NAME_CURRENT. Default is CHANNEL_NAME_CURRENT.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
@@ -30,6 +32,7 @@ type ChannelParameters struct {
 	// +kubebuilder:validation:Optional
 	DbsqlVersion *string `json:"dbsqlVersion,omitempty" tf:"dbsql_version,omitempty"`
 
+	// Name of the Databricks SQL release channel. Possible values are: CHANNEL_NAME_PREVIEW and CHANNEL_NAME_CURRENT. Default is CHANNEL_NAME_CURRENT.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
@@ -74,115 +77,161 @@ type EndpointHealthParameters struct {
 }
 
 type EndpointInitParameters struct {
+
+	// Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
 	AutoStopMins *float64 `json:"autoStopMins,omitempty" tf:"auto_stop_mins,omitempty"`
 
+	// block, consisting of following fields:
 	Channel []ChannelInitParameters `json:"channel,omitempty" tf:"channel,omitempty"`
 
+	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize *string `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
 
+	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceID *string `json:"dataSourceId,omitempty" tf:"data_source_id,omitempty"`
 
+	// Whether to enable Photon. This field is optional and is enabled by default.
 	EnablePhoton *bool `json:"enablePhoton,omitempty" tf:"enable_photon,omitempty"`
 
+	// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
 	EnableServerlessCompute *bool `json:"enableServerlessCompute,omitempty" tf:"enable_serverless_compute,omitempty"`
 
 	InstanceProfileArn *string `json:"instanceProfileArn,omitempty" tf:"instance_profile_arn,omitempty"`
 
+	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to 1.
 	MaxNumClusters *float64 `json:"maxNumClusters,omitempty" tf:"max_num_clusters,omitempty"`
 
+	// Minimum number of clusters available when a SQL warehouse is running. The default is 1.
 	MinNumClusters *float64 `json:"minNumClusters,omitempty" tf:"min_num_clusters,omitempty"`
 
+	// Name of the SQL warehouse. Must be unique.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// The spot policy to use for allocating instances to clusters: COST_OPTIMIZED or RELIABILITY_OPTIMIZED. This field is optional. Default is COST_OPTIMIZED.
 	SpotInstancePolicy *string `json:"spotInstancePolicy,omitempty" tf:"spot_instance_policy,omitempty"`
 
+	// Databricks tags all endpoint resources with these tags.
 	Tags []TagsInitParameters `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// SQL warehouse type. See for AWS or Azure. Set to PRO or CLASSIC. If the field enable_serverless_compute has the value true either explicitly or through the default logic (see that field above for details), the default is PRO, which is required for serverless SQL warehouses. Otherwise, the default is CLASSIC.
 	WarehouseType *string `json:"warehouseType,omitempty" tf:"warehouse_type,omitempty"`
 }
 
 type EndpointObservation struct {
+
+	// Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
 	AutoStopMins *float64 `json:"autoStopMins,omitempty" tf:"auto_stop_mins,omitempty"`
 
+	// block, consisting of following fields:
 	Channel []ChannelObservation `json:"channel,omitempty" tf:"channel,omitempty"`
 
+	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize *string `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
 
+	// The username of the user who created the endpoint.
 	CreatorName *string `json:"creatorName,omitempty" tf:"creator_name,omitempty"`
 
+	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceID *string `json:"dataSourceId,omitempty" tf:"data_source_id,omitempty"`
 
+	// Whether to enable Photon. This field is optional and is enabled by default.
 	EnablePhoton *bool `json:"enablePhoton,omitempty" tf:"enable_photon,omitempty"`
 
+	// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
 	EnableServerlessCompute *bool `json:"enableServerlessCompute,omitempty" tf:"enable_serverless_compute,omitempty"`
 
+	// Health status of the endpoint.
 	Health []EndpointHealthObservation `json:"health,omitempty" tf:"health,omitempty"`
 
+	// the unique ID of the SQL warehouse.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	InstanceProfileArn *string `json:"instanceProfileArn,omitempty" tf:"instance_profile_arn,omitempty"`
 
+	// JDBC connection string.
 	JdbcURL *string `json:"jdbcUrl,omitempty" tf:"jdbc_url,omitempty"`
 
+	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to 1.
 	MaxNumClusters *float64 `json:"maxNumClusters,omitempty" tf:"max_num_clusters,omitempty"`
 
+	// Minimum number of clusters available when a SQL warehouse is running. The default is 1.
 	MinNumClusters *float64 `json:"minNumClusters,omitempty" tf:"min_num_clusters,omitempty"`
 
+	// Name of the SQL warehouse. Must be unique.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// The current number of clusters used by the endpoint.
 	NumActiveSessions *float64 `json:"numActiveSessions,omitempty" tf:"num_active_sessions,omitempty"`
 
+	// The current number of clusters used by the endpoint.
 	NumClusters *float64 `json:"numClusters,omitempty" tf:"num_clusters,omitempty"`
 
+	// ODBC connection params: odbc_params.hostname, odbc_params.path, odbc_params.protocol, and odbc_params.port.
 	OdbcParams []OdbcParamsObservation `json:"odbcParams,omitempty" tf:"odbc_params,omitempty"`
 
+	// The spot policy to use for allocating instances to clusters: COST_OPTIMIZED or RELIABILITY_OPTIMIZED. This field is optional. Default is COST_OPTIMIZED.
 	SpotInstancePolicy *string `json:"spotInstancePolicy,omitempty" tf:"spot_instance_policy,omitempty"`
 
+	// The current state of the endpoint.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
+	// Databricks tags all endpoint resources with these tags.
 	Tags []TagsObservation `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// SQL warehouse type. See for AWS or Azure. Set to PRO or CLASSIC. If the field enable_serverless_compute has the value true either explicitly or through the default logic (see that field above for details), the default is PRO, which is required for serverless SQL warehouses. Otherwise, the default is CLASSIC.
 	WarehouseType *string `json:"warehouseType,omitempty" tf:"warehouse_type,omitempty"`
 }
 
 type EndpointParameters struct {
 
+	// Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
 	// +kubebuilder:validation:Optional
 	AutoStopMins *float64 `json:"autoStopMins,omitempty" tf:"auto_stop_mins,omitempty"`
 
+	// block, consisting of following fields:
 	// +kubebuilder:validation:Optional
 	Channel []ChannelParameters `json:"channel,omitempty" tf:"channel,omitempty"`
 
+	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	// +kubebuilder:validation:Optional
 	ClusterSize *string `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
 
+	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	// +kubebuilder:validation:Optional
 	DataSourceID *string `json:"dataSourceId,omitempty" tf:"data_source_id,omitempty"`
 
+	// Whether to enable Photon. This field is optional and is enabled by default.
 	// +kubebuilder:validation:Optional
 	EnablePhoton *bool `json:"enablePhoton,omitempty" tf:"enable_photon,omitempty"`
 
+	// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
 	// +kubebuilder:validation:Optional
 	EnableServerlessCompute *bool `json:"enableServerlessCompute,omitempty" tf:"enable_serverless_compute,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	InstanceProfileArn *string `json:"instanceProfileArn,omitempty" tf:"instance_profile_arn,omitempty"`
 
+	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to 1.
 	// +kubebuilder:validation:Optional
 	MaxNumClusters *float64 `json:"maxNumClusters,omitempty" tf:"max_num_clusters,omitempty"`
 
+	// Minimum number of clusters available when a SQL warehouse is running. The default is 1.
 	// +kubebuilder:validation:Optional
 	MinNumClusters *float64 `json:"minNumClusters,omitempty" tf:"min_num_clusters,omitempty"`
 
+	// Name of the SQL warehouse. Must be unique.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// The spot policy to use for allocating instances to clusters: COST_OPTIMIZED or RELIABILITY_OPTIMIZED. This field is optional. Default is COST_OPTIMIZED.
 	// +kubebuilder:validation:Optional
 	SpotInstancePolicy *string `json:"spotInstancePolicy,omitempty" tf:"spot_instance_policy,omitempty"`
 
+	// Databricks tags all endpoint resources with these tags.
 	// +kubebuilder:validation:Optional
 	Tags []TagsParameters `json:"tags,omitempty" tf:"tags,omitempty"`
 
+	// SQL warehouse type. See for AWS or Azure. Set to PRO or CLASSIC. If the field enable_serverless_compute has the value true either explicitly or through the default logic (see that field above for details), the default is PRO, which is required for serverless SQL warehouses. Otherwise, the default is CLASSIC.
 	// +kubebuilder:validation:Optional
 	WarehouseType *string `json:"warehouseType,omitempty" tf:"warehouse_type,omitempty"`
 }
@@ -206,6 +255,8 @@ type OdbcParamsInitParameters struct {
 }
 
 type OdbcParamsObservation struct {
+
+	// Name of the SQL warehouse. Must be unique.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
@@ -219,15 +270,20 @@ type OdbcParamsParameters struct {
 }
 
 type TagsInitParameters struct {
+
+	// Databricks tags all endpoint resources with these tags.
 	CustomTags []CustomTagsInitParameters `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 }
 
 type TagsObservation struct {
+
+	// Databricks tags all endpoint resources with these tags.
 	CustomTags []CustomTagsObservation `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 }
 
 type TagsParameters struct {
 
+	// Databricks tags all endpoint resources with these tags.
 	// +kubebuilder:validation:Optional
 	CustomTags []CustomTagsParameters `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 }
@@ -259,7 +315,7 @@ type EndpointStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Endpoint is the Schema for the Endpoints API. <no value>
+// Endpoint is the Schema for the Endpoints API. |page_title: "databricks_sql_endpoint Resource"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -34,7 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Notebook is the Schema for the Notebooks API. <no value>
+        description: 'Notebook is the Schema for the Notebooks API. |page_title: "databricks_notebook
+          Resource"'
         properties:
           apiVersion:
             description: |-
@@ -73,20 +74,28 @@ spec:
               forProvider:
                 properties:
                   contentBase64:
+                    description: The base64-encoded notebook source code. Conflicts
+                      with source.
                     type: string
                   format:
                     type: string
                   language:
+                    description: One of SCALA, PYTHON, SQL, R.
                     type: string
                   md5:
                     type: string
                   objectId:
+                    description: Unique identifier for a NOTEBOOK
                     type: number
                   objectType:
                     type: string
                   path:
+                    description: The absolute path of the notebook or directory, beginning
+                      with "/", e.g. "/Demo".
                     type: string
                   source:
+                    description: Path to notebook in source code format on local filesystem.
+                      Conflicts with content_base64.
                     type: string
                 type: object
               initProvider:
@@ -103,20 +112,28 @@ spec:
                   autoscaler.
                 properties:
                   contentBase64:
+                    description: The base64-encoded notebook source code. Conflicts
+                      with source.
                     type: string
                   format:
                     type: string
                   language:
+                    description: One of SCALA, PYTHON, SQL, R.
                     type: string
                   md5:
                     type: string
                   objectId:
+                    description: Unique identifier for a NOTEBOOK
                     type: number
                   objectType:
                     type: string
                   path:
+                    description: The absolute path of the notebook or directory, beginning
+                      with "/", e.g. "/Demo".
                     type: string
                   source:
+                    description: Path to notebook in source code format on local filesystem.
+                      Conflicts with content_base64.
                     type: string
                 type: object
               managementPolicies:
@@ -297,26 +314,38 @@ spec:
               atProvider:
                 properties:
                   contentBase64:
+                    description: The base64-encoded notebook source code. Conflicts
+                      with source.
                     type: string
                   format:
                     type: string
                   id:
+                    description: Path of notebook on workspace
                     type: string
                   language:
+                    description: One of SCALA, PYTHON, SQL, R.
                     type: string
                   md5:
                     type: string
                   objectId:
+                    description: Unique identifier for a NOTEBOOK
                     type: number
                   objectType:
                     type: string
                   path:
+                    description: The absolute path of the notebook or directory, beginning
+                      with "/", e.g. "/Demo".
                     type: string
                   source:
+                    description: Path to notebook in source code format on local filesystem.
+                      Conflicts with content_base64.
                     type: string
                   url:
+                    description: Routable URL of the notebook
                     type: string
                   workspacePath:
+                    description: path on Workspace File System (WSFS) in form of /Workspace
+                      + path
                     type: string
                 type: object
               conditions:

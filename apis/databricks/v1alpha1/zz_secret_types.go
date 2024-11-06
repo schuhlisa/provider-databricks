@@ -14,33 +14,46 @@ import (
 )
 
 type SecretInitParameters struct {
+
+	// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
+	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// (String) super secret sensitive value.
 	StringValueSecretRef v1.SecretKeySelector `json:"stringValueSecretRef" tf:"-"`
 }
 
 type SecretObservation struct {
+
+	// (String) value to use as a secret reference in Spark configuration and environment variables: {{secrets/scope/key}}.
 	ConfigReference *string `json:"configReference,omitempty" tf:"config_reference,omitempty"`
 
+	// Canonical unique identifier for the secret.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
+	// (Integer) time secret was updated
 	LastUpdatedTimestamp *float64 `json:"lastUpdatedTimestamp,omitempty" tf:"last_updated_timestamp,omitempty"`
 
+	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 }
 
 type SecretParameters struct {
 
+	// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	// +kubebuilder:validation:Optional
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
+	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	// +kubebuilder:validation:Optional
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
+	// (String) super secret sensitive value.
 	// +kubebuilder:validation:Optional
 	StringValueSecretRef v1.SecretKeySelector `json:"stringValueSecretRef" tf:"-"`
 }
@@ -72,7 +85,7 @@ type SecretStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Secret is the Schema for the Secrets API. <no value>
+// Secret is the Schema for the Secrets API. |page_title: "databricks_secret Resource"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

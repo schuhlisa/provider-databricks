@@ -34,7 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Permissions is the Schema for the Permissionss API. <no value>
+        description: 'Permissions is the Schema for the Permissionss API. |page_title:
+          "databricks_permissions Resource"'
         properties:
           apiVersion:
             description: |-
@@ -76,58 +77,88 @@ spec:
                     items:
                       properties:
                         groupName:
+                          description: name of the group. We recommend setting permissions
+                            on groups.
                           type: string
                         permissionLevel:
+                          description: permission level according to specific resource.
+                            See examples above for the reference.
                           type: string
                         servicePrincipalName:
+                          description: Application ID of the service_principal.
                           type: string
                         userName:
+                          description: name of the user.
                           type: string
                       type: object
                     type: array
                   authorization:
+                    description: either tokens or passwords.
                     type: string
                   clusterId:
+                    description: cluster id
                     type: string
                   clusterPolicyId:
+                    description: cluster policy id
                     type: string
                   dashboardId:
+                    description: Canonical unique identifier for the permissions in
+                      form of /<object type>/<object id>.
                     type: string
                   directoryId:
+                    description: directory id
                     type: string
                   directoryPath:
+                    description: path of directory
                     type: string
                   experimentId:
+                    description: MLflow experiment id
                     type: string
                   instancePoolId:
+                    description: instance pool id
                     type: string
                   jobId:
+                    description: job id
                     type: string
                   notebookId:
+                    description: ID of notebook within workspace
                     type: string
                   notebookPath:
+                    description: path of notebook
                     type: string
                   objectType:
+                    description: type of permissions.
                     type: string
                   pipelineId:
+                    description: pipeline id
                     type: string
                   registeredModelId:
+                    description: MLflow registered model id
                     type: string
                   repoId:
+                    description: repo id
                     type: string
                   repoPath:
+                    description: path of databricks repo directory(/Repos/<username>/...)
                     type: string
                   servingEndpointId:
+                    description: Model Serving endpoint id.
                     type: string
                   sqlAlertId:
+                    description: SQL alert id
                     type: string
                   sqlDashboardId:
+                    description: SQL dashboard id
                     type: string
                   sqlEndpointId:
+                    description: SQL warehouse id
                     type: string
                   sqlQueryId:
+                    description: SQL query id
                     type: string
                   workspaceFileId:
+                    description: Canonical unique identifier for the permissions in
+                      form of /<object type>/<object id>.
                     type: string
                   workspaceFilePath:
                     type: string
@@ -149,58 +180,88 @@ spec:
                     items:
                       properties:
                         groupName:
+                          description: name of the group. We recommend setting permissions
+                            on groups.
                           type: string
                         permissionLevel:
+                          description: permission level according to specific resource.
+                            See examples above for the reference.
                           type: string
                         servicePrincipalName:
+                          description: Application ID of the service_principal.
                           type: string
                         userName:
+                          description: name of the user.
                           type: string
                       type: object
                     type: array
                   authorization:
+                    description: either tokens or passwords.
                     type: string
                   clusterId:
+                    description: cluster id
                     type: string
                   clusterPolicyId:
+                    description: cluster policy id
                     type: string
                   dashboardId:
+                    description: Canonical unique identifier for the permissions in
+                      form of /<object type>/<object id>.
                     type: string
                   directoryId:
+                    description: directory id
                     type: string
                   directoryPath:
+                    description: path of directory
                     type: string
                   experimentId:
+                    description: MLflow experiment id
                     type: string
                   instancePoolId:
+                    description: instance pool id
                     type: string
                   jobId:
+                    description: job id
                     type: string
                   notebookId:
+                    description: ID of notebook within workspace
                     type: string
                   notebookPath:
+                    description: path of notebook
                     type: string
                   objectType:
+                    description: type of permissions.
                     type: string
                   pipelineId:
+                    description: pipeline id
                     type: string
                   registeredModelId:
+                    description: MLflow registered model id
                     type: string
                   repoId:
+                    description: repo id
                     type: string
                   repoPath:
+                    description: path of databricks repo directory(/Repos/<username>/...)
                     type: string
                   servingEndpointId:
+                    description: Model Serving endpoint id.
                     type: string
                   sqlAlertId:
+                    description: SQL alert id
                     type: string
                   sqlDashboardId:
+                    description: SQL dashboard id
                     type: string
                   sqlEndpointId:
+                    description: SQL warehouse id
                     type: string
                   sqlQueryId:
+                    description: SQL query id
                     type: string
                   workspaceFileId:
+                    description: Canonical unique identifier for the permissions in
+                      form of /<object type>/<object id>.
                     type: string
                   workspaceFilePath:
                     type: string
@@ -386,60 +447,92 @@ spec:
                     items:
                       properties:
                         groupName:
+                          description: name of the group. We recommend setting permissions
+                            on groups.
                           type: string
                         permissionLevel:
+                          description: permission level according to specific resource.
+                            See examples above for the reference.
                           type: string
                         servicePrincipalName:
+                          description: Application ID of the service_principal.
                           type: string
                         userName:
+                          description: name of the user.
                           type: string
                       type: object
                     type: array
                   authorization:
+                    description: either tokens or passwords.
                     type: string
                   clusterId:
+                    description: cluster id
                     type: string
                   clusterPolicyId:
+                    description: cluster policy id
                     type: string
                   dashboardId:
+                    description: Canonical unique identifier for the permissions in
+                      form of /<object type>/<object id>.
                     type: string
                   directoryId:
+                    description: directory id
                     type: string
                   directoryPath:
+                    description: path of directory
                     type: string
                   experimentId:
+                    description: MLflow experiment id
                     type: string
                   id:
+                    description: Canonical unique identifier for the permissions in
+                      form of /<object type>/<object id>.
                     type: string
                   instancePoolId:
+                    description: instance pool id
                     type: string
                   jobId:
+                    description: job id
                     type: string
                   notebookId:
+                    description: ID of notebook within workspace
                     type: string
                   notebookPath:
+                    description: path of notebook
                     type: string
                   objectType:
+                    description: type of permissions.
                     type: string
                   pipelineId:
+                    description: pipeline id
                     type: string
                   registeredModelId:
+                    description: MLflow registered model id
                     type: string
                   repoId:
+                    description: repo id
                     type: string
                   repoPath:
+                    description: path of databricks repo directory(/Repos/<username>/...)
                     type: string
                   servingEndpointId:
+                    description: Model Serving endpoint id.
                     type: string
                   sqlAlertId:
+                    description: SQL alert id
                     type: string
                   sqlDashboardId:
+                    description: SQL dashboard id
                     type: string
                   sqlEndpointId:
+                    description: SQL warehouse id
                     type: string
                   sqlQueryId:
+                    description: SQL query id
                     type: string
                   workspaceFileId:
+                    description: Canonical unique identifier for the permissions in
+                      form of /<object type>/<object id>.
                     type: string
                   workspaceFilePath:
                     type: string
