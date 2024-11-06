@@ -135,6 +135,7 @@ pull-docs:
 	@git -C "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" sparse-checkout set "$(TERRAFORM_DOCS_PATH)"
 
 generate.init: $(TERRAFORM_PROVIDER_SCHEMA) pull-docs
+	sh ./hack/fix_docs.sh
 
 .PHONY: $(TERRAFORM_PROVIDER_SCHEMA) pull-docs check-terraform-version
 # ====================================================================================
@@ -256,3 +257,5 @@ help-special: crossplane.help
 # TODO(negz): Update CI to use these targets.
 vendor: modules.download
 vendor.check: modules.check
+
+
