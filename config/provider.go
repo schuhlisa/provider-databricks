@@ -18,7 +18,8 @@ import (
 	"github.com/glalanne/provider-databricks/config/permissions"
 	"github.com/glalanne/provider-databricks/config/secret"
 	"github.com/glalanne/provider-databricks/config/secret_scope"
-	"github.com/glalanne/provider-databricks/config/sql_endpoint"
+
+	// "github.com/glalanne/provider-databricks/config/sql_endpoint"
 	"github.com/glalanne/provider-databricks/config/token"
 )
 
@@ -55,7 +56,7 @@ func GetProvider() *ujconfig.Provider {
 		job.Configure,
 		instance_pool.Configure,
 		permissions.Configure,
-		sql_endpoint.Configure,
+		// sql_endpoint.Configure,
 	} {
 		configure(pc)
 	}
