@@ -14,6 +14,9 @@ env:
   GOLANGCI_VERSION: 'v1.54.0'
   DOCKER_BUILDX_VERSION: 'v0.8.2'
 
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
   # Common users. We can't run a step 'if secrets.XXX != ""' but we can run a
   # step 'if env.XXX != ""', so we copy these to succinctly test whether
   # credentials have been provided before trying to run steps that need them.
@@ -241,6 +244,11 @@ jobs:
 
   publish-artifacts:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
     needs:
       - detect-noop
       - report-breaking-changes
@@ -261,6 +269,14 @@ jobs:
         with:
           version: ${{ env.DOCKER_BUILDX_VERSION }}
           install: true
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        if: env.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR == ''
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Login to Upbound
         uses: docker/login-action@v3
@@ -320,3 +336,10 @@ jobs:
       - name: Publish Artifacts
         if: env.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR != ''
         run: make publish BRANCH_NAME=${GITHUB_REF##*/}
+
+      - name: Docker Push
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${GITHUB_ACTOR} --password-stdin
+
+          make publish
+  
