@@ -18,8 +18,8 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	"databricks_notebook":       config.IdentifierFromProvider,
 	"databricks_job":            config.IdentifierFromProvider,
 	"databricks_instance_pool":  config.IdentifierFromProvider,
-	// "databricks_sql_endpoint":   config.IdentifierFromProvider,
-	"databricks_permissions": config.IdentifierFromProvider,
+	"databricks_sql_endpoint":   config.IdentifierFromProvider,
+	"databricks_permissions":    config.IdentifierFromProvider,
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the
