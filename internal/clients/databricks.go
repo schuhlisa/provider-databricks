@@ -32,6 +32,7 @@ const (
 	keyAzureClientId            = "azure_client_id"
 	keyAzureClientSecret        = "azure_client_secret"
 	keyAzureTenantId            = "azure_tenant_id"
+	keyAuthType                 = "auth_type"
 )
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
@@ -88,6 +89,9 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		}
 		if v, ok := creds[keyAzureTenantId]; ok {
 			ps.Configuration[keyAzureTenantId] = v
+		}
+		if v, ok := creds[keyAuthType]; ok {
+			ps.Configuration[keyAuthType] = v
 		}
 
 		return ps, nil
