@@ -4,7 +4,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
-  name: endpoints.databricks.crossplane.io
+  name: sqlendpoints.databricks.crossplane.io
 spec:
   group: databricks.crossplane.io
   names:
@@ -12,10 +12,10 @@ spec:
     - crossplane
     - managed
     - databricks
-    kind: Endpoint
-    listKind: EndpointList
-    plural: endpoints
-    singular: endpoint
+    kind: SqlEndpoint
+    listKind: SqlEndpointList
+    plural: sqlendpoints
+    singular: sqlendpoint
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Endpoint is the Schema for the Endpoints API. ""subcategory:
+        description: 'SqlEndpoint is the Schema for the SqlEndpoints API. ""subcategory:
           "Databricks SQL"'
         properties:
           apiVersion:
@@ -55,7 +55,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: EndpointSpec defines the desired state of Endpoint
+            description: SqlEndpointSpec defines the desired state of SqlEndpoint
             properties:
               deletionPolicy:
                 default: Delete
@@ -429,7 +429,7 @@ spec:
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.name)
                 || (has(self.initProvider) && has(self.initProvider.name))'
           status:
-            description: EndpointStatus defines the observed state of Endpoint.
+            description: SqlEndpointStatus defines the observed state of SqlEndpoint.
             properties:
               atProvider:
                 properties:
@@ -506,9 +506,6 @@ spec:
                     type: string
                   instanceProfileArn:
                     type: string
-                  jdbcUrl:
-                    description: JDBC connection string.
-                    type: string
                   maxNumClusters:
                     description: Maximum number of clusters available when a SQL warehouse
                       is running. This field is required. If multi-cluster load balancing
@@ -527,22 +524,6 @@ spec:
                   numClusters:
                     description: The current number of clusters used by the endpoint.
                     type: number
-                  odbcParams:
-                    description: 'ODBC connection params: odbc_params.hostname, odbc_params.path,
-                      odbc_params.protocol, and odbc_params.port.'
-                    items:
-                      properties:
-                        hostname:
-                          description: Name of the SQL warehouse. Must be unique.
-                          type: string
-                        path:
-                          type: string
-                        port:
-                          type: number
-                        protocol:
-                          type: string
-                      type: object
-                    type: array
                   spotInstancePolicy:
                     description: 'The spot policy to use for allocating instances
                       to clusters: COST_OPTIMIZED or RELIABILITY_OPTIMIZED. This field
