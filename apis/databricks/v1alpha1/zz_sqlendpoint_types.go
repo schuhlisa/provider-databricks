@@ -196,6 +196,9 @@ type SQLEndpointObservation struct {
 	// The current number of clusters used by the endpoint.
 	NumClusters *float64 `json:"numClusters,omitempty" tf:"num_clusters,omitempty"`
 
+	// ODBC connection params: odbc_params.hostname, odbc_params.path, odbc_params.protocol, and odbc_params.port.
+	OdbcParams []OdbcParamsObservation `json:"odbcParams,omitempty" tf:"odbc_params,omitempty"`
+
 	// The spot policy to use for allocating instances to clusters: COST_OPTIMIZED or RELIABILITY_OPTIMIZED. This field is optional. Default is COST_OPTIMIZED.
 	SpotInstancePolicy *string `json:"spotInstancePolicy,omitempty" tf:"spot_instance_policy,omitempty"`
 

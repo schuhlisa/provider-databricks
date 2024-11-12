@@ -21,7 +21,7 @@ func (mg *SQLEndpoint) GetTerraformResourceType() string {
 
 // GetConnectionDetailsMapping for this SQLEndpoint
 func (tr *SQLEndpoint) GetConnectionDetailsMapping() map[string]string {
-	return map[string]string{"jdbc_url": "status.atProvider.jdbcUrl", "odbc_params[*]": "status.atProvider.odbcParams[*]"}
+	return map[string]string{"jdbc_url": "status.atProvider.jdbcUrl"}
 }
 
 // GetObservation of this SQLEndpoint

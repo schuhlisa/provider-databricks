@@ -23750,6 +23750,13 @@ func (in *SQLEndpointObservation) DeepCopyInto(out *SQLEndpointObservation) {
 		*out = new(float64)
 		**out = **in
 	}
+	if in.OdbcParams != nil {
+		in, out := &in.OdbcParams, &out.OdbcParams
+		*out = make([]OdbcParamsObservation, len(*in))
+		for i := range *in {
+			(*in)[i].DeepCopyInto(&(*out)[i])
+		}
+	}
 	if in.SpotInstancePolicy != nil {
 		in, out := &in.SpotInstancePolicy, &out.SpotInstancePolicy
 		*out = new(string)
