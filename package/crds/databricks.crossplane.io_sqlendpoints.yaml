@@ -4,7 +4,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
-  name: endpoints.databricks.crossplane.io
+  name: sqlendpoints.databricks.crossplane.io
 spec:
   group: databricks.crossplane.io
   names:
@@ -12,10 +12,10 @@ spec:
     - crossplane
     - managed
     - databricks
-    kind: Endpoint
-    listKind: EndpointList
-    plural: endpoints
-    singular: endpoint
+    kind: SQLEndpoint
+    listKind: SQLEndpointList
+    plural: sqlendpoints
+    singular: sqlendpoint
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Endpoint is the Schema for the Endpoints API. ""subcategory:
+        description: 'SQLEndpoint is the Schema for the SQLEndpoints API. ""subcategory:
           "Databricks SQL"'
         properties:
           apiVersion:
@@ -55,7 +55,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: EndpointSpec defines the desired state of Endpoint
+            description: SQLEndpointSpec defines the desired state of SQLEndpoint
             properties:
               deletionPolicy:
                 default: Delete
@@ -429,7 +429,7 @@ spec:
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.name)
                 || (has(self.initProvider) && has(self.initProvider.name))'
           status:
-            description: EndpointStatus defines the observed state of Endpoint.
+            description: SQLEndpointStatus defines the observed state of SQLEndpoint.
             properties:
               atProvider:
                 properties:

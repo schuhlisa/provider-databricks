@@ -26,15 +26,6 @@ func (l *ClusterPolicyList) GetItems() []resource.Managed {
 	return items
 }
 
-// GetItems of this EndpointList.
-func (l *EndpointList) GetItems() []resource.Managed {
-	items := make([]resource.Managed, len(l.Items))
-	for i := range l.Items {
-		items[i] = &l.Items[i]
-	}
-	return items
-}
-
 // GetItems of this InstancePoolList.
 func (l *InstancePoolList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
@@ -64,6 +55,15 @@ func (l *NotebookList) GetItems() []resource.Managed {
 
 // GetItems of this PermissionsList.
 func (l *PermissionsList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this SQLEndpointList.
+func (l *SQLEndpointList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]

@@ -58,10 +58,43 @@ type CustomTagsParameters struct {
 	Value *string `json:"value" tf:"value,omitempty"`
 }
 
-type EndpointHealthInitParameters struct {
+type FailureReasonInitParameters struct {
 }
 
-type EndpointHealthObservation struct {
+type FailureReasonObservation struct {
+	Code *string `json:"code,omitempty" tf:"code,omitempty"`
+
+	// +mapType=granular
+	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type FailureReasonParameters struct {
+}
+
+type OdbcParamsInitParameters struct {
+}
+
+type OdbcParamsObservation struct {
+
+	// Name of the SQL warehouse. Must be unique.
+	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
+
+	Path *string `json:"path,omitempty" tf:"path,omitempty"`
+
+	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+
+	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
+}
+
+type OdbcParamsParameters struct {
+}
+
+type SQLEndpointHealthInitParameters struct {
+}
+
+type SQLEndpointHealthObservation struct {
 	Details *string `json:"details,omitempty" tf:"details,omitempty"`
 
 	FailureReason []FailureReasonObservation `json:"failureReason,omitempty" tf:"failure_reason,omitempty"`
@@ -73,10 +106,10 @@ type EndpointHealthObservation struct {
 	Summary *string `json:"summary,omitempty" tf:"summary,omitempty"`
 }
 
-type EndpointHealthParameters struct {
+type SQLEndpointHealthParameters struct {
 }
 
-type EndpointInitParameters struct {
+type SQLEndpointInitParameters struct {
 
 	// Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
 	AutoStopMins *float64 `json:"autoStopMins,omitempty" tf:"auto_stop_mins,omitempty"`
@@ -117,7 +150,7 @@ type EndpointInitParameters struct {
 	WarehouseType *string `json:"warehouseType,omitempty" tf:"warehouse_type,omitempty"`
 }
 
-type EndpointObservation struct {
+type SQLEndpointObservation struct {
 
 	// Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
 	AutoStopMins *float64 `json:"autoStopMins,omitempty" tf:"auto_stop_mins,omitempty"`
@@ -141,7 +174,7 @@ type EndpointObservation struct {
 	EnableServerlessCompute *bool `json:"enableServerlessCompute,omitempty" tf:"enable_serverless_compute,omitempty"`
 
 	// Health status of the endpoint.
-	Health []EndpointHealthObservation `json:"health,omitempty" tf:"health,omitempty"`
+	Health []SQLEndpointHealthObservation `json:"health,omitempty" tf:"health,omitempty"`
 
 	// the unique ID of the SQL warehouse.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -176,7 +209,7 @@ type EndpointObservation struct {
 	WarehouseType *string `json:"warehouseType,omitempty" tf:"warehouse_type,omitempty"`
 }
 
-type EndpointParameters struct {
+type SQLEndpointParameters struct {
 
 	// Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
 	// +kubebuilder:validation:Optional
@@ -230,39 +263,6 @@ type EndpointParameters struct {
 	WarehouseType *string `json:"warehouseType,omitempty" tf:"warehouse_type,omitempty"`
 }
 
-type FailureReasonInitParameters struct {
-}
-
-type FailureReasonObservation struct {
-	Code *string `json:"code,omitempty" tf:"code,omitempty"`
-
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
-
-	Type *string `json:"type,omitempty" tf:"type,omitempty"`
-}
-
-type FailureReasonParameters struct {
-}
-
-type OdbcParamsInitParameters struct {
-}
-
-type OdbcParamsObservation struct {
-
-	// Name of the SQL warehouse. Must be unique.
-	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
-
-	Path *string `json:"path,omitempty" tf:"path,omitempty"`
-
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
-
-	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
-}
-
-type OdbcParamsParameters struct {
-}
-
 type TagsInitParameters struct {
 
 	// Databricks tags all endpoint resources with these tags.
@@ -282,10 +282,10 @@ type TagsParameters struct {
 	CustomTags []CustomTagsParameters `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 }
 
-// EndpointSpec defines the desired state of Endpoint
-type EndpointSpec struct {
+// SQLEndpointSpec defines the desired state of SQLEndpoint
+type SQLEndpointSpec struct {
 	v1.ResourceSpec `json:",inline"`
-	ForProvider     EndpointParameters `json:"forProvider"`
+	ForProvider     SQLEndpointParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -296,51 +296,51 @@ type EndpointSpec struct {
 	// required on creation, but we do not desire to update them after creation,
 	// for example because of an external controller is managing them, like an
 	// autoscaler.
-	InitProvider EndpointInitParameters `json:"initProvider,omitempty"`
+	InitProvider SQLEndpointInitParameters `json:"initProvider,omitempty"`
 }
 
-// EndpointStatus defines the observed state of Endpoint.
-type EndpointStatus struct {
+// SQLEndpointStatus defines the observed state of SQLEndpoint.
+type SQLEndpointStatus struct {
 	v1.ResourceStatus `json:",inline"`
-	AtProvider        EndpointObservation `json:"atProvider,omitempty"`
+	AtProvider        SQLEndpointObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Endpoint is the Schema for the Endpoints API. ""subcategory: "Databricks SQL"
+// SQLEndpoint is the Schema for the SQLEndpoints API. ""subcategory: "Databricks SQL"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,databricks}
-type Endpoint struct {
+type SQLEndpoint struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.clusterSize) || (has(self.initProvider) && has(self.initProvider.clusterSize))",message="spec.forProvider.clusterSize is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.name) || (has(self.initProvider) && has(self.initProvider.name))",message="spec.forProvider.name is a required parameter"
-	Spec   EndpointSpec   `json:"spec"`
-	Status EndpointStatus `json:"status,omitempty"`
+	Spec   SQLEndpointSpec   `json:"spec"`
+	Status SQLEndpointStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// EndpointList contains a list of Endpoints
-type EndpointList struct {
+// SQLEndpointList contains a list of SQLEndpoints
+type SQLEndpointList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Endpoint `json:"items"`
+	Items           []SQLEndpoint `json:"items"`
 }
 
 // Repository type metadata.
 var (
-	Endpoint_Kind             = "Endpoint"
-	Endpoint_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: Endpoint_Kind}.String()
-	Endpoint_KindAPIVersion   = Endpoint_Kind + "." + CRDGroupVersion.String()
-	Endpoint_GroupVersionKind = CRDGroupVersion.WithKind(Endpoint_Kind)
+	SQLEndpoint_Kind             = "SQLEndpoint"
+	SQLEndpoint_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: SQLEndpoint_Kind}.String()
+	SQLEndpoint_KindAPIVersion   = SQLEndpoint_Kind + "." + CRDGroupVersion.String()
+	SQLEndpoint_GroupVersionKind = CRDGroupVersion.WithKind(SQLEndpoint_Kind)
 )
 
 func init() {
-	SchemeBuilder.Register(&Endpoint{}, &EndpointList{})
+	SchemeBuilder.Register(&SQLEndpoint{}, &SQLEndpointList{})
 }

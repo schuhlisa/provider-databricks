@@ -8,9 +8,6 @@ import (
 func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("databricks_sql_endpoint", func(r *config.Resource) {
 		r.ShortGroup = "databricks"
-		// r.Kind = "SqlEndpoint"
-		// r.MetaResource.Name = "sql_endpoint"
-		// r.Name = "sql_endpoint"
 
 		if s, ok := r.TerraformResource.Schema["jdbc_url"]; ok {
 			s.Sensitive = true

@@ -1,8 +1,8 @@
 apiVersion: databricks.crossplane.io/v1alpha1
-kind: Endpoint
+kind: SQLEndpoint
 metadata:
   annotations:
-    meta.upbound.io/example-id: databricks/v1alpha1/endpoint
+    meta.upbound.io/example-id: databricks/v1alpha1/sqlendpoint
   labels:
     testing.upbound.io/example-name: this
   name: this

@@ -7,8 +7,10 @@ package config
 import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
+	"strings"
 
 	ujconfig "github.com/crossplane/upjet/pkg/config"
+	"github.com/crossplane/upjet/pkg/types/name"
 
 	"github.com/glalanne/provider-databricks/config/cluster"
 	"github.com/glalanne/provider-databricks/config/cluster_policy"
@@ -58,6 +60,17 @@ func GetProvider() *ujconfig.Provider {
 		sql_endpoint.Configure,
 	} {
 		configure(pc)
+	}
+
+	// Rename resources to make it more pleasing to the eye
+	for _, r := range pc.Resources {
+
+		parts := strings.Split(r.Name, "_")
+		if len(parts) > 1 {
+			r.ShortGroup = resourcePrefix
+			r.Kind = name.NewFromSnake(strings.Join(parts[1:], "_")).Camel
+		}
+
 	}
 
 	pc.ConfigureResources()

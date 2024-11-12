@@ -4,7 +4,9 @@ Copyright 2022 Upbound Inc.
 
 package config
 
-import "github.com/crossplane/upjet/pkg/config"
+import (
+	"github.com/crossplane/upjet/pkg/config"
+)
 
 // ExternalNameConfigs contains all external name configurations for this
 // provider.
@@ -28,6 +30,7 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 func ExternalNameConfigurations() config.ResourceOption {
 	return func(r *config.Resource) {
 		if e, ok := ExternalNameConfigs[r.Name]; ok {
+
 			r.ExternalName = e
 		}
 	}
@@ -41,6 +44,7 @@ func ExternalNameConfigured() []string {
 	for name := range ExternalNameConfigs {
 		// $ is added to match the exact string since the format is regex.
 		l[i] = name + "$"
+
 		i++
 	}
 	return l
