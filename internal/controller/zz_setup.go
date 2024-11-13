@@ -23,6 +23,7 @@ import (
 	permissions "github.com/glalanne/provider-databricks/internal/controller/databricks/permissions"
 	secret "github.com/glalanne/provider-databricks/internal/controller/databricks/secret"
 	secretscope "github.com/glalanne/provider-databricks/internal/controller/databricks/secretscope"
+	serviceprincipal "github.com/glalanne/provider-databricks/internal/controller/databricks/serviceprincipal"
 	sqlendpoint "github.com/glalanne/provider-databricks/internal/controller/databricks/sqlendpoint"
 	token "github.com/glalanne/provider-databricks/internal/controller/databricks/token"
 	providerconfig "github.com/glalanne/provider-databricks/internal/controller/providerconfig"
@@ -46,6 +47,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		permissions.Setup,
 		secret.Setup,
 		secretscope.Setup,
+		serviceprincipal.Setup,
 		sqlendpoint.Setup,
 		token.Setup,
 		providerconfig.Setup,
