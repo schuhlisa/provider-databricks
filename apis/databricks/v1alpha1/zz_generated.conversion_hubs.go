@@ -46,6 +46,9 @@ func (tr *PermissionAssignment) Hub() {}
 func (tr *Permissions) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *Pipeline) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Secret) Hub() {}
 
 // Hub marks this type as a conversion hub.

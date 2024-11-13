@@ -25,6 +25,7 @@ import (
 	"github.com/glalanne/provider-databricks/config/notebook"
 	"github.com/glalanne/provider-databricks/config/permission_assignment"
 	"github.com/glalanne/provider-databricks/config/permissions"
+	"github.com/glalanne/provider-databricks/config/pipeline"
 	"github.com/glalanne/provider-databricks/config/secret"
 	"github.com/glalanne/provider-databricks/config/secret_scope"
 	"github.com/glalanne/provider-databricks/config/service_principal"
@@ -78,6 +79,7 @@ func GetProvider() *ujconfig.Provider {
 		service_principal_role.Configure,
 		sql_permissions.Configure,
 		grants.Configure,
+		pipeline.Configure,
 	} {
 		configure(pc)
 	}

@@ -22,6 +22,7 @@ import (
 	notebook "github.com/glalanne/provider-databricks/internal/controller/databricks/notebook"
 	permissionassignment "github.com/glalanne/provider-databricks/internal/controller/databricks/permissionassignment"
 	permissions "github.com/glalanne/provider-databricks/internal/controller/databricks/permissions"
+	pipeline "github.com/glalanne/provider-databricks/internal/controller/databricks/pipeline"
 	secret "github.com/glalanne/provider-databricks/internal/controller/databricks/secret"
 	secretscope "github.com/glalanne/provider-databricks/internal/controller/databricks/secretscope"
 	serviceprincipal "github.com/glalanne/provider-databricks/internal/controller/databricks/serviceprincipal"
@@ -49,6 +50,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		notebook.Setup,
 		permissionassignment.Setup,
 		permissions.Setup,
+		pipeline.Setup,
 		secret.Setup,
 		secretscope.Setup,
 		serviceprincipal.Setup,
