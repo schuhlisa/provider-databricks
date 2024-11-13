@@ -28,6 +28,9 @@ func (tr *GroupRole) Hub() {}
 func (tr *InstancePool) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *IPAccessList) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Job) Hub() {}
 
 // Hub marks this type as a conversion hub.

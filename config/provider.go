@@ -19,6 +19,7 @@ import (
 	"github.com/glalanne/provider-databricks/config/group_member"
 	"github.com/glalanne/provider-databricks/config/group_role"
 	"github.com/glalanne/provider-databricks/config/instance_pool"
+	"github.com/glalanne/provider-databricks/config/ip_access_list"
 	"github.com/glalanne/provider-databricks/config/job"
 	"github.com/glalanne/provider-databricks/config/notebook"
 	"github.com/glalanne/provider-databricks/config/permissions"
@@ -66,6 +67,7 @@ func GetProvider() *ujconfig.Provider {
 		group.Configure,
 		group_member.Configure,
 		group_role.Configure,
+		ip_access_list.Configure,
 	} {
 		configure(pc)
 	}

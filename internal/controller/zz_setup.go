@@ -16,6 +16,7 @@ import (
 	groupmember "github.com/glalanne/provider-databricks/internal/controller/databricks/groupmember"
 	grouprole "github.com/glalanne/provider-databricks/internal/controller/databricks/grouprole"
 	instancepool "github.com/glalanne/provider-databricks/internal/controller/databricks/instancepool"
+	ipaccesslist "github.com/glalanne/provider-databricks/internal/controller/databricks/ipaccesslist"
 	job "github.com/glalanne/provider-databricks/internal/controller/databricks/job"
 	notebook "github.com/glalanne/provider-databricks/internal/controller/databricks/notebook"
 	permissions "github.com/glalanne/provider-databricks/internal/controller/databricks/permissions"
@@ -37,6 +38,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		groupmember.Setup,
 		grouprole.Setup,
 		instancepool.Setup,
+		ipaccesslist.Setup,
 		job.Setup,
 		notebook.Setup,
 		permissions.Setup,
