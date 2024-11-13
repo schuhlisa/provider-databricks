@@ -125,6 +125,15 @@ func (l *SQLEndpointList) GetItems() []resource.Managed {
 	return items
 }
 
+// GetItems of this SQLPermissionsList.
+func (l *SQLPermissionsList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this SecretList.
 func (l *SecretList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))

@@ -58,4 +58,7 @@ func (tr *ServicePrincipalRole) Hub() {}
 func (tr *SQLEndpoint) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *SQLPermissions) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Token) Hub() {}
