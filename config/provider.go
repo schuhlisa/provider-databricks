@@ -15,6 +15,7 @@ import (
 	"github.com/glalanne/provider-databricks/config/cluster"
 	"github.com/glalanne/provider-databricks/config/cluster_policy"
 	"github.com/glalanne/provider-databricks/config/entitlements"
+	"github.com/glalanne/provider-databricks/config/grants"
 	"github.com/glalanne/provider-databricks/config/group"
 	"github.com/glalanne/provider-databricks/config/group_member"
 	"github.com/glalanne/provider-databricks/config/group_role"
@@ -76,6 +77,7 @@ func GetProvider() *ujconfig.Provider {
 		service_principal.Configure,
 		service_principal_role.Configure,
 		sql_permissions.Configure,
+		grants.Configure,
 	} {
 		configure(pc)
 	}
