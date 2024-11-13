@@ -11,6 +11,8 @@ import (
 
 	cluster "github.com/glalanne/provider-databricks/internal/controller/databricks/cluster"
 	clusterpolicy "github.com/glalanne/provider-databricks/internal/controller/databricks/clusterpolicy"
+	entitlements "github.com/glalanne/provider-databricks/internal/controller/databricks/entitlements"
+	group "github.com/glalanne/provider-databricks/internal/controller/databricks/group"
 	instancepool "github.com/glalanne/provider-databricks/internal/controller/databricks/instancepool"
 	job "github.com/glalanne/provider-databricks/internal/controller/databricks/job"
 	notebook "github.com/glalanne/provider-databricks/internal/controller/databricks/notebook"
@@ -28,6 +30,8 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
 		cluster.Setup,
 		clusterpolicy.Setup,
+		entitlements.Setup,
+		group.Setup,
 		instancepool.Setup,
 		job.Setup,
 		notebook.Setup,

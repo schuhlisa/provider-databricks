@@ -14,6 +14,8 @@ import (
 
 	"github.com/glalanne/provider-databricks/config/cluster"
 	"github.com/glalanne/provider-databricks/config/cluster_policy"
+	"github.com/glalanne/provider-databricks/config/entitlements"
+	"github.com/glalanne/provider-databricks/config/group"
 	"github.com/glalanne/provider-databricks/config/instance_pool"
 	"github.com/glalanne/provider-databricks/config/job"
 	"github.com/glalanne/provider-databricks/config/notebook"
@@ -58,6 +60,8 @@ func GetProvider() *ujconfig.Provider {
 		instance_pool.Configure,
 		permissions.Configure,
 		sql_endpoint.Configure,
+		entitlements.Configure,
+		group.Configure,
 	} {
 		configure(pc)
 	}

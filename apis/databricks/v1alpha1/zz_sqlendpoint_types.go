@@ -181,6 +181,9 @@ type SQLEndpointObservation struct {
 
 	InstanceProfileArn *string `json:"instanceProfileArn,omitempty" tf:"instance_profile_arn,omitempty"`
 
+	// JDBC connection string.
+	JdbcURL *string `json:"jdbcUrl,omitempty" tf:"jdbc_url,omitempty"`
+
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to 1.
 	MaxNumClusters *float64 `json:"maxNumClusters,omitempty" tf:"max_num_clusters,omitempty"`
 

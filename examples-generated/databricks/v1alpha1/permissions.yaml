@@ -36,3 +36,45 @@ spec:
     clusterName: Shared Autoscaling
     nodeTypeId: ${data.databricks_node_type.smallest.id}
     sparkVersion: ${data.databricks_spark_version.latest.id}
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Group
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/permissions
+  labels:
+    testing.upbound.io/example-name: auto
+  name: auto
+spec:
+  forProvider:
+    displayName: Automation
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Group
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/permissions
+  labels:
+    testing.upbound.io/example-name: ds
+  name: ds
+spec:
+  forProvider:
+    displayName: Data Science
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Group
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/permissions
+  labels:
+    testing.upbound.io/example-name: eng
+  name: eng
+spec:
+  forProvider:
+    displayName: Engineering

@@ -506,6 +506,9 @@ spec:
                     type: string
                   instanceProfileArn:
                     type: string
+                  jdbcUrl:
+                    description: JDBC connection string.
+                    type: string
                   maxNumClusters:
                     description: Maximum number of clusters available when a SQL warehouse
                       is running. This field is required. If multi-cluster load balancing

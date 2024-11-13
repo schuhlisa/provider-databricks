@@ -13,6 +13,12 @@ func (tr *Cluster) Hub() {}
 func (tr *ClusterPolicy) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *Entitlements) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Group) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *InstancePool) Hub() {}
 
 // Hub marks this type as a conversion hub.
