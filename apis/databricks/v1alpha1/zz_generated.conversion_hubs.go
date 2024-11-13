@@ -22,6 +22,9 @@ func (tr *Group) Hub() {}
 func (tr *GroupMember) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *GroupRole) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *InstancePool) Hub() {}
 
 // Hub marks this type as a conversion hub.

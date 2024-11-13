@@ -1,0 +1,26 @@
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: GroupRole
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/grouprole
+  labels:
+    testing.upbound.io/example-name: my_group_instance_profile
+  name: my-group-instance-profile
+spec:
+  forProvider:
+    groupId: ${databricks_group.my_group.id}
+    role: ${databricks_instance_profile.instance_profile.id}
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Group
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/grouprole
+  labels:
+    testing.upbound.io/example-name: my_group
+  name: my-group
+spec:
+  forProvider:
+    displayName: my_group_name

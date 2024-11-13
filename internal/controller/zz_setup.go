@@ -14,6 +14,7 @@ import (
 	entitlements "github.com/glalanne/provider-databricks/internal/controller/databricks/entitlements"
 	group "github.com/glalanne/provider-databricks/internal/controller/databricks/group"
 	groupmember "github.com/glalanne/provider-databricks/internal/controller/databricks/groupmember"
+	grouprole "github.com/glalanne/provider-databricks/internal/controller/databricks/grouprole"
 	instancepool "github.com/glalanne/provider-databricks/internal/controller/databricks/instancepool"
 	job "github.com/glalanne/provider-databricks/internal/controller/databricks/job"
 	notebook "github.com/glalanne/provider-databricks/internal/controller/databricks/notebook"
@@ -34,6 +35,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		entitlements.Setup,
 		group.Setup,
 		groupmember.Setup,
+		grouprole.Setup,
 		instancepool.Setup,
 		job.Setup,
 		notebook.Setup,

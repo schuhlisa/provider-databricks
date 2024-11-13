@@ -17,6 +17,7 @@ import (
 	"github.com/glalanne/provider-databricks/config/entitlements"
 	"github.com/glalanne/provider-databricks/config/group"
 	"github.com/glalanne/provider-databricks/config/group_member"
+	"github.com/glalanne/provider-databricks/config/group_role"
 	"github.com/glalanne/provider-databricks/config/instance_pool"
 	"github.com/glalanne/provider-databricks/config/job"
 	"github.com/glalanne/provider-databricks/config/notebook"
@@ -64,6 +65,7 @@ func GetProvider() *ujconfig.Provider {
 		entitlements.Configure,
 		group.Configure,
 		group_member.Configure,
+		group_role.Configure,
 	} {
 		configure(pc)
 	}

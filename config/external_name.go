@@ -25,6 +25,7 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	"databricks_entitlements":   config.IdentifierFromProvider,
 	"databricks_group":          config.IdentifierFromProvider,
 	"databricks_group_member":   config.IdentifierFromProvider,
+	"databricks_group_role":     config.IdentifierFromProvider,
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the
