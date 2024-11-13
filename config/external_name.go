@@ -12,21 +12,22 @@ import (
 // provider.
 var ExternalNameConfigs = map[string]config.ExternalName{
 	// Import requires using a randomly generated ID from provider: nl-2e21sda
-	"databricks_cluster":        config.IdentifierFromProvider,
-	"databricks_cluster_policy": config.IdentifierFromProvider,
-	"databricks_token":          config.IdentifierFromProvider,
-	"databricks_secret":         config.IdentifierFromProvider,
-	"databricks_secret_scope":   config.IdentifierFromProvider,
-	"databricks_notebook":       config.IdentifierFromProvider,
-	"databricks_job":            config.IdentifierFromProvider,
-	"databricks_instance_pool":  config.IdentifierFromProvider,
-	"databricks_sql_endpoint":   config.IdentifierFromProvider,
-	"databricks_permissions":    config.IdentifierFromProvider,
-	"databricks_entitlements":   config.IdentifierFromProvider,
-	"databricks_group":          config.IdentifierFromProvider,
-	"databricks_group_member":   config.IdentifierFromProvider,
-	"databricks_group_role":     config.IdentifierFromProvider,
-	"databricks_ip_access_list": config.IdentifierFromProvider,
+	"databricks_cluster":               config.IdentifierFromProvider,
+	"databricks_cluster_policy":        config.IdentifierFromProvider,
+	"databricks_token":                 config.IdentifierFromProvider,
+	"databricks_secret":                config.IdentifierFromProvider,
+	"databricks_secret_scope":          config.IdentifierFromProvider,
+	"databricks_notebook":              config.IdentifierFromProvider,
+	"databricks_job":                   config.IdentifierFromProvider,
+	"databricks_instance_pool":         config.IdentifierFromProvider,
+	"databricks_sql_endpoint":          config.IdentifierFromProvider,
+	"databricks_permissions":           config.IdentifierFromProvider,
+	"databricks_entitlements":          config.IdentifierFromProvider,
+	"databricks_group":                 config.IdentifierFromProvider,
+	"databricks_group_member":          config.IdentifierFromProvider,
+	"databricks_group_role":            config.IdentifierFromProvider,
+	"databricks_ip_access_list":        config.IdentifierFromProvider,
+	"databricks_permission_assignment": config.IdentifierFromProvider,
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the

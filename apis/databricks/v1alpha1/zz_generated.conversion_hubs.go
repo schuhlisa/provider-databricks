@@ -37,6 +37,9 @@ func (tr *Job) Hub() {}
 func (tr *Notebook) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *PermissionAssignment) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Permissions) Hub() {}
 
 // Hub marks this type as a conversion hub.

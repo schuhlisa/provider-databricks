@@ -19,6 +19,7 @@ import (
 	ipaccesslist "github.com/glalanne/provider-databricks/internal/controller/databricks/ipaccesslist"
 	job "github.com/glalanne/provider-databricks/internal/controller/databricks/job"
 	notebook "github.com/glalanne/provider-databricks/internal/controller/databricks/notebook"
+	permissionassignment "github.com/glalanne/provider-databricks/internal/controller/databricks/permissionassignment"
 	permissions "github.com/glalanne/provider-databricks/internal/controller/databricks/permissions"
 	secret "github.com/glalanne/provider-databricks/internal/controller/databricks/secret"
 	secretscope "github.com/glalanne/provider-databricks/internal/controller/databricks/secretscope"
@@ -41,6 +42,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		ipaccesslist.Setup,
 		job.Setup,
 		notebook.Setup,
+		permissionassignment.Setup,
 		permissions.Setup,
 		secret.Setup,
 		secretscope.Setup,
