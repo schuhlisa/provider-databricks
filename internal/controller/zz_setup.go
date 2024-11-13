@@ -13,6 +13,7 @@ import (
 	clusterpolicy "github.com/glalanne/provider-databricks/internal/controller/databricks/clusterpolicy"
 	entitlements "github.com/glalanne/provider-databricks/internal/controller/databricks/entitlements"
 	group "github.com/glalanne/provider-databricks/internal/controller/databricks/group"
+	groupmember "github.com/glalanne/provider-databricks/internal/controller/databricks/groupmember"
 	instancepool "github.com/glalanne/provider-databricks/internal/controller/databricks/instancepool"
 	job "github.com/glalanne/provider-databricks/internal/controller/databricks/job"
 	notebook "github.com/glalanne/provider-databricks/internal/controller/databricks/notebook"
@@ -32,6 +33,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		clusterpolicy.Setup,
 		entitlements.Setup,
 		group.Setup,
+		groupmember.Setup,
 		instancepool.Setup,
 		job.Setup,
 		notebook.Setup,

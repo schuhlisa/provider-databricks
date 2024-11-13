@@ -1,0 +1,40 @@
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: GroupMember
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/groupmember
+  labels:
+    testing.upbound.io/example-name: ab
+  name: ab
+spec:
+  forProvider:
+    groupId: ${databricks_group.a.id}
+    memberId: ${databricks_group.b.id}
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Group
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/groupmember
+  labels:
+    testing.upbound.io/example-name: a
+  name: a
+spec:
+  forProvider:
+    displayName: A
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Group
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/groupmember
+  labels:
+    testing.upbound.io/example-name: b
+  name: b
+spec:
+  forProvider:
+    displayName: B

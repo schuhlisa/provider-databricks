@@ -19,6 +19,9 @@ func (tr *Entitlements) Hub() {}
 func (tr *Group) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *GroupMember) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *InstancePool) Hub() {}
 
 // Hub marks this type as a conversion hub.
