@@ -7,13 +7,31 @@
 package v1alpha1
 
 // Hub marks this type as a conversion hub.
+func (tr *Alert) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Budget) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Catalog) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Cluster) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *ClusterPolicy) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *Connection) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Entitlements) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ExternalLocation) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *GitCredential) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Grants) Hub() {}
@@ -49,6 +67,12 @@ func (tr *Permissions) Hub() {}
 func (tr *Pipeline) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *Query) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Schema) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Secret) Hub() {}
 
 // Hub marks this type as a conversion hub.
@@ -61,10 +85,25 @@ func (tr *ServicePrincipal) Hub() {}
 func (tr *ServicePrincipalRole) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *SQLAlert) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *SQLDashboard) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *SQLEndpoint) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *SQLGlobalConfig) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *SQLPermissions) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *SQLQuery) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *SQLTable) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Token) Hub() {}

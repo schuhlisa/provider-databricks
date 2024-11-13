@@ -12,9 +12,15 @@ import (
 	ujconfig "github.com/crossplane/upjet/pkg/config"
 	"github.com/crossplane/upjet/pkg/types/name"
 
+	"github.com/glalanne/provider-databricks/config/alert"
+	"github.com/glalanne/provider-databricks/config/budget"
+	"github.com/glalanne/provider-databricks/config/catalog"
 	"github.com/glalanne/provider-databricks/config/cluster"
 	"github.com/glalanne/provider-databricks/config/cluster_policy"
+	"github.com/glalanne/provider-databricks/config/connection"
 	"github.com/glalanne/provider-databricks/config/entitlements"
+	"github.com/glalanne/provider-databricks/config/external_location"
+	"github.com/glalanne/provider-databricks/config/git_credential"
 	"github.com/glalanne/provider-databricks/config/grants"
 	"github.com/glalanne/provider-databricks/config/group"
 	"github.com/glalanne/provider-databricks/config/group_member"
@@ -26,12 +32,18 @@ import (
 	"github.com/glalanne/provider-databricks/config/permission_assignment"
 	"github.com/glalanne/provider-databricks/config/permissions"
 	"github.com/glalanne/provider-databricks/config/pipeline"
+	"github.com/glalanne/provider-databricks/config/query"
+	"github.com/glalanne/provider-databricks/config/schema"
 	"github.com/glalanne/provider-databricks/config/secret"
 	"github.com/glalanne/provider-databricks/config/secret_scope"
 	"github.com/glalanne/provider-databricks/config/service_principal"
 	"github.com/glalanne/provider-databricks/config/service_principal_role"
+	"github.com/glalanne/provider-databricks/config/sql_alert"
+	"github.com/glalanne/provider-databricks/config/sql_dashboard"
 	"github.com/glalanne/provider-databricks/config/sql_endpoint"
+	"github.com/glalanne/provider-databricks/config/sql_global_config"
 	"github.com/glalanne/provider-databricks/config/sql_permissions"
+	"github.com/glalanne/provider-databricks/config/sql_query"
 	"github.com/glalanne/provider-databricks/config/token"
 )
 
@@ -80,6 +92,18 @@ func GetProvider() *ujconfig.Provider {
 		sql_permissions.Configure,
 		grants.Configure,
 		pipeline.Configure,
+		alert.Configure,
+		query.Configure,
+		sql_alert.Configure,
+		sql_dashboard.Configure,
+		sql_global_config.Configure,
+		sql_query.Configure,
+		budget.Configure,
+		git_credential.Configure,
+		catalog.Configure,
+		connection.Configure,
+		external_location.Configure,
+		schema.Configure,
 	} {
 		configure(pc)
 	}

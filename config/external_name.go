@@ -33,6 +33,19 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	"databricks_sql_permissions":        config.IdentifierFromProvider,
 	"databricks_grants":                 config.IdentifierFromProvider,
 	"databricks_pipeline":               config.IdentifierFromProvider,
+	"databricks_alert":                  config.IdentifierFromProvider,
+	"databricks_query":                  config.IdentifierFromProvider,
+	"databricks_sql_alert":              config.IdentifierFromProvider,
+	"databricks_sql_dashboard":          config.IdentifierFromProvider,
+	"databricks_sql_global_config":      config.IdentifierFromProvider,
+	"databricks_sql_query":              config.IdentifierFromProvider,
+	"databricks_budget":                 config.IdentifierFromProvider,
+	"databricks_git_credential":         config.IdentifierFromProvider,
+	"databricks_catalog":                config.IdentifierFromProvider,
+	"databricks_connection":             config.IdentifierFromProvider,
+	"databricks_external_location":      config.IdentifierFromProvider,
+	"databricks_schema":                 config.IdentifierFromProvider,
+	"databricks_sql_table":              config.IdentifierFromProvider,
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the

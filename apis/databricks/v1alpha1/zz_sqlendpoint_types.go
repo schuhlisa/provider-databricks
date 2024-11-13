@@ -144,7 +144,7 @@ type SQLEndpointInitParameters struct {
 	SpotInstancePolicy *string `json:"spotInstancePolicy,omitempty" tf:"spot_instance_policy,omitempty"`
 
 	// Databricks tags all endpoint resources with these tags.
-	Tags []TagsInitParameters `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags []SQLEndpointTagsInitParameters `json:"tags,omitempty" tf:"tags,omitempty"`
 
 	// SQL warehouse type. See for AWS or Azure. Set to PRO or CLASSIC. If the field enable_serverless_compute has the value true either explicitly or through the default logic (see that field above for details), the default is PRO, which is required for serverless SQL warehouses. Otherwise, the default is CLASSIC.
 	WarehouseType *string `json:"warehouseType,omitempty" tf:"warehouse_type,omitempty"`
@@ -209,7 +209,7 @@ type SQLEndpointObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Databricks tags all endpoint resources with these tags.
-	Tags []TagsObservation `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags []SQLEndpointTagsObservation `json:"tags,omitempty" tf:"tags,omitempty"`
 
 	// SQL warehouse type. See for AWS or Azure. Set to PRO or CLASSIC. If the field enable_serverless_compute has the value true either explicitly or through the default logic (see that field above for details), the default is PRO, which is required for serverless SQL warehouses. Otherwise, the default is CLASSIC.
 	WarehouseType *string `json:"warehouseType,omitempty" tf:"warehouse_type,omitempty"`
@@ -262,26 +262,26 @@ type SQLEndpointParameters struct {
 
 	// Databricks tags all endpoint resources with these tags.
 	// +kubebuilder:validation:Optional
-	Tags []TagsParameters `json:"tags,omitempty" tf:"tags,omitempty"`
+	Tags []SQLEndpointTagsParameters `json:"tags,omitempty" tf:"tags,omitempty"`
 
 	// SQL warehouse type. See for AWS or Azure. Set to PRO or CLASSIC. If the field enable_serverless_compute has the value true either explicitly or through the default logic (see that field above for details), the default is PRO, which is required for serverless SQL warehouses. Otherwise, the default is CLASSIC.
 	// +kubebuilder:validation:Optional
 	WarehouseType *string `json:"warehouseType,omitempty" tf:"warehouse_type,omitempty"`
 }
 
-type TagsInitParameters struct {
+type SQLEndpointTagsInitParameters struct {
 
 	// Databricks tags all endpoint resources with these tags.
 	CustomTags []CustomTagsInitParameters `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 }
 
-type TagsObservation struct {
+type SQLEndpointTagsObservation struct {
 
 	// Databricks tags all endpoint resources with these tags.
 	CustomTags []CustomTagsObservation `json:"customTags,omitempty" tf:"custom_tags,omitempty"`
 }
 
-type TagsParameters struct {
+type SQLEndpointTagsParameters struct {
 
 	// Databricks tags all endpoint resources with these tags.
 	// +kubebuilder:validation:Optional
