@@ -1,0 +1,26 @@
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: ServicePrincipalRole
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/serviceprincipalrole
+  labels:
+    testing.upbound.io/example-name: my_service_principal_instance_profile
+  name: my-service-principal-instance-profile
+spec:
+  forProvider:
+    role: ${databricks_instance_profile.instance_profile.id}
+    servicePrincipalId: ${databricks_service_principal.this.id}
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: ServicePrincipal
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/serviceprincipalrole
+  labels:
+    testing.upbound.io/example-name: this
+  name: this
+spec:
+  forProvider:
+    displayName: My Service Principal

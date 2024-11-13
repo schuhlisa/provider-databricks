@@ -52,6 +52,9 @@ func (tr *SecretScope) Hub() {}
 func (tr *ServicePrincipal) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *ServicePrincipalRole) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *SQLEndpoint) Hub() {}
 
 // Hub marks this type as a conversion hub.
