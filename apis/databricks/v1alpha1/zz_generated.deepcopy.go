@@ -9,6 +9,7 @@
 package v1alpha1
 
 import (
+	"github.com/crossplane/crossplane-runtime/apis/common/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -30509,10 +30510,30 @@ func (in *PermissionsInitParameters) DeepCopyInto(out *PermissionsInitParameters
 		*out = new(string)
 		**out = **in
 	}
+	if in.ClusterIDRef != nil {
+		in, out := &in.ClusterIDRef, &out.ClusterIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ClusterIDSelector != nil {
+		in, out := &in.ClusterIDSelector, &out.ClusterIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.ClusterPolicyID != nil {
 		in, out := &in.ClusterPolicyID, &out.ClusterPolicyID
 		*out = new(string)
 		**out = **in
+	}
+	if in.ClusterPolicyIDRef != nil {
+		in, out := &in.ClusterPolicyIDRef, &out.ClusterPolicyIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ClusterPolicyIDSelector != nil {
+		in, out := &in.ClusterPolicyIDSelector, &out.ClusterPolicyIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.DashboardID != nil {
 		in, out := &in.DashboardID, &out.DashboardID
@@ -30539,6 +30560,16 @@ func (in *PermissionsInitParameters) DeepCopyInto(out *PermissionsInitParameters
 		*out = new(string)
 		**out = **in
 	}
+	if in.InstancePoolIDRef != nil {
+		in, out := &in.InstancePoolIDRef, &out.InstancePoolIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.InstancePoolIDSelector != nil {
+		in, out := &in.InstancePoolIDSelector, &out.InstancePoolIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.JobID != nil {
 		in, out := &in.JobID, &out.JobID
 		*out = new(string)
@@ -30548,6 +30579,16 @@ func (in *PermissionsInitParameters) DeepCopyInto(out *PermissionsInitParameters
 		in, out := &in.NotebookID, &out.NotebookID
 		*out = new(string)
 		**out = **in
+	}
+	if in.NotebookIDRef != nil {
+		in, out := &in.NotebookIDRef, &out.NotebookIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.NotebookIDSelector != nil {
+		in, out := &in.NotebookIDSelector, &out.NotebookIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.NotebookPath != nil {
 		in, out := &in.NotebookPath, &out.NotebookPath
@@ -30563,6 +30604,16 @@ func (in *PermissionsInitParameters) DeepCopyInto(out *PermissionsInitParameters
 		in, out := &in.PipelineID, &out.PipelineID
 		*out = new(string)
 		**out = **in
+	}
+	if in.PipelineIDRef != nil {
+		in, out := &in.PipelineIDRef, &out.PipelineIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.PipelineIDSelector != nil {
+		in, out := &in.PipelineIDSelector, &out.PipelineIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.RegisteredModelID != nil {
 		in, out := &in.RegisteredModelID, &out.RegisteredModelID
@@ -30584,20 +30635,60 @@ func (in *PermissionsInitParameters) DeepCopyInto(out *PermissionsInitParameters
 		*out = new(string)
 		**out = **in
 	}
+	if in.SQLAlertIDRef != nil {
+		in, out := &in.SQLAlertIDRef, &out.SQLAlertIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.SQLAlertIDSelector != nil {
+		in, out := &in.SQLAlertIDSelector, &out.SQLAlertIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.SQLDashboardID != nil {
 		in, out := &in.SQLDashboardID, &out.SQLDashboardID
 		*out = new(string)
 		**out = **in
+	}
+	if in.SQLDashboardIDRef != nil {
+		in, out := &in.SQLDashboardIDRef, &out.SQLDashboardIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.SQLDashboardIDSelector != nil {
+		in, out := &in.SQLDashboardIDSelector, &out.SQLDashboardIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.SQLEndpointID != nil {
 		in, out := &in.SQLEndpointID, &out.SQLEndpointID
 		*out = new(string)
 		**out = **in
 	}
+	if in.SQLEndpointIDRef != nil {
+		in, out := &in.SQLEndpointIDRef, &out.SQLEndpointIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.SQLEndpointIDSelector != nil {
+		in, out := &in.SQLEndpointIDSelector, &out.SQLEndpointIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.SQLQueryID != nil {
 		in, out := &in.SQLQueryID, &out.SQLQueryID
 		*out = new(string)
 		**out = **in
+	}
+	if in.SQLQueryIDRef != nil {
+		in, out := &in.SQLQueryIDRef, &out.SQLQueryIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.SQLQueryIDSelector != nil {
+		in, out := &in.SQLQueryIDSelector, &out.SQLQueryIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.ServingEndpointID != nil {
 		in, out := &in.ServingEndpointID, &out.ServingEndpointID
@@ -30820,10 +30911,30 @@ func (in *PermissionsParameters) DeepCopyInto(out *PermissionsParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.ClusterIDRef != nil {
+		in, out := &in.ClusterIDRef, &out.ClusterIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ClusterIDSelector != nil {
+		in, out := &in.ClusterIDSelector, &out.ClusterIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.ClusterPolicyID != nil {
 		in, out := &in.ClusterPolicyID, &out.ClusterPolicyID
 		*out = new(string)
 		**out = **in
+	}
+	if in.ClusterPolicyIDRef != nil {
+		in, out := &in.ClusterPolicyIDRef, &out.ClusterPolicyIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ClusterPolicyIDSelector != nil {
+		in, out := &in.ClusterPolicyIDSelector, &out.ClusterPolicyIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.DashboardID != nil {
 		in, out := &in.DashboardID, &out.DashboardID
@@ -30850,6 +30961,16 @@ func (in *PermissionsParameters) DeepCopyInto(out *PermissionsParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.InstancePoolIDRef != nil {
+		in, out := &in.InstancePoolIDRef, &out.InstancePoolIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.InstancePoolIDSelector != nil {
+		in, out := &in.InstancePoolIDSelector, &out.InstancePoolIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.JobID != nil {
 		in, out := &in.JobID, &out.JobID
 		*out = new(string)
@@ -30859,6 +30980,16 @@ func (in *PermissionsParameters) DeepCopyInto(out *PermissionsParameters) {
 		in, out := &in.NotebookID, &out.NotebookID
 		*out = new(string)
 		**out = **in
+	}
+	if in.NotebookIDRef != nil {
+		in, out := &in.NotebookIDRef, &out.NotebookIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.NotebookIDSelector != nil {
+		in, out := &in.NotebookIDSelector, &out.NotebookIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.NotebookPath != nil {
 		in, out := &in.NotebookPath, &out.NotebookPath
@@ -30874,6 +31005,16 @@ func (in *PermissionsParameters) DeepCopyInto(out *PermissionsParameters) {
 		in, out := &in.PipelineID, &out.PipelineID
 		*out = new(string)
 		**out = **in
+	}
+	if in.PipelineIDRef != nil {
+		in, out := &in.PipelineIDRef, &out.PipelineIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.PipelineIDSelector != nil {
+		in, out := &in.PipelineIDSelector, &out.PipelineIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.RegisteredModelID != nil {
 		in, out := &in.RegisteredModelID, &out.RegisteredModelID
@@ -30895,20 +31036,60 @@ func (in *PermissionsParameters) DeepCopyInto(out *PermissionsParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.SQLAlertIDRef != nil {
+		in, out := &in.SQLAlertIDRef, &out.SQLAlertIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.SQLAlertIDSelector != nil {
+		in, out := &in.SQLAlertIDSelector, &out.SQLAlertIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.SQLDashboardID != nil {
 		in, out := &in.SQLDashboardID, &out.SQLDashboardID
 		*out = new(string)
 		**out = **in
+	}
+	if in.SQLDashboardIDRef != nil {
+		in, out := &in.SQLDashboardIDRef, &out.SQLDashboardIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.SQLDashboardIDSelector != nil {
+		in, out := &in.SQLDashboardIDSelector, &out.SQLDashboardIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.SQLEndpointID != nil {
 		in, out := &in.SQLEndpointID, &out.SQLEndpointID
 		*out = new(string)
 		**out = **in
 	}
+	if in.SQLEndpointIDRef != nil {
+		in, out := &in.SQLEndpointIDRef, &out.SQLEndpointIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.SQLEndpointIDSelector != nil {
+		in, out := &in.SQLEndpointIDSelector, &out.SQLEndpointIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.SQLQueryID != nil {
 		in, out := &in.SQLQueryID, &out.SQLQueryID
 		*out = new(string)
 		**out = **in
+	}
+	if in.SQLQueryIDRef != nil {
+		in, out := &in.SQLQueryIDRef, &out.SQLQueryIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.SQLQueryIDSelector != nil {
+		in, out := &in.SQLQueryIDSelector, &out.SQLQueryIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.ServingEndpointID != nil {
 		in, out := &in.ServingEndpointID, &out.ServingEndpointID

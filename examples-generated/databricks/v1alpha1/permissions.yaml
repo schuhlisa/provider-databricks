@@ -15,7 +15,9 @@ spec:
       permissionLevel: CAN_RESTART
     - groupName: ${databricks_group.ds.display_name}
       permissionLevel: CAN_MANAGE
-    clusterId: ${databricks_cluster.shared_autoscaling.id}
+    clusterIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: shared_autoscaling
 
 ---
 

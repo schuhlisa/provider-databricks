@@ -31,4 +31,6 @@ spec:
     accessControl:
     - groupName: ${var.team}
       permissionLevel: CAN_USE
-    clusterPolicyId: ${databricks_cluster_policy.fair_use.id}
+    clusterPolicyIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: fair_use
