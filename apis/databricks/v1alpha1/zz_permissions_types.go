@@ -22,7 +22,16 @@ type AccessControlInitParameters struct {
 	PermissionLevel *string `json:"permissionLevel,omitempty" tf:"permission_level,omitempty"`
 
 	// Application ID of the service_principal.
+	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/databricks/v1alpha1.ServicePrincipal
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
+
+	// Reference to a ServicePrincipal in databricks to populate servicePrincipalName.
+	// +kubebuilder:validation:Optional
+	ServicePrincipalNameRef *v1.Reference `json:"servicePrincipalNameRef,omitempty" tf:"-"`
+
+	// Selector for a ServicePrincipal in databricks to populate servicePrincipalName.
+	// +kubebuilder:validation:Optional
+	ServicePrincipalNameSelector *v1.Selector `json:"servicePrincipalNameSelector,omitempty" tf:"-"`
 
 	// name of the user.
 	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
@@ -54,8 +63,17 @@ type AccessControlParameters struct {
 	PermissionLevel *string `json:"permissionLevel,omitempty" tf:"permission_level,omitempty"`
 
 	// Application ID of the service_principal.
+	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/databricks/v1alpha1.ServicePrincipal
 	// +kubebuilder:validation:Optional
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
+
+	// Reference to a ServicePrincipal in databricks to populate servicePrincipalName.
+	// +kubebuilder:validation:Optional
+	ServicePrincipalNameRef *v1.Reference `json:"servicePrincipalNameRef,omitempty" tf:"-"`
+
+	// Selector for a ServicePrincipal in databricks to populate servicePrincipalName.
+	// +kubebuilder:validation:Optional
+	ServicePrincipalNameSelector *v1.Selector `json:"servicePrincipalNameSelector,omitempty" tf:"-"`
 
 	// name of the user.
 	// +kubebuilder:validation:Optional

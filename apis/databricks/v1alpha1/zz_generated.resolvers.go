@@ -20,6 +20,24 @@ func (mg *Permissions) ResolveReferences(ctx context.Context, c client.Reader) e
 	var rsp reference.ResolutionResponse
 	var err error
 
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.AccessControl); i3++ {
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalName),
+			Extract:      reference.ExternalName(),
+			Reference:    mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalNameRef,
+			Selector:     mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalNameSelector,
+			To: reference.To{
+				List:    &ServicePrincipalList{},
+				Managed: &ServicePrincipal{},
+			},
+		})
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalName")
+		}
+		mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalName = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalNameRef = rsp.ResolvedReference
+
+	}
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ClusterID),
 		Extract:      reference.ExternalName(),
@@ -164,6 +182,24 @@ func (mg *Permissions) ResolveReferences(ctx context.Context, c client.Reader) e
 	mg.Spec.ForProvider.SQLQueryID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.SQLQueryIDRef = rsp.ResolvedReference
 
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.AccessControl); i3++ {
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalName),
+			Extract:      reference.ExternalName(),
+			Reference:    mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalNameRef,
+			Selector:     mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalNameSelector,
+			To: reference.To{
+				List:    &ServicePrincipalList{},
+				Managed: &ServicePrincipal{},
+			},
+		})
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalName")
+		}
+		mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalName = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalNameRef = rsp.ResolvedReference
+
+	}
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ClusterID),
 		Extract:      reference.ExternalName(),

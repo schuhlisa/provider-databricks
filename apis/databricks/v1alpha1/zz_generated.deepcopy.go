@@ -91,6 +91,16 @@ func (in *AccessControlInitParameters) DeepCopyInto(out *AccessControlInitParame
 		*out = new(string)
 		**out = **in
 	}
+	if in.ServicePrincipalNameRef != nil {
+		in, out := &in.ServicePrincipalNameRef, &out.ServicePrincipalNameRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ServicePrincipalNameSelector != nil {
+		in, out := &in.ServicePrincipalNameSelector, &out.ServicePrincipalNameSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.UserName != nil {
 		in, out := &in.UserName, &out.UserName
 		*out = new(string)
@@ -160,6 +170,16 @@ func (in *AccessControlParameters) DeepCopyInto(out *AccessControlParameters) {
 		in, out := &in.ServicePrincipalName, &out.ServicePrincipalName
 		*out = new(string)
 		**out = **in
+	}
+	if in.ServicePrincipalNameRef != nil {
+		in, out := &in.ServicePrincipalNameRef, &out.ServicePrincipalNameRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ServicePrincipalNameSelector != nil {
+		in, out := &in.ServicePrincipalNameSelector, &out.ServicePrincipalNameSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.UserName != nil {
 		in, out := &in.UserName, &out.UserName

@@ -36,5 +36,8 @@ func Configure(p *config.Provider) {
 		r.References["sql_query_id"] = config.Reference{
 			TerraformName: "databricks_sql_query",
 		}
+		r.References["access_control.service_principal_name"] = config.Reference{
+			TerraformName: "databricks_service_principal",
+		}
 	})
 }
