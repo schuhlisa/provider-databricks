@@ -563,6 +563,9 @@ type GatewayDefinitionInitParameters struct {
 	// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
 	ConnectionID *string `json:"connectionId,omitempty" tf:"connection_id,omitempty"`
 
+	// Immutable. The Unity Catalog connection this ingestion pipeline uses to communicate with the source. Specify either ingestion_gateway_id or connection_name.
+	ConnectionName *string `json:"connectionName,omitempty" tf:"connection_name,omitempty"`
+
 	// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
 	GatewayStorageCatalog *string `json:"gatewayStorageCatalog,omitempty" tf:"gateway_storage_catalog,omitempty"`
 
@@ -577,6 +580,9 @@ type GatewayDefinitionObservation struct {
 
 	// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
 	ConnectionID *string `json:"connectionId,omitempty" tf:"connection_id,omitempty"`
+
+	// Immutable. The Unity Catalog connection this ingestion pipeline uses to communicate with the source. Specify either ingestion_gateway_id or connection_name.
+	ConnectionName *string `json:"connectionName,omitempty" tf:"connection_name,omitempty"`
 
 	// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
 	GatewayStorageCatalog *string `json:"gatewayStorageCatalog,omitempty" tf:"gateway_storage_catalog,omitempty"`
@@ -593,6 +599,10 @@ type GatewayDefinitionParameters struct {
 	// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
 	// +kubebuilder:validation:Optional
 	ConnectionID *string `json:"connectionId,omitempty" tf:"connection_id,omitempty"`
+
+	// Immutable. The Unity Catalog connection this ingestion pipeline uses to communicate with the source. Specify either ingestion_gateway_id or connection_name.
+	// +kubebuilder:validation:Optional
+	ConnectionName *string `json:"connectionName,omitempty" tf:"connection_name,omitempty"`
 
 	// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
 	// +kubebuilder:validation:Optional
@@ -1153,6 +1163,8 @@ type PipelineInitParameters struct {
 	// A flag indicating whether to use Photon engine. The default value is false.
 	Photon *bool `json:"photon,omitempty" tf:"photon,omitempty"`
 
+	RestartWindow []RestartWindowInitParameters `json:"restartWindow,omitempty" tf:"restart_window,omitempty"`
+
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	RunAsUserName *string `json:"runAsUserName,omitempty" tf:"run_as_user_name,omitempty"`
 
@@ -1320,6 +1332,8 @@ type PipelineObservation struct {
 	// A flag indicating whether to use Photon engine. The default value is false.
 	Photon *bool `json:"photon,omitempty" tf:"photon,omitempty"`
 
+	RestartWindow []RestartWindowObservation `json:"restartWindow,omitempty" tf:"restart_window,omitempty"`
+
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	RunAsUserName *string `json:"runAsUserName,omitempty" tf:"run_as_user_name,omitempty"`
 
@@ -1435,6 +1449,9 @@ type PipelineParameters struct {
 	// +kubebuilder:validation:Optional
 	Photon *bool `json:"photon,omitempty" tf:"photon,omitempty"`
 
+	// +kubebuilder:validation:Optional
+	RestartWindow []RestartWindowParameters `json:"restartWindow,omitempty" tf:"restart_window,omitempty"`
+
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	// +kubebuilder:validation:Optional
 	RunAsUserName *string `json:"runAsUserName,omitempty" tf:"run_as_user_name,omitempty"`
@@ -1541,6 +1558,37 @@ type ReportParameters struct {
 	// Configuration settings to control the ingestion of tables. These settings are applied to all tables in the pipeline.
 	// +kubebuilder:validation:Optional
 	TableConfiguration []TableConfigurationParameters `json:"tableConfiguration,omitempty" tf:"table_configuration,omitempty"`
+}
+
+type RestartWindowInitParameters struct {
+	DaysOfWeek *string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
+
+	StartHour *float64 `json:"startHour,omitempty" tf:"start_hour,omitempty"`
+
+	// Canonical unique identifier of the DLT pipeline.
+	TimeZoneID *string `json:"timeZoneId,omitempty" tf:"time_zone_id,omitempty"`
+}
+
+type RestartWindowObservation struct {
+	DaysOfWeek *string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
+
+	StartHour *float64 `json:"startHour,omitempty" tf:"start_hour,omitempty"`
+
+	// Canonical unique identifier of the DLT pipeline.
+	TimeZoneID *string `json:"timeZoneId,omitempty" tf:"time_zone_id,omitempty"`
+}
+
+type RestartWindowParameters struct {
+
+	// +kubebuilder:validation:Optional
+	DaysOfWeek *string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	StartHour *float64 `json:"startHour" tf:"start_hour,omitempty"`
+
+	// Canonical unique identifier of the DLT pipeline.
+	// +kubebuilder:validation:Optional
+	TimeZoneID *string `json:"timeZoneId,omitempty" tf:"time_zone_id,omitempty"`
 }
 
 type SchemaInitParameters struct {

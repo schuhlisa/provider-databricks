@@ -390,6 +390,11 @@ spec:
                           description: Immutable. The Unity Catalog connection this
                             gateway pipeline uses to communicate with the source.
                           type: string
+                        connectionName:
+                          description: Immutable. The Unity Catalog connection this
+                            ingestion pipeline uses to communicate with the source.
+                            Specify either ingestion_gateway_id or connection_name.
+                          type: string
                         gatewayStorageCatalog:
                           description: Required, Immutable. The name of the catalog
                             for the gateway pipeline's storage location.
@@ -675,6 +680,18 @@ spec:
                     description: A flag indicating whether to use Photon engine. The
                       default value is false.
                     type: boolean
+                  restartWindow:
+                    items:
+                      properties:
+                        daysOfWeek:
+                          type: string
+                        startHour:
+                          type: number
+                        timeZoneId:
+                          description: Canonical unique identifier of the DLT pipeline.
+                          type: string
+                      type: object
+                    type: array
                   runAsUserName:
                     description: A user-friendly name for this pipeline. The name
                       can be used to identify pipeline jobs in the UI.
@@ -1058,6 +1075,11 @@ spec:
                           description: Immutable. The Unity Catalog connection this
                             gateway pipeline uses to communicate with the source.
                           type: string
+                        connectionName:
+                          description: Immutable. The Unity Catalog connection this
+                            ingestion pipeline uses to communicate with the source.
+                            Specify either ingestion_gateway_id or connection_name.
+                          type: string
                         gatewayStorageCatalog:
                           description: Required, Immutable. The name of the catalog
                             for the gateway pipeline's storage location.
@@ -1343,6 +1365,18 @@ spec:
                     description: A flag indicating whether to use Photon engine. The
                       default value is false.
                     type: boolean
+                  restartWindow:
+                    items:
+                      properties:
+                        daysOfWeek:
+                          type: string
+                        startHour:
+                          type: number
+                        timeZoneId:
+                          description: Canonical unique identifier of the DLT pipeline.
+                          type: string
+                      type: object
+                    type: array
                   runAsUserName:
                     description: A user-friendly name for this pipeline. The name
                       can be used to identify pipeline jobs in the UI.
@@ -1885,6 +1919,11 @@ spec:
                           description: Immutable. The Unity Catalog connection this
                             gateway pipeline uses to communicate with the source.
                           type: string
+                        connectionName:
+                          description: Immutable. The Unity Catalog connection this
+                            ingestion pipeline uses to communicate with the source.
+                            Specify either ingestion_gateway_id or connection_name.
+                          type: string
                         gatewayStorageCatalog:
                           description: Required, Immutable. The name of the catalog
                             for the gateway pipeline's storage location.
@@ -2173,6 +2212,18 @@ spec:
                     description: A flag indicating whether to use Photon engine. The
                       default value is false.
                     type: boolean
+                  restartWindow:
+                    items:
+                      properties:
+                        daysOfWeek:
+                          type: string
+                        startHour:
+                          type: number
+                        timeZoneId:
+                          description: Canonical unique identifier of the DLT pipeline.
+                          type: string
+                      type: object
+                    type: array
                   runAsUserName:
                     description: A user-friendly name for this pipeline. The name
                       can be used to identify pipeline jobs in the UI.
