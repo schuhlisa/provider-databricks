@@ -28,10 +28,16 @@ import (
 	"github.com/glalanne/provider-databricks/config/instance_pool"
 	"github.com/glalanne/provider-databricks/config/ip_access_list"
 	"github.com/glalanne/provider-databricks/config/job"
+	"github.com/glalanne/provider-databricks/config/library"
+	"github.com/glalanne/provider-databricks/config/mlflow_experiment"
+	"github.com/glalanne/provider-databricks/config/mlflow_model"
+	"github.com/glalanne/provider-databricks/config/mlflow_webhook"
+	"github.com/glalanne/provider-databricks/config/model_serving"
 	"github.com/glalanne/provider-databricks/config/notebook"
 	"github.com/glalanne/provider-databricks/config/permission_assignment"
 	"github.com/glalanne/provider-databricks/config/permissions"
 	"github.com/glalanne/provider-databricks/config/pipeline"
+	"github.com/glalanne/provider-databricks/config/provider"
 	"github.com/glalanne/provider-databricks/config/query"
 	"github.com/glalanne/provider-databricks/config/schema"
 	"github.com/glalanne/provider-databricks/config/secret"
@@ -44,6 +50,8 @@ import (
 	"github.com/glalanne/provider-databricks/config/sql_global_config"
 	"github.com/glalanne/provider-databricks/config/sql_permissions"
 	"github.com/glalanne/provider-databricks/config/sql_query"
+	"github.com/glalanne/provider-databricks/config/sql_visualization"
+	"github.com/glalanne/provider-databricks/config/sql_widget"
 	"github.com/glalanne/provider-databricks/config/token"
 )
 
@@ -104,6 +112,14 @@ func GetProvider() *ujconfig.Provider {
 		connection.Configure,
 		external_location.Configure,
 		schema.Configure,
+		library.Configure,
+		sql_visualization.Configure,
+		sql_widget.Configure,
+		provider.Configure,
+		mlflow_experiment.Configure,
+		mlflow_model.Configure,
+		mlflow_webhook.Configure,
+		model_serving.Configure,
 	} {
 		configure(pc)
 	}

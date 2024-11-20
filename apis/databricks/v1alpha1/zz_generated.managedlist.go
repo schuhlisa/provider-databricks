@@ -152,6 +152,42 @@ func (l *JobList) GetItems() []resource.Managed {
 	return items
 }
 
+// GetItems of this LibraryList.
+func (l *LibraryList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this MlflowExperimentList.
+func (l *MlflowExperimentList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this MlflowModelList.
+func (l *MlflowModelList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ModelServingList.
+func (l *ModelServingList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this NotebookList.
 func (l *NotebookList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
@@ -181,6 +217,15 @@ func (l *PermissionsList) GetItems() []resource.Managed {
 
 // GetItems of this PipelineList.
 func (l *PipelineList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ProviderList.
+func (l *ProviderList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]
@@ -253,6 +298,24 @@ func (l *SQLQueryList) GetItems() []resource.Managed {
 
 // GetItems of this SQLTableList.
 func (l *SQLTableList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this SQLVisualizationList.
+func (l *SQLVisualizationList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this SQLWidgetList.
+func (l *SQLWidgetList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]

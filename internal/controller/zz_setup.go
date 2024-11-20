@@ -25,10 +25,15 @@ import (
 	instancepool "github.com/glalanne/provider-databricks/internal/controller/databricks/instancepool"
 	ipaccesslist "github.com/glalanne/provider-databricks/internal/controller/databricks/ipaccesslist"
 	job "github.com/glalanne/provider-databricks/internal/controller/databricks/job"
+	library "github.com/glalanne/provider-databricks/internal/controller/databricks/library"
+	mlflowexperiment "github.com/glalanne/provider-databricks/internal/controller/databricks/mlflowexperiment"
+	mlflowmodel "github.com/glalanne/provider-databricks/internal/controller/databricks/mlflowmodel"
+	modelserving "github.com/glalanne/provider-databricks/internal/controller/databricks/modelserving"
 	notebook "github.com/glalanne/provider-databricks/internal/controller/databricks/notebook"
 	permissionassignment "github.com/glalanne/provider-databricks/internal/controller/databricks/permissionassignment"
 	permissions "github.com/glalanne/provider-databricks/internal/controller/databricks/permissions"
 	pipeline "github.com/glalanne/provider-databricks/internal/controller/databricks/pipeline"
+	provider "github.com/glalanne/provider-databricks/internal/controller/databricks/provider"
 	query "github.com/glalanne/provider-databricks/internal/controller/databricks/query"
 	schema "github.com/glalanne/provider-databricks/internal/controller/databricks/schema"
 	secret "github.com/glalanne/provider-databricks/internal/controller/databricks/secret"
@@ -42,6 +47,8 @@ import (
 	sqlpermissions "github.com/glalanne/provider-databricks/internal/controller/databricks/sqlpermissions"
 	sqlquery "github.com/glalanne/provider-databricks/internal/controller/databricks/sqlquery"
 	sqltable "github.com/glalanne/provider-databricks/internal/controller/databricks/sqltable"
+	sqlvisualization "github.com/glalanne/provider-databricks/internal/controller/databricks/sqlvisualization"
+	sqlwidget "github.com/glalanne/provider-databricks/internal/controller/databricks/sqlwidget"
 	token "github.com/glalanne/provider-databricks/internal/controller/databricks/token"
 	providerconfig "github.com/glalanne/provider-databricks/internal/controller/providerconfig"
 )
@@ -66,10 +73,15 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		instancepool.Setup,
 		ipaccesslist.Setup,
 		job.Setup,
+		library.Setup,
+		mlflowexperiment.Setup,
+		mlflowmodel.Setup,
+		modelserving.Setup,
 		notebook.Setup,
 		permissionassignment.Setup,
 		permissions.Setup,
 		pipeline.Setup,
+		provider.Setup,
 		query.Setup,
 		schema.Setup,
 		secret.Setup,
@@ -83,6 +95,8 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		sqlpermissions.Setup,
 		sqlquery.Setup,
 		sqltable.Setup,
+		sqlvisualization.Setup,
+		sqlwidget.Setup,
 		token.Setup,
 		providerconfig.Setup,
 	} {

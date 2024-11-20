@@ -55,6 +55,18 @@ func (tr *IPAccessList) Hub() {}
 func (tr *Job) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *Library) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MlflowExperiment) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MlflowModel) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ModelServing) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Notebook) Hub() {}
 
 // Hub marks this type as a conversion hub.
@@ -65,6 +77,9 @@ func (tr *Permissions) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Pipeline) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Provider) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Query) Hub() {}
@@ -104,6 +119,12 @@ func (tr *SQLQuery) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *SQLTable) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *SQLVisualization) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *SQLWidget) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Token) Hub() {}

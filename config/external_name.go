@@ -46,6 +46,13 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	"databricks_external_location":      config.IdentifierFromProvider,
 	"databricks_schema":                 config.IdentifierFromProvider,
 	"databricks_sql_table":              config.IdentifierFromProvider,
+	"databricks_library":                config.IdentifierFromProvider,
+	"databricks_sql_visualization":      config.IdentifierFromProvider,
+	"databricks_sql_widget":             config.IdentifierFromProvider,
+	"databricks_provider":               config.IdentifierFromProvider,
+	"databricks_mlflow_experiment":      config.IdentifierFromProvider,
+	"databricks_mlflow_model":           config.IdentifierFromProvider,
+	"databricks_model_serving":          config.IdentifierFromProvider,
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the
