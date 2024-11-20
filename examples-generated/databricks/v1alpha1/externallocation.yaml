@@ -31,3 +31,20 @@ spec:
       privileges:
       - CREATE_EXTERNAL_TABLE
       - READ_FILES
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: StorageCredential
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/externallocation
+  labels:
+    testing.upbound.io/example-name: external
+  name: external
+spec:
+  forProvider:
+    awsIamRole:
+    - roleArn: ${aws_iam_role.external_data_access.arn}
+    comment: Managed by TF
+    name: ${aws_iam_role.external_data_access.name}

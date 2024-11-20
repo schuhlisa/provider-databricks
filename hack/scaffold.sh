@@ -4,11 +4,14 @@
 resources=$(jq --raw-output '.provider_schemas."registry.terraform.io/databricks/databricks".resource_schemas | keys | .[]' ./config/schema.json)
 root_folder="./config"
 
+rm -f ./.work/external_name.txt || true
+rm -f ./.work/provider.txt || true
+
 for resource in $resources
 do
   resource_name=$(echo $resource | sed 's/databricks_//')
 
-  if [ ! -d "$root_folder/$resource_name" ]; then
+  if [ ! -d "$root_folder/$resource_name" ] | [ ! -f  "$root_folder/$resource_name/config.go" ]; then
     echo "Creating: $resource_name"
     mkdir "$root_folder/$resource_name"
     cat > "$root_folder/$resource_name/config.go"  << EOF
@@ -26,9 +29,10 @@ EOF
     echo "\"$resource\":               config.IdentifierFromProvider," >> ./.work/external_name.txt
     echo "$resource_name.Configure," >> ./.work/provider.txt
 
-    echo "Open ./.work/external_name.txt and add it into ./config/external_name.go"
-    echo "Open ./.work/provider.txt and add it into ./config/provider.go"
   else 
     echo "Config exists for: $resource_name"
   fi
 done
+
+echo "Open ./.work/external_name.txt and add it into ./config/external_name.go"
+echo "Open ./.work/provider.txt and add it into ./config/provider.go"

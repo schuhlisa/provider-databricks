@@ -215,55 +215,6 @@ type ContinuousParameters struct {
 	PauseStatus *string `json:"pauseStatus,omitempty" tf:"pause_status,omitempty"`
 }
 
-type DashboardInitParameters struct {
-
-	// string specifying a custom subject of email sent.
-	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
-
-	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
-
-	// flag that specifies if subscriptions are paused or not.
-	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
-
-	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
-	Subscriptions []DashboardSubscriptionsInitParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
-}
-
-type DashboardObservation struct {
-
-	// string specifying a custom subject of email sent.
-	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
-
-	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
-
-	// flag that specifies if subscriptions are paused or not.
-	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
-
-	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
-	Subscriptions []DashboardSubscriptionsObservation `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
-}
-
-type DashboardParameters struct {
-
-	// string specifying a custom subject of email sent.
-	// +kubebuilder:validation:Optional
-	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
-
-	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-	// +kubebuilder:validation:Optional
-	DashboardID *string `json:"dashboardId" tf:"dashboard_id,omitempty"`
-
-	// flag that specifies if subscriptions are paused or not.
-	// +kubebuilder:validation:Optional
-	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
-
-	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
-	// +kubebuilder:validation:Optional
-	Subscriptions []DashboardSubscriptionsParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
-}
-
 type DashboardSubscriptionsInitParameters struct {
 
 	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
@@ -5923,7 +5874,7 @@ type SQLTaskDashboardInitParameters struct {
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
 	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
-	Subscriptions []SQLTaskDashboardSubscriptionsInitParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
+	Subscriptions []DashboardSubscriptionsInitParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type SQLTaskDashboardObservation struct {
@@ -5938,7 +5889,7 @@ type SQLTaskDashboardObservation struct {
 	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
 
 	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
-	Subscriptions []SQLTaskDashboardSubscriptionsObservation `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
+	Subscriptions []DashboardSubscriptionsObservation `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type SQLTaskDashboardParameters struct {
@@ -5957,7 +5908,7 @@ type SQLTaskDashboardParameters struct {
 
 	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
 	// +kubebuilder:validation:Optional
-	Subscriptions []SQLTaskDashboardSubscriptionsParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
+	Subscriptions []DashboardSubscriptionsParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
 type SQLTaskDashboardSubscriptionsInitParameters struct {
@@ -6024,7 +5975,7 @@ type SQLTaskInitParameters struct {
 	Alert []SQLTaskAlertInitParameters `json:"alert,omitempty" tf:"alert,omitempty"`
 
 	// block consisting of following fields:
-	Dashboard []DashboardInitParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
+	Dashboard []SQLTaskDashboardInitParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
 	// block consisting of single string fields:
 	File []SQLTaskFileInitParameters `json:"file,omitempty" tf:"file,omitempty"`
@@ -6046,7 +5997,7 @@ type SQLTaskObservation struct {
 	Alert []SQLTaskAlertObservation `json:"alert,omitempty" tf:"alert,omitempty"`
 
 	// block consisting of following fields:
-	Dashboard []DashboardObservation `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
+	Dashboard []SQLTaskDashboardObservation `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
 	// block consisting of single string fields:
 	File []SQLTaskFileObservation `json:"file,omitempty" tf:"file,omitempty"`
@@ -6070,7 +6021,7 @@ type SQLTaskParameters struct {
 
 	// block consisting of following fields:
 	// +kubebuilder:validation:Optional
-	Dashboard []DashboardParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
+	Dashboard []SQLTaskDashboardParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
 	// block consisting of single string fields:
 	// +kubebuilder:validation:Optional
@@ -8416,6 +8367,55 @@ type TaskSQLTaskAlertParameters struct {
 	Subscriptions []AlertSubscriptionsParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
 }
 
+type TaskSQLTaskDashboardInitParameters struct {
+
+	// string specifying a custom subject of email sent.
+	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
+
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
+
+	// flag that specifies if subscriptions are paused or not.
+	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
+
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
+	Subscriptions []SQLTaskDashboardSubscriptionsInitParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
+}
+
+type TaskSQLTaskDashboardObservation struct {
+
+	// string specifying a custom subject of email sent.
+	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
+
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+	DashboardID *string `json:"dashboardId,omitempty" tf:"dashboard_id,omitempty"`
+
+	// flag that specifies if subscriptions are paused or not.
+	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
+
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
+	Subscriptions []SQLTaskDashboardSubscriptionsObservation `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
+}
+
+type TaskSQLTaskDashboardParameters struct {
+
+	// string specifying a custom subject of email sent.
+	// +kubebuilder:validation:Optional
+	CustomSubject *string `json:"customSubject,omitempty" tf:"custom_subject,omitempty"`
+
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+	// +kubebuilder:validation:Optional
+	DashboardID *string `json:"dashboardId" tf:"dashboard_id,omitempty"`
+
+	// flag that specifies if subscriptions are paused or not.
+	// +kubebuilder:validation:Optional
+	PauseSubscriptions *bool `json:"pauseSubscriptions,omitempty" tf:"pause_subscriptions,omitempty"`
+
+	// a list of subscription blocks consisting out of one of the required fields: user_name for user emails or destination_id - for Alert destination's identifier.
+	// +kubebuilder:validation:Optional
+	Subscriptions []SQLTaskDashboardSubscriptionsParameters `json:"subscriptions,omitempty" tf:"subscriptions,omitempty"`
+}
+
 type TaskSQLTaskFileInitParameters struct {
 
 	// If source is GIT: Relative path to the file in the repository specified in the git_source block with SQL commands to execute. If source is WORKSPACE: Absolute path to the file in the workspace with SQL commands to execute.
@@ -8451,7 +8451,7 @@ type TaskSQLTaskInitParameters struct {
 	Alert []TaskSQLTaskAlertInitParameters `json:"alert,omitempty" tf:"alert,omitempty"`
 
 	// block consisting of following fields:
-	Dashboard []SQLTaskDashboardInitParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
+	Dashboard []TaskSQLTaskDashboardInitParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
 	// block consisting of single string fields:
 	File []TaskSQLTaskFileInitParameters `json:"file,omitempty" tf:"file,omitempty"`
@@ -8473,7 +8473,7 @@ type TaskSQLTaskObservation struct {
 	Alert []TaskSQLTaskAlertObservation `json:"alert,omitempty" tf:"alert,omitempty"`
 
 	// block consisting of following fields:
-	Dashboard []SQLTaskDashboardObservation `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
+	Dashboard []TaskSQLTaskDashboardObservation `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
 	// block consisting of single string fields:
 	File []TaskSQLTaskFileObservation `json:"file,omitempty" tf:"file,omitempty"`
@@ -8497,7 +8497,7 @@ type TaskSQLTaskParameters struct {
 
 	// block consisting of following fields:
 	// +kubebuilder:validation:Optional
-	Dashboard []SQLTaskDashboardParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
+	Dashboard []TaskSQLTaskDashboardParameters `json:"dashboard,omitempty" tf:"dashboard,omitempty"`
 
 	// block consisting of single string fields:
 	// +kubebuilder:validation:Optional

@@ -9,6 +9,20 @@ metadata:
 spec:
   forProvider:
     displayName: My Query Name
-    parentPath: ${databricks_directory.shared_dir.path}
+    parentPath: /my_custom_directory
     queryText: SELECT 42 as value
     warehouseId: ${databricks_sql_endpoint.example.id}
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Directory
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/query
+  labels:
+    testing.upbound.io/example-name: shared_dir
+  name: shared-dir
+spec:
+  forProvider:
+    path: /Shared/Queries

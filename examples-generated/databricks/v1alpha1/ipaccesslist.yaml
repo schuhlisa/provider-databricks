@@ -14,3 +14,18 @@ spec:
     - 1.2.5.0/24
     label: allow_in
     listType: ALLOW
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: WorkspaceConf
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/ipaccesslist
+  labels:
+    testing.upbound.io/example-name: this
+  name: this
+spec:
+  forProvider:
+    customConfig:
+      enableIpAccessLists: true

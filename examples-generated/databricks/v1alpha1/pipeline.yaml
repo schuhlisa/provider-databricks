@@ -50,3 +50,16 @@ metadata:
   name: dlt-demo
 spec:
   forProvider: {}
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Repo
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/pipeline
+  labels:
+    testing.upbound.io/example-name: dlt_demo
+  name: dlt-demo
+spec:
+  forProvider: {}

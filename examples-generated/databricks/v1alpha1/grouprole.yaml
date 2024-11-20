@@ -24,3 +24,17 @@ metadata:
 spec:
   forProvider:
     displayName: my_group_name
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: InstanceProfile
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/grouprole
+  labels:
+    testing.upbound.io/example-name: instance_profile
+  name: instance-profile
+spec:
+  forProvider:
+    instanceProfileArn: my_instance_profile_arn

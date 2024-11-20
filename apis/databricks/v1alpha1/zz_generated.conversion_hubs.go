@@ -7,7 +7,28 @@
 package v1alpha1
 
 // Hub marks this type as a conversion hub.
+func (tr *AccessControlRuleSet) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Alert) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ArtifactAllowlist) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *AutomaticClusterUpdateWorkspaceSetting) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *AwsS3Mount) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *AzureAdlsGen1Mount) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *AzureAdlsGen2Mount) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *AzureBlobMount) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Budget) Hub() {}
@@ -16,13 +37,37 @@ func (tr *Budget) Hub() {}
 func (tr *Catalog) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *CatalogWorkspaceBinding) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Cluster) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *ClusterPolicy) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *ComplianceSecurityProfileWorkspaceSetting) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Connection) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *CustomAppIntegration) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Dashboard) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *DbfsFile) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *DefaultNamespaceSetting) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Directory) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *EnhancedSecurityMonitoringWorkspaceSetting) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Entitlements) Hub() {}
@@ -31,13 +76,25 @@ func (tr *Entitlements) Hub() {}
 func (tr *ExternalLocation) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *File) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *GitCredential) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *GlobalInitScript) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Grant) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Grants) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Group) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *GroupInstanceProfile) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *GroupMember) Hub() {}
@@ -49,13 +106,28 @@ func (tr *GroupRole) Hub() {}
 func (tr *InstancePool) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *InstanceProfile) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *IPAccessList) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Job) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *LakehouseMonitor) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Library) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Metastore) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MetastoreAssignment) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MetastoreDataAccess) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *MlflowExperiment) Hub() {}
@@ -67,7 +139,55 @@ func (tr *MlflowModel) Hub() {}
 func (tr *ModelServing) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *Mount) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsCredentials) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsCustomerManagedKeys) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsLogDelivery) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsNccBinding) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsNccPrivateEndpointRule) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsNetworkConnectivityConfig) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsNetworks) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsPermissionAssignment) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsPrivateAccessSettings) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsStorageConfigurations) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsVPCEndpoint) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MwsWorkspaces) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Notebook) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *NotificationDestination) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *OboToken) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *OnlineTable) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *PermissionAssignment) Hub() {}
@@ -82,13 +202,31 @@ func (tr *Pipeline) Hub() {}
 func (tr *Provider) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *QualityMonitor) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Query) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Recipient) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *RegisteredModel) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Repo) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *RestrictWorkspaceAdminsSetting) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Schema) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Secret) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *SecretACL) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *SecretScope) Hub() {}
@@ -98,6 +236,15 @@ func (tr *ServicePrincipal) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *ServicePrincipalRole) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ServicePrincipalSecret) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Share) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *SharePluginframework) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *SQLAlert) Hub() {}
@@ -127,4 +274,40 @@ func (tr *SQLVisualization) Hub() {}
 func (tr *SQLWidget) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *StorageCredential) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *SystemSchema) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Table) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Token) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *User) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *UserInstanceProfile) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *UserRole) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *VectorSearchEndpoint) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *VectorSearchIndex) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *Volume) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *WorkspaceBinding) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *WorkspaceConf) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *WorkspaceFile) Hub() {}

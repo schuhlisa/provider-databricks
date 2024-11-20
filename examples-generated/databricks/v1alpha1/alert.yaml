@@ -17,8 +17,22 @@ spec:
       - value:
         - doubleValue: 42
     displayName: TF new alert
-    parentPath: ${databricks_directory.shared_dir.path}
+    parentPath: /my_custom_directory
     queryId: ${databricks_query.this.id}
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Directory
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/alert
+  labels:
+    testing.upbound.io/example-name: shared_dir
+  name: shared-dir
+spec:
+  forProvider:
+    path: /Shared/Queries
 
 ---
 

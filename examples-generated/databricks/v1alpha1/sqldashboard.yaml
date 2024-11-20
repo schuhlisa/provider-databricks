@@ -13,3 +13,17 @@ spec:
     tags:
     - some-tag
     - another-tag
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
+kind: Directory
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/sqldashboard
+  labels:
+    testing.upbound.io/example-name: shared_dir
+  name: shared-dir
+spec:
+  forProvider:
+    path: /Shared/Dashboards

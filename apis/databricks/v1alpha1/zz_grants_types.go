@@ -13,7 +13,7 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
-type GrantInitParameters struct {
+type GrantsGrantInitParameters struct {
 
 	// User name, group name or service principal application ID.
 	Principal *string `json:"principal,omitempty" tf:"principal,omitempty"`
@@ -23,7 +23,7 @@ type GrantInitParameters struct {
 	Privileges []*string `json:"privileges,omitempty" tf:"privileges,omitempty"`
 }
 
-type GrantObservation struct {
+type GrantsGrantObservation struct {
 
 	// User name, group name or service principal application ID.
 	Principal *string `json:"principal,omitempty" tf:"principal,omitempty"`
@@ -33,7 +33,7 @@ type GrantObservation struct {
 	Privileges []*string `json:"privileges,omitempty" tf:"privileges,omitempty"`
 }
 
-type GrantParameters struct {
+type GrantsGrantParameters struct {
 
 	// User name, group name or service principal application ID.
 	// +kubebuilder:validation:Optional
@@ -54,7 +54,7 @@ type GrantsInitParameters struct {
 
 	Function *string `json:"function,omitempty" tf:"function,omitempty"`
 
-	Grant []GrantInitParameters `json:"grant,omitempty" tf:"grant,omitempty"`
+	Grant []GrantsGrantInitParameters `json:"grant,omitempty" tf:"grant,omitempty"`
 
 	Metastore *string `json:"metastore,omitempty" tf:"metastore,omitempty"`
 
@@ -84,7 +84,7 @@ type GrantsObservation struct {
 
 	Function *string `json:"function,omitempty" tf:"function,omitempty"`
 
-	Grant []GrantObservation `json:"grant,omitempty" tf:"grant,omitempty"`
+	Grant []GrantsGrantObservation `json:"grant,omitempty" tf:"grant,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -122,7 +122,7 @@ type GrantsParameters struct {
 	Function *string `json:"function,omitempty" tf:"function,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Grant []GrantParameters `json:"grant,omitempty" tf:"grant,omitempty"`
+	Grant []GrantsGrantParameters `json:"grant,omitempty" tf:"grant,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Metastore *string `json:"metastore,omitempty" tf:"metastore,omitempty"`

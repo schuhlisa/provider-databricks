@@ -21,6 +21,20 @@ spec:
 ---
 
 apiVersion: databricks.crossplane.io/v1alpha1
+kind: Directory
+metadata:
+  annotations:
+    meta.upbound.io/example-id: databricks/v1alpha1/sqlalert
+  labels:
+    testing.upbound.io/example-name: shared_dir
+  name: shared-dir
+spec:
+  forProvider:
+    path: /Shared/Queries
+
+---
+
+apiVersion: databricks.crossplane.io/v1alpha1
 kind: SQLQuery
 metadata:
   annotations:
