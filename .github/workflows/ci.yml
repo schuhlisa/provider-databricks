@@ -2,6 +2,9 @@ name: CI
 
 on:
   push:
+    paths-ignore:
+      - 'examples/**'
+      - '*.md'
     branches:
       - main
       - release-*
