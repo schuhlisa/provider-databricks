@@ -49,42 +49,6 @@ You can see the API reference [here](https://doc.crds.dev/github.com/glalanne/pr
 
 A few exemples are provided [here](./examples/) to show case how to configure the provider, and how to use some resources
 
-## Resources
-Here is the list of all supported resources from the [Terraform provider](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs):
-
-- [databricks_alert](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/alert)
-- [databricks_budget](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/budget)
-- [databricks_catalog](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/catalog)
-- [databricks_cluster](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/cluster)
-- [databricks_cluster_policy](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/cluster_policy)
-- [databricks_connection](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/connection)
-- [databricks_external_location](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/external_location)
-- [databricks_git_credential](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/git_credential)
-- [databricks_grants](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/grants)
-- [databricks_group](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/group)
-- [databricks_group_member](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/group_member)
-- [databricks_group_role](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/group_role)
-- [databricks_instance_pool](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/instance_pool)
-- [databricks_ip_access_list](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/ip_access_list)
-- [databricks_job](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/job)
-- [databricks_notebook](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/notebook)
-- [databricks_permission_assignment](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/permission_assignment)
-- [databricks_permissions](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/permissions)
-- [databricks_pipeline](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/pipeline)
-- [databricks_query](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/query)
-- [databricks_schema](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/schema)
-- [databricks_secret](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/secret)
-- [databricks_secret_scope](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/secret_scope)
-- [databricks_service_principal](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/service_principal)
-- [databricks_service_principal_role](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/service_principal_role)
-- [databricks_sql_alert](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/sql_alert)
-- [databricks_sql_dashboard](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/sql_dashboard)
-- [databricks_sql_endpoint](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/sql_endpoint)
-- [databricks_sql_global_config](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/sql_global_config)
-- [databricks_sql_permissions](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/sql_permissions)
-- [databricks_sql_query](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/sql_query)
-- [databricks_sql_table](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/sql_table)
-- [databricks_token](https://registry.terraform.io/providers/databricks/databricks/1.58.0/docs/resources/token)
 
 ## Developing
 
