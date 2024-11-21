@@ -11,6 +11,7 @@ spec:
     categories:
     - crossplane
     - managed
+    - databricks
     kind: Query
     listKind: QueryList
     plural: queries

@@ -11,6 +11,7 @@ spec:
     categories:
     - crossplane
     - managed
+    - databricks
     kind: WorkspaceConf
     listKind: WorkspaceConfList
     plural: workspaceconfs

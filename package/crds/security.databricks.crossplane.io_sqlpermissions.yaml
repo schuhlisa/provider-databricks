@@ -11,6 +11,7 @@ spec:
     categories:
     - crossplane
     - managed
+    - databricks
     kind: SQLPermissions
     listKind: SQLPermissionsList
     plural: sqlpermissions

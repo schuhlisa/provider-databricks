@@ -11,6 +11,7 @@ spec:
     categories:
     - crossplane
     - managed
+    - databricks
     kind: LakehouseMonitor
     listKind: LakehouseMonitorList
     plural: lakehousemonitors

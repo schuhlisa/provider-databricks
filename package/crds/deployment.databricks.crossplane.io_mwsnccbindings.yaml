@@ -11,6 +11,7 @@ spec:
     categories:
     - crossplane
     - managed
+    - databricks
     kind: MwsNccBinding
     listKind: MwsNccBindingList
     plural: mwsnccbindings

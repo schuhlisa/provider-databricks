@@ -11,6 +11,7 @@ spec:
     categories:
     - crossplane
     - managed
+    - databricks
     kind: SQLEndpoint
     listKind: SQLEndpointList
     plural: sqlendpoints

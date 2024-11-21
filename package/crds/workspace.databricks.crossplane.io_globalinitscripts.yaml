@@ -11,6 +11,7 @@ spec:
     categories:
     - crossplane
     - managed
+    - databricks
     kind: GlobalInitScript
     listKind: GlobalInitScriptList
     plural: globalinitscripts

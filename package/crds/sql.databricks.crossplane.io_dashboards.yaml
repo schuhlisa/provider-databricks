@@ -11,6 +11,7 @@ spec:
     categories:
     - crossplane
     - managed
+    - databricks
     kind: Dashboard
     listKind: DashboardList
     plural: dashboards

@@ -11,6 +11,7 @@ spec:
     categories:
     - crossplane
     - managed
+    - databricks
     kind: Recipient
     listKind: RecipientList
     plural: recipients
