@@ -5,7 +5,7 @@ import "github.com/crossplane/upjet/pkg/config"
 // Configure configures individual resources by adding custom ResourceConfigurators.
 func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("databricks_permissions", func(r *config.Resource) {
-		r.ShortGroup = "databricks"
+		r.ShortGroup = "security"
 		r.References["sql_endpoint_id"] = config.Reference{
 			TerraformName: "databricks_sql_endpoint",
 		}

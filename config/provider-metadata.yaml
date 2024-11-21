@@ -4023,7 +4023,7 @@ resources:
             deactivated: '- Whether this private endpoint is deactivated.'
             deactivated_at: '- Time in epoch milliseconds when this object was deactivated.'
             endpoint_name: '- The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"'
-            group_id: '- The sub-resource type (group ID) of the target resource. Must be one of blob, dfs, sqlServer or mysqlServer. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.'
+            group_id: '- The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., blob, dfs, sqlServer , etc. Consult the Azure documentation for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.'
             network_connectivity_config_id: '- Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.'
             resource_id: '- The Azure resource ID of the target resource. Change forces creation of a new resource.'
             rule_id: '- the ID of a private endpoint rule.'
@@ -5620,6 +5620,34 @@ resources:
                       ],
                       "name": "tf-test"
                     }
+            - name: vector_search_endpoint_usage
+              manifest: |-
+                {
+                  "access_control": [
+                    {
+                      "group_name": "users",
+                      "permission_level": "CAN_USE"
+                    },
+                    {
+                      "group_name": "${databricks_group.eng.display_name}",
+                      "permission_level": "CAN_MANAGE"
+                    }
+                  ],
+                  "vector_search_endpoint_id": "${databricks_vector_search_endpoint.this.endpoint_id}"
+                }
+              references:
+                access_control.group_name: databricks_group.eng.display_name
+                vector_search_endpoint_id: databricks_vector_search_endpoint.this.endpoint_id
+              dependencies:
+                databricks_group.eng: |-
+                    {
+                      "display_name": "Engineering"
+                    }
+                databricks_vector_search_endpoint.this: |-
+                    {
+                      "endpoint_type": "STANDARD",
+                      "name": "vector-search-test"
+                    }
             - name: password_usage
               manifest: |-
                 {
@@ -5863,6 +5891,7 @@ resources:
             sql_dashboard_id: '- SQL dashboard id'
             sql_endpoint_id: '- SQL warehouse id'
             sql_query_id: '- SQL query id'
+            vector_search_endpoint_id: '- Vector Search endpoint id.'
         importStatements: []
     databricks_pipeline:
         subCategory: Compute
@@ -6190,7 +6219,7 @@ resources:
             query_backed_value: '- (Block) Query-based dropdown parameter value. Consists of following attributes:'
             query_id: '- (Required, String) ID of the query that provides the parameter values.'
             query_text: '- (Required, String) Text of SQL query.'
-            run_as_mode: '- (Optional, String) Sets the "Run as" role for the object.'
+            run_as_mode: '- (Optional, String) Sets the "Run as" role for the object.  Should be one of OWNER, VIEWER.'
             schema: '- (Optional, String) Name of the schema where this query will be executed.'
             separator: '- (Optional, String) Character that separates each selected parameter value. Defaults to a comma.'
             start: (Required, String) - begin of the date range.

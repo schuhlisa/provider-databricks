@@ -15,11 +15,6 @@ import (
 	"github.com/glalanne/provider-databricks/config/access_control_rule_set"
 	"github.com/glalanne/provider-databricks/config/alert"
 	"github.com/glalanne/provider-databricks/config/artifact_allowlist"
-	"github.com/glalanne/provider-databricks/config/automatic_cluster_update_workspace_setting"
-	"github.com/glalanne/provider-databricks/config/aws_s3_mount"
-	"github.com/glalanne/provider-databricks/config/azure_adls_gen1_mount"
-	"github.com/glalanne/provider-databricks/config/azure_adls_gen2_mount"
-	"github.com/glalanne/provider-databricks/config/azure_blob_mount"
 	"github.com/glalanne/provider-databricks/config/budget"
 	"github.com/glalanne/provider-databricks/config/catalog"
 	"github.com/glalanne/provider-databricks/config/catalog_workspace_binding"
@@ -92,18 +87,17 @@ import (
 	"github.com/glalanne/provider-databricks/config/service_principal_role"
 	"github.com/glalanne/provider-databricks/config/service_principal_secret"
 	"github.com/glalanne/provider-databricks/config/share"
-	"github.com/glalanne/provider-databricks/config/share_pluginframework"
 	"github.com/glalanne/provider-databricks/config/sql_alert"
 	"github.com/glalanne/provider-databricks/config/sql_dashboard"
 	"github.com/glalanne/provider-databricks/config/sql_endpoint"
 	"github.com/glalanne/provider-databricks/config/sql_global_config"
 	"github.com/glalanne/provider-databricks/config/sql_permissions"
 	"github.com/glalanne/provider-databricks/config/sql_query"
+	"github.com/glalanne/provider-databricks/config/sql_table"
 	"github.com/glalanne/provider-databricks/config/sql_visualization"
 	"github.com/glalanne/provider-databricks/config/sql_widget"
 	"github.com/glalanne/provider-databricks/config/storage_credential"
 	"github.com/glalanne/provider-databricks/config/system_schema"
-	"github.com/glalanne/provider-databricks/config/table"
 	"github.com/glalanne/provider-databricks/config/token"
 	"github.com/glalanne/provider-databricks/config/user"
 	"github.com/glalanne/provider-databricks/config/user_instance_profile"
@@ -131,9 +125,10 @@ var providerMetadata string
 func GetProvider() *ujconfig.Provider {
 	pc := ujconfig.NewProvider([]byte(providerSchema), resourcePrefix, modulePath, []byte(providerMetadata),
 		ujconfig.WithShortName("databricks"),
-		ujconfig.WithRootGroup("crossplane.io"),
+		ujconfig.WithRootGroup("databricks.crossplane.io"),
 		ujconfig.WithIncludeList(ExternalNameConfigured()),
 		ujconfig.WithFeaturesPackage("internal/features"),
+
 		ujconfig.WithDefaultResourceOptions(
 			ExternalNameConfigurations(),
 		))
@@ -167,6 +162,7 @@ func GetProvider() *ujconfig.Provider {
 		sql_dashboard.Configure,
 		sql_global_config.Configure,
 		sql_query.Configure,
+		sql_table.Configure,
 		budget.Configure,
 		git_credential.Configure,
 		catalog.Configure,
@@ -183,11 +179,6 @@ func GetProvider() *ujconfig.Provider {
 		model_serving.Configure,
 		access_control_rule_set.Configure,
 		artifact_allowlist.Configure,
-		automatic_cluster_update_workspace_setting.Configure,
-		aws_s3_mount.Configure,
-		azure_adls_gen1_mount.Configure,
-		azure_adls_gen2_mount.Configure,
-		azure_blob_mount.Configure,
 		catalog_workspace_binding.Configure,
 		compliance_security_profile_workspace_setting.Configure,
 		custom_app_integration.Configure,
@@ -229,10 +220,8 @@ func GetProvider() *ujconfig.Provider {
 		secret_acl.Configure,
 		service_principal_secret.Configure,
 		share.Configure,
-		share_pluginframework.Configure,
 		storage_credential.Configure,
 		system_schema.Configure,
-		table.Configure,
 		user.Configure,
 		user_instance_profile.Configure,
 		user_role.Configure,
