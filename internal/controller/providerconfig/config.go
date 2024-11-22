@@ -9,8 +9,9 @@ import (
 	"github.com/crossplane/crossplane-runtime/pkg/reconciler/providerconfig"
 	"github.com/crossplane/crossplane-runtime/pkg/resource"
 	"github.com/crossplane/upjet/pkg/controller"
-	"github.com/glalanne/provider-databricks/apis/v1beta1"
 	ctrl "sigs.k8s.io/controller-runtime"
+
+	"github.com/glalanne/provider-databricks/apis/v1beta1"
 )
 
 // Setup adds a controller that reconciles ProviderConfigs by accounting for
