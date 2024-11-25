@@ -12,10 +12,10 @@ spec:
     - crossplane
     - managed
     - databricks
-    kind: Grants
-    listKind: GrantsList
+    kind: Grant
+    listKind: GrantList
     plural: grants
-    singular: grants
+    singular: grant
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Grants is the Schema for the Grantss API. ""subcategory: "Unity
+        description: 'Grant is the Schema for the Grants API. ""subcategory: "Unity
           Catalog"'
         properties:
           apiVersion:
@@ -55,7 +55,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: GrantsSpec defines the desired state of Grants
+            description: GrantSpec defines the desired state of Grant
             properties:
               deletionPolicy:
                 default: Delete
@@ -81,28 +81,23 @@ spec:
                     type: string
                   function:
                     type: string
-                  grant:
-                    items:
-                      properties:
-                        principal:
-                          description: User name, group name or service principal
-                            application ID.
-                          type: string
-                        privileges:
-                          description: One or more privileges that are specific to
-                            a securable type.
-                          items:
-                            type: string
-                          type: array
-                          x-kubernetes-list-type: set
-                      type: object
-                    type: array
                   metastore:
                     type: string
                   model:
                     type: string
                   pipeline:
                     type: string
+                  principal:
+                    description: User name, group name or service principal application
+                      ID.
+                    type: string
+                  privileges:
+                    description: One or more privileges that are specific to a securable
+                      type.
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   recipient:
                     type: string
                   schema:
@@ -137,28 +132,23 @@ spec:
                     type: string
                   function:
                     type: string
-                  grant:
-                    items:
-                      properties:
-                        principal:
-                          description: User name, group name or service principal
-                            application ID.
-                          type: string
-                        privileges:
-                          description: One or more privileges that are specific to
-                            a securable type.
-                          items:
-                            type: string
-                          type: array
-                          x-kubernetes-list-type: set
-                      type: object
-                    type: array
                   metastore:
                     type: string
                   model:
                     type: string
                   pipeline:
                     type: string
+                  principal:
+                    description: User name, group name or service principal application
+                      ID.
+                    type: string
+                  privileges:
+                    description: One or more privileges that are specific to a securable
+                      type.
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   recipient:
                     type: string
                   schema:
@@ -340,12 +330,16 @@ spec:
             - forProvider
             type: object
             x-kubernetes-validations:
-            - message: spec.forProvider.grant is a required parameter
+            - message: spec.forProvider.principal is a required parameter
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
-                || ''Update'' in self.managementPolicies) || has(self.forProvider.grant)
-                || (has(self.initProvider) && has(self.initProvider.grant))'
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.principal)
+                || (has(self.initProvider) && has(self.initProvider.principal))'
+            - message: spec.forProvider.privileges is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.privileges)
+                || (has(self.initProvider) && has(self.initProvider.privileges))'
           status:
-            description: GrantsStatus defines the observed state of Grants.
+            description: GrantStatus defines the observed state of Grant.
             properties:
               atProvider:
                 properties:
@@ -357,22 +351,6 @@ spec:
                     type: string
                   function:
                     type: string
-                  grant:
-                    items:
-                      properties:
-                        principal:
-                          description: User name, group name or service principal
-                            application ID.
-                          type: string
-                        privileges:
-                          description: One or more privileges that are specific to
-                            a securable type.
-                          items:
-                            type: string
-                          type: array
-                          x-kubernetes-list-type: set
-                      type: object
-                    type: array
                   id:
                     type: string
                   metastore:
@@ -381,6 +359,17 @@ spec:
                     type: string
                   pipeline:
                     type: string
+                  principal:
+                    description: User name, group name or service principal application
+                      ID.
+                    type: string
+                  privileges:
+                    description: One or more privileges that are specific to a securable
+                      type.
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   recipient:
                     type: string
                   schema:

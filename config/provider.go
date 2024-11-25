@@ -34,7 +34,8 @@ import (
 	"github.com/glalanne/provider-databricks/config/git_credential"
 	"github.com/glalanne/provider-databricks/config/global_init_script"
 	"github.com/glalanne/provider-databricks/config/grant"
-	"github.com/glalanne/provider-databricks/config/grants"
+
+	// "github.com/glalanne/provider-databricks/config/grants"
 	"github.com/glalanne/provider-databricks/config/group"
 	"github.com/glalanne/provider-databricks/config/group_instance_profile"
 	"github.com/glalanne/provider-databricks/config/group_member"
@@ -153,7 +154,7 @@ func GetProvider() *ujconfig.Provider {
 		service_principal.Configure,
 		service_principal_role.Configure,
 		sql_permissions.Configure,
-		grants.Configure,
+		// grants.Configure,
 		pipeline.Configure,
 		alert.Configure,
 		query.Configure,

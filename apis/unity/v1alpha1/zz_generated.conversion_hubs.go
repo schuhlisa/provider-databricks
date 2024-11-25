@@ -25,9 +25,6 @@ func (tr *ExternalLocation) Hub() {}
 func (tr *Grant) Hub() {}
 
 // Hub marks this type as a conversion hub.
-func (tr *Grants) Hub() {}
-
-// Hub marks this type as a conversion hub.
 func (tr *LakehouseMonitor) Hub() {}
 
 // Hub marks this type as a conversion hub.
