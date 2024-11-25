@@ -1,8 +1,8 @@
 apiVersion: unity.databricks.crossplane.io/v1alpha1
-kind: Grants
+kind: GrantMap
 metadata:
   annotations:
-    meta.upbound.io/example-id: unity/v1alpha1/grants
+    meta.upbound.io/example-id: unity/v1alpha1/grantmap
   labels:
     testing.upbound.io/example-name: sandbox
   name: sandbox

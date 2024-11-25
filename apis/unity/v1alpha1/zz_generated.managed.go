@@ -368,63 +368,63 @@ func (mg *Grant) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
-// GetCondition of this Grants.
-func (mg *Grants) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+// GetCondition of this GrantMap.
+func (mg *GrantMap) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
-// GetDeletionPolicy of this Grants.
-func (mg *Grants) GetDeletionPolicy() xpv1.DeletionPolicy {
+// GetDeletionPolicy of this GrantMap.
+func (mg *GrantMap) GetDeletionPolicy() xpv1.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
-// GetManagementPolicies of this Grants.
-func (mg *Grants) GetManagementPolicies() xpv1.ManagementPolicies {
+// GetManagementPolicies of this GrantMap.
+func (mg *GrantMap) GetManagementPolicies() xpv1.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
-// GetProviderConfigReference of this Grants.
-func (mg *Grants) GetProviderConfigReference() *xpv1.Reference {
+// GetProviderConfigReference of this GrantMap.
+func (mg *GrantMap) GetProviderConfigReference() *xpv1.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
-// GetPublishConnectionDetailsTo of this Grants.
-func (mg *Grants) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+// GetPublishConnectionDetailsTo of this GrantMap.
+func (mg *GrantMap) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
 	return mg.Spec.PublishConnectionDetailsTo
 }
 
-// GetWriteConnectionSecretToReference of this Grants.
-func (mg *Grants) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+// GetWriteConnectionSecretToReference of this GrantMap.
+func (mg *GrantMap) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
-// SetConditions of this Grants.
-func (mg *Grants) SetConditions(c ...xpv1.Condition) {
+// SetConditions of this GrantMap.
+func (mg *GrantMap) SetConditions(c ...xpv1.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
-// SetDeletionPolicy of this Grants.
-func (mg *Grants) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+// SetDeletionPolicy of this GrantMap.
+func (mg *GrantMap) SetDeletionPolicy(r xpv1.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
-// SetManagementPolicies of this Grants.
-func (mg *Grants) SetManagementPolicies(r xpv1.ManagementPolicies) {
+// SetManagementPolicies of this GrantMap.
+func (mg *GrantMap) SetManagementPolicies(r xpv1.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
-// SetProviderConfigReference of this Grants.
-func (mg *Grants) SetProviderConfigReference(r *xpv1.Reference) {
+// SetProviderConfigReference of this GrantMap.
+func (mg *GrantMap) SetProviderConfigReference(r *xpv1.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
-// SetPublishConnectionDetailsTo of this Grants.
-func (mg *Grants) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+// SetPublishConnectionDetailsTo of this GrantMap.
+func (mg *GrantMap) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
 	mg.Spec.PublishConnectionDetailsTo = r
 }
 
-// SetWriteConnectionSecretToReference of this Grants.
-func (mg *Grants) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+// SetWriteConnectionSecretToReference of this GrantMap.
+func (mg *GrantMap) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 

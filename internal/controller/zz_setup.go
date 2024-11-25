@@ -83,7 +83,7 @@ import (
 	connection "github.com/glalanne/provider-databricks/internal/controller/unity/connection"
 	externallocation "github.com/glalanne/provider-databricks/internal/controller/unity/externallocation"
 	grant "github.com/glalanne/provider-databricks/internal/controller/unity/grant"
-	grants "github.com/glalanne/provider-databricks/internal/controller/unity/grants"
+	grantmap "github.com/glalanne/provider-databricks/internal/controller/unity/grantmap"
 	lakehousemonitor "github.com/glalanne/provider-databricks/internal/controller/unity/lakehousemonitor"
 	metastore "github.com/glalanne/provider-databricks/internal/controller/unity/metastore"
 	metastoreassignment "github.com/glalanne/provider-databricks/internal/controller/unity/metastoreassignment"
@@ -185,7 +185,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		connection.Setup,
 		externallocation.Setup,
 		grant.Setup,
-		grants.Setup,
+		grantmap.Setup,
 		lakehousemonitor.Setup,
 		metastore.Setup,
 		metastoreassignment.Setup,

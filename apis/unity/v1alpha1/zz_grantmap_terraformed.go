@@ -14,18 +14,18 @@ import (
 	"github.com/crossplane/upjet/pkg/resource/json"
 )
 
-// GetTerraformResourceType returns Terraform resource type for this Grants
-func (mg *Grants) GetTerraformResourceType() string {
+// GetTerraformResourceType returns Terraform resource type for this GrantMap
+func (mg *GrantMap) GetTerraformResourceType() string {
 	return "databricks_grants"
 }
 
-// GetConnectionDetailsMapping for this Grants
-func (tr *Grants) GetConnectionDetailsMapping() map[string]string {
+// GetConnectionDetailsMapping for this GrantMap
+func (tr *GrantMap) GetConnectionDetailsMapping() map[string]string {
 	return nil
 }
 
-// GetObservation of this Grants
-func (tr *Grants) GetObservation() (map[string]any, error) {
+// GetObservation of this GrantMap
+func (tr *GrantMap) GetObservation() (map[string]any, error) {
 	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
 	if err != nil {
 		return nil, err
@@ -34,8 +34,8 @@ func (tr *Grants) GetObservation() (map[string]any, error) {
 	return base, json.TFParser.Unmarshal(o, &base)
 }
 
-// SetObservation for this Grants
-func (tr *Grants) SetObservation(obs map[string]any) error {
+// SetObservation for this GrantMap
+func (tr *GrantMap) SetObservation(obs map[string]any) error {
 	p, err := json.TFParser.Marshal(obs)
 	if err != nil {
 		return err
@@ -43,16 +43,16 @@ func (tr *Grants) SetObservation(obs map[string]any) error {
 	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
 }
 
-// GetID returns ID of underlying Terraform resource of this Grants
-func (tr *Grants) GetID() string {
+// GetID returns ID of underlying Terraform resource of this GrantMap
+func (tr *GrantMap) GetID() string {
 	if tr.Status.AtProvider.ID == nil {
 		return ""
 	}
 	return *tr.Status.AtProvider.ID
 }
 
-// GetParameters of this Grants
-func (tr *Grants) GetParameters() (map[string]any, error) {
+// GetParameters of this GrantMap
+func (tr *GrantMap) GetParameters() (map[string]any, error) {
 	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
 	if err != nil {
 		return nil, err
@@ -61,8 +61,8 @@ func (tr *Grants) GetParameters() (map[string]any, error) {
 	return base, json.TFParser.Unmarshal(p, &base)
 }
 
-// SetParameters for this Grants
-func (tr *Grants) SetParameters(params map[string]any) error {
+// SetParameters for this GrantMap
+func (tr *GrantMap) SetParameters(params map[string]any) error {
 	p, err := json.TFParser.Marshal(params)
 	if err != nil {
 		return err
@@ -70,8 +70,8 @@ func (tr *Grants) SetParameters(params map[string]any) error {
 	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
 }
 
-// GetInitParameters of this Grants
-func (tr *Grants) GetInitParameters() (map[string]any, error) {
+// GetInitParameters of this GrantMap
+func (tr *GrantMap) GetInitParameters() (map[string]any, error) {
 	p, err := json.TFParser.Marshal(tr.Spec.InitProvider)
 	if err != nil {
 		return nil, err
@@ -80,8 +80,8 @@ func (tr *Grants) GetInitParameters() (map[string]any, error) {
 	return base, json.TFParser.Unmarshal(p, &base)
 }
 
-// GetInitParameters of this Grants
-func (tr *Grants) GetMergedParameters(shouldMergeInitProvider bool) (map[string]any, error) {
+// GetInitParameters of this GrantMap
+func (tr *GrantMap) GetMergedParameters(shouldMergeInitProvider bool) (map[string]any, error) {
 	params, err := tr.GetParameters()
 	if err != nil {
 		return nil, errors.Wrapf(err, "cannot get parameters for resource '%q'", tr.GetName())
@@ -110,10 +110,10 @@ func (tr *Grants) GetMergedParameters(shouldMergeInitProvider bool) (map[string]
 	return params, nil
 }
 
-// LateInitialize this Grants using its observed tfState.
+// LateInitialize this GrantMap using its observed tfState.
 // returns True if there are any spec changes for the resource.
-func (tr *Grants) LateInitialize(attrs []byte) (bool, error) {
-	params := &GrantsParameters{}
+func (tr *GrantMap) LateInitialize(attrs []byte) (bool, error) {
+	params := &GrantMapParameters{}
 	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
 		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
 	}
@@ -124,6 +124,6 @@ func (tr *Grants) LateInitialize(attrs []byte) (bool, error) {
 }
 
 // GetTerraformSchemaVersion returns the associated Terraform schema version
-func (tr *Grants) GetTerraformSchemaVersion() int {
+func (tr *GrantMap) GetTerraformSchemaVersion() int {
 	return 0
 }

@@ -13,7 +13,7 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
-type GrantsGrantInitParameters struct {
+type GrantMapGrantInitParameters struct {
 
 	// User name, group name or service principal application ID.
 	Principal *string `json:"principal,omitempty" tf:"principal,omitempty"`
@@ -23,7 +23,7 @@ type GrantsGrantInitParameters struct {
 	Privileges []*string `json:"privileges,omitempty" tf:"privileges,omitempty"`
 }
 
-type GrantsGrantObservation struct {
+type GrantMapGrantObservation struct {
 
 	// User name, group name or service principal application ID.
 	Principal *string `json:"principal,omitempty" tf:"principal,omitempty"`
@@ -33,7 +33,7 @@ type GrantsGrantObservation struct {
 	Privileges []*string `json:"privileges,omitempty" tf:"privileges,omitempty"`
 }
 
-type GrantsGrantParameters struct {
+type GrantMapGrantParameters struct {
 
 	// User name, group name or service principal application ID.
 	// +kubebuilder:validation:Optional
@@ -45,7 +45,7 @@ type GrantsGrantParameters struct {
 	Privileges []*string `json:"privileges" tf:"privileges,omitempty"`
 }
 
-type GrantsInitParameters struct {
+type GrantMapInitParameters struct {
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
@@ -54,7 +54,7 @@ type GrantsInitParameters struct {
 
 	Function *string `json:"function,omitempty" tf:"function,omitempty"`
 
-	Grant []GrantsGrantInitParameters `json:"grant,omitempty" tf:"grant,omitempty"`
+	Grant []GrantMapGrantInitParameters `json:"grant,omitempty" tf:"grant,omitempty"`
 
 	Metastore *string `json:"metastore,omitempty" tf:"metastore,omitempty"`
 
@@ -75,7 +75,7 @@ type GrantsInitParameters struct {
 	Volume *string `json:"volume,omitempty" tf:"volume,omitempty"`
 }
 
-type GrantsObservation struct {
+type GrantMapObservation struct {
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
@@ -84,7 +84,7 @@ type GrantsObservation struct {
 
 	Function *string `json:"function,omitempty" tf:"function,omitempty"`
 
-	Grant []GrantsGrantObservation `json:"grant,omitempty" tf:"grant,omitempty"`
+	Grant []GrantMapGrantObservation `json:"grant,omitempty" tf:"grant,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -107,7 +107,7 @@ type GrantsObservation struct {
 	Volume *string `json:"volume,omitempty" tf:"volume,omitempty"`
 }
 
-type GrantsParameters struct {
+type GrantMapParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
@@ -122,7 +122,7 @@ type GrantsParameters struct {
 	Function *string `json:"function,omitempty" tf:"function,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Grant []GrantsGrantParameters `json:"grant,omitempty" tf:"grant,omitempty"`
+	Grant []GrantMapGrantParameters `json:"grant,omitempty" tf:"grant,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Metastore *string `json:"metastore,omitempty" tf:"metastore,omitempty"`
@@ -152,10 +152,10 @@ type GrantsParameters struct {
 	Volume *string `json:"volume,omitempty" tf:"volume,omitempty"`
 }
 
-// GrantsSpec defines the desired state of Grants
-type GrantsSpec struct {
+// GrantMapSpec defines the desired state of GrantMap
+type GrantMapSpec struct {
 	v1.ResourceSpec `json:",inline"`
-	ForProvider     GrantsParameters `json:"forProvider"`
+	ForProvider     GrantMapParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -166,50 +166,50 @@ type GrantsSpec struct {
 	// required on creation, but we do not desire to update them after creation,
 	// for example because of an external controller is managing them, like an
 	// autoscaler.
-	InitProvider GrantsInitParameters `json:"initProvider,omitempty"`
+	InitProvider GrantMapInitParameters `json:"initProvider,omitempty"`
 }
 
-// GrantsStatus defines the observed state of Grants.
-type GrantsStatus struct {
+// GrantMapStatus defines the observed state of GrantMap.
+type GrantMapStatus struct {
 	v1.ResourceStatus `json:",inline"`
-	AtProvider        GrantsObservation `json:"atProvider,omitempty"`
+	AtProvider        GrantMapObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Grants is the Schema for the Grantss API. ""subcategory: "Unity Catalog"
+// GrantMap is the Schema for the GrantMaps API. ""subcategory: "Unity Catalog"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,databricks}
-type Grants struct {
+type GrantMap struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.grant) || (has(self.initProvider) && has(self.initProvider.grant))",message="spec.forProvider.grant is a required parameter"
-	Spec   GrantsSpec   `json:"spec"`
-	Status GrantsStatus `json:"status,omitempty"`
+	Spec   GrantMapSpec   `json:"spec"`
+	Status GrantMapStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// GrantsList contains a list of Grantss
-type GrantsList struct {
+// GrantMapList contains a list of GrantMaps
+type GrantMapList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Grants `json:"items"`
+	Items           []GrantMap `json:"items"`
 }
 
 // Repository type metadata.
 var (
-	Grants_Kind             = "Grants"
-	Grants_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: Grants_Kind}.String()
-	Grants_KindAPIVersion   = Grants_Kind + "." + CRDGroupVersion.String()
-	Grants_GroupVersionKind = CRDGroupVersion.WithKind(Grants_Kind)
+	GrantMap_Kind             = "GrantMap"
+	GrantMap_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: GrantMap_Kind}.String()
+	GrantMap_KindAPIVersion   = GrantMap_Kind + "." + CRDGroupVersion.String()
+	GrantMap_GroupVersionKind = CRDGroupVersion.WithKind(GrantMap_Kind)
 )
 
 func init() {
-	SchemeBuilder.Register(&Grants{}, &GrantsList{})
+	SchemeBuilder.Register(&GrantMap{}, &GrantMapList{})
 }
