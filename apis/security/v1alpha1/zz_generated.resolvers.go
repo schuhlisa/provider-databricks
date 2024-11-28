@@ -27,7 +27,7 @@ func (mg *Permissions) ResolveReferences(ctx context.Context, c client.Reader) e
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.AccessControl); i3++ {
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalName),
-			Extract:      resource.ExtractParamPath("application_id", false),
+			Extract:      resource.ExtractParamPath("applicationId", false),
 			Reference:    mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalNameRef,
 			Selector:     mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalNameSelector,
 			To: reference.To{
@@ -189,7 +189,7 @@ func (mg *Permissions) ResolveReferences(ctx context.Context, c client.Reader) e
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.AccessControl); i3++ {
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalName),
-			Extract:      resource.ExtractParamPath("application_id", false),
+			Extract:      resource.ExtractParamPath("applicationId", false),
 			Reference:    mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalNameRef,
 			Selector:     mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalNameSelector,
 			To: reference.To{
