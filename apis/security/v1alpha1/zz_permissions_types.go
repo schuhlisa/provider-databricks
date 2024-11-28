@@ -23,6 +23,7 @@ type AccessControlInitParameters struct {
 
 	// Application ID of the service_principal.
 	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/security/v1alpha1.ServicePrincipal
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("application_id", false)
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
 
 	// Reference to a ServicePrincipal in security to populate servicePrincipalName.
@@ -64,6 +65,7 @@ type AccessControlParameters struct {
 
 	// Application ID of the service_principal.
 	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/security/v1alpha1.ServicePrincipal
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("application_id", false)
 	// +kubebuilder:validation:Optional
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
 

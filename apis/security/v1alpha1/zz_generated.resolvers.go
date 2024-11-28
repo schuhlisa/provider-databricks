@@ -9,6 +9,7 @@ package v1alpha1
 import (
 	"context"
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
+	resource "github.com/crossplane/upjet/pkg/resource"
 	v1alpha1 "github.com/glalanne/provider-databricks/apis/compute/v1alpha1"
 	v1alpha12 "github.com/glalanne/provider-databricks/apis/sql/v1alpha1"
 	v1alpha11 "github.com/glalanne/provider-databricks/apis/workspace/v1alpha1"
@@ -26,7 +27,7 @@ func (mg *Permissions) ResolveReferences(ctx context.Context, c client.Reader) e
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.AccessControl); i3++ {
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalName),
-			Extract:      reference.ExternalName(),
+			Extract:      resource.ExtractParamPath("application_id", false),
 			Reference:    mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalNameRef,
 			Selector:     mg.Spec.ForProvider.AccessControl[i3].ServicePrincipalNameSelector,
 			To: reference.To{
@@ -188,7 +189,7 @@ func (mg *Permissions) ResolveReferences(ctx context.Context, c client.Reader) e
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.AccessControl); i3++ {
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalName),
-			Extract:      reference.ExternalName(),
+			Extract:      resource.ExtractParamPath("application_id", false),
 			Reference:    mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalNameRef,
 			Selector:     mg.Spec.InitProvider.AccessControl[i3].ServicePrincipalNameSelector,
 			To: reference.To{
