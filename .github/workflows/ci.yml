@@ -339,5 +339,5 @@ jobs:
       - name: Publish Artifacts to Github
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${GITHUB_ACTOR} --password-stdin
-          make publish BRANCH_NAME=${GITHUB_REF##*/} IMAGE_NAME: ${{ github.repository }}
+          make publish
   
