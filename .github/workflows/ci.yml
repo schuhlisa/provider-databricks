@@ -336,8 +336,10 @@ jobs:
         if: github.event.pull_request.merged == true && env.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR != ''
         run: make publish BRANCH_NAME=${GITHUB_REF##*/}
 
-      # - name: Publish Artifacts to Github
-      #   run: |
-      #     echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${GITHUB_ACTOR} --password-stdin
-      #     make publish XPKG_REG_ORGS=ghcr.io/glalanne
+      - name: Publish Artifacts to Github
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${GITHUB_ACTOR} --password-stdin
+          image_name=$(docker images | awk '{print $1}' | awk 'NR==2')
+          docker image tag ${image_name}:latest ghcr.io/glalanne/provider-databricks:latest
+          docker push ghcr.io/glalanne/provider-databricks:latest
   
