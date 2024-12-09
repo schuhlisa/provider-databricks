@@ -289,6 +289,12 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           submodules: true
+          persist-credentials: false
+          
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Fetch History
         run: git fetch --prune --unshallow
