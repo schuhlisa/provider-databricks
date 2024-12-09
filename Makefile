@@ -3,6 +3,7 @@
 
 PROJECT_NAME ?= provider-databricks
 PROJECT_REPO ?= github.com/glalanne/$(PROJECT_NAME)
+UPTEST_EXAMPLE_LIST ?= "examples/cluster/cluster.yaml"
 
 export TERRAFORM_VERSION ?= 1.5.7
 
@@ -63,7 +64,7 @@ UPTEST_VERSION = v0.5.0
 # ====================================================================================
 # Setup Images
 
-REGISTRY_ORGS ?= ghcr.io/glalanne
+REGISTRY_ORGS ?= xpkg.upbound.io/lalanne
 IMAGES = $(PROJECT_NAME)
 -include build/makelib/imagelight.mk
 
@@ -198,8 +199,8 @@ uptest: $(UPTEST) $(KUBECTL) $(KUTTL)
 
 local-deploy: build controlplane.up local.xpkg.deploy.provider.$(PROJECT_NAME)
 	@$(INFO) running locally built provider
-	@$(KUBECTL) wait provider.pkg $(PROJECT_NAME) --for condition=Healthy --timeout 5m
-	@$(KUBECTL) -n upbound-system wait --for=condition=Available deployment --all --timeout=5m
+	@$(KUBECTL) wait provider.pkg $(PROJECT_NAME) --for condition=Healthy --timeout 8m
+	@$(KUBECTL) -n upbound-system wait --for=condition=Available deployment --all --timeout=8m
 	@$(OK) running locally built provider
 
 e2e: local-deploy uptest
