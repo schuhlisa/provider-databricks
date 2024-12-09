@@ -9618,6 +9618,11 @@ func (in *JobInitParameters) DeepCopyInto(out *JobInitParameters) {
 		*out = new(float64)
 		**out = **in
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.NewCluster != nil {
 		in, out := &in.NewCluster, &out.NewCluster
 		*out = make([]JobNewClusterInitParameters, len(*in))
@@ -12435,6 +12440,11 @@ func (in *JobObservation) DeepCopyInto(out *JobObservation) {
 		*out = new(float64)
 		**out = **in
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.NewCluster != nil {
 		in, out := &in.NewCluster, &out.NewCluster
 		*out = make([]JobNewClusterObservation, len(*in))
@@ -12704,6 +12714,11 @@ func (in *JobParameters) DeepCopyInto(out *JobParameters) {
 	if in.MinRetryIntervalMillis != nil {
 		in, out := &in.MinRetryIntervalMillis, &out.MinRetryIntervalMillis
 		*out = new(float64)
+		**out = **in
+	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
 		**out = **in
 	}
 	if in.NewCluster != nil {
