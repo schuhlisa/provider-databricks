@@ -333,7 +333,7 @@ jobs:
           path: _output/**
 
       - name: Publish Artifacts to Upbound
-        if: github.event.pull_request.merged == true && env.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR != ''
+        if: github.ref == 'refs/heads/main' && env.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR != ''
         run: make publish BRANCH_NAME=${GITHUB_REF##*/}
 
       - name: Publish Artifacts to Github
