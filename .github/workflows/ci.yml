@@ -295,7 +295,7 @@ jobs:
         uses: cycjimmy/semantic-release-action@v4
         id: semantic
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
 
       - name: Fetch History
         run: git fetch --prune --unshallow
