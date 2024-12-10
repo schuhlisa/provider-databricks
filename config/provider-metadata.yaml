@@ -839,6 +839,85 @@ resources:
             owner: '- (Optional) Name of the connection owner.'
             properties: '-  (Optional) Free-form connection properties.'
         importStatements: []
+    databricks_credential:
+        subCategory: Unity Catalog
+        description: '""subcategory: "Unity Catalog"'
+        name: databricks_credential
+        title: databricks_credential Resource
+        examples:
+            - name: external
+              manifest: |-
+                {
+                  "aws_iam_role": [
+                    {
+                      "role_arn": "${aws_iam_role.external_data_access.arn}"
+                    }
+                  ],
+                  "comment": "Managed by TF",
+                  "name": "${aws_iam_role.external_data_access.name}",
+                  "purpose": "SERVICE"
+                }
+              references:
+                aws_iam_role.role_arn: aws_iam_role.external_data_access.arn
+                name: aws_iam_role.external_data_access.name
+              dependencies:
+                databricks_grants.external_creds: |-
+                    {
+                      "credential": "${databricks_credential.external.id}",
+                      "grant": [
+                        {
+                          "principal": "Data Engineers",
+                          "privileges": [
+                            "ACCESS"
+                          ]
+                        }
+                      ]
+                    }
+            - name: external_mi
+              manifest: |-
+                {
+                  "azure_managed_identity": [
+                    {
+                      "access_connector_id": "${azurerm_databricks_access_connector.example.id}"
+                    }
+                  ],
+                  "comment": "Managed identity credential managed by TF",
+                  "name": "mi_credential",
+                  "purpose": "SERVICE"
+                }
+              references:
+                azure_managed_identity.access_connector_id: azurerm_databricks_access_connector.example.id
+              dependencies:
+                databricks_grants.external_creds: |-
+                    {
+                      "credential": "${databricks_credential.external.id}",
+                      "grant": [
+                        {
+                          "principal": "Data Engineers",
+                          "privileges": [
+                            "ACCESS"
+                          ]
+                        }
+                      ]
+                    }
+        argumentDocs:
+            aws_iam_role.role_arn: '- The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF'
+            azure_managed_identity.access_connector_id: '- The Resource ID of the Azure Databricks Access Connector resource, of the form /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name.'
+            azure_managed_identity.managed_identity_id: '- (Optional) The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name.'
+            azure_service_principal.application_id: '- The application ID of the application registration within the referenced AAD tenant'
+            azure_service_principal.client_secret: '- The client secret generated for the above app ID in AAD. This field is redacted on output'
+            azure_service_principal.directory_id: '- The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application'
+            credential_id: '- Unique ID of the credential.'
+            force_destroy: '- (Optional) Delete credential regardless of its dependencies.'
+            force_update: '- (Optional) Update credential regardless of its dependents.'
+            id: '- ID of this credential - same as the name.'
+            isolation_mode: '- (Optional) Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be ISOLATION_MODE_ISOLATED or ISOLATION_MODE_OPEN. Setting the credential to ISOLATION_MODE_ISOLATED will automatically restrict access to only from the current workspace.'
+            name: '- Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.'
+            owner: '- (Optional) Username/groupname/sp application_id of the credential owner.'
+            purpose: '- Indicates the purpose of the credential. Can be SERVICE or STORAGE.'
+            read_only: '- (Optional) Indicates whether the credential is only usable for read operations. Only applicable when purpose is STORAGE.'
+            skip_validation: '- (Optional) Suppress validation errors if any & force save the credential.'
+        importStatements: []
     databricks_custom_app_integration:
         subCategory: Apps
         description: '""subcategory: "Apps"'
@@ -1492,6 +1571,29 @@ resources:
             - name: external_creds
               manifest: |-
                 {
+                  "credential": "${databricks_credential.external.id}",
+                  "principal": "Data Engineers",
+                  "privileges": [
+                    "ACCESS"
+                  ]
+                }
+              references:
+                credential: databricks_credential.external.id
+              dependencies:
+                databricks_credential.external: |-
+                    {
+                      "aws_iam_role": [
+                        {
+                          "role_arn": "${aws_iam_role.external_data_access.arn}"
+                        }
+                      ],
+                      "comment": "Managed by TF",
+                      "name": "${aws_iam_role.external_data_access.name}",
+                      "purpose": "SERVICE"
+                    }
+            - name: external_creds
+              manifest: |-
+                {
                   "principal": "Data Engineers",
                   "privileges": [
                     "CREATE_EXTERNAL_TABLE"
@@ -1878,6 +1980,33 @@ resources:
                     }
                   ]
                 }
+            - name: external_creds
+              manifest: |-
+                {
+                  "credential": "${databricks_credential.external.id}",
+                  "grant": [
+                    {
+                      "principal": "Data Engineers",
+                      "privileges": [
+                        "CREATE_CONNECTION"
+                      ]
+                    }
+                  ]
+                }
+              references:
+                credential: databricks_credential.external.id
+              dependencies:
+                databricks_credential.external: |-
+                    {
+                      "aws_iam_role": [
+                        {
+                          "role_arn": "${aws_iam_role.external_data_access.arn}"
+                        }
+                      ],
+                      "comment": "Managed by TF",
+                      "name": "${aws_iam_role.external_data_access.name}",
+                      "purpose": "SERVICE"
+                    }
             - name: external_creds
               manifest: |-
                 {
@@ -3846,6 +3975,9 @@ resources:
                     {
                       "account_id": "${var.databricks_account_id}",
                       "credentials_name": "Usage Delivery",
+                      "depends_on": [
+                        "${time_sleep.wait}"
+                      ],
                       "role_arn": "${aws_iam_role.logdelivery.arn}"
                     }
                 databricks_mws_storage_configurations.log_bucket: |-
@@ -3853,6 +3985,13 @@ resources:
                       "account_id": "${var.databricks_account_id}",
                       "bucket_name": "${aws_s3_bucket.logdelivery.bucket}",
                       "storage_configuration_name": "Usage Logs"
+                    }
+                time_sleep.wait: |-
+                    {
+                      "create_duration": "10s",
+                      "depends_on": [
+                        "${aws_iam_role.logdelivery}"
+                      ]
                     }
             - name: audit_logs
               manifest: |-
@@ -3907,6 +4046,9 @@ resources:
                     {
                       "account_id": "${var.databricks_account_id}",
                       "credentials_name": "Usage Delivery",
+                      "depends_on": [
+                        "${time_sleep.wait}"
+                      ],
                       "role_arn": "${aws_iam_role.logdelivery.arn}"
                     }
                 databricks_mws_storage_configurations.log_bucket: |-
@@ -3914,6 +4056,13 @@ resources:
                       "account_id": "${var.databricks_account_id}",
                       "bucket_name": "${aws_s3_bucket.logdelivery.bucket}",
                       "storage_configuration_name": "Usage Logs"
+                    }
+                time_sleep.wait: |-
+                    {
+                      "create_duration": "10s",
+                      "depends_on": [
+                        "${aws_iam_role.logdelivery}"
+                      ]
                     }
             - name: usage_logs
               manifest: |-

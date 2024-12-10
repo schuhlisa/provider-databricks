@@ -16,6 +16,8 @@ import (
 type GrantInitParameters struct {
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	Credential *string `json:"credential,omitempty" tf:"credential,omitempty"`
+
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
 
 	ForeignConnection *string `json:"foreignConnection,omitempty" tf:"foreign_connection,omitempty"`
@@ -50,6 +52,8 @@ type GrantInitParameters struct {
 
 type GrantObservation struct {
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
+
+	Credential *string `json:"credential,omitempty" tf:"credential,omitempty"`
 
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
 
@@ -89,6 +93,9 @@ type GrantParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Credential *string `json:"credential,omitempty" tf:"credential,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`

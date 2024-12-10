@@ -2618,6 +2618,11 @@ func (in *GrantInitParameters) DeepCopyInto(out *GrantInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
+		*out = new(string)
+		**out = **in
+	}
 	if in.ExternalLocation != nil {
 		in, out := &in.ExternalLocation, &out.ExternalLocation
 		*out = new(string)
@@ -2866,6 +2871,11 @@ func (in *GrantMapInitParameters) DeepCopyInto(out *GrantMapInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
+		*out = new(string)
+		**out = **in
+	}
 	if in.ExternalLocation != nil {
 		in, out := &in.ExternalLocation, &out.ExternalLocation
 		*out = new(string)
@@ -2985,6 +2995,11 @@ func (in *GrantMapObservation) DeepCopyInto(out *GrantMapObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
+		*out = new(string)
+		**out = **in
+	}
 	if in.ExternalLocation != nil {
 		in, out := &in.ExternalLocation, &out.ExternalLocation
 		*out = new(string)
@@ -3074,6 +3089,11 @@ func (in *GrantMapParameters) DeepCopyInto(out *GrantMapParameters) {
 	*out = *in
 	if in.Catalog != nil {
 		in, out := &in.Catalog, &out.Catalog
+		*out = new(string)
+		**out = **in
+	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
 		*out = new(string)
 		**out = **in
 	}
@@ -3199,6 +3219,11 @@ func (in *GrantObservation) DeepCopyInto(out *GrantObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
+		*out = new(string)
+		**out = **in
+	}
 	if in.ExternalLocation != nil {
 		in, out := &in.ExternalLocation, &out.ExternalLocation
 		*out = new(string)
@@ -3297,6 +3322,11 @@ func (in *GrantParameters) DeepCopyInto(out *GrantParameters) {
 	*out = *in
 	if in.Catalog != nil {
 		in, out := &in.Catalog, &out.Catalog
+		*out = new(string)
+		**out = **in
+	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
 		*out = new(string)
 		**out = **in
 	}

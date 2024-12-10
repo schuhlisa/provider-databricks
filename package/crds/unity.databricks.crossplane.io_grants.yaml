@@ -75,6 +75,8 @@ spec:
                 properties:
                   catalog:
                     type: string
+                  credential:
+                    type: string
                   externalLocation:
                     type: string
                   foreignConnection:
@@ -125,6 +127,8 @@ spec:
                   autoscaler.
                 properties:
                   catalog:
+                    type: string
+                  credential:
                     type: string
                   externalLocation:
                     type: string
@@ -344,6 +348,8 @@ spec:
               atProvider:
                 properties:
                   catalog:
+                    type: string
+                  credential:
                     type: string
                   externalLocation:
                     type: string
