@@ -256,7 +256,7 @@ jobs:
       - check-diff
       - unit-tests
       - local-deploy
-    if: needs.detect-noop.outputs.noop != 'true'
+    if: needs.detect-noop.outputs.noop != 'true' && github.event.pull_request.merged == true
 
     steps:
       - name: Setup QEMU
