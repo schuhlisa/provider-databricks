@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'GroupMember is the Schema for the GroupMembers API. ""subcategory:
-          "Security"'
+        description: GroupMember is the Schema for the GroupMembers API.
         properties:
           apiVersion:
             description: |-

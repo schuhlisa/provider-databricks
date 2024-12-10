@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'OboToken is the Schema for the OboTokens API. ""subcategory:
-          "Security"'
+        description: OboToken is the Schema for the OboTokens API.
         properties:
           apiVersion:
             description: |-

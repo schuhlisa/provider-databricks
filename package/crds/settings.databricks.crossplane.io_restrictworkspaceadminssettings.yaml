@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'RestrictWorkspaceAdminsSetting is the Schema for the RestrictWorkspaceAdminsSettings
-          API. ""subcategory: "Settings"'
+        description: RestrictWorkspaceAdminsSetting is the Schema for the RestrictWorkspaceAdminsSettings
+          API.
         properties:
           apiVersion:
             description: |-

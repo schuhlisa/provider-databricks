@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'UserRole is the Schema for the UserRoles API. ""subcategory:
-          "Security"'
+        description: UserRole is the Schema for the UserRoles API.
         properties:
           apiVersion:
             description: |-

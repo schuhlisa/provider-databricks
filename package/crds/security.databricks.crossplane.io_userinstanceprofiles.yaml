@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'UserInstanceProfile is the Schema for the UserInstanceProfiles
-          API. ""subcategory: "Security"'
+        description: UserInstanceProfile is the Schema for the UserInstanceProfiles
+          API.
         properties:
           apiVersion:
             description: |-

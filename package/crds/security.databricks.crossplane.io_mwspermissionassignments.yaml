@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MwsPermissionAssignment is the Schema for the MwsPermissionAssignments
-          API. ""subcategory: "Security"'
+        description: MwsPermissionAssignment is the Schema for the MwsPermissionAssignments
+          API.
         properties:
           apiVersion:
             description: |-

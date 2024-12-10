@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'CatalogWorkspaceBinding is the Schema for the CatalogWorkspaceBindings
-          API. ""subcategory: "Unity Catalog"'
+        description: CatalogWorkspaceBinding is the Schema for the CatalogWorkspaceBindings
+          API.
         properties:
           apiVersion:
             description: |-

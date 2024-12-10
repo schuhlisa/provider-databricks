@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'GrantMap is the Schema for the GrantMaps API. ""subcategory:
-          "Unity Catalog"'
+        description: GrantMap is the Schema for the GrantMaps API.
         properties:
           apiVersion:
             description: |-

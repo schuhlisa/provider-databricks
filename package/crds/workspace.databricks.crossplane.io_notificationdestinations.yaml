@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'NotificationDestination is the Schema for the NotificationDestinations
-          API. ""subcategory: "Workspace"'
+        description: NotificationDestination is the Schema for the NotificationDestinations
+          API.
         properties:
           apiVersion:
             description: |-

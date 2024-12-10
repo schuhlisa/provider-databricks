@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Dashboard is the Schema for the Dashboards API. ""subcategory:
-          "Workspace"'
+        description: Dashboard is the Schema for the Dashboards API.
         properties:
           apiVersion:
             description: |-

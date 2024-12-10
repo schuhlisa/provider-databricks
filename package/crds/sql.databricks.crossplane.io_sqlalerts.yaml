@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'SQLAlert is the Schema for the SQLAlerts API. ""subcategory:
-          "Databricks SQL"'
+        description: SQLAlert is the Schema for the SQLAlerts API.
         properties:
           apiVersion:
             description: |-

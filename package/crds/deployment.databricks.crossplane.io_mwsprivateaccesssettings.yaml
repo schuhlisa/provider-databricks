@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MwsPrivateAccessSettings is the Schema for the MwsPrivateAccessSettingss
-          API. ""subcategory: "Deployment"'
+        description: MwsPrivateAccessSettings is the Schema for the MwsPrivateAccessSettingss
+          API.
         properties:
           apiVersion:
             description: |-

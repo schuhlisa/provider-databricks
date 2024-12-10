@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'RegisteredModel is the Schema for the RegisteredModels API.
-          ""subcategory: "Unity Catalog"'
+        description: RegisteredModel is the Schema for the RegisteredModels API.
         properties:
           apiVersion:
             description: |-

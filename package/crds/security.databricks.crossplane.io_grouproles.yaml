@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'GroupRole is the Schema for the GroupRoles API. ""subcategory:
-          "Security"'
+        description: GroupRole is the Schema for the GroupRoles API.
         properties:
           apiVersion:
             description: |-

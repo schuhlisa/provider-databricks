@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Metastore is the Schema for the Metastores API. ""subcategory:
-          "Unity Catalog"'
+        description: Metastore is the Schema for the Metastores API.
         properties:
           apiVersion:
             description: |-

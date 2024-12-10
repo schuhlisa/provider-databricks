@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MwsNetworks is the Schema for the MwsNetworkss API. ""subcategory:
-          "Deployment"'
+        description: MwsNetworks is the Schema for the MwsNetworkss API.
         properties:
           apiVersion:
             description: |-

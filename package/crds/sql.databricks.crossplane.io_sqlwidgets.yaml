@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'SQLWidget is the Schema for the SQLWidgets API. ""subcategory:
-          "Databricks SQL"'
+        description: SQLWidget is the Schema for the SQLWidgets API.
         properties:
           apiVersion:
             description: |-

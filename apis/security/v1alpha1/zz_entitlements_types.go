@@ -121,7 +121,7 @@ type EntitlementsStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Entitlements is the Schema for the Entitlementss API. ""subcategory: "Security"
+// Entitlements is the Schema for the Entitlementss API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

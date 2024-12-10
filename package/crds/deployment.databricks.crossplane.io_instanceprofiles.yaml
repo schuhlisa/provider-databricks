@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'InstanceProfile is the Schema for the InstanceProfiles API.
-          ""subcategory: "Deployment"'
+        description: InstanceProfile is the Schema for the InstanceProfiles API.
         properties:
           apiVersion:
             description: |-

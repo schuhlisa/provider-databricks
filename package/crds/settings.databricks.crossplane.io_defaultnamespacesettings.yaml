@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'DefaultNamespaceSetting is the Schema for the DefaultNamespaceSettings
-          API. ""subcategory: "Settings"'
+        description: DefaultNamespaceSetting is the Schema for the DefaultNamespaceSettings
+          API.
         properties:
           apiVersion:
             description: |-

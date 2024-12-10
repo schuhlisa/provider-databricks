@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Entitlements is the Schema for the Entitlementss API. ""subcategory:
-          "Security"'
+        description: Entitlements is the Schema for the Entitlementss API.
         properties:
           apiVersion:
             description: |-

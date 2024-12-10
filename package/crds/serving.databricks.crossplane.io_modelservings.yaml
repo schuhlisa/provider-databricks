@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'ModelServing is the Schema for the ModelServings API. ""subcategory:
-          "Serving"'
+        description: ModelServing is the Schema for the ModelServings API.
         properties:
           apiVersion:
             description: |-

@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MwsNccBinding is the Schema for the MwsNccBindings API. ""subcategory:
-          "Deployment"'
+        description: MwsNccBinding is the Schema for the MwsNccBindings API.
         properties:
           apiVersion:
             description: |-

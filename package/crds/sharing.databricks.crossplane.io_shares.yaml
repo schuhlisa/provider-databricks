@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Share is the Schema for the Shares API. ""subcategory: "Delta
-          Sharing"'
+        description: Share is the Schema for the Shares API.
         properties:
           apiVersion:
             description: |-

@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Token is the Schema for the Tokens API. ""subcategory: "Security"'
+        description: Token is the Schema for the Tokens API.
         properties:
           apiVersion:
             description: |-

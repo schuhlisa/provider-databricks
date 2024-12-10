@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'PermissionAssignment is the Schema for the PermissionAssignments
-          API. ""subcategory: "Security"'
+        description: PermissionAssignment is the Schema for the PermissionAssignments
+          API.
         properties:
           apiVersion:
             description: |-

@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Library is the Schema for the Librarys API. ""subcategory: "Compute"'
+        description: Library is the Schema for the Librarys API.
         properties:
           apiVersion:
             description: |-

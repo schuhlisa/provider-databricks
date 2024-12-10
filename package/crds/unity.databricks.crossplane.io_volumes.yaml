@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Volume is the Schema for the Volumes API. ""subcategory: "Unity
-          Catalog"'
+        description: Volume is the Schema for the Volumes API.
         properties:
           apiVersion:
             description: |-

@@ -109,7 +109,7 @@ type GlobalInitScriptStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// GlobalInitScript is the Schema for the GlobalInitScripts API. ""subcategory: "Workspace"
+// GlobalInitScript is the Schema for the GlobalInitScripts API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

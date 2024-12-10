@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Provider is the Schema for the Providers API. ""subcategory:
-          "Delta Sharing"'
+        description: Provider is the Schema for the Providers API.
         properties:
           apiVersion:
             description: |-

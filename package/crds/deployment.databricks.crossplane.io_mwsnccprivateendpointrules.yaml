@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MwsNccPrivateEndpointRule is the Schema for the MwsNccPrivateEndpointRules
-          API. ""subcategory: "Deployment"'
+        description: MwsNccPrivateEndpointRule is the Schema for the MwsNccPrivateEndpointRules
+          API.
         properties:
           apiVersion:
             description: |-

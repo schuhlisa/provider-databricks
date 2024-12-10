@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'AccessControlRuleSet is the Schema for the AccessControlRuleSets
-          API. ""subcategory: "Security"'
+        description: AccessControlRuleSet is the Schema for the AccessControlRuleSets
+          API.
         properties:
           apiVersion:
             description: |-

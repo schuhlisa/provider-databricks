@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Catalog is the Schema for the Catalogs API. ""subcategory: "Unity
-          Catalog"'
+        description: Catalog is the Schema for the Catalogs API.
         properties:
           apiVersion:
             description: |-

@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'SQLQuery is the Schema for the SQLQuerys API. ""subcategory:
-          "Databricks SQL"'
+        description: SQLQuery is the Schema for the SQLQuerys API.
         properties:
           apiVersion:
             description: |-

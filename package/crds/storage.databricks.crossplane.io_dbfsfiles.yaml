@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'DbfsFile is the Schema for the DbfsFiles API. ""subcategory:
-          "Storage"'
+        description: DbfsFile is the Schema for the DbfsFiles API.
         properties:
           apiVersion:
             description: |-
