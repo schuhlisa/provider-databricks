@@ -256,8 +256,7 @@ jobs:
       - check-diff
       - unit-tests
       - local-deploy
-    if: needs.detect-noop.outputs.noop != 'true' && github.event.pull_request.merged == true
-
+    if: needs.detect-noop.outputs.noop != 'true' && github.ref == 'refs/heads/main'
     steps:
       - name: Setup QEMU
         uses: docker/setup-qemu-action@49b3bc8e6bdd4a60e6116a5414239cba5943d3cf # v3
