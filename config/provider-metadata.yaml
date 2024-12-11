@@ -1,8 +1,7 @@
 name: databricks/databricks
 resources:
     databricks_access_control_rule_set:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_access_control_rule_set
         title: databricks_access_control_rule_set Resource
         examples:
@@ -144,8 +143,7 @@ resources:
             users/{username}: (also exposed as acl_principal_id attribute of databricks_user resource).
         importStatements: []
     databricks_alert:
-        subCategory: Databricks SQL
-        description: '""subcategory: "Databricks SQL"'
+        subCategory: ""
         name: databricks_alert
         title: databricks_alert Resource
         examples:
@@ -267,8 +265,7 @@ resources:
             value: '- (Required, Block) actual value used in comparison (one of the attributes is required):'
         importStatements: []
     databricks_artifact_allowlist:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_artifact_allowlist
         title: databricks_artifact_allowlist Resource
         examples:
@@ -293,8 +290,7 @@ resources:
             metastore_id: '- ID of the parent metastore.'
         importStatements: []
     databricks_automatic_cluster_update_setting Resource:
-        subCategory: Settings
-        description: '""subcategory: "Settings"'
+        subCategory: ""
         name: databricks_automatic_cluster_update_setting Resource
         title: databricks_automatic_cluster_update_setting Resource
         argumentDocs:
@@ -310,8 +306,7 @@ resources:
             window_start_time: block that defines the time of your maintenance window. The default timezone is UTC and cannot be changed.
         importStatements: []
     databricks_budget:
-        subCategory: FinOps
-        description: '""subcategory: "FinOps"'
+        subCategory: ""
         name: databricks_budget
         title: databricks_budget Resource
         examples:
@@ -389,8 +384,7 @@ resources:
             workspace_id: '- (Optional) Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:'
         importStatements: []
     databricks_catalog:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_catalog
         title: databricks_catalog Resource
         examples:
@@ -420,8 +414,7 @@ resources:
             storage_root: '- (Optional if storage_root is specified for the metastore) Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.'
         importStatements: []
     databricks_catalog_workspace_binding:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_catalog_workspace_binding
         title: databricks_catalog_workspace_binding Resource
         examples:
@@ -447,8 +440,7 @@ resources:
             workspace_id: '- ID of the workspace. Change forces creation of a new resource.'
         importStatements: []
     databricks_cluster:
-        subCategory: Compute
-        description: '""subcategory: "Compute"'
+        subCategory: ""
         name: databricks_cluster
         title: databricks_cluster Resource
         examples:
@@ -728,8 +720,7 @@ resources:
             workload_type.notebooks: '- (Optional) boolean flag defining if it''s possible to run notebooks on this cluster. Default: true.'
         importStatements: []
     databricks_cluster_policy:
-        subCategory: Compute
-        description: '""subcategory: "Compute"'
+        subCategory: ""
         name: databricks_cluster_policy
         title: databricks_cluster_policy Resource
         examples:
@@ -786,8 +777,7 @@ resources:
             spark_version: parameter in databricks_cluster and other resources.
         importStatements: []
     databricks_compliance_security_profile_setting Resource:
-        subCategory: Settings
-        description: '""subcategory: "Settings"'
+        subCategory: ""
         name: databricks_compliance_security_profile_setting Resource
         title: databricks_compliance_security_profile_setting Resource
         argumentDocs:
@@ -796,8 +786,7 @@ resources:
             is_enabled: '- (Required) Enable the Compliance Security Profile on the workspace'
         importStatements: []
     databricks_connection:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_connection
         title: databricks_connection Resource
         examples:
@@ -839,9 +828,86 @@ resources:
             owner: '- (Optional) Name of the connection owner.'
             properties: '-  (Optional) Free-form connection properties.'
         importStatements: []
+    databricks_credential:
+        subCategory: ""
+        name: databricks_credential
+        title: databricks_credential Resource
+        examples:
+            - name: external
+              manifest: |-
+                {
+                  "aws_iam_role": [
+                    {
+                      "role_arn": "${aws_iam_role.external_data_access.arn}"
+                    }
+                  ],
+                  "comment": "Managed by TF",
+                  "name": "${aws_iam_role.external_data_access.name}",
+                  "purpose": "SERVICE"
+                }
+              references:
+                aws_iam_role.role_arn: aws_iam_role.external_data_access.arn
+                name: aws_iam_role.external_data_access.name
+              dependencies:
+                databricks_grants.external_creds: |-
+                    {
+                      "credential": "${databricks_credential.external.id}",
+                      "grant": [
+                        {
+                          "principal": "Data Engineers",
+                          "privileges": [
+                            "ACCESS"
+                          ]
+                        }
+                      ]
+                    }
+            - name: external_mi
+              manifest: |-
+                {
+                  "azure_managed_identity": [
+                    {
+                      "access_connector_id": "${azurerm_databricks_access_connector.example.id}"
+                    }
+                  ],
+                  "comment": "Managed identity credential managed by TF",
+                  "name": "mi_credential",
+                  "purpose": "SERVICE"
+                }
+              references:
+                azure_managed_identity.access_connector_id: azurerm_databricks_access_connector.example.id
+              dependencies:
+                databricks_grants.external_creds: |-
+                    {
+                      "credential": "${databricks_credential.external.id}",
+                      "grant": [
+                        {
+                          "principal": "Data Engineers",
+                          "privileges": [
+                            "ACCESS"
+                          ]
+                        }
+                      ]
+                    }
+        argumentDocs:
+            aws_iam_role.role_arn: '- The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF'
+            azure_managed_identity.access_connector_id: '- The Resource ID of the Azure Databricks Access Connector resource, of the form /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name.'
+            azure_managed_identity.managed_identity_id: '- (Optional) The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name.'
+            azure_service_principal.application_id: '- The application ID of the application registration within the referenced AAD tenant'
+            azure_service_principal.client_secret: '- The client secret generated for the above app ID in AAD. This field is redacted on output'
+            azure_service_principal.directory_id: '- The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application'
+            credential_id: '- Unique ID of the credential.'
+            force_destroy: '- (Optional) Delete credential regardless of its dependencies.'
+            force_update: '- (Optional) Update credential regardless of its dependents.'
+            id: '- ID of this credential - same as the name.'
+            isolation_mode: '- (Optional) Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be ISOLATION_MODE_ISOLATED or ISOLATION_MODE_OPEN. Setting the credential to ISOLATION_MODE_ISOLATED will automatically restrict access to only from the current workspace.'
+            name: '- Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.'
+            owner: '- (Optional) Username/groupname/sp application_id of the credential owner.'
+            purpose: '- Indicates the purpose of the credential. Can be SERVICE or STORAGE.'
+            read_only: '- (Optional) Indicates whether the credential is only usable for read operations. Only applicable when purpose is STORAGE.'
+            skip_validation: '- (Optional) Suppress validation errors if any & force save the credential.'
+        importStatements: []
     databricks_custom_app_integration:
-        subCategory: Apps
-        description: '""subcategory: "Apps"'
+        subCategory: ""
         name: databricks_custom_app_integration
         title: databricks_custom_app_integration Resource
         examples:
@@ -874,8 +940,7 @@ resources:
             scopes: '- OAuth scopes granted to the application. Supported scopes: all-apis, sql, offline_access, openid, profile, email.'
         importStatements: []
     databricks_dashboard:
-        subCategory: Workspace
-        description: '""subcategory: "Workspace"'
+        subCategory: ""
         name: databricks_dashboard
         title: databricks_dashboard Resource
         examples:
@@ -911,8 +976,7 @@ resources:
             warehouse_id: '- (Required) The warehouse ID used to run the dashboard.'
         importStatements: []
     databricks_dbfs_file:
-        subCategory: Storage
-        description: '""subcategory: "Storage"'
+        subCategory: ""
         name: databricks_dbfs_file
         title: databricks_dbfs_file Resource
         examples:
@@ -951,8 +1015,7 @@ resources:
             source: '- The full absolute path to the file. Conflicts with content_base64.'
         importStatements: []
     databricks_default_namespace_setting:
-        subCategory: Settings
-        description: '""subcategory: "Settings"'
+        subCategory: ""
         name: databricks_default_namespace_setting
         title: databricks_default_namespace_setting Resource
         examples:
@@ -970,8 +1033,7 @@ resources:
             value: '- (Required) The value for the setting.'
         importStatements: []
     databricks_directory:
-        subCategory: Workspace
-        description: '""subcategory: "Workspace"'
+        subCategory: ""
         name: databricks_directory
         title: databricks_directory Resource
         examples:
@@ -989,8 +1051,7 @@ resources:
             workspace_path: '- path on Workspace File System (WSFS) in form of /Workspace + path'
         importStatements: []
     databricks_enhanced_security_monitoring_setting Resource:
-        subCategory: Settings
-        description: '""subcategory: "Settings"'
+        subCategory: ""
         name: databricks_enhanced_security_monitoring_setting Resource
         title: databricks_enhanced_security_monitoring_setting Resource
         argumentDocs:
@@ -998,8 +1059,7 @@ resources:
             is_enabled: '- (Required) Enable the Enhanced Security Monitoring on the workspace'
         importStatements: []
     databricks_entitlements:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_entitlements
         title: databricks_entitlements Resource
         examples:
@@ -1043,8 +1103,7 @@ resources:
             workspace_access: '- (Optional) This is a field to allow the principal to have access to Databricks Workspace.'
         importStatements: []
     databricks_external_location:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_external_location
         title: databricks_external_location Resource
         examples:
@@ -1159,8 +1218,7 @@ resources:
             url: '- Path URL in cloud storage, of the form: s3://[bucket-host]/[bucket-dir] (AWS), abfss://[user]@[host]/[path] (Azure), gs://[bucket-host]/[bucket-dir] (GCP).'
         importStatements: []
     databricks_file:
-        subCategory: Storage
-        description: '""subcategory: "Storage"'
+        subCategory: ""
         name: databricks_file
         title: databricks_file Resource
         examples:
@@ -1212,8 +1270,7 @@ resources:
             source: '- The full absolute path to the file. Conflicts with content_base64.'
         importStatements: []
     databricks_git_credential:
-        subCategory: Workspace
-        description: '""subcategory: "Workspace"'
+        subCategory: ""
         name: databricks_git_credential
         title: databricks_git_credential Resource
         examples:
@@ -1232,8 +1289,7 @@ resources:
             personal_access_token: '- (Required) The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it''s sourced from the first environment variable of GITHUB_TOKEN, GITLAB_TOKEN, or AZDO_PERSONAL_ACCESS_TOKEN, that has a non-empty value.'
         importStatements: []
     databricks_global_init_script:
-        subCategory: Workspace
-        description: '""subcategory: "Workspace"'
+        subCategory: ""
         name: databricks_global_init_script
         title: databricks_global_init_script Resource
         examples:
@@ -1259,8 +1315,7 @@ resources:
             source: '- Path to script''s source code on local filesystem. Conflicts with content_base64'
         importStatements: []
     databricks_grant:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_grant
         title: databricks_grant Resource
         examples:
@@ -1492,6 +1547,29 @@ resources:
             - name: external_creds
               manifest: |-
                 {
+                  "credential": "${databricks_credential.external.id}",
+                  "principal": "Data Engineers",
+                  "privileges": [
+                    "ACCESS"
+                  ]
+                }
+              references:
+                credential: databricks_credential.external.id
+              dependencies:
+                databricks_credential.external: |-
+                    {
+                      "aws_iam_role": [
+                        {
+                          "role_arn": "${aws_iam_role.external_data_access.arn}"
+                        }
+                      ],
+                      "comment": "Managed by TF",
+                      "name": "${aws_iam_role.external_data_access.name}",
+                      "purpose": "SERVICE"
+                    }
+            - name: external_creds
+              manifest: |-
+                {
                   "principal": "Data Engineers",
                   "privileges": [
                     "CREATE_EXTERNAL_TABLE"
@@ -1648,8 +1726,7 @@ resources:
             privileges: '- One or more privileges that are specific to a securable type.'
         importStatements: []
     databricks_grants:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_grants
         title: databricks_grants Resource
         examples:
@@ -1881,6 +1958,33 @@ resources:
             - name: external_creds
               manifest: |-
                 {
+                  "credential": "${databricks_credential.external.id}",
+                  "grant": [
+                    {
+                      "principal": "Data Engineers",
+                      "privileges": [
+                        "CREATE_CONNECTION"
+                      ]
+                    }
+                  ]
+                }
+              references:
+                credential: databricks_credential.external.id
+              dependencies:
+                databricks_credential.external: |-
+                    {
+                      "aws_iam_role": [
+                        {
+                          "role_arn": "${aws_iam_role.external_data_access.arn}"
+                        }
+                      ],
+                      "comment": "Managed by TF",
+                      "name": "${aws_iam_role.external_data_access.name}",
+                      "purpose": "SERVICE"
+                    }
+            - name: external_creds
+              manifest: |-
+                {
                   "grant": [
                     {
                       "principal": "Data Engineers",
@@ -2012,8 +2116,7 @@ resources:
             databricks_grants.privileges: '- One or more privileges that are specific to a securable type.'
         importStatements: []
     databricks_group:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_group
         title: databricks_group Resource
         examples:
@@ -2069,8 +2172,7 @@ resources:
             workspace_access: '- (Optional) This is a field to allow the group to have access to Databricks Workspace.'
         importStatements: []
     databricks_group_instance_profile:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_group_instance_profile
         title: databricks_group_instance_profile Resource
         examples:
@@ -2098,8 +2200,7 @@ resources:
             instance_profile_id: '-  (Required) This is the id of the instance profile resource.'
         importStatements: []
     databricks_group_member:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_group_member
         title: databricks_group_member Resource
         examples:
@@ -2153,8 +2254,7 @@ resources:
             member_id: '- (Required) This is the id of the group, service principal, or user.'
         importStatements: []
     databricks_group_role:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_group_role
         title: databricks_group_role Resource
         examples:
@@ -2195,8 +2295,7 @@ resources:
             role: '- (Required) Either a role name or the ARN/ID of the instance profile resource.'
         importStatements: []
     databricks_instance_pool:
-        subCategory: Compute
-        description: '""subcategory: "Compute"'
+        subCategory: ""
         name: databricks_instance_pool
         title: databricks_instance_pool Resource
         examples:
@@ -2284,8 +2383,7 @@ resources:
             zone_id: '- (Optional) (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like "us-west-2a". The provided availability zone must be in the same region as the Databricks deployment. For example, "us-west-2a" is not a valid zone ID if the Databricks deployment resides in the "us-east-1" region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the List Zones API.'
         importStatements: []
     databricks_instance_profile:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_instance_profile
         title: databricks_instance_profile Resource
         examples:
@@ -2382,8 +2480,7 @@ resources:
             skip_validation: '- (Optional) For advanced usage only. If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.'
         importStatements: []
     databricks_ip_access_list:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_ip_access_list
         title: databricks_ip_access_list Resource
         examples:
@@ -2417,8 +2514,7 @@ resources:
             list_type: '-  Can only be "ALLOW" or "BLOCK".'
         importStatements: []
     databricks_job:
-        subCategory: Compute
-        description: '""subcategory: "Compute"'
+        subCategory: ""
         name: databricks_job
         title: databricks_job Resource
         examples:
@@ -2733,8 +2829,7 @@ resources:
             workload_type: '- isn''t supported'
         importStatements: []
     databricks_lakehouse_monitor:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_lakehouse_monitor
         title: databricks_lakehouse_monitor Resource
         examples:
@@ -2855,8 +2950,7 @@ resources:
             warehouse_id: '- Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.'
         importStatements: []
     databricks_library:
-        subCategory: Compute
-        description: '""subcategory: "Compute"'
+        subCategory: ""
         name: databricks_library
         title: databricks_library Resource
         examples:
@@ -2970,8 +3064,7 @@ resources:
             dbfs:/mnt/name: .
         importStatements: []
     databricks_metastore:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_metastore
         title: databricks_metastore Resource
         examples:
@@ -3034,8 +3127,7 @@ resources:
             storage_root: '- (Optional) Path on cloud storage account, where managed databricks_table are stored. Change forces creation of a new resource. If no storage_root is defined for the metastore, each catalog must have a storage_root defined.'
         importStatements: []
     databricks_metastore_assignment:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_metastore_assignment
         title: databricks_metastore_assignment Resource
         examples:
@@ -3064,8 +3156,7 @@ resources:
             workspace_id: '- id of the workspace for the assignment'
         importStatements: []
     databricks_metastore_data_access:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_metastore_data_access
         title: databricks_metastore_data_access Resource
         examples:
@@ -3123,8 +3214,7 @@ resources:
             is_default: '-  whether to set this credential as the default for the metastore. In practice, this should always be true.'
         importStatements: []
     databricks_mlflow_experiment:
-        subCategory: MLflow
-        description: '""subcategory: "MLflow"'
+        subCategory: ""
         name: databricks_mlflow_experiment
         title: databricks_mlflow_experiment Resource
         examples:
@@ -3142,8 +3232,7 @@ resources:
             name: '- (Required) Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. /Users/<some-username>/my-experiment. For more information about changes to experiment naming conventions, see mlflow docs.'
         importStatements: []
     databricks_mlflow_model:
-        subCategory: MLflow
-        description: '""subcategory: "MLflow"'
+        subCategory: ""
         name: databricks_mlflow_model
         title: databricks_mlflow_model Resource
         examples:
@@ -3170,8 +3259,7 @@ resources:
             tags: '- Tags for the MLflow model.'
         importStatements: []
     databricks_mlflow_webhook:
-        subCategory: MLflow
-        description: '""subcategory: "MLflow"'
+        subCategory: ""
         name: databricks_mlflow_webhook
         title: databricks_mlflow_webhook Resource
         examples:
@@ -3256,8 +3344,7 @@ resources:
             workspace_url: '- (Optional) URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.'
         importStatements: []
     databricks_model_serving:
-        subCategory: Serving
-        description: '""subcategory: "Serving"'
+        subCategory: ""
         name: databricks_model_serving
         title: databricks_model_serving Resource
         examples:
@@ -3401,8 +3488,7 @@ resources:
             valid_topics: '- The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.'
         importStatements: []
     databricks_mount:
-        subCategory: Storage
-        description: '""subcategory: "Storage"'
+        subCategory: ""
         name: databricks_mount
         title: databricks_mount Resource
         examples:
@@ -3641,8 +3727,7 @@ resources:
             wasb.token_secret_scope: '- (Required) (String) This is the secret scope in which your auth type token is stored.'
         importStatements: []
     databricks_mws_credentials:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_credentials
         title: databricks_mws_credentials Resource
         examples:
@@ -3678,8 +3763,7 @@ resources:
             role_arn: '- (Required) ARN of cross-account role'
         importStatements: []
     databricks_mws_customer_managed_keys:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_customer_managed_keys
         title: databricks_mws_customer_managed_keys Resource
         examples:
@@ -3788,8 +3872,7 @@ resources:
             use_cases = ["MANAGED_SERVICES"]: to keep the previous behaviour.
         importStatements: []
     databricks_mws_log_delivery:
-        subCategory: Log Delivery
-        description: '""subcategory: "Log Delivery"'
+        subCategory: ""
         name: databricks_mws_log_delivery
         title: databricks_mws_log_delivery Resource
         examples:
@@ -3846,6 +3929,9 @@ resources:
                     {
                       "account_id": "${var.databricks_account_id}",
                       "credentials_name": "Usage Delivery",
+                      "depends_on": [
+                        "${time_sleep.wait}"
+                      ],
                       "role_arn": "${aws_iam_role.logdelivery.arn}"
                     }
                 databricks_mws_storage_configurations.log_bucket: |-
@@ -3853,6 +3939,13 @@ resources:
                       "account_id": "${var.databricks_account_id}",
                       "bucket_name": "${aws_s3_bucket.logdelivery.bucket}",
                       "storage_configuration_name": "Usage Logs"
+                    }
+                time_sleep.wait: |-
+                    {
+                      "create_duration": "10s",
+                      "depends_on": [
+                        "${aws_iam_role.logdelivery}"
+                      ]
                     }
             - name: audit_logs
               manifest: |-
@@ -3907,6 +4000,9 @@ resources:
                     {
                       "account_id": "${var.databricks_account_id}",
                       "credentials_name": "Usage Delivery",
+                      "depends_on": [
+                        "${time_sleep.wait}"
+                      ],
                       "role_arn": "${aws_iam_role.logdelivery.arn}"
                     }
                 databricks_mws_storage_configurations.log_bucket: |-
@@ -3914,6 +4010,13 @@ resources:
                       "account_id": "${var.databricks_account_id}",
                       "bucket_name": "${aws_s3_bucket.logdelivery.bucket}",
                       "storage_configuration_name": "Usage Logs"
+                    }
+                time_sleep.wait: |-
+                    {
+                      "create_duration": "10s",
+                      "depends_on": [
+                        "${aws_iam_role.logdelivery}"
+                      ]
                     }
             - name: usage_logs
               manifest: |-
@@ -3960,8 +4063,7 @@ resources:
             workspace_ids_filter: '- (Optional) By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.'
         importStatements: []
     databricks_mws_ncc_binding:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_ncc_binding
         title: databricks_mws_ncc_binding Resource
         examples:
@@ -3988,8 +4090,7 @@ resources:
             workspace_id: '- Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.'
         importStatements: []
     databricks_mws_ncc_private_endpoint_rule:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_ncc_private_endpoint_rule
         title: databricks_mws_ncc_private_endpoint_rule Resource
         examples:
@@ -4030,8 +4131,7 @@ resources:
             updated_time: '- Time in epoch milliseconds when this object was updated.'
         importStatements: []
     databricks_mws_network_connectivity_config:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_network_connectivity_config
         title: databricks_mws_network_connectivity_config Resource
         examples:
@@ -4069,8 +4169,7 @@ resources:
             target_services: '- the Azure services to which this service endpoint rule applies to.'
         importStatements: []
     databricks_mws_networks:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_networks
         title: databricks_mws_networks Resource
         examples:
@@ -4234,8 +4333,7 @@ resources:
             workspace_id: '- (Integer) id of associated workspace'
         importStatements: []
     databricks_mws_permission_assignment:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_mws_permission_assignment
         title: databricks_mws_permission_assignment Resource
         examples:
@@ -4299,8 +4397,7 @@ resources:
             workspace_id: '- Databricks workspace ID.'
         importStatements: []
     databricks_mws_private_access_settings:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_private_access_settings
         title: databricks_mws_private_access_settings Resource
         examples:
@@ -4328,8 +4425,7 @@ resources:
             status: '- (AWS only) Status of Private Access Settings'
         importStatements: []
     databricks_mws_storage_configurations:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_storage_configurations
         title: databricks_mws_storage_configurations Resource
         examples:
@@ -4368,8 +4464,7 @@ resources:
             storage_configuration_name: '- name under which this storage configuration is stored'
         importStatements: []
     databricks_mws_vpc_endpoint:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_vpc_endpoint
         title: databricks_mws_vpc_endpoint Resource
         examples:
@@ -4462,8 +4557,7 @@ resources:
             vpc_endpoint_name: '- Name of VPC Endpoint in Databricks Account'
         importStatements: []
     databricks_mws_workspaces:
-        subCategory: Deployment
-        description: '""subcategory: "Deployment"'
+        subCategory: ""
         name: databricks_mws_workspaces
         title: databricks_mws_workspaces Resource
         examples:
@@ -4728,8 +4822,7 @@ resources:
             workspace_url: '- (String) URL of the workspace'
         importStatements: []
     databricks_notebook:
-        subCategory: Workspace
-        description: '""subcategory: "Workspace"'
+        subCategory: ""
         name: databricks_notebook
         title: databricks_notebook Resource
         examples:
@@ -4763,8 +4856,7 @@ resources:
             workspace_path: '- path on Workspace File System (WSFS) in form of /Workspace + path'
         importStatements: []
     databricks_notification_destination:
-        subCategory: Workspace
-        description: '""subcategory: "Workspace"'
+        subCategory: ""
         name: databricks_notification_destination
         title: databricks_notification_destination Resource
         examples:
@@ -4859,8 +4951,7 @@ resources:
             username: '- (Optional) The username for basic authentication.'
         importStatements: []
     databricks_obo_token:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_obo_token
         title: databricks_obo_token Resource
         examples:
@@ -4921,8 +5012,7 @@ resources:
             token_value: '- Sensitive value of the newly-created token.'
         importStatements: []
     databricks_online_table:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_online_table
         title: databricks_online_table Resource
         examples:
@@ -4960,8 +5050,7 @@ resources:
             unity_catalog_provisioning_state: '- The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).'
         importStatements: []
     databricks_permission_assignment:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_permission_assignment
         title: databricks_permission_assignment Resource
         examples:
@@ -5009,8 +5098,7 @@ resources:
             principal_id: '- Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks_service_principal or databricks_group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of principal_id as outputs from another Terraform stack.'
         importStatements: []
     databricks_permissions:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_permissions
         title: databricks_permissions Resource
         examples:
@@ -5894,8 +5982,7 @@ resources:
             vector_search_endpoint_id: '- Vector Search endpoint id.'
         importStatements: []
     databricks_pipeline:
-        subCategory: Compute
-        description: '""subcategory: "Compute"'
+        subCategory: ""
         name: databricks_pipeline
         title: databricks_pipeline Resource
         examples:
@@ -6004,8 +6091,7 @@ resources:
             url: '- URL of the DLT pipeline on the given workspace.'
         importStatements: []
     databricks_provider:
-        subCategory: Delta Sharing
-        description: '""subcategory: "Delta Sharing"'
+        subCategory: ""
         name: databricks_provider
         title: databricks_provider Resource
         examples:
@@ -6025,8 +6111,7 @@ resources:
             recipient_profile_str: '- (Optional) This is the json file that is created from a recipient url.'
         importStatements: []
     databricks_quality_monitor:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_quality_monitor
         title: databricks_quality_monitor Resource
         examples:
@@ -6146,8 +6231,7 @@ resources:
             warehouse_id: '- Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.'
         importStatements: []
     databricks_query:
-        subCategory: Databricks SQL
-        description: '""subcategory: "Databricks SQL"'
+        subCategory: ""
         name: databricks_query
         title: databricks_query Resource
         examples:
@@ -6241,8 +6325,7 @@ resources:
             warehouse_id: '- (Required, String) ID of a SQL warehouse which will be used to execute this query.'
         importStatements: []
     databricks_recipient:
-        subCategory: Delta Sharing
-        description: '""subcategory: "Delta Sharing"'
+        subCategory: ""
         name: databricks_recipient
         title: databricks_recipient Resource
         examples:
@@ -6310,8 +6393,7 @@ resources:
             updated_by: '- Username of recipient Token updater.'
         importStatements: []
     databricks_registered_model:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_registered_model
         title: databricks_registered_model Resource
         examples:
@@ -6333,8 +6415,7 @@ resources:
             storage_location: '- (Optional) The storage location under which model version data files are stored. Change of this parameter forces recreation of the resource.'
         importStatements: []
     databricks_repo:
-        subCategory: Workspace
-        description: '""subcategory: "Workspace"'
+        subCategory: ""
         name: databricks_repo
         title: databricks_repo Resource
         examples:
@@ -6355,8 +6436,7 @@ resources:
             workspace_path: '- path on Workspace File System (WSFS) in form of /Workspace + path'
         importStatements: []
     databricks_restrict_workspace_admins_setting:
-        subCategory: Settings
-        description: '""subcategory: "Settings"'
+        subCategory: ""
         name: databricks_restrict_workspace_admins_setting
         title: databricks_restrict_workspace_admins_setting Resource
         examples:
@@ -6374,8 +6454,7 @@ resources:
             status: '- (Required) The restrict workspace admins status for the workspace.'
         importStatements: []
     databricks_schema:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_schema
         title: databricks_schema Resource
         examples:
@@ -6412,8 +6491,7 @@ resources:
             storage_root: '- (Optional) Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.'
         importStatements: []
     databricks_secret:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_secret
         title: databricks_secret Resource
         examples:
@@ -6447,8 +6525,7 @@ resources:
             string_value: '- (Required) (String) super secret sensitive value.'
         importStatements: []
     databricks_secret_acl:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_secret_acl
         title: databricks_secret_acl Resource
         examples:
@@ -6486,8 +6563,7 @@ resources:
             user_name: attribute of databricks_user.
         importStatements: []
     databricks_secret_scope:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_secret_scope
         title: databricks_secret_scope Resource
         examples:
@@ -6541,8 +6617,7 @@ resources:
             name: '- (Required) Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.'
         importStatements: []
     databricks_service_principal:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_service_principal
         title: databricks_service_principal Resource
         examples:
@@ -6604,8 +6679,7 @@ resources:
             workspace_access: '- (Optional) This is a field to allow the group to have access to Databricks Workspace.'
         importStatements: []
     databricks_service_principal_role:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_service_principal_role
         title: databricks_service_principal_role Resource
         examples:
@@ -6633,8 +6707,7 @@ resources:
             service_principal_id: '- (Required) This is the id of the service principal resource.'
         importStatements: []
     databricks_service_principal_secret:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_service_principal_secret
         title: databricks_service_principal_secret Resource
         examples:
@@ -6651,8 +6724,7 @@ resources:
             service_principal_id: '- ID of the databricks_service_principal (not application ID).'
         importStatements: []
     databricks_share:
-        subCategory: Delta Sharing
-        description: '""subcategory: "Delta Sharing"'
+        subCategory: ""
         name: databricks_share
         title: databricks_share Resource
         examples:
@@ -6744,8 +6816,7 @@ resources:
             value: (Optional) - The value of the partition column. When this value is not set, it means null value. When this field is set, field recipient_property_key can not be set.
         importStatements: []
     databricks_sql_alert:
-        subCategory: Databricks SQL
-        description: '""subcategory: "Databricks SQL"'
+        subCategory: ""
         name: databricks_sql_alert
         title: databricks_sql_alert Resource
         examples:
@@ -6795,8 +6866,7 @@ resources:
             value: '- (Required, String) Value used to compare in alert evaluation.'
         importStatements: []
     databricks_sql_dashboard:
-        subCategory: Databricks SQL
-        description: '""subcategory: "Databricks SQL"'
+        subCategory: ""
         name: databricks_sql_dashboard
         title: databricks_sql_dashboard Resource
         examples:
@@ -6819,8 +6889,7 @@ resources:
             id: '- the unique ID of the SQL Dashboard.'
         importStatements: []
     databricks_sql_endpoint:
-        subCategory: Databricks SQL
-        description: '""subcategory: "Databricks SQL"'
+        subCategory: ""
         name: databricks_sql_endpoint
         title: databricks_sql_endpoint Resource
         examples:
@@ -6867,8 +6936,7 @@ resources:
             warehouse_type: '- SQL warehouse type. See for AWS or Azure. Set to PRO or CLASSIC. If the field enable_serverless_compute has the value true either explicitly or through the default logic (see that field above for details), the default is PRO, which is required for serverless SQL warehouses. Otherwise, the default is CLASSIC.'
         importStatements: []
     databricks_sql_global_config:
-        subCategory: Databricks SQL
-        description: '""subcategory: "Databricks SQL"'
+        subCategory: ""
         name: databricks_sql_global_config
         title: databricks_sql_global_config Resource
         examples:
@@ -6904,8 +6972,7 @@ resources:
             sql_config_params: (Optional, Map) - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         importStatements: []
     databricks_sql_permissions:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_sql_permissions
         title: databricks_sql_permissions Resource
         examples:
@@ -6961,8 +7028,7 @@ resources:
             view/bar.foo: '- view foo in bar database.'
         importStatements: []
     databricks_sql_query:
-        subCategory: Databricks SQL
-        description: '""subcategory: "Databricks SQL"'
+        subCategory: ""
         name: databricks_sql_query
         title: databricks_sql_query Resource
         examples:
@@ -7039,8 +7105,7 @@ resources:
             title: '- The text displayed in a parameter picking widget.'
         importStatements: []
     databricks_sql_table:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_sql_table
         title: databricks_sql_table Resource
         examples:
@@ -7252,8 +7317,7 @@ resources:
             warehouse_id: '- (Optional) All table CRUD operations must be executed on a running cluster or SQL warehouse. If a warehouse_id is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with cluster_id.'
         importStatements: []
     databricks_sql_visualization:
-        subCategory: Databricks SQL
-        description: '""subcategory: "Databricks SQL"'
+        subCategory: ""
         name: databricks_sql_visualization
         title: databricks_sql_visualization Resource
         examples:
@@ -7293,8 +7357,7 @@ resources:
         argumentDocs: {}
         importStatements: []
     databricks_sql_widget:
-        subCategory: Databricks SQL
-        description: '""subcategory: "Databricks SQL"'
+        subCategory: ""
         name: databricks_sql_widget
         title: databricks_sql_widget Resource
         examples:
@@ -7334,8 +7397,7 @@ resources:
         argumentDocs: {}
         importStatements: []
     databricks_storage_credential:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_storage_credential
         title: databricks_storage_credential Resource
         examples:
@@ -7437,8 +7499,7 @@ resources:
             storage_credential_id: '- Unique ID of storage credential.'
         importStatements: []
     databricks_system_schema:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_system_schema
         title: databricks_system_schema Resource
         examples:
@@ -7454,8 +7515,7 @@ resources:
             state: '- The current state of enablement for the system schema.'
         importStatements: []
     databricks_token:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_token
         title: databricks_token Resource
         examples:
@@ -7486,8 +7546,7 @@ resources:
             token_value: '- Sensitive value of the newly-created token.'
         importStatements: []
     databricks_user:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_user
         title: databricks_user Resource
         examples:
@@ -7550,8 +7609,7 @@ resources:
             user_name: '- (Required) This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.'
         importStatements: []
     databricks_user_instance_profile:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_user_instance_profile
         title: databricks_user_instance_profile Resource
         examples:
@@ -7579,8 +7637,7 @@ resources:
             user_id: '- (Required) This is the id of the user resource.'
         importStatements: []
     databricks_user_role:
-        subCategory: Security
-        description: '""subcategory: "Security"'
+        subCategory: ""
         name: databricks_user_role
         title: databricks_user_role Resource
         examples:
@@ -7621,8 +7678,7 @@ resources:
             user_id: '- (Required) This is the id of the user resource.'
         importStatements: []
     databricks_vector_search_endpoint:
-        subCategory: Mosaic AI Vector Search
-        description: '""subcategory: "Mosaic AI Vector Search"'
+        subCategory: ""
         name: databricks_vector_search_endpoint
         title: databricks_vector_search_endpoint Resource
         examples:
@@ -7647,8 +7703,7 @@ resources:
             state: '- Current state of the endpoint. Currently following values are supported: PROVISIONING, ONLINE, and OFFLINE.'
         importStatements: []
     databricks_vector_search_index:
-        subCategory: Mosaic AI Vector Search
-        description: '""subcategory: "Mosaic AI Vector Search"'
+        subCategory: ""
         name: databricks_vector_search_index
         title: databricks_vector_search_index Resource
         examples:
@@ -7704,8 +7759,7 @@ resources:
             status: '- Object describing the current status of the index consisting of the following fields:'
         importStatements: []
     databricks_volume:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_volume
         title: databricks_volume Resource
         examples:
@@ -7771,8 +7825,7 @@ resources:
             volume_type: '- Volume type. EXTERNAL or MANAGED. Change forces creation of a new resource.'
         importStatements: []
     databricks_workspace_binding:
-        subCategory: Unity Catalog
-        description: '""subcategory: "Unity Catalog"'
+        subCategory: ""
         name: databricks_workspace_binding
         title: databricks_workspace_binding Resource
         examples:
@@ -7798,8 +7851,7 @@ resources:
             workspace_id: '- ID of the workspace. Change forces creation of a new resource.'
         importStatements: []
     databricks_workspace_conf:
-        subCategory: Workspace
-        description: '""subcategory: "Workspace"'
+        subCategory: ""
         name: databricks_workspace_conf
         title: databricks_workspace_conf Resource
         examples:
@@ -7819,8 +7871,7 @@ resources:
             maxTokenLifetimeDays: '- (string) Maximum token lifetime of new tokens in days, as an integer. If zero, new tokens are permitted to have no lifetime limit. Negative numbers are unsupported. WARNING: This limit only applies to new tokens, so there may be tokens with lifetimes longer than this value, including unlimited lifetime. Such tokens may have been created before the current maximum token lifetime was set.'
         importStatements: []
     databricks_workspace_file:
-        subCategory: Workspace
-        description: '""subcategory: "Workspace"'
+        subCategory: ""
         name: databricks_workspace_file
         title: databricks_workspace_file Resource
         examples:

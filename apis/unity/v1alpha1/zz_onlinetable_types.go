@@ -302,7 +302,7 @@ type OnlineTableStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// OnlineTable is the Schema for the OnlineTables API. ""subcategory: "Unity Catalog"
+// OnlineTable is the Schema for the OnlineTables API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

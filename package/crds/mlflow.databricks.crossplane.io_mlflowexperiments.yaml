@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MlflowExperiment is the Schema for the MlflowExperiments API.
-          ""subcategory: "MLflow"'
+        description: MlflowExperiment is the Schema for the MlflowExperiments API.
         properties:
           apiVersion:
             description: |-

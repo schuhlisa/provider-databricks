@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MwsNetworkConnectivityConfig is the Schema for the MwsNetworkConnectivityConfigs
-          API. ""subcategory: "Deployment"'
+        description: MwsNetworkConnectivityConfig is the Schema for the MwsNetworkConnectivityConfigs
+          API.
         properties:
           apiVersion:
             description: |-

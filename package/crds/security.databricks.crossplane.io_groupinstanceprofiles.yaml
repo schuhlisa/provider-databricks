@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'GroupInstanceProfile is the Schema for the GroupInstanceProfiles
-          API. ""subcategory: "Security"'
+        description: GroupInstanceProfile is the Schema for the GroupInstanceProfiles
+          API.
         properties:
           apiVersion:
             description: |-

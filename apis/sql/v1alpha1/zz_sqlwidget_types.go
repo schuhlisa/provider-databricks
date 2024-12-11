@@ -196,7 +196,7 @@ type SQLWidgetStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// SQLWidget is the Schema for the SQLWidgets API. ""subcategory: "Databricks SQL"
+// SQLWidget is the Schema for the SQLWidgets API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

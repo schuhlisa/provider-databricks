@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MwsCustomerManagedKeys is the Schema for the MwsCustomerManagedKeyss
-          API. ""subcategory: "Deployment"'
+        description: MwsCustomerManagedKeys is the Schema for the MwsCustomerManagedKeyss
+          API.
         properties:
           apiVersion:
             description: |-

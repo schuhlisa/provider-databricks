@@ -175,7 +175,7 @@ type LibraryStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Library is the Schema for the Librarys API. ""subcategory: "Compute"
+// Library is the Schema for the Librarys API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

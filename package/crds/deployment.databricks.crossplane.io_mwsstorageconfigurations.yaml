@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MwsStorageConfigurations is the Schema for the MwsStorageConfigurationss
-          API. ""subcategory: "Deployment"'
+        description: MwsStorageConfigurations is the Schema for the MwsStorageConfigurationss
+          API.
         properties:
           apiVersion:
             description: |-

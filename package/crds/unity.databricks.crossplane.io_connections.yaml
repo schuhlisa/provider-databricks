@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Connection is the Schema for the Connections API. ""subcategory:
-          "Unity Catalog"'
+        description: Connection is the Schema for the Connections API.
         properties:
           apiVersion:
             description: |-

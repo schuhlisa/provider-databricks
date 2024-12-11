@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Group is the Schema for the Groups API. ""subcategory: "Security"'
+        description: Group is the Schema for the Groups API.
         properties:
           apiVersion:
             description: |-

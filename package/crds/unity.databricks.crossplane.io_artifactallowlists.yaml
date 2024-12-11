@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'ArtifactAllowlist is the Schema for the ArtifactAllowlists API.
-          ""subcategory: "Unity Catalog"'
+        description: ArtifactAllowlist is the Schema for the ArtifactAllowlists API.
         properties:
           apiVersion:
             description: |-

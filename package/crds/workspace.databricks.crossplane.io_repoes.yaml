@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Repo is the Schema for the Repos API. ""subcategory: "Workspace"'
+        description: Repo is the Schema for the Repos API.
         properties:
           apiVersion:
             description: |-

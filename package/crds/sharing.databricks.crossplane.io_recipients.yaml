@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Recipient is the Schema for the Recipients API. ""subcategory:
-          "Delta Sharing"'
+        description: Recipient is the Schema for the Recipients API.
         properties:
           apiVersion:
             description: |-

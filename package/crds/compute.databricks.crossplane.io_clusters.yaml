@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Cluster is the Schema for the Clusters API. ""subcategory: "Compute"'
+        description: Cluster is the Schema for the Clusters API.
         properties:
           apiVersion:
             description: |-

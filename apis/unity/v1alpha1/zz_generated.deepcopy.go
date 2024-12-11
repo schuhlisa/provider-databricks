@@ -9,6 +9,7 @@
 package v1alpha1
 
 import (
+	"github.com/crossplane/crossplane-runtime/apis/common/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -2617,6 +2618,11 @@ func (in *GrantInitParameters) DeepCopyInto(out *GrantInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
+		*out = new(string)
+		**out = **in
+	}
 	if in.ExternalLocation != nil {
 		in, out := &in.ExternalLocation, &out.ExternalLocation
 		*out = new(string)
@@ -2865,6 +2871,11 @@ func (in *GrantMapInitParameters) DeepCopyInto(out *GrantMapInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
+		*out = new(string)
+		**out = **in
+	}
 	if in.ExternalLocation != nil {
 		in, out := &in.ExternalLocation, &out.ExternalLocation
 		*out = new(string)
@@ -2984,6 +2995,11 @@ func (in *GrantMapObservation) DeepCopyInto(out *GrantMapObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
+		*out = new(string)
+		**out = **in
+	}
 	if in.ExternalLocation != nil {
 		in, out := &in.ExternalLocation, &out.ExternalLocation
 		*out = new(string)
@@ -3073,6 +3089,11 @@ func (in *GrantMapParameters) DeepCopyInto(out *GrantMapParameters) {
 	*out = *in
 	if in.Catalog != nil {
 		in, out := &in.Catalog, &out.Catalog
+		*out = new(string)
+		**out = **in
+	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
 		*out = new(string)
 		**out = **in
 	}
@@ -3198,6 +3219,11 @@ func (in *GrantObservation) DeepCopyInto(out *GrantObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
+		*out = new(string)
+		**out = **in
+	}
 	if in.ExternalLocation != nil {
 		in, out := &in.ExternalLocation, &out.ExternalLocation
 		*out = new(string)
@@ -3296,6 +3322,11 @@ func (in *GrantParameters) DeepCopyInto(out *GrantParameters) {
 	*out = *in
 	if in.Catalog != nil {
 		in, out := &in.Catalog, &out.Catalog
+		*out = new(string)
+		**out = **in
+	}
+	if in.Credential != nil {
+		in, out := &in.Credential, &out.Credential
 		*out = new(string)
 		**out = **in
 	}
@@ -7317,6 +7348,16 @@ func (in *SQLTableInitParameters) DeepCopyInto(out *SQLTableInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.ClusterIDRef != nil {
+		in, out := &in.ClusterIDRef, &out.ClusterIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ClusterIDSelector != nil {
+		in, out := &in.ClusterIDSelector, &out.ClusterIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.ClusterKeys != nil {
 		in, out := &in.ClusterKeys, &out.ClusterKeys
 		*out = make([]*string, len(*in))
@@ -7427,6 +7468,16 @@ func (in *SQLTableInitParameters) DeepCopyInto(out *SQLTableInitParameters) {
 		in, out := &in.WarehouseID, &out.WarehouseID
 		*out = new(string)
 		**out = **in
+	}
+	if in.WarehouseIDRef != nil {
+		in, out := &in.WarehouseIDRef, &out.WarehouseIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.WarehouseIDSelector != nil {
+		in, out := &in.WarehouseIDSelector, &out.WarehouseIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 }
 
@@ -7642,6 +7693,16 @@ func (in *SQLTableParameters) DeepCopyInto(out *SQLTableParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.ClusterIDRef != nil {
+		in, out := &in.ClusterIDRef, &out.ClusterIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.ClusterIDSelector != nil {
+		in, out := &in.ClusterIDSelector, &out.ClusterIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.ClusterKeys != nil {
 		in, out := &in.ClusterKeys, &out.ClusterKeys
 		*out = make([]*string, len(*in))
@@ -7752,6 +7813,16 @@ func (in *SQLTableParameters) DeepCopyInto(out *SQLTableParameters) {
 		in, out := &in.WarehouseID, &out.WarehouseID
 		*out = new(string)
 		**out = **in
+	}
+	if in.WarehouseIDRef != nil {
+		in, out := &in.WarehouseIDRef, &out.WarehouseIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.WarehouseIDSelector != nil {
+		in, out := &in.WarehouseIDSelector, &out.WarehouseIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 }
 

@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'VectorSearchIndex is the Schema for the VectorSearchIndexs API.
-          ""subcategory: "Mosaic AI Vector Search"'
+        description: VectorSearchIndex is the Schema for the VectorSearchIndexs API.
         properties:
           apiVersion:
             description: |-

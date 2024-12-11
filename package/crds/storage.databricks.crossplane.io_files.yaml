@@ -34,7 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'File is the Schema for the Files API. ""subcategory: "Storage"'
+        description: File is the Schema for the Files API.
         properties:
           apiVersion:
             description: |-

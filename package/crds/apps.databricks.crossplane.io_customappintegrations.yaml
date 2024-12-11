@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'CustomAppIntegration is the Schema for the CustomAppIntegrations
-          API. ""subcategory: "Apps"'
+        description: CustomAppIntegration is the Schema for the CustomAppIntegrations
+          API.
         properties:
           apiVersion:
             description: |-

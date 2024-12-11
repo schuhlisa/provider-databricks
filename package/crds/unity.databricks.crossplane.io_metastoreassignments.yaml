@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MetastoreAssignment is the Schema for the MetastoreAssignments
-          API. ""subcategory: "Unity Catalog"'
+        description: MetastoreAssignment is the Schema for the MetastoreAssignments
+          API.
         properties:
           apiVersion:
             description: |-

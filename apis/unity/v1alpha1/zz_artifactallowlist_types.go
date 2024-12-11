@@ -126,7 +126,7 @@ type ArtifactAllowlistStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// ArtifactAllowlist is the Schema for the ArtifactAllowlists API. ""subcategory: "Unity Catalog"
+// ArtifactAllowlist is the Schema for the ArtifactAllowlists API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'QualityMonitor is the Schema for the QualityMonitors API. ""subcategory:
-          "Unity Catalog"'
+        description: QualityMonitor is the Schema for the QualityMonitors API.
         properties:
           apiVersion:
             description: |-

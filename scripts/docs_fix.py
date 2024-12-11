@@ -20,7 +20,8 @@ if __name__ == "__main__":
             continue
 
         lines.insert(1, f"page_title: \"databricks_{base_name} Resource\"\n")
-        lines.insert(2, f"description: \"\"\n")
+        lines.insert(2, f"description: \n")
+        lines.pop(3)
 
         with open(file_path, 'w') as file:
             file.writelines(lines)

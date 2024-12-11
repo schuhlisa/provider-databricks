@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MetastoreDataAccess is the Schema for the MetastoreDataAccesss
-          API. ""subcategory: "Unity Catalog"'
+        description: MetastoreDataAccess is the Schema for the MetastoreDataAccesss
+          API.
         properties:
           apiVersion:
             description: |-

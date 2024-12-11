@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'ServicePrincipal is the Schema for the ServicePrincipals API.
-          ""subcategory: "Security"'
+        description: ServicePrincipal is the Schema for the ServicePrincipals API.
         properties:
           apiVersion:
             description: |-

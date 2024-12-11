@@ -463,7 +463,7 @@ type MountStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Mount is the Schema for the Mounts API. ""subcategory: "Storage"
+// Mount is the Schema for the Mounts API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'VectorSearchEndpoint is the Schema for the VectorSearchEndpoints
-          API. ""subcategory: "Mosaic AI Vector Search"'
+        description: VectorSearchEndpoint is the Schema for the VectorSearchEndpoints
+          API.
         properties:
           apiVersion:
             description: |-

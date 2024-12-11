@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'InstancePool is the Schema for the InstancePools API. ""subcategory:
-          "Compute"'
+        description: InstancePool is the Schema for the InstancePools API.
         properties:
           apiVersion:
             description: |-

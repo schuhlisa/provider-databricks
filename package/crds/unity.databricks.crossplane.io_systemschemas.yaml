@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'SystemSchema is the Schema for the SystemSchemas API. ""subcategory:
-          "Unity Catalog"'
+        description: SystemSchema is the Schema for the SystemSchemas API.
         properties:
           apiVersion:
             description: |-

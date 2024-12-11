@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'MwsLogDelivery is the Schema for the MwsLogDeliverys API. ""subcategory:
-          "Log Delivery"'
+        description: MwsLogDelivery is the Schema for the MwsLogDeliverys API.
         properties:
           apiVersion:
             description: |-

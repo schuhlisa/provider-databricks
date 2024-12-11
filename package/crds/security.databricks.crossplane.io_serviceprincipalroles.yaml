@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'ServicePrincipalRole is the Schema for the ServicePrincipalRoles
-          API. ""subcategory: "Security"'
+        description: ServicePrincipalRole is the Schema for the ServicePrincipalRoles
+          API.
         properties:
           apiVersion:
             description: |-

@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'LakehouseMonitor is the Schema for the LakehouseMonitors API.
-          ""subcategory: "Unity Catalog"'
+        description: LakehouseMonitor is the Schema for the LakehouseMonitors API.
         properties:
           apiVersion:
             description: |-

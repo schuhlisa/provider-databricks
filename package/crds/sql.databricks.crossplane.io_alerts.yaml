@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Alert is the Schema for the Alerts API. ""subcategory: "Databricks
-          SQL"'
+        description: Alert is the Schema for the Alerts API.
         properties:
           apiVersion:
             description: |-

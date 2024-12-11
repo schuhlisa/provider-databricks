@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'OnlineTable is the Schema for the OnlineTables API. ""subcategory:
-          "Unity Catalog"'
+        description: OnlineTable is the Schema for the OnlineTables API.
         properties:
           apiVersion:
             description: |-

@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Directory is the Schema for the Directorys API. ""subcategory:
-          "Workspace"'
+        description: Directory is the Schema for the Directorys API.
         properties:
           apiVersion:
             description: |-

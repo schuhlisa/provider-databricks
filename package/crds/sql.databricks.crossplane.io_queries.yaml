@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'Query is the Schema for the Querys API. ""subcategory: "Databricks
-          SQL"'
+        description: Query is the Schema for the Querys API.
         properties:
           apiVersion:
             description: |-

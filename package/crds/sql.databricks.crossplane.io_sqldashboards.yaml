@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'SQLDashboard is the Schema for the SQLDashboards API. ""subcategory:
-          "Databricks SQL"'
+        description: SQLDashboard is the Schema for the SQLDashboards API.
         properties:
           apiVersion:
             description: |-

@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'SQLGlobalConfig is the Schema for the SQLGlobalConfigs API.
-          ""subcategory: "Databricks SQL"'
+        description: SQLGlobalConfig is the Schema for the SQLGlobalConfigs API.
         properties:
           apiVersion:
             description: |-

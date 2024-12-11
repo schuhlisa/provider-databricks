@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'SQLVisualization is the Schema for the SQLVisualizations API.
-          ""subcategory: "Databricks SQL"'
+        description: SQLVisualization is the Schema for the SQLVisualizations API.
         properties:
           apiVersion:
             description: |-

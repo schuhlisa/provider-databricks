@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'GlobalInitScript is the Schema for the GlobalInitScripts API.
-          ""subcategory: "Workspace"'
+        description: GlobalInitScript is the Schema for the GlobalInitScripts API.
         properties:
           apiVersion:
             description: |-

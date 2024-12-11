@@ -48,6 +48,8 @@ type GrantMapGrantParameters struct {
 type GrantMapInitParameters struct {
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	Credential *string `json:"credential,omitempty" tf:"credential,omitempty"`
+
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
 
 	ForeignConnection *string `json:"foreignConnection,omitempty" tf:"foreign_connection,omitempty"`
@@ -77,6 +79,8 @@ type GrantMapInitParameters struct {
 
 type GrantMapObservation struct {
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
+
+	Credential *string `json:"credential,omitempty" tf:"credential,omitempty"`
 
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
 
@@ -111,6 +115,9 @@ type GrantMapParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Credential *string `json:"credential,omitempty" tf:"credential,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
@@ -179,7 +186,7 @@ type GrantMapStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// GrantMap is the Schema for the GrantMaps API. ""subcategory: "Unity Catalog"
+// GrantMap is the Schema for the GrantMaps API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

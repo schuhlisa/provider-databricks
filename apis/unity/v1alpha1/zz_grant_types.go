@@ -16,6 +16,8 @@ import (
 type GrantInitParameters struct {
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
 
+	Credential *string `json:"credential,omitempty" tf:"credential,omitempty"`
+
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
 
 	ForeignConnection *string `json:"foreignConnection,omitempty" tf:"foreign_connection,omitempty"`
@@ -50,6 +52,8 @@ type GrantInitParameters struct {
 
 type GrantObservation struct {
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
+
+	Credential *string `json:"credential,omitempty" tf:"credential,omitempty"`
 
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
 
@@ -89,6 +93,9 @@ type GrantParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Catalog *string `json:"catalog,omitempty" tf:"catalog,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Credential *string `json:"credential,omitempty" tf:"credential,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	ExternalLocation *string `json:"externalLocation,omitempty" tf:"external_location,omitempty"`
@@ -163,7 +170,7 @@ type GrantStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// Grant is the Schema for the Grants API. ""subcategory: "Unity Catalog"
+// Grant is the Schema for the Grants API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

@@ -92,7 +92,7 @@ type GitCredentialStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// GitCredential is the Schema for the GitCredentials API. ""subcategory: "Workspace"
+// GitCredential is the Schema for the GitCredentials API.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

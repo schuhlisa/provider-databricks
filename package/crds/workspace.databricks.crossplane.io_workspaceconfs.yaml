@@ -34,8 +34,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: 'WorkspaceConf is the Schema for the WorkspaceConfs API. ""subcategory:
-          "Workspace"'
+        description: WorkspaceConf is the Schema for the WorkspaceConfs API.
         properties:
           apiVersion:
             description: |-
