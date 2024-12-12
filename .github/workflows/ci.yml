@@ -342,7 +342,7 @@ jobs:
 
       - name: Publish Artifacts to Upbound
         if: github.ref == 'refs/heads/main' && env.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR != '' && steps.semantic.outputs.new_release_published == 'true'
-        run: make publish CHANNEL=main VERSION=${{ steps.semantic.outputs.new_release_version }}
+        run: make publish CHANNEL=main VERSION=v${{ steps.semantic.outputs.new_release_version }}
 
       - name: Publish Artifacts to Github
         if: steps.semantic.outputs.new_release_published == 'true'
