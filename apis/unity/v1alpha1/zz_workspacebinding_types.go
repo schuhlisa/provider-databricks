@@ -23,7 +23,7 @@ type WorkspaceBindingInitParameters struct {
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `json:"securableName,omitempty" tf:"securable_name,omitempty"`
 
-	// Type of securable. Can be catalog, external-location or storage-credential. Default to catalog. Change forces creation of a new resource.
+	// Type of securable. Can be catalog, external_location, storage_credential or credential. Default to catalog. Change forces creation of a new resource.
 	SecurableType *string `json:"securableType,omitempty" tf:"securable_type,omitempty"`
 
 	// ID of the workspace. Change forces creation of a new resource.
@@ -42,7 +42,7 @@ type WorkspaceBindingObservation struct {
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName *string `json:"securableName,omitempty" tf:"securable_name,omitempty"`
 
-	// Type of securable. Can be catalog, external-location or storage-credential. Default to catalog. Change forces creation of a new resource.
+	// Type of securable. Can be catalog, external_location, storage_credential or credential. Default to catalog. Change forces creation of a new resource.
 	SecurableType *string `json:"securableType,omitempty" tf:"securable_type,omitempty"`
 
 	// ID of the workspace. Change forces creation of a new resource.
@@ -62,7 +62,7 @@ type WorkspaceBindingParameters struct {
 	// +kubebuilder:validation:Optional
 	SecurableName *string `json:"securableName,omitempty" tf:"securable_name,omitempty"`
 
-	// Type of securable. Can be catalog, external-location or storage-credential. Default to catalog. Change forces creation of a new resource.
+	// Type of securable. Can be catalog, external_location, storage_credential or credential. Default to catalog. Change forces creation of a new resource.
 	// +kubebuilder:validation:Optional
 	SecurableType *string `json:"securableType,omitempty" tf:"securable_type,omitempty"`
 

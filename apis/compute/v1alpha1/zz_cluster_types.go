@@ -313,6 +313,10 @@ type ClusterInitParameters struct {
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is limited to 100, so apply may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
 	IsPinned *bool `json:"isPinned,omitempty" tf:"is_pinned,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	Library []LibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
 	// If true, the provider will not wait for the cluster to reach RUNNING state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
@@ -346,6 +350,8 @@ type ClusterInitParameters struct {
 
 	// Runtime version of the cluster. Any supported databricks_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	WorkloadType []WorkloadTypeInitParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
@@ -475,6 +481,10 @@ type ClusterObservation struct {
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is limited to 100, so apply may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
 	IsPinned *bool `json:"isPinned,omitempty" tf:"is_pinned,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	Library []LibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
 	// If true, the provider will not wait for the cluster to reach RUNNING state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
@@ -514,6 +524,8 @@ type ClusterObservation struct {
 
 	// URL for the Docker image
 	URL *string `json:"url,omitempty" tf:"url,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	WorkloadType []WorkloadTypeObservation `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
 }
@@ -594,6 +606,12 @@ type ClusterParameters struct {
 	IsPinned *bool `json:"isPinned,omitempty" tf:"is_pinned,omitempty"`
 
 	// +kubebuilder:validation:Optional
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
+	// +kubebuilder:validation:Optional
 	Library []LibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
 
 	// If true, the provider will not wait for the cluster to reach RUNNING state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
@@ -637,6 +655,9 @@ type ClusterParameters struct {
 	// Runtime version of the cluster. Any supported databricks_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	// +kubebuilder:validation:Optional
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	WorkloadType []WorkloadTypeParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`

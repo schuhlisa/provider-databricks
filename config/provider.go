@@ -22,6 +22,7 @@ import (
 	"github.com/glalanne/provider-databricks/config/cluster_policy"
 	"github.com/glalanne/provider-databricks/config/compliance_security_profile_workspace_setting"
 	"github.com/glalanne/provider-databricks/config/connection"
+	"github.com/glalanne/provider-databricks/config/credential"
 	"github.com/glalanne/provider-databricks/config/custom_app_integration"
 	"github.com/glalanne/provider-databricks/config/dashboard"
 	"github.com/glalanne/provider-databricks/config/dbfs_file"
@@ -133,9 +134,10 @@ func GetProvider() *ujconfig.Provider {
 		))
 
 	for _, configure := range []func(provider *ujconfig.Provider){
-		// add custom config functions
+		// app.Configure,
 		cluster.Configure,
 		cluster_policy.Configure,
+		credential.Configure,
 		token.Configure,
 		secret.Configure,
 		secret_scope.Configure,

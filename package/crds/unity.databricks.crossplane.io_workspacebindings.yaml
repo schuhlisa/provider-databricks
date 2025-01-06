@@ -83,9 +83,9 @@ spec:
                       resource.
                     type: string
                   securableType:
-                    description: Type of securable. Can be catalog, external-location
-                      or storage-credential. Default to catalog. Change forces creation
-                      of a new resource.
+                    description: Type of securable. Can be catalog, external_location,
+                      storage_credential or credential. Default to catalog. Change
+                      forces creation of a new resource.
                     type: string
                   workspaceId:
                     description: ID of the workspace. Change forces creation of a
@@ -116,9 +116,9 @@ spec:
                       resource.
                     type: string
                   securableType:
-                    description: Type of securable. Can be catalog, external-location
-                      or storage-credential. Default to catalog. Change forces creation
-                      of a new resource.
+                    description: Type of securable. Can be catalog, external_location,
+                      storage_credential or credential. Default to catalog. Change
+                      forces creation of a new resource.
                     type: string
                   workspaceId:
                     description: ID of the workspace. Change forces creation of a
@@ -310,9 +310,9 @@ spec:
                       resource.
                     type: string
                   securableType:
-                    description: Type of securable. Can be catalog, external-location
-                      or storage-credential. Default to catalog. Change forces creation
-                      of a new resource.
+                    description: Type of securable. Can be catalog, external_location,
+                      storage_credential or credential. Default to catalog. Change
+                      forces creation of a new resource.
                     type: string
                   workspaceId:
                     description: ID of the workspace. Change forces creation of a

@@ -993,6 +993,16 @@ func (in *GroupMemberInitParameters) DeepCopyInto(out *GroupMemberInitParameters
 		*out = new(string)
 		**out = **in
 	}
+	if in.GroupIDRef != nil {
+		in, out := &in.GroupIDRef, &out.GroupIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.GroupIDSelector != nil {
+		in, out := &in.GroupIDSelector, &out.GroupIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.MemberID != nil {
 		in, out := &in.MemberID, &out.MemberID
 		*out = new(string)
@@ -1079,6 +1089,16 @@ func (in *GroupMemberParameters) DeepCopyInto(out *GroupMemberParameters) {
 		in, out := &in.GroupID, &out.GroupID
 		*out = new(string)
 		**out = **in
+	}
+	if in.GroupIDRef != nil {
+		in, out := &in.GroupIDRef, &out.GroupIDRef
+		*out = new(v1.Reference)
+		(*in).DeepCopyInto(*out)
+	}
+	if in.GroupIDSelector != nil {
+		in, out := &in.GroupIDSelector, &out.GroupIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.MemberID != nil {
 		in, out := &in.MemberID, &out.MemberID
@@ -2388,6 +2408,11 @@ func (in *PermissionsInitParameters) DeepCopyInto(out *PermissionsInitParameters
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.AppName != nil {
+		in, out := &in.AppName, &out.AppName
+		*out = new(string)
+		**out = **in
+	}
 	if in.Authorization != nil {
 		in, out := &in.Authorization, &out.Authorization
 		*out = new(string)
@@ -2652,6 +2677,11 @@ func (in *PermissionsObservation) DeepCopyInto(out *PermissionsObservation) {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.AppName != nil {
+		in, out := &in.AppName, &out.AppName
+		*out = new(string)
+		**out = **in
+	}
 	if in.Authorization != nil {
 		in, out := &in.Authorization, &out.Authorization
 		*out = new(string)
@@ -2798,6 +2828,11 @@ func (in *PermissionsParameters) DeepCopyInto(out *PermissionsParameters) {
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
+	}
+	if in.AppName != nil {
+		in, out := &in.AppName, &out.AppName
+		*out = new(string)
+		**out = **in
 	}
 	if in.Authorization != nil {
 		in, out := &in.Authorization, &out.Authorization

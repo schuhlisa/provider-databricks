@@ -81,6 +81,7 @@ import (
 	catalog "github.com/glalanne/provider-databricks/internal/controller/unity/catalog"
 	catalogworkspacebinding "github.com/glalanne/provider-databricks/internal/controller/unity/catalogworkspacebinding"
 	connection "github.com/glalanne/provider-databricks/internal/controller/unity/connection"
+	credential "github.com/glalanne/provider-databricks/internal/controller/unity/credential"
 	externallocation "github.com/glalanne/provider-databricks/internal/controller/unity/externallocation"
 	grant "github.com/glalanne/provider-databricks/internal/controller/unity/grant"
 	grantmap "github.com/glalanne/provider-databricks/internal/controller/unity/grantmap"
@@ -183,6 +184,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		catalog.Setup,
 		catalogworkspacebinding.Setup,
 		connection.Setup,
+		credential.Setup,
 		externallocation.Setup,
 		grant.Setup,
 		grantmap.Setup,
