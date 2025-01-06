@@ -603,6 +603,10 @@ spec:
                       may change over time, so check Databricks documentation for
                       actual number).
                     type: boolean
+                  isSingleNode:
+                    type: boolean
+                  kind:
+                    type: string
                   library:
                     items:
                       properties:
@@ -712,6 +716,8 @@ spec:
                     items:
                       type: string
                     type: array
+                  useMlRuntime:
+                    type: boolean
                   workloadType:
                     items:
                       properties:
@@ -1278,6 +1284,10 @@ spec:
                       may change over time, so check Databricks documentation for
                       actual number).
                     type: boolean
+                  isSingleNode:
+                    type: boolean
+                  kind:
+                    type: string
                   library:
                     items:
                       properties:
@@ -1387,6 +1397,8 @@ spec:
                     items:
                       type: string
                     type: array
+                  useMlRuntime:
+                    type: boolean
                   workloadType:
                     items:
                       properties:
@@ -2113,6 +2125,10 @@ spec:
                       may change over time, so check Databricks documentation for
                       actual number).
                     type: boolean
+                  isSingleNode:
+                    type: boolean
+                  kind:
+                    type: string
                   library:
                     items:
                       properties:
@@ -2228,6 +2244,8 @@ spec:
                   url:
                     description: URL for the Docker image
                     type: string
+                  useMlRuntime:
+                    type: boolean
                   workloadType:
                     items:
                       properties:

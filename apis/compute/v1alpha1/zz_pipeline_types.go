@@ -1561,7 +1561,7 @@ type ReportParameters struct {
 }
 
 type RestartWindowInitParameters struct {
-	DaysOfWeek *string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
+	DaysOfWeek []*string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	StartHour *float64 `json:"startHour,omitempty" tf:"start_hour,omitempty"`
 
@@ -1570,7 +1570,7 @@ type RestartWindowInitParameters struct {
 }
 
 type RestartWindowObservation struct {
-	DaysOfWeek *string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
+	DaysOfWeek []*string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	StartHour *float64 `json:"startHour,omitempty" tf:"start_hour,omitempty"`
 
@@ -1581,7 +1581,7 @@ type RestartWindowObservation struct {
 type RestartWindowParameters struct {
 
 	// +kubebuilder:validation:Optional
-	DaysOfWeek *string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
+	DaysOfWeek []*string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	StartHour *float64 `json:"startHour" tf:"start_hour,omitempty"`

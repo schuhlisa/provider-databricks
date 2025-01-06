@@ -105,6 +105,58 @@ type AzureAttributesLogAnalyticsInfoParameters struct {
 	LogAnalyticsWorkspaceID *string `json:"logAnalyticsWorkspaceId,omitempty" tf:"log_analytics_workspace_id,omitempty"`
 }
 
+type CleanRoomsNotebookTaskInitParameters struct {
+
+	// An optional name for the job. The default value is Untitled.
+	CleanRoomName *string `json:"cleanRoomName,omitempty" tf:"clean_room_name,omitempty"`
+
+	// name of the Git branch to use. Conflicts with branch and commit.
+	Etag *string `json:"etag,omitempty" tf:"etag,omitempty"`
+
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
+	// +mapType=granular
+	NotebookBaseParameters map[string]*string `json:"notebookBaseParameters,omitempty" tf:"notebook_base_parameters,omitempty"`
+
+	// An optional name for the job. The default value is Untitled.
+	NotebookName *string `json:"notebookName,omitempty" tf:"notebook_name,omitempty"`
+}
+
+type CleanRoomsNotebookTaskObservation struct {
+
+	// An optional name for the job. The default value is Untitled.
+	CleanRoomName *string `json:"cleanRoomName,omitempty" tf:"clean_room_name,omitempty"`
+
+	// name of the Git branch to use. Conflicts with branch and commit.
+	Etag *string `json:"etag,omitempty" tf:"etag,omitempty"`
+
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
+	// +mapType=granular
+	NotebookBaseParameters map[string]*string `json:"notebookBaseParameters,omitempty" tf:"notebook_base_parameters,omitempty"`
+
+	// An optional name for the job. The default value is Untitled.
+	NotebookName *string `json:"notebookName,omitempty" tf:"notebook_name,omitempty"`
+}
+
+type CleanRoomsNotebookTaskParameters struct {
+
+	// An optional name for the job. The default value is Untitled.
+	// +kubebuilder:validation:Optional
+	CleanRoomName *string `json:"cleanRoomName" tf:"clean_room_name,omitempty"`
+
+	// name of the Git branch to use. Conflicts with branch and commit.
+	// +kubebuilder:validation:Optional
+	Etag *string `json:"etag,omitempty" tf:"etag,omitempty"`
+
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	NotebookBaseParameters map[string]*string `json:"notebookBaseParameters,omitempty" tf:"notebook_base_parameters,omitempty"`
+
+	// An optional name for the job. The default value is Untitled.
+	// +kubebuilder:validation:Optional
+	NotebookName *string `json:"notebookName" tf:"notebook_name,omitempty"`
+}
+
 type ClusterLogConfDbfsInitParameters struct {
 	Destination *string `json:"destination,omitempty" tf:"destination,omitempty"`
 }
@@ -808,6 +860,9 @@ type ForEachTaskTaskEmailNotificationsParameters struct {
 type ForEachTaskTaskInitParameters struct {
 
 	// A list of task specification that the job will execute. See task Configuration Block below.
+	CleanRoomsNotebookTask []TaskCleanRoomsNotebookTaskInitParameters `json:"cleanRoomsNotebookTask,omitempty" tf:"clean_rooms_notebook_task,omitempty"`
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	ConditionTask []TaskConditionTaskInitParameters `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
 
 	// A list of task specification that the job will execute. See task Configuration Block below.
@@ -895,6 +950,9 @@ type ForEachTaskTaskInitParameters struct {
 type ForEachTaskTaskObservation struct {
 
 	// A list of task specification that the job will execute. See task Configuration Block below.
+	CleanRoomsNotebookTask []TaskCleanRoomsNotebookTaskObservation `json:"cleanRoomsNotebookTask,omitempty" tf:"clean_rooms_notebook_task,omitempty"`
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	ConditionTask []TaskConditionTaskObservation `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
 
 	// A list of task specification that the job will execute. See task Configuration Block below.
@@ -980,6 +1038,10 @@ type ForEachTaskTaskObservation struct {
 }
 
 type ForEachTaskTaskParameters struct {
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
+	// +kubebuilder:validation:Optional
+	CleanRoomsNotebookTask []TaskCleanRoomsNotebookTaskParameters `json:"cleanRoomsNotebookTask,omitempty" tf:"clean_rooms_notebook_task,omitempty"`
 
 	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional
@@ -1904,6 +1966,10 @@ type JobNewClusterInitParameters struct {
 	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobNewClusterLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
@@ -1930,6 +1996,8 @@ type JobNewClusterInitParameters struct {
 
 	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	WorkloadType []JobNewClusterWorkloadTypeInitParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
@@ -2166,6 +2234,10 @@ type JobNewClusterObservation struct {
 	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobNewClusterLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
@@ -2192,6 +2264,8 @@ type JobNewClusterObservation struct {
 
 	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	WorkloadType []JobNewClusterWorkloadTypeObservation `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
@@ -2263,6 +2337,12 @@ type JobNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// +kubebuilder:validation:Optional
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []JobNewClusterLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
@@ -2299,6 +2379,9 @@ type JobNewClusterParameters struct {
 	// parameter in databricks_cluster and other resources.
 	// +kubebuilder:validation:Optional
 	SparkVersion *string `json:"sparkVersion" tf:"spark_version,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	// +kubebuilder:validation:Optional
@@ -3230,6 +3313,10 @@ type JobTaskNewClusterInitParameters struct {
 	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobTaskNewClusterLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
@@ -3256,6 +3343,8 @@ type JobTaskNewClusterInitParameters struct {
 
 	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	WorkloadType []JobTaskNewClusterWorkloadTypeInitParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
@@ -3632,6 +3721,10 @@ type JobTaskNewClusterObservation struct {
 	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []JobTaskNewClusterLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
@@ -3658,6 +3751,8 @@ type JobTaskNewClusterObservation struct {
 
 	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	WorkloadType []JobTaskNewClusterWorkloadTypeObservation `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
@@ -3729,6 +3824,12 @@ type JobTaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// +kubebuilder:validation:Optional
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []JobTaskNewClusterLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
@@ -3765,6 +3866,9 @@ type JobTaskNewClusterParameters struct {
 	// parameter in databricks_cluster and other resources.
 	// +kubebuilder:validation:Optional
 	SparkVersion *string `json:"sparkVersion" tf:"spark_version,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	// +kubebuilder:validation:Optional
@@ -4844,6 +4948,10 @@ type NewClusterInitParameters struct {
 	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []NewClusterLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
@@ -4870,6 +4978,8 @@ type NewClusterInitParameters struct {
 
 	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	WorkloadType []NewClusterWorkloadTypeInitParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
@@ -5246,6 +5356,10 @@ type NewClusterObservation struct {
 	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []NewClusterLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
@@ -5272,6 +5386,8 @@ type NewClusterObservation struct {
 
 	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	WorkloadType []NewClusterWorkloadTypeObservation `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
@@ -5343,6 +5459,12 @@ type NewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// +kubebuilder:validation:Optional
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []NewClusterLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
@@ -5379,6 +5501,9 @@ type NewClusterParameters struct {
 	// parameter in databricks_cluster and other resources.
 	// +kubebuilder:validation:Optional
 	SparkVersion *string `json:"sparkVersion" tf:"spark_version,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	// +kubebuilder:validation:Optional
@@ -6419,6 +6544,58 @@ type TableUpdateParameters struct {
 	WaitAfterLastChangeSeconds *float64 `json:"waitAfterLastChangeSeconds,omitempty" tf:"wait_after_last_change_seconds,omitempty"`
 }
 
+type TaskCleanRoomsNotebookTaskInitParameters struct {
+
+	// An optional name for the job. The default value is Untitled.
+	CleanRoomName *string `json:"cleanRoomName,omitempty" tf:"clean_room_name,omitempty"`
+
+	// name of the Git branch to use. Conflicts with branch and commit.
+	Etag *string `json:"etag,omitempty" tf:"etag,omitempty"`
+
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
+	// +mapType=granular
+	NotebookBaseParameters map[string]*string `json:"notebookBaseParameters,omitempty" tf:"notebook_base_parameters,omitempty"`
+
+	// An optional name for the job. The default value is Untitled.
+	NotebookName *string `json:"notebookName,omitempty" tf:"notebook_name,omitempty"`
+}
+
+type TaskCleanRoomsNotebookTaskObservation struct {
+
+	// An optional name for the job. The default value is Untitled.
+	CleanRoomName *string `json:"cleanRoomName,omitempty" tf:"clean_room_name,omitempty"`
+
+	// name of the Git branch to use. Conflicts with branch and commit.
+	Etag *string `json:"etag,omitempty" tf:"etag,omitempty"`
+
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
+	// +mapType=granular
+	NotebookBaseParameters map[string]*string `json:"notebookBaseParameters,omitempty" tf:"notebook_base_parameters,omitempty"`
+
+	// An optional name for the job. The default value is Untitled.
+	NotebookName *string `json:"notebookName,omitempty" tf:"notebook_name,omitempty"`
+}
+
+type TaskCleanRoomsNotebookTaskParameters struct {
+
+	// An optional name for the job. The default value is Untitled.
+	// +kubebuilder:validation:Optional
+	CleanRoomName *string `json:"cleanRoomName" tf:"clean_room_name,omitempty"`
+
+	// name of the Git branch to use. Conflicts with branch and commit.
+	// +kubebuilder:validation:Optional
+	Etag *string `json:"etag,omitempty" tf:"etag,omitempty"`
+
+	// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using dbutils.widgets.get.
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	NotebookBaseParameters map[string]*string `json:"notebookBaseParameters,omitempty" tf:"notebook_base_parameters,omitempty"`
+
+	// An optional name for the job. The default value is Untitled.
+	// +kubebuilder:validation:Optional
+	NotebookName *string `json:"notebookName" tf:"notebook_name,omitempty"`
+}
+
 type TaskConditionTaskInitParameters struct {
 
 	// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
@@ -6691,6 +6868,9 @@ type TaskHealthRulesParameters struct {
 }
 
 type TaskInitParameters struct {
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
+	CleanRoomsNotebookTask []CleanRoomsNotebookTaskInitParameters `json:"cleanRoomsNotebookTask,omitempty" tf:"clean_rooms_notebook_task,omitempty"`
 
 	// A list of task specification that the job will execute. See task Configuration Block below.
 	ConditionTask []ConditionTaskInitParameters `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
@@ -7359,6 +7539,10 @@ type TaskNewClusterInitParameters struct {
 	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []TaskNewClusterLibraryInitParameters `json:"library,omitempty" tf:"library,omitempty"`
 
@@ -7385,6 +7569,8 @@ type TaskNewClusterInitParameters struct {
 
 	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	WorkloadType []TaskNewClusterWorkloadTypeInitParameters `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
@@ -7761,6 +7947,10 @@ type TaskNewClusterObservation struct {
 	// ID of the system notification that is notified when an event defined in webhook_notifications is triggered.
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	Library []TaskNewClusterLibraryObservation `json:"library,omitempty" tf:"library,omitempty"`
 
@@ -7787,6 +7977,8 @@ type TaskNewClusterObservation struct {
 
 	// parameter in databricks_cluster and other resources.
 	SparkVersion *string `json:"sparkVersion,omitempty" tf:"spark_version,omitempty"`
+
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	WorkloadType []TaskNewClusterWorkloadTypeObservation `json:"workloadType,omitempty" tf:"workload_type,omitempty"`
@@ -7858,6 +8050,12 @@ type TaskNewClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
+	// +kubebuilder:validation:Optional
+	IsSingleNode *bool `json:"isSingleNode,omitempty" tf:"is_single_node,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
+
 	// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
 	// +kubebuilder:validation:Optional
 	Library []TaskNewClusterLibraryParameters `json:"library,omitempty" tf:"library,omitempty"`
@@ -7894,6 +8092,9 @@ type TaskNewClusterParameters struct {
 	// parameter in databricks_cluster and other resources.
 	// +kubebuilder:validation:Optional
 	SparkVersion *string `json:"sparkVersion" tf:"spark_version,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	UseMLRuntime *bool `json:"useMlRuntime,omitempty" tf:"use_ml_runtime,omitempty"`
 
 	// isn't supported
 	// +kubebuilder:validation:Optional
@@ -8029,6 +8230,9 @@ type TaskNotificationSettingsParameters struct {
 type TaskObservation struct {
 
 	// A list of task specification that the job will execute. See task Configuration Block below.
+	CleanRoomsNotebookTask []CleanRoomsNotebookTaskObservation `json:"cleanRoomsNotebookTask,omitempty" tf:"clean_rooms_notebook_task,omitempty"`
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
 	ConditionTask []ConditionTaskObservation `json:"conditionTask,omitempty" tf:"condition_task,omitempty"`
 
 	// A list of task specification that the job will execute. See task Configuration Block below.
@@ -8117,6 +8321,10 @@ type TaskObservation struct {
 }
 
 type TaskParameters struct {
+
+	// A list of task specification that the job will execute. See task Configuration Block below.
+	// +kubebuilder:validation:Optional
+	CleanRoomsNotebookTask []CleanRoomsNotebookTaskParameters `json:"cleanRoomsNotebookTask,omitempty" tf:"clean_rooms_notebook_task,omitempty"`
 
 	// A list of task specification that the job will execute. See task Configuration Block below.
 	// +kubebuilder:validation:Optional

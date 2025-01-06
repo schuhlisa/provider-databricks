@@ -264,6 +264,65 @@ resources:
             update_time: '- The timestamp string indicating when the alert was updated.'
             value: '- (Required, Block) actual value used in comparison (one of the attributes is required):'
         importStatements: []
+    databricks_app:
+        subCategory: ""
+        name: databricks_app
+        title: databricks_app Resource
+        examples:
+            - name: this
+              manifest: |-
+                {
+                  "description": "My app",
+                  "name": "my-custom-app",
+                  "resources": [
+                    {
+                      "name": "sql-warehouse",
+                      "sql_warehouse": {
+                        "id": "e9ca293f79a74b5c",
+                        "permission": "CAN_MANAGE"
+                      }
+                    },
+                    {
+                      "name": "serving-endpoint",
+                      "serving_endpoint": {
+                        "name": "databricks-meta-llama-3-1-70b-instruct",
+                        "permission": "CAN_MANAGE"
+                      }
+                    },
+                    {
+                      "job": {
+                        "id": "1234",
+                        "permission": "CAN_MANAGE"
+                      },
+                      "name": "job"
+                    }
+                  ]
+                }
+        argumentDocs:
+            app_status: attribute
+            compute_status: attribute
+            create_time: '- The creation time of the app.'
+            creator: '- The email of the user that created the app.'
+            default_source_code_path: '- The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.'
+            description: '- (Optional) The description of the app.'
+            id: '- Id of the SQL warehouse to grant permission on.'
+            job: attribute
+            key: '- Key of the secret to grant permission on.'
+            message: '- Compute status message'
+            name: '- (Required) The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.'
+            permission: '- Permission to grant on the secret scope. For secrets, only one permission is allowed. Permission must be one of: READ, WRITE, MANAGE.'
+            resources: '- (Optional) A list of resources that the app have access to.'
+            scope: '- Scope of the secret to grant permission on.'
+            secret: attribute
+            service_principal_id: '- id of the app service principal'
+            service_principal_name: '- name of the app service principal'
+            serving_endpoint: attribute
+            sql_warehouse: attribute
+            state: '- State of the app compute.'
+            update_time: '- The update time of the app.'
+            updater: '- The email of the user that last updated the app.'
+            url: '- The URL of the app once it is deployed.'
+        importStatements: []
     databricks_artifact_allowlist:
         subCategory: ""
         name: databricks_artifact_allowlist
@@ -878,7 +937,30 @@ resources:
               dependencies:
                 databricks_grants.external_creds: |-
                     {
-                      "credential": "${databricks_credential.external.id}",
+                      "credential": "${databricks_credential.external_mi.id}",
+                      "grant": [
+                        {
+                          "principal": "Data Engineers",
+                          "privileges": [
+                            "ACCESS"
+                          ]
+                        }
+                      ]
+                    }
+            - name: external_gcp_sa
+              manifest: |-
+                {
+                  "comment": "GCP SA credential managed by TF",
+                  "databricks_gcp_service_account": [
+                    {}
+                  ],
+                  "name": "gcp_sa_credential",
+                  "purpose": "STORAGE"
+                }
+              dependencies:
+                databricks_grants.external_creds: |-
+                    {
+                      "credential": "${databricks_credential.external_gcp_sa.id}",
                       "grant": [
                         {
                           "principal": "Data Engineers",
@@ -896,6 +978,7 @@ resources:
             azure_service_principal.client_secret: '- The client secret generated for the above app ID in AAD. This field is redacted on output'
             azure_service_principal.directory_id: '- The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application'
             credential_id: '- Unique ID of the credential.'
+            databricks_gcp_service_account.email: (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
             force_destroy: '- (Optional) Delete credential regardless of its dependencies.'
             force_update: '- (Optional) Update credential regardless of its dependents.'
             id: '- ID of this credential - same as the name.'
@@ -5958,6 +6041,7 @@ resources:
             admins.permission_level: '- (Required) permission level according to specific resource. See examples above for the reference.'
             admins.service_principal_name: '- (Optional) Application ID of the service_principal.'
             admins.user_name: '- (Optional) name of the user.'
+            app_name: '- app name'
             authorization: '- either tokens or passwords.'
             cluster_id: '- cluster id'
             cluster_policy_id: '- cluster policy id'
@@ -7452,7 +7536,7 @@ resources:
                           ]
                         }
                       ],
-                      "storage_credential": "${databricks_storage_credential.external.id}"
+                      "storage_credential": "${databricks_storage_credential.external_mi.id}"
                     }
             - name: external
               manifest: |-
@@ -7847,7 +7931,7 @@ resources:
         argumentDocs:
             binding_type: '- (Optional) Binding mode. Default to BINDING_TYPE_READ_WRITE. Possible values are BINDING_TYPE_READ_ONLY, BINDING_TYPE_READ_WRITE.'
             securable_name: '- Name of securable. Change forces creation of a new resource.'
-            securable_type: '- Type of securable. Can be catalog, external-location or storage-credential. Default to catalog. Change forces creation of a new resource.'
+            securable_type: '- Type of securable. Can be catalog, external_location, storage_credential or credential. Default to catalog. Change forces creation of a new resource.'
             workspace_id: '- ID of the workspace. Change forces creation of a new resource.'
         importStatements: []
     databricks_workspace_conf:
@@ -7868,7 +7952,7 @@ resources:
             enableDeprecatedGlobalInitScripts: '- (boolean) Enable or disable legacy global init scripts for this workspace.'
             enableIpAccessLists: '- enables the use of databricks_ip_access_list resources'
             enableTokensConfig: '- (boolean) Enable or disable personal access tokens for this workspace.'
-            maxTokenLifetimeDays: '- (string) Maximum token lifetime of new tokens in days, as an integer. If zero, new tokens are permitted to have no lifetime limit. Negative numbers are unsupported. WARNING: This limit only applies to new tokens, so there may be tokens with lifetimes longer than this value, including unlimited lifetime. Such tokens may have been created before the current maximum token lifetime was set.'
+            maxTokenLifetimeDays: '- (string) Maximum token lifetime of new tokens in days, as an integer. This value can range from 1 day to 730 days (2 years). If not specified, the maximum lifetime of new tokens is 730 days. WARNING: This limit only applies to new tokens, so there may be tokens with lifetimes longer than this value, including unlimited lifetime. Such tokens may have been created before the current maximum token lifetime was set.'
         importStatements: []
     databricks_workspace_file:
         subCategory: ""

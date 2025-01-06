@@ -12,8 +12,10 @@ import (
 // provider.
 var ExternalNameConfigs = map[string]config.ExternalName{
 	// Import requires using a randomly generated ID from provider: nl-2e21sda
+	// "databricks_app":                                            config.IdentifierFromProvider,
 	"databricks_cluster":                                        config.IdentifierFromProvider,
 	"databricks_cluster_policy":                                 config.IdentifierFromProvider,
+	"databricks_credential":                                     config.IdentifierFromProvider,
 	"databricks_token":                                          config.IdentifierFromProvider,
 	"databricks_secret":                                         config.IdentifierFromProvider,
 	"databricks_secret_scope":                                   config.IdentifierFromProvider,

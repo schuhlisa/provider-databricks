@@ -85,6 +85,9 @@ type AccessControlParameters struct {
 type PermissionsInitParameters struct {
 	AccessControl []AccessControlInitParameters `json:"accessControl,omitempty" tf:"access_control,omitempty"`
 
+	// app name
+	AppName *string `json:"appName,omitempty" tf:"app_name,omitempty"`
+
 	// either tokens or passwords.
 	Authorization *string `json:"authorization,omitempty" tf:"authorization,omitempty"`
 
@@ -241,6 +244,9 @@ type PermissionsInitParameters struct {
 type PermissionsObservation struct {
 	AccessControl []AccessControlObservation `json:"accessControl,omitempty" tf:"access_control,omitempty"`
 
+	// app name
+	AppName *string `json:"appName,omitempty" tf:"app_name,omitempty"`
+
 	// either tokens or passwords.
 	Authorization *string `json:"authorization,omitempty" tf:"authorization,omitempty"`
 
@@ -320,6 +326,10 @@ type PermissionsParameters struct {
 
 	// +kubebuilder:validation:Optional
 	AccessControl []AccessControlParameters `json:"accessControl,omitempty" tf:"access_control,omitempty"`
+
+	// app name
+	// +kubebuilder:validation:Optional
+	AppName *string `json:"appName,omitempty" tf:"app_name,omitempty"`
 
 	// either tokens or passwords.
 	// +kubebuilder:validation:Optional

@@ -8,7 +8,9 @@ metadata:
   name: ab
 spec:
   forProvider:
-    groupId: ${databricks_group.a.id}
+    groupIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: a
     memberId: ${databricks_group.b.id}
 
 ---

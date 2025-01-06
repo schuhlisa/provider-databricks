@@ -248,6 +248,66 @@ func (mg *Connection) SetWriteConnectionSecretToReference(r *xpv1.SecretReferenc
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this Credential.
+func (mg *Credential) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this Credential.
+func (mg *Credential) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this Credential.
+func (mg *Credential) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this Credential.
+func (mg *Credential) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetPublishConnectionDetailsTo of this Credential.
+func (mg *Credential) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+	return mg.Spec.PublishConnectionDetailsTo
+}
+
+// GetWriteConnectionSecretToReference of this Credential.
+func (mg *Credential) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this Credential.
+func (mg *Credential) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this Credential.
+func (mg *Credential) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this Credential.
+func (mg *Credential) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this Credential.
+func (mg *Credential) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetPublishConnectionDetailsTo of this Credential.
+func (mg *Credential) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+	mg.Spec.PublishConnectionDetailsTo = r
+}
+
+// SetWriteConnectionSecretToReference of this Credential.
+func (mg *Credential) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this ExternalLocation.
 func (mg *ExternalLocation) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)

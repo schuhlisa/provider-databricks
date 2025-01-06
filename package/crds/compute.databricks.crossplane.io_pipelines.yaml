@@ -683,7 +683,9 @@ spec:
                     items:
                       properties:
                         daysOfWeek:
-                          type: string
+                          items:
+                            type: string
+                          type: array
                         startHour:
                           type: number
                         timeZoneId:
@@ -1368,7 +1370,9 @@ spec:
                     items:
                       properties:
                         daysOfWeek:
-                          type: string
+                          items:
+                            type: string
+                          type: array
                         startHour:
                           type: number
                         timeZoneId:
@@ -2215,7 +2219,9 @@ spec:
                     items:
                       properties:
                         daysOfWeek:
-                          type: string
+                          items:
+                            type: string
+                          type: array
                         startHour:
                           type: number
                         timeZoneId:

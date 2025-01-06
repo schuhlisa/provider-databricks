@@ -19,6 +19,9 @@ func (tr *CatalogWorkspaceBinding) Hub() {}
 func (tr *Connection) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *Credential) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *ExternalLocation) Hub() {}
 
 // Hub marks this type as a conversion hub.

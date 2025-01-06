@@ -13,112 +13,6 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
-type AwsIAMRoleInitParameters struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
-
-	RoleArn *string `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
-
-	UnityCatalogIAMArn *string `json:"unityCatalogIamArn,omitempty" tf:"unity_catalog_iam_arn,omitempty"`
-}
-
-type AwsIAMRoleObservation struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
-
-	RoleArn *string `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
-
-	UnityCatalogIAMArn *string `json:"unityCatalogIamArn,omitempty" tf:"unity_catalog_iam_arn,omitempty"`
-}
-
-type AwsIAMRoleParameters struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	// +kubebuilder:validation:Optional
-	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	RoleArn *string `json:"roleArn" tf:"role_arn,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	UnityCatalogIAMArn *string `json:"unityCatalogIamArn,omitempty" tf:"unity_catalog_iam_arn,omitempty"`
-}
-
-type AzureManagedIdentityInitParameters struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	AccessConnectorID *string `json:"accessConnectorId,omitempty" tf:"access_connector_id,omitempty"`
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	ManagedIdentityID *string `json:"managedIdentityId,omitempty" tf:"managed_identity_id,omitempty"`
-}
-
-type AzureManagedIdentityObservation struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	AccessConnectorID *string `json:"accessConnectorId,omitempty" tf:"access_connector_id,omitempty"`
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	ManagedIdentityID *string `json:"managedIdentityId,omitempty" tf:"managed_identity_id,omitempty"`
-}
-
-type AzureManagedIdentityParameters struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	// +kubebuilder:validation:Optional
-	AccessConnectorID *string `json:"accessConnectorId" tf:"access_connector_id,omitempty"`
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	// +kubebuilder:validation:Optional
-	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	// +kubebuilder:validation:Optional
-	ManagedIdentityID *string `json:"managedIdentityId,omitempty" tf:"managed_identity_id,omitempty"`
-}
-
-type AzureServicePrincipalInitParameters struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	ApplicationID *string `json:"applicationId,omitempty" tf:"application_id,omitempty"`
-
-	ClientSecretSecretRef v1.SecretKeySelector `json:"clientSecretSecretRef" tf:"-"`
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	DirectoryID *string `json:"directoryId,omitempty" tf:"directory_id,omitempty"`
-}
-
-type AzureServicePrincipalObservation struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	ApplicationID *string `json:"applicationId,omitempty" tf:"application_id,omitempty"`
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	DirectoryID *string `json:"directoryId,omitempty" tf:"directory_id,omitempty"`
-}
-
-type AzureServicePrincipalParameters struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	// +kubebuilder:validation:Optional
-	ApplicationID *string `json:"applicationId" tf:"application_id,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	ClientSecretSecretRef v1.SecretKeySelector `json:"clientSecretSecretRef" tf:"-"`
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	// +kubebuilder:validation:Optional
-	DirectoryID *string `json:"directoryId" tf:"directory_id,omitempty"`
-}
-
 type CloudflareAPITokenInitParameters struct {
 
 	// ID of this data access configuration in form of <metastore_id>|<name>.
@@ -153,32 +47,6 @@ type CloudflareAPITokenParameters struct {
 	SecretAccessKeySecretRef v1.SecretKeySelector `json:"secretAccessKeySecretRef" tf:"-"`
 }
 
-type DatabricksGCPServiceAccountInitParameters struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
-
-	Email *string `json:"email,omitempty" tf:"email,omitempty"`
-}
-
-type DatabricksGCPServiceAccountObservation struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
-
-	Email *string `json:"email,omitempty" tf:"email,omitempty"`
-}
-
-type DatabricksGCPServiceAccountParameters struct {
-
-	// ID of this data access configuration in form of <metastore_id>|<name>.
-	// +kubebuilder:validation:Optional
-	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	Email *string `json:"email,omitempty" tf:"email,omitempty"`
-}
-
 type GCPServiceAccountKeyInitParameters struct {
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 
@@ -208,18 +76,150 @@ type GCPServiceAccountKeyParameters struct {
 	PrivateKeySecretRef v1.SecretKeySelector `json:"privateKeySecretRef" tf:"-"`
 }
 
+type MetastoreDataAccessAwsIAMRoleInitParameters struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
+
+	RoleArn *string `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
+
+	UnityCatalogIAMArn *string `json:"unityCatalogIamArn,omitempty" tf:"unity_catalog_iam_arn,omitempty"`
+}
+
+type MetastoreDataAccessAwsIAMRoleObservation struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
+
+	RoleArn *string `json:"roleArn,omitempty" tf:"role_arn,omitempty"`
+
+	UnityCatalogIAMArn *string `json:"unityCatalogIamArn,omitempty" tf:"unity_catalog_iam_arn,omitempty"`
+}
+
+type MetastoreDataAccessAwsIAMRoleParameters struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	// +kubebuilder:validation:Optional
+	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	RoleArn *string `json:"roleArn" tf:"role_arn,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	UnityCatalogIAMArn *string `json:"unityCatalogIamArn,omitempty" tf:"unity_catalog_iam_arn,omitempty"`
+}
+
+type MetastoreDataAccessAzureManagedIdentityInitParameters struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	AccessConnectorID *string `json:"accessConnectorId,omitempty" tf:"access_connector_id,omitempty"`
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	ManagedIdentityID *string `json:"managedIdentityId,omitempty" tf:"managed_identity_id,omitempty"`
+}
+
+type MetastoreDataAccessAzureManagedIdentityObservation struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	AccessConnectorID *string `json:"accessConnectorId,omitempty" tf:"access_connector_id,omitempty"`
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	ManagedIdentityID *string `json:"managedIdentityId,omitempty" tf:"managed_identity_id,omitempty"`
+}
+
+type MetastoreDataAccessAzureManagedIdentityParameters struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	// +kubebuilder:validation:Optional
+	AccessConnectorID *string `json:"accessConnectorId" tf:"access_connector_id,omitempty"`
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	// +kubebuilder:validation:Optional
+	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	// +kubebuilder:validation:Optional
+	ManagedIdentityID *string `json:"managedIdentityId,omitempty" tf:"managed_identity_id,omitempty"`
+}
+
+type MetastoreDataAccessAzureServicePrincipalInitParameters struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	ApplicationID *string `json:"applicationId,omitempty" tf:"application_id,omitempty"`
+
+	ClientSecretSecretRef v1.SecretKeySelector `json:"clientSecretSecretRef" tf:"-"`
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	DirectoryID *string `json:"directoryId,omitempty" tf:"directory_id,omitempty"`
+}
+
+type MetastoreDataAccessAzureServicePrincipalObservation struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	ApplicationID *string `json:"applicationId,omitempty" tf:"application_id,omitempty"`
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	DirectoryID *string `json:"directoryId,omitempty" tf:"directory_id,omitempty"`
+}
+
+type MetastoreDataAccessAzureServicePrincipalParameters struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	// +kubebuilder:validation:Optional
+	ApplicationID *string `json:"applicationId" tf:"application_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	ClientSecretSecretRef v1.SecretKeySelector `json:"clientSecretSecretRef" tf:"-"`
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	// +kubebuilder:validation:Optional
+	DirectoryID *string `json:"directoryId" tf:"directory_id,omitempty"`
+}
+
+type MetastoreDataAccessDatabricksGCPServiceAccountInitParameters struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
+
+	Email *string `json:"email,omitempty" tf:"email,omitempty"`
+}
+
+type MetastoreDataAccessDatabricksGCPServiceAccountObservation struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
+
+	Email *string `json:"email,omitempty" tf:"email,omitempty"`
+}
+
+type MetastoreDataAccessDatabricksGCPServiceAccountParameters struct {
+
+	// ID of this data access configuration in form of <metastore_id>|<name>.
+	// +kubebuilder:validation:Optional
+	CredentialID *string `json:"credentialId,omitempty" tf:"credential_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Email *string `json:"email,omitempty" tf:"email,omitempty"`
+}
+
 type MetastoreDataAccessInitParameters struct {
-	AwsIAMRole []AwsIAMRoleInitParameters `json:"awsIamRole,omitempty" tf:"aws_iam_role,omitempty"`
+	AwsIAMRole []MetastoreDataAccessAwsIAMRoleInitParameters `json:"awsIamRole,omitempty" tf:"aws_iam_role,omitempty"`
 
-	AzureManagedIdentity []AzureManagedIdentityInitParameters `json:"azureManagedIdentity,omitempty" tf:"azure_managed_identity,omitempty"`
+	AzureManagedIdentity []MetastoreDataAccessAzureManagedIdentityInitParameters `json:"azureManagedIdentity,omitempty" tf:"azure_managed_identity,omitempty"`
 
-	AzureServicePrincipal []AzureServicePrincipalInitParameters `json:"azureServicePrincipal,omitempty" tf:"azure_service_principal,omitempty"`
+	AzureServicePrincipal []MetastoreDataAccessAzureServicePrincipalInitParameters `json:"azureServicePrincipal,omitempty" tf:"azure_service_principal,omitempty"`
 
 	CloudflareAPIToken []CloudflareAPITokenInitParameters `json:"cloudflareApiToken,omitempty" tf:"cloudflare_api_token,omitempty"`
 
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
-	DatabricksGCPServiceAccount []DatabricksGCPServiceAccountInitParameters `json:"databricksGcpServiceAccount,omitempty" tf:"databricks_gcp_service_account,omitempty"`
+	DatabricksGCPServiceAccount []MetastoreDataAccessDatabricksGCPServiceAccountInitParameters `json:"databricksGcpServiceAccount,omitempty" tf:"databricks_gcp_service_account,omitempty"`
 
 	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
 
@@ -245,17 +245,17 @@ type MetastoreDataAccessInitParameters struct {
 }
 
 type MetastoreDataAccessObservation struct {
-	AwsIAMRole []AwsIAMRoleObservation `json:"awsIamRole,omitempty" tf:"aws_iam_role,omitempty"`
+	AwsIAMRole []MetastoreDataAccessAwsIAMRoleObservation `json:"awsIamRole,omitempty" tf:"aws_iam_role,omitempty"`
 
-	AzureManagedIdentity []AzureManagedIdentityObservation `json:"azureManagedIdentity,omitempty" tf:"azure_managed_identity,omitempty"`
+	AzureManagedIdentity []MetastoreDataAccessAzureManagedIdentityObservation `json:"azureManagedIdentity,omitempty" tf:"azure_managed_identity,omitempty"`
 
-	AzureServicePrincipal []AzureServicePrincipalObservation `json:"azureServicePrincipal,omitempty" tf:"azure_service_principal,omitempty"`
+	AzureServicePrincipal []MetastoreDataAccessAzureServicePrincipalObservation `json:"azureServicePrincipal,omitempty" tf:"azure_service_principal,omitempty"`
 
 	CloudflareAPIToken []CloudflareAPITokenObservation `json:"cloudflareApiToken,omitempty" tf:"cloudflare_api_token,omitempty"`
 
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
-	DatabricksGCPServiceAccount []DatabricksGCPServiceAccountObservation `json:"databricksGcpServiceAccount,omitempty" tf:"databricks_gcp_service_account,omitempty"`
+	DatabricksGCPServiceAccount []MetastoreDataAccessDatabricksGCPServiceAccountObservation `json:"databricksGcpServiceAccount,omitempty" tf:"databricks_gcp_service_account,omitempty"`
 
 	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`
 
@@ -286,13 +286,13 @@ type MetastoreDataAccessObservation struct {
 type MetastoreDataAccessParameters struct {
 
 	// +kubebuilder:validation:Optional
-	AwsIAMRole []AwsIAMRoleParameters `json:"awsIamRole,omitempty" tf:"aws_iam_role,omitempty"`
+	AwsIAMRole []MetastoreDataAccessAwsIAMRoleParameters `json:"awsIamRole,omitempty" tf:"aws_iam_role,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	AzureManagedIdentity []AzureManagedIdentityParameters `json:"azureManagedIdentity,omitempty" tf:"azure_managed_identity,omitempty"`
+	AzureManagedIdentity []MetastoreDataAccessAzureManagedIdentityParameters `json:"azureManagedIdentity,omitempty" tf:"azure_managed_identity,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	AzureServicePrincipal []AzureServicePrincipalParameters `json:"azureServicePrincipal,omitempty" tf:"azure_service_principal,omitempty"`
+	AzureServicePrincipal []MetastoreDataAccessAzureServicePrincipalParameters `json:"azureServicePrincipal,omitempty" tf:"azure_service_principal,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	CloudflareAPIToken []CloudflareAPITokenParameters `json:"cloudflareApiToken,omitempty" tf:"cloudflare_api_token,omitempty"`
@@ -301,7 +301,7 @@ type MetastoreDataAccessParameters struct {
 	Comment *string `json:"comment,omitempty" tf:"comment,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	DatabricksGCPServiceAccount []DatabricksGCPServiceAccountParameters `json:"databricksGcpServiceAccount,omitempty" tf:"databricks_gcp_service_account,omitempty"`
+	DatabricksGCPServiceAccount []MetastoreDataAccessDatabricksGCPServiceAccountParameters `json:"databricksGcpServiceAccount,omitempty" tf:"databricks_gcp_service_account,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	ForceDestroy *bool `json:"forceDestroy,omitempty" tf:"force_destroy,omitempty"`

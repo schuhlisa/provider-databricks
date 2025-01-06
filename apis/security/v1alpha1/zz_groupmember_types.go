@@ -16,7 +16,16 @@ import (
 type GroupMemberInitParameters struct {
 
 	// This is the id of the group resource.
+	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/security/v1alpha1.Group
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
+
+	// Reference to a Group in security to populate groupId.
+	// +kubebuilder:validation:Optional
+	GroupIDRef *v1.Reference `json:"groupIdRef,omitempty" tf:"-"`
+
+	// Selector for a Group in security to populate groupId.
+	// +kubebuilder:validation:Optional
+	GroupIDSelector *v1.Selector `json:"groupIdSelector,omitempty" tf:"-"`
 
 	// This is the id of the group, service principal, or user.
 	MemberID *string `json:"memberId,omitempty" tf:"member_id,omitempty"`
@@ -37,8 +46,17 @@ type GroupMemberObservation struct {
 type GroupMemberParameters struct {
 
 	// This is the id of the group resource.
+	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/security/v1alpha1.Group
 	// +kubebuilder:validation:Optional
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
+
+	// Reference to a Group in security to populate groupId.
+	// +kubebuilder:validation:Optional
+	GroupIDRef *v1.Reference `json:"groupIdRef,omitempty" tf:"-"`
+
+	// Selector for a Group in security to populate groupId.
+	// +kubebuilder:validation:Optional
+	GroupIDSelector *v1.Selector `json:"groupIdSelector,omitempty" tf:"-"`
 
 	// This is the id of the group, service principal, or user.
 	// +kubebuilder:validation:Optional
@@ -81,7 +99,6 @@ type GroupMemberStatus struct {
 type GroupMember struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.groupId) || (has(self.initProvider) && has(self.initProvider.groupId))",message="spec.forProvider.groupId is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.memberId) || (has(self.initProvider) && has(self.initProvider.memberId))",message="spec.forProvider.memberId is a required parameter"
 	Spec   GroupMemberSpec   `json:"spec"`
 	Status GroupMemberStatus `json:"status,omitempty"`

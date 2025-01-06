@@ -646,6 +646,10 @@ spec:
                                   notified when an event defined in webhook_notifications
                                   is triggered.
                                 type: string
+                              isSingleNode:
+                                type: boolean
+                              kind:
+                                type: string
                               library:
                                 description: (List) An optional list of libraries
                                   to be installed on the cluster that will execute
@@ -729,6 +733,8 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              useMlRuntime:
+                                type: boolean
                               workloadType:
                                 description: isn't supported
                                 items:
@@ -1104,6 +1110,10 @@ spec:
                           description: ID of the system notification that is notified
                             when an event defined in webhook_notifications is triggered.
                           type: string
+                        isSingleNode:
+                          type: boolean
+                        kind:
+                          type: string
                         library:
                           description: (List) An optional list of libraries to be
                             installed on the cluster that will execute the job. See
@@ -1184,6 +1194,8 @@ spec:
                           items:
                             type: string
                           type: array
+                        useMlRuntime:
+                          type: boolean
                         workloadType:
                           description: isn't supported
                           items:
@@ -1448,6 +1460,40 @@ spec:
                       See task Configuration Block below.
                     items:
                       properties:
+                        cleanRoomsNotebookTask:
+                          description: A list of task specification that the job will
+                            execute. See task Configuration Block below.
+                          items:
+                            properties:
+                              cleanRoomName:
+                                description: An optional name for the job. The default
+                                  value is Untitled.
+                                type: string
+                              etag:
+                                description: name of the Git branch to use. Conflicts
+                                  with branch and commit.
+                                type: string
+                              notebookBaseParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Map) Base parameters to be used for
+                                  each run of this job. If the run is initiated by
+                                  a call to run-now with parameters specified, the
+                                  two parameters maps will be merged. If the same
+                                  key is specified in base_parameters and in run-now,
+                                  the value from run-now will be used. If the notebook
+                                  takes a parameter that is not specified in the job’s
+                                  base_parameters or the run-now override parameters,
+                                  the default value from the notebook will be used.
+                                  Retrieve these parameters in a notebook using dbutils.widgets.get.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              notebookName:
+                                description: An optional name for the job. The default
+                                  value is Untitled.
+                                type: string
+                            type: object
+                          type: array
                         conditionTask:
                           description: A list of task specification that the job will
                             execute. See task Configuration Block below.
@@ -1616,6 +1662,44 @@ spec:
                                   job will execute. See task Configuration Block below.
                                 items:
                                   properties:
+                                    cleanRoomsNotebookTask:
+                                      description: A list of task specification that
+                                        the job will execute. See task Configuration
+                                        Block below.
+                                      items:
+                                        properties:
+                                          cleanRoomName:
+                                            description: An optional name for the
+                                              job. The default value is Untitled.
+                                            type: string
+                                          etag:
+                                            description: name of the Git branch to
+                                              use. Conflicts with branch and commit.
+                                            type: string
+                                          notebookBaseParameters:
+                                            additionalProperties:
+                                              type: string
+                                            description: (Map) Base parameters to
+                                              be used for each run of this job. If
+                                              the run is initiated by a call to run-now
+                                              with parameters specified, the two parameters
+                                              maps will be merged. If the same key
+                                              is specified in base_parameters and
+                                              in run-now, the value from run-now will
+                                              be used. If the notebook takes a parameter
+                                              that is not specified in the job’s base_parameters
+                                              or the run-now override parameters,
+                                              the default value from the notebook
+                                              will be used. Retrieve these parameters
+                                              in a notebook using dbutils.widgets.get.
+                                            type: object
+                                            x-kubernetes-map-type: granular
+                                          notebookName:
+                                            description: An optional name for the
+                                              job. The default value is Untitled.
+                                            type: string
+                                        type: object
+                                      type: array
                                     conditionTask:
                                       description: A list of task specification that
                                         the job will execute. See task Configuration
@@ -2197,6 +2281,10 @@ spec:
                                               that is notified when an event defined
                                               in webhook_notifications is triggered.
                                             type: string
+                                          isSingleNode:
+                                            type: boolean
+                                          kind:
+                                            type: string
                                           library:
                                             description: (List) An optional list of
                                               libraries to be installed on the cluster
@@ -2281,6 +2369,8 @@ spec:
                                             items:
                                               type: string
                                             type: array
+                                          useMlRuntime:
+                                            type: boolean
                                           workloadType:
                                             description: isn't supported
                                             items:
@@ -3183,6 +3273,10 @@ spec:
                                   notified when an event defined in webhook_notifications
                                   is triggered.
                                 type: string
+                              isSingleNode:
+                                type: boolean
+                              kind:
+                                type: string
                               library:
                                 description: (List) An optional list of libraries
                                   to be installed on the cluster that will execute
@@ -3266,6 +3360,8 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              useMlRuntime:
+                                type: boolean
                               workloadType:
                                 description: isn't supported
                                 items:
@@ -4480,6 +4576,10 @@ spec:
                                   notified when an event defined in webhook_notifications
                                   is triggered.
                                 type: string
+                              isSingleNode:
+                                type: boolean
+                              kind:
+                                type: string
                               library:
                                 description: (List) An optional list of libraries
                                   to be installed on the cluster that will execute
@@ -4563,6 +4663,8 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              useMlRuntime:
+                                type: boolean
                               workloadType:
                                 description: isn't supported
                                 items:
@@ -4940,6 +5042,10 @@ spec:
                           description: ID of the system notification that is notified
                             when an event defined in webhook_notifications is triggered.
                           type: string
+                        isSingleNode:
+                          type: boolean
+                        kind:
+                          type: string
                         library:
                           description: (List) An optional list of libraries to be
                             installed on the cluster that will execute the job. See
@@ -5020,6 +5126,8 @@ spec:
                           items:
                             type: string
                           type: array
+                        useMlRuntime:
+                          type: boolean
                         workloadType:
                           description: isn't supported
                           items:
@@ -5284,6 +5392,40 @@ spec:
                       See task Configuration Block below.
                     items:
                       properties:
+                        cleanRoomsNotebookTask:
+                          description: A list of task specification that the job will
+                            execute. See task Configuration Block below.
+                          items:
+                            properties:
+                              cleanRoomName:
+                                description: An optional name for the job. The default
+                                  value is Untitled.
+                                type: string
+                              etag:
+                                description: name of the Git branch to use. Conflicts
+                                  with branch and commit.
+                                type: string
+                              notebookBaseParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Map) Base parameters to be used for
+                                  each run of this job. If the run is initiated by
+                                  a call to run-now with parameters specified, the
+                                  two parameters maps will be merged. If the same
+                                  key is specified in base_parameters and in run-now,
+                                  the value from run-now will be used. If the notebook
+                                  takes a parameter that is not specified in the job’s
+                                  base_parameters or the run-now override parameters,
+                                  the default value from the notebook will be used.
+                                  Retrieve these parameters in a notebook using dbutils.widgets.get.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              notebookName:
+                                description: An optional name for the job. The default
+                                  value is Untitled.
+                                type: string
+                            type: object
+                          type: array
                         conditionTask:
                           description: A list of task specification that the job will
                             execute. See task Configuration Block below.
@@ -5452,6 +5594,44 @@ spec:
                                   job will execute. See task Configuration Block below.
                                 items:
                                   properties:
+                                    cleanRoomsNotebookTask:
+                                      description: A list of task specification that
+                                        the job will execute. See task Configuration
+                                        Block below.
+                                      items:
+                                        properties:
+                                          cleanRoomName:
+                                            description: An optional name for the
+                                              job. The default value is Untitled.
+                                            type: string
+                                          etag:
+                                            description: name of the Git branch to
+                                              use. Conflicts with branch and commit.
+                                            type: string
+                                          notebookBaseParameters:
+                                            additionalProperties:
+                                              type: string
+                                            description: (Map) Base parameters to
+                                              be used for each run of this job. If
+                                              the run is initiated by a call to run-now
+                                              with parameters specified, the two parameters
+                                              maps will be merged. If the same key
+                                              is specified in base_parameters and
+                                              in run-now, the value from run-now will
+                                              be used. If the notebook takes a parameter
+                                              that is not specified in the job’s base_parameters
+                                              or the run-now override parameters,
+                                              the default value from the notebook
+                                              will be used. Retrieve these parameters
+                                              in a notebook using dbutils.widgets.get.
+                                            type: object
+                                            x-kubernetes-map-type: granular
+                                          notebookName:
+                                            description: An optional name for the
+                                              job. The default value is Untitled.
+                                            type: string
+                                        type: object
+                                      type: array
                                     conditionTask:
                                       description: A list of task specification that
                                         the job will execute. See task Configuration
@@ -6035,6 +6215,10 @@ spec:
                                               that is notified when an event defined
                                               in webhook_notifications is triggered.
                                             type: string
+                                          isSingleNode:
+                                            type: boolean
+                                          kind:
+                                            type: string
                                           library:
                                             description: (List) An optional list of
                                               libraries to be installed on the cluster
@@ -6119,6 +6303,8 @@ spec:
                                             items:
                                               type: string
                                             type: array
+                                          useMlRuntime:
+                                            type: boolean
                                           workloadType:
                                             description: isn't supported
                                             items:
@@ -7023,6 +7209,10 @@ spec:
                                   notified when an event defined in webhook_notifications
                                   is triggered.
                                 type: string
+                              isSingleNode:
+                                type: boolean
+                              kind:
+                                type: string
                               library:
                                 description: (List) An optional list of libraries
                                   to be installed on the cluster that will execute
@@ -7106,6 +7296,8 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              useMlRuntime:
+                                type: boolean
                               workloadType:
                                 description: isn't supported
                                 items:
@@ -8462,6 +8654,10 @@ spec:
                                   notified when an event defined in webhook_notifications
                                   is triggered.
                                 type: string
+                              isSingleNode:
+                                type: boolean
+                              kind:
+                                type: string
                               library:
                                 description: (List) An optional list of libraries
                                   to be installed on the cluster that will execute
@@ -8545,6 +8741,8 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              useMlRuntime:
+                                type: boolean
                               workloadType:
                                 description: isn't supported
                                 items:
@@ -8902,6 +9100,10 @@ spec:
                           description: ID of the system notification that is notified
                             when an event defined in webhook_notifications is triggered.
                           type: string
+                        isSingleNode:
+                          type: boolean
+                        kind:
+                          type: string
                         library:
                           description: (List) An optional list of libraries to be
                             installed on the cluster that will execute the job. See
@@ -8982,6 +9184,8 @@ spec:
                           items:
                             type: string
                           type: array
+                        useMlRuntime:
+                          type: boolean
                         workloadType:
                           description: isn't supported
                           items:
@@ -9246,6 +9450,40 @@ spec:
                       See task Configuration Block below.
                     items:
                       properties:
+                        cleanRoomsNotebookTask:
+                          description: A list of task specification that the job will
+                            execute. See task Configuration Block below.
+                          items:
+                            properties:
+                              cleanRoomName:
+                                description: An optional name for the job. The default
+                                  value is Untitled.
+                                type: string
+                              etag:
+                                description: name of the Git branch to use. Conflicts
+                                  with branch and commit.
+                                type: string
+                              notebookBaseParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Map) Base parameters to be used for
+                                  each run of this job. If the run is initiated by
+                                  a call to run-now with parameters specified, the
+                                  two parameters maps will be merged. If the same
+                                  key is specified in base_parameters and in run-now,
+                                  the value from run-now will be used. If the notebook
+                                  takes a parameter that is not specified in the job’s
+                                  base_parameters or the run-now override parameters,
+                                  the default value from the notebook will be used.
+                                  Retrieve these parameters in a notebook using dbutils.widgets.get.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              notebookName:
+                                description: An optional name for the job. The default
+                                  value is Untitled.
+                                type: string
+                            type: object
+                          type: array
                         conditionTask:
                           description: A list of task specification that the job will
                             execute. See task Configuration Block below.
@@ -9414,6 +9652,44 @@ spec:
                                   job will execute. See task Configuration Block below.
                                 items:
                                   properties:
+                                    cleanRoomsNotebookTask:
+                                      description: A list of task specification that
+                                        the job will execute. See task Configuration
+                                        Block below.
+                                      items:
+                                        properties:
+                                          cleanRoomName:
+                                            description: An optional name for the
+                                              job. The default value is Untitled.
+                                            type: string
+                                          etag:
+                                            description: name of the Git branch to
+                                              use. Conflicts with branch and commit.
+                                            type: string
+                                          notebookBaseParameters:
+                                            additionalProperties:
+                                              type: string
+                                            description: (Map) Base parameters to
+                                              be used for each run of this job. If
+                                              the run is initiated by a call to run-now
+                                              with parameters specified, the two parameters
+                                              maps will be merged. If the same key
+                                              is specified in base_parameters and
+                                              in run-now, the value from run-now will
+                                              be used. If the notebook takes a parameter
+                                              that is not specified in the job’s base_parameters
+                                              or the run-now override parameters,
+                                              the default value from the notebook
+                                              will be used. Retrieve these parameters
+                                              in a notebook using dbutils.widgets.get.
+                                            type: object
+                                            x-kubernetes-map-type: granular
+                                          notebookName:
+                                            description: An optional name for the
+                                              job. The default value is Untitled.
+                                            type: string
+                                        type: object
+                                      type: array
                                     conditionTask:
                                       description: A list of task specification that
                                         the job will execute. See task Configuration
@@ -9973,6 +10249,10 @@ spec:
                                               that is notified when an event defined
                                               in webhook_notifications is triggered.
                                             type: string
+                                          isSingleNode:
+                                            type: boolean
+                                          kind:
+                                            type: string
                                           library:
                                             description: (List) An optional list of
                                               libraries to be installed on the cluster
@@ -10057,6 +10337,8 @@ spec:
                                             items:
                                               type: string
                                             type: array
+                                          useMlRuntime:
+                                            type: boolean
                                           workloadType:
                                             description: isn't supported
                                             items:
@@ -10940,6 +11222,10 @@ spec:
                                   notified when an event defined in webhook_notifications
                                   is triggered.
                                 type: string
+                              isSingleNode:
+                                type: boolean
+                              kind:
+                                type: string
                               library:
                                 description: (List) An optional list of libraries
                                   to be installed on the cluster that will execute
@@ -11023,6 +11309,8 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              useMlRuntime:
+                                type: boolean
                               workloadType:
                                 description: isn't supported
                                 items:

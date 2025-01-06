@@ -167,6 +167,9 @@ spec:
                           type: string
                       type: object
                     type: array
+                  appName:
+                    description: app name
+                    type: string
                   authorization:
                     description: either tokens or passwords.
                     type: string
@@ -1021,6 +1024,9 @@ spec:
                           type: string
                       type: object
                     type: array
+                  appName:
+                    description: app name
+                    type: string
                   authorization:
                     description: either tokens or passwords.
                     type: string
@@ -1963,6 +1969,9 @@ spec:
                           type: string
                       type: object
                     type: array
+                  appName:
+                    description: app name
+                    type: string
                   authorization:
                     description: either tokens or passwords.
                     type: string
