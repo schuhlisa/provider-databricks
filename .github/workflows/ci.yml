@@ -245,7 +245,7 @@ jobs:
   publish-artifacts:
     runs-on: ubuntu-24.04
     permissions:
-      contents: read
+      contents: write
       packages: write
       attestations: write
       id-token: write
@@ -294,7 +294,7 @@ jobs:
         uses: cycjimmy/semantic-release-action@v4
         id: semantic
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Fetch History
         run: git fetch --prune
