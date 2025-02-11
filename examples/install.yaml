@@ -3,4 +3,4 @@ kind: Provider
 metadata:
   name: provider-databricks
 spec:
-  package: glalanne/provider-databricks:v0.1.0
+  package: schuhlisa/provider-databricks:v0.1.0

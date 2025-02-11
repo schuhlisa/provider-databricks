@@ -17,4 +17,4 @@ jobs:
       with:
         allowUpdates: true
         artifacts: "dist/*"
-        body: "See https://github.com/glalanne/provider-databricks/pkgs/container/provider-databricks for OCI images."
+        body: "See https://github.com/schuhlisa/provider-databricks/pkgs/container/provider-databricks for OCI images."

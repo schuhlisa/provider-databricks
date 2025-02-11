@@ -2,7 +2,7 @@
 # Setup Project
 
 PROJECT_NAME ?= provider-databricks
-PROJECT_REPO ?= github.com/glalanne/$(PROJECT_NAME)
+PROJECT_REPO ?= github.com/schuhlisa/$(PROJECT_NAME)
 UPTEST_EXAMPLE_LIST ?= "examples/cluster/cluster.yaml"
 
 export TERRAFORM_VERSION ?= 1.5.7

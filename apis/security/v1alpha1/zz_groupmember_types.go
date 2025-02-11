@@ -16,7 +16,7 @@ import (
 type GroupMemberInitParameters struct {
 
 	// This is the id of the group resource.
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/security/v1alpha1.Group
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/security/v1alpha1.Group
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
 
 	// Reference to a Group in security to populate groupId.
@@ -46,7 +46,7 @@ type GroupMemberObservation struct {
 type GroupMemberParameters struct {
 
 	// This is the id of the group resource.
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/security/v1alpha1.Group
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/security/v1alpha1.Group
 	// +kubebuilder:validation:Optional
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
 

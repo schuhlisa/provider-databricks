@@ -11,7 +11,7 @@ import (
 
 	"github.com/crossplane/upjet/pkg/pipeline"
 
-	"github.com/glalanne/provider-databricks/config"
+	"github.com/schuhlisa/provider-databricks/config"
 )
 
 func main() {

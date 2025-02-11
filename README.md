@@ -3,10 +3,10 @@
 
 <div style="text-align: center;">
 
-![CI](https://github.com/glalanne/provider-databricks/workflows/CI/badge.svg)
-[![GitHub release](https://img.shields.io/github/release/glalanne/provider-databricks/all.svg)](https://github.com/glalanne/provider-databricks/releases)
-[![Go Report Card](https://goreportcard.com/badge/github.com/glalanne/provider-databricks)](https://goreportcard.com/report/github.com/glalanne/provider-databricks)
-[![Contributors](https://img.shields.io/github/contributors/glalanne/provider-databricks)](https://github.com/glalanne/provider-databricks/graphs/contributors)
+![CI](https://github.com/schuhlisa/provider-databricks/workflows/CI/badge.svg)
+[![GitHub release](https://img.shields.io/github/release/schuhlisa/provider-databricks/all.svg)](https://github.com/schuhlisa/provider-databricks/releases)
+[![Go Report Card](https://goreportcard.com/badge/github.com/schuhlisa/provider-databricks)](https://goreportcard.com/report/github.com/schuhlisa/provider-databricks)
+[![Contributors](https://img.shields.io/github/contributors/schuhlisa/provider-databricks)](https://github.com/schuhlisa/provider-databricks/graphs/contributors)
 
 
 </div>
@@ -24,9 +24,9 @@ Most of the testing have been done on [Azure Databricks](https://azure.microsoft
 ## Getting Started
 
 Install the provider by using the following command after changing the image tag
-to the [latest release](https://marketplace.upbound.io/providers/glalanne/provider-databricks):
+to the [latest release](https://marketplace.upbound.io/providers/schuhlisa/provider-databricks):
 ```
-up ctp provider install glalanne/provider-databricks:v0.1.0
+up ctp provider install schuhlisa/provider-databricks:v0.1.0
 ```
 
 Alternatively, you can use declarative installation:
@@ -37,13 +37,13 @@ kind: Provider
 metadata:
   name: provider-databricks
 spec:
-  package: glalanne/provider-databricks:v0.1.0
+  package: schuhlisa/provider-databricks:v0.1.0
 EOF
 ```
 
 Notice that in this example Provider resource is referencing ControllerConfig with debug enabled.
 
-You can see the API reference [here](https://doc.crds.dev/github.com/glalanne/provider-databricks).
+You can see the API reference [here](https://doc.crds.dev/github.com/schuhlisa/provider-databricks).
 
 ## Exemples
 
@@ -78,4 +78,4 @@ make build
 ## Report a Bug
 
 For filing bugs, suggesting improvements, or requesting new features, please
-open an [issue](https://github.com/glalanne/provider-databricks/issues).
+open an [issue](https://github.com/schuhlisa/provider-databricks/issues).

@@ -15,7 +15,7 @@ import (
 
 	"github.com/crossplane/upjet/pkg/terraform"
 
-	"github.com/glalanne/provider-databricks/apis/v1beta1"
+	"github.com/schuhlisa/provider-databricks/apis/v1beta1"
 )
 
 const (

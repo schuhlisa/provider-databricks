@@ -85,7 +85,7 @@ type SQLTableInitParameters struct {
 	CatalogName *string `json:"catalogName,omitempty" tf:"catalog_name,omitempty"`
 
 	// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a cluster_id is specified, it will be used to execute SQL commands to manage this table.
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.Cluster
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.Cluster
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	// Reference to a Cluster in compute to populate clusterId.
@@ -140,7 +140,7 @@ type SQLTableInitParameters struct {
 	ViewDefinition *string `json:"viewDefinition,omitempty" tf:"view_definition,omitempty"`
 
 	// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a warehouse_id is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with cluster_id.
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLEndpoint
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLEndpoint
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 
 	// Reference to a SQLEndpoint in sql to populate warehouseId.
@@ -221,7 +221,7 @@ type SQLTableParameters struct {
 	CatalogName *string `json:"catalogName,omitempty" tf:"catalog_name,omitempty"`
 
 	// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a cluster_id is specified, it will be used to execute SQL commands to manage this table.
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.Cluster
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.Cluster
 	// +kubebuilder:validation:Optional
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
@@ -291,7 +291,7 @@ type SQLTableParameters struct {
 	ViewDefinition *string `json:"viewDefinition,omitempty" tf:"view_definition,omitempty"`
 
 	// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a warehouse_id is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with cluster_id.
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLEndpoint
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLEndpoint
 	// +kubebuilder:validation:Optional
 	WarehouseID *string `json:"warehouseId,omitempty" tf:"warehouse_id,omitempty"`
 

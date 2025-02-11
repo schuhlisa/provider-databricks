@@ -31,12 +31,12 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	"sigs.k8s.io/controller-runtime/pkg/metrics"
 
-	"github.com/glalanne/provider-databricks/apis"
-	"github.com/glalanne/provider-databricks/apis/v1alpha1"
-	"github.com/glalanne/provider-databricks/config"
-	"github.com/glalanne/provider-databricks/internal/clients"
-	"github.com/glalanne/provider-databricks/internal/controller"
-	"github.com/glalanne/provider-databricks/internal/features"
+	"github.com/schuhlisa/provider-databricks/apis"
+	"github.com/schuhlisa/provider-databricks/apis/v1alpha1"
+	"github.com/schuhlisa/provider-databricks/config"
+	"github.com/schuhlisa/provider-databricks/internal/clients"
+	"github.com/schuhlisa/provider-databricks/internal/controller"
+	"github.com/schuhlisa/provider-databricks/internal/features"
 )
 
 func main() {

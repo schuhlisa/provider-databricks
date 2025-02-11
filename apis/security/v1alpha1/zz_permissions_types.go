@@ -22,7 +22,7 @@ type AccessControlInitParameters struct {
 	PermissionLevel *string `json:"permissionLevel,omitempty" tf:"permission_level,omitempty"`
 
 	// Application ID of the service_principal.
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/security/v1alpha1.ServicePrincipal
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/security/v1alpha1.ServicePrincipal
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("application_id", false)
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
 
@@ -64,7 +64,7 @@ type AccessControlParameters struct {
 	PermissionLevel *string `json:"permissionLevel,omitempty" tf:"permission_level,omitempty"`
 
 	// Application ID of the service_principal.
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/security/v1alpha1.ServicePrincipal
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/security/v1alpha1.ServicePrincipal
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("application_id", false)
 	// +kubebuilder:validation:Optional
 	ServicePrincipalName *string `json:"servicePrincipalName,omitempty" tf:"service_principal_name,omitempty"`
@@ -92,7 +92,7 @@ type PermissionsInitParameters struct {
 	Authorization *string `json:"authorization,omitempty" tf:"authorization,omitempty"`
 
 	// cluster id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.Cluster
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.Cluster
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
 	// Reference to a Cluster in compute to populate clusterId.
@@ -104,7 +104,7 @@ type PermissionsInitParameters struct {
 	ClusterIDSelector *v1.Selector `json:"clusterIdSelector,omitempty" tf:"-"`
 
 	// cluster policy id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.ClusterPolicy
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.ClusterPolicy
 	ClusterPolicyID *string `json:"clusterPolicyId,omitempty" tf:"cluster_policy_id,omitempty"`
 
 	// Reference to a ClusterPolicy in compute to populate clusterPolicyId.
@@ -128,7 +128,7 @@ type PermissionsInitParameters struct {
 	ExperimentID *string `json:"experimentId,omitempty" tf:"experiment_id,omitempty"`
 
 	// instance pool id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.InstancePool
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.InstancePool
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
 	// Reference to a InstancePool in compute to populate instancePoolId.
@@ -143,7 +143,7 @@ type PermissionsInitParameters struct {
 	JobID *string `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
 	// ID of notebook within workspace
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/workspace/v1alpha1.Notebook
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/workspace/v1alpha1.Notebook
 	NotebookID *string `json:"notebookId,omitempty" tf:"notebook_id,omitempty"`
 
 	// Reference to a Notebook in workspace to populate notebookId.
@@ -161,7 +161,7 @@ type PermissionsInitParameters struct {
 	ObjectType *string `json:"objectType,omitempty" tf:"object_type,omitempty"`
 
 	// pipeline id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.Pipeline
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.Pipeline
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 
 	// Reference to a Pipeline in compute to populate pipelineId.
@@ -182,7 +182,7 @@ type PermissionsInitParameters struct {
 	RepoPath *string `json:"repoPath,omitempty" tf:"repo_path,omitempty"`
 
 	// SQL alert id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLAlert
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLAlert
 	SQLAlertID *string `json:"sqlAlertId,omitempty" tf:"sql_alert_id,omitempty"`
 
 	// Reference to a SQLAlert in sql to populate sqlAlertId.
@@ -194,7 +194,7 @@ type PermissionsInitParameters struct {
 	SQLAlertIDSelector *v1.Selector `json:"sqlAlertIdSelector,omitempty" tf:"-"`
 
 	// SQL dashboard id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLDashboard
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLDashboard
 	SQLDashboardID *string `json:"sqlDashboardId,omitempty" tf:"sql_dashboard_id,omitempty"`
 
 	// Reference to a SQLDashboard in sql to populate sqlDashboardId.
@@ -206,7 +206,7 @@ type PermissionsInitParameters struct {
 	SQLDashboardIDSelector *v1.Selector `json:"sqlDashboardIdSelector,omitempty" tf:"-"`
 
 	// SQL warehouse id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLEndpoint
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLEndpoint
 	SQLEndpointID *string `json:"sqlEndpointId,omitempty" tf:"sql_endpoint_id,omitempty"`
 
 	// Reference to a SQLEndpoint in sql to populate sqlEndpointId.
@@ -218,7 +218,7 @@ type PermissionsInitParameters struct {
 	SQLEndpointIDSelector *v1.Selector `json:"sqlEndpointIdSelector,omitempty" tf:"-"`
 
 	// SQL query id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLQuery
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLQuery
 	SQLQueryID *string `json:"sqlQueryId,omitempty" tf:"sql_query_id,omitempty"`
 
 	// Reference to a SQLQuery in sql to populate sqlQueryId.
@@ -336,7 +336,7 @@ type PermissionsParameters struct {
 	Authorization *string `json:"authorization,omitempty" tf:"authorization,omitempty"`
 
 	// cluster id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.Cluster
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.Cluster
 	// +kubebuilder:validation:Optional
 	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
 
@@ -349,7 +349,7 @@ type PermissionsParameters struct {
 	ClusterIDSelector *v1.Selector `json:"clusterIdSelector,omitempty" tf:"-"`
 
 	// cluster policy id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.ClusterPolicy
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.ClusterPolicy
 	// +kubebuilder:validation:Optional
 	ClusterPolicyID *string `json:"clusterPolicyId,omitempty" tf:"cluster_policy_id,omitempty"`
 
@@ -378,7 +378,7 @@ type PermissionsParameters struct {
 	ExperimentID *string `json:"experimentId,omitempty" tf:"experiment_id,omitempty"`
 
 	// instance pool id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.InstancePool
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.InstancePool
 	// +kubebuilder:validation:Optional
 	InstancePoolID *string `json:"instancePoolId,omitempty" tf:"instance_pool_id,omitempty"`
 
@@ -395,7 +395,7 @@ type PermissionsParameters struct {
 	JobID *string `json:"jobId,omitempty" tf:"job_id,omitempty"`
 
 	// ID of notebook within workspace
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/workspace/v1alpha1.Notebook
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/workspace/v1alpha1.Notebook
 	// +kubebuilder:validation:Optional
 	NotebookID *string `json:"notebookId,omitempty" tf:"notebook_id,omitempty"`
 
@@ -416,7 +416,7 @@ type PermissionsParameters struct {
 	ObjectType *string `json:"objectType,omitempty" tf:"object_type,omitempty"`
 
 	// pipeline id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/compute/v1alpha1.Pipeline
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/compute/v1alpha1.Pipeline
 	// +kubebuilder:validation:Optional
 	PipelineID *string `json:"pipelineId,omitempty" tf:"pipeline_id,omitempty"`
 
@@ -441,7 +441,7 @@ type PermissionsParameters struct {
 	RepoPath *string `json:"repoPath,omitempty" tf:"repo_path,omitempty"`
 
 	// SQL alert id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLAlert
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLAlert
 	// +kubebuilder:validation:Optional
 	SQLAlertID *string `json:"sqlAlertId,omitempty" tf:"sql_alert_id,omitempty"`
 
@@ -454,7 +454,7 @@ type PermissionsParameters struct {
 	SQLAlertIDSelector *v1.Selector `json:"sqlAlertIdSelector,omitempty" tf:"-"`
 
 	// SQL dashboard id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLDashboard
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLDashboard
 	// +kubebuilder:validation:Optional
 	SQLDashboardID *string `json:"sqlDashboardId,omitempty" tf:"sql_dashboard_id,omitempty"`
 
@@ -467,7 +467,7 @@ type PermissionsParameters struct {
 	SQLDashboardIDSelector *v1.Selector `json:"sqlDashboardIdSelector,omitempty" tf:"-"`
 
 	// SQL warehouse id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLEndpoint
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLEndpoint
 	// +kubebuilder:validation:Optional
 	SQLEndpointID *string `json:"sqlEndpointId,omitempty" tf:"sql_endpoint_id,omitempty"`
 
@@ -480,7 +480,7 @@ type PermissionsParameters struct {
 	SQLEndpointIDSelector *v1.Selector `json:"sqlEndpointIdSelector,omitempty" tf:"-"`
 
 	// SQL query id
-	// +crossplane:generate:reference:type=github.com/glalanne/provider-databricks/apis/sql/v1alpha1.SQLQuery
+	// +crossplane:generate:reference:type=github.com/schuhlisa/provider-databricks/apis/sql/v1alpha1.SQLQuery
 	// +kubebuilder:validation:Optional
 	SQLQueryID *string `json:"sqlQueryId,omitempty" tf:"sql_query_id,omitempty"`
 

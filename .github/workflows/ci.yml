@@ -349,6 +349,6 @@ jobs:
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${GITHUB_ACTOR} --password-stdin
           image_name=$(docker images | awk '{print $1}' | awk 'NR==2')
-          docker image tag ${image_name}:latest ghcr.io/glalanne/provider-databricks:latest
-          docker push ghcr.io/glalanne/provider-databricks:latest
+          docker image tag ${image_name}:latest ghcr.io/schuhlisa/provider-databricks:latest
+          docker push ghcr.io/schuhlisa/provider-databricks:latest
   

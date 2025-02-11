@@ -21,8 +21,8 @@ import (
 	"github.com/pkg/errors"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	v1alpha1 "github.com/glalanne/provider-databricks/apis/settings/v1alpha1"
-	features "github.com/glalanne/provider-databricks/internal/features"
+	v1alpha1 "github.com/schuhlisa/provider-databricks/apis/settings/v1alpha1"
+	features "github.com/schuhlisa/provider-databricks/internal/features"
 )
 
 // Setup adds a controller that reconciles RestrictWorkspaceAdminsSetting managed resources.

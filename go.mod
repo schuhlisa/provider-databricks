@@ -1,4 +1,4 @@
-module github.com/glalanne/provider-databricks
+module github.com/schuhlisa/provider-databricks
 
 go 1.21
 
