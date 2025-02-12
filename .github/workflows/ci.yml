@@ -130,6 +130,13 @@ jobs:
           version: ${{ env.DOCKER_BUILDX_VERSION }}
           install: true
           
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io/${{secrets.REGISTRY}}
+          username: ${{ github.actor }}
+          password: ${{ secrets.REGISTRYTOKEN }}
+          
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
@@ -184,6 +191,6 @@ jobs:
         run: |
            echo ${{ secrets.REGISTRYTOKEN }} | docker login ghcr.io -u ${GITHUB_ACTOR} --password-stdin
            image_name=$(docker images | awk '{print $1}' | awk 'NR==2')
-           docker image tag ${image_name}:latest ghcr.io/{{ secrets.IMAGENAME }}:v0.0.2
-           docker push ghcr.io/{{ secrets.IMAGENAME }}:v0.0.2
+           docker image tag ${image_name}:latest ghcr.io/${{ secrets.IMAGENAME }}:v0.0.2
+           docker push ghcr.io/${{ secrets.IMAGENAME }}:v0.0.2
   
