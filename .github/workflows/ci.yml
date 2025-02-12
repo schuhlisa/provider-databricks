@@ -184,6 +184,6 @@ jobs:
         run: |
            echo ${{ secrets.REGISTRYTOKEN }} | docker login ghcr.io -u ${GITHUB_ACTOR} --password-stdin
            image_name=$(docker images | awk '{print $1}' | awk 'NR==2')
-           docker image tag ${image_name}:latest ghcr.io/{{ secrets.IMAGENAME }}
-           docker push ghcr.io/{{ secrets.IMAGENAME }}
+           docker image tag ${image_name}:latest ghcr.io/{{ secrets.IMAGENAME }}:v0.0.2
+           docker push ghcr.io/{{ secrets.IMAGENAME }}:v0.0.2
   
