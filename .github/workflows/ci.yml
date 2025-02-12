@@ -16,12 +16,8 @@ env:
   GO_VERSION: '1.21'
   GOLANGCI_VERSION: 'v1.54.0'
   DOCKER_BUILDX_VERSION: 'v0.8.2'
-
-  # Common users. We can't run a step 'if secrets.XXX != ""' but we can run a
-  # step 'if env.XXX != ""', so we copy these to succinctly test whether
-  # credentials have been provided before trying to run steps that need them.
   UPBOUND_MARKETPLACE_PUSH_ROBOT_USR: ${{ secrets.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR }}
-
+  
 jobs:
   detect-noop:
     runs-on: ubuntu-24.04
@@ -62,11 +58,9 @@ jobs:
         if: ${{ inputs.upjet-based-provider }}
         run: |
           make schema-version-diff
-
+          
   lint:
     runs-on: ubuntu-24.04
-    needs: detect-noop
-    if: needs.detect-noop.outputs.noop != 'true'
 
     steps:
       - name: Checkout
@@ -107,53 +101,48 @@ jobs:
         with:
           version: ${{ env.GOLANGCI_VERSION }}
 
-  # check-diff:
-  #   runs-on: ubuntu-24.04
-  #   needs: detect-noop
-  #   if: needs.detect-noop.outputs.noop != 'true'
+  check-diff:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        with:
+          submodules: true
 
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-  #       with:
-  #         submodules: true
+      - name: Setup Go
+        uses: actions/setup-go@0a12ed9d6a96ab950c8f026ed9f722fe0da7ef32 # v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
 
-  #     - name: Setup Go
-  #       uses: actions/setup-go@0a12ed9d6a96ab950c8f026ed9f722fe0da7ef32 # v5
-  #       with:
-  #         go-version: ${{ env.GO_VERSION }}
+      - name: Install goimports
+        run: go install golang.org/x/tools/cmd/goimports
 
-  #     - name: Install goimports
-  #       run: go install golang.org/x/tools/cmd/goimports
+      - name: Find the Go Build Cache
+        id: go
+        run: echo "cache=$(make go.cachedir)" >> $GITHUB_OUTPUT
 
-  #     - name: Find the Go Build Cache
-  #       id: go
-  #       run: echo "cache=$(make go.cachedir)" >> $GITHUB_OUTPUT
+      - name: Cache the Go Build Cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.go.outputs.cache }}
+          key: ${{ runner.os }}-build-check-diff-${{ hashFiles('**/go.sum') }}
+          restore-keys: ${{ runner.os }}-build-check-diff-
 
-  #     - name: Cache the Go Build Cache
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: ${{ steps.go.outputs.cache }}
-  #         key: ${{ runner.os }}-build-check-diff-${{ hashFiles('**/go.sum') }}
-  #         restore-keys: ${{ runner.os }}-build-check-diff-
+      - name: Cache Go Dependencies
+        uses: actions/cache@v4
+        with:
+          path: .work/pkg
+          key: ${{ runner.os }}-pkg-${{ hashFiles('**/go.sum') }}
+          restore-keys: ${{ runner.os }}-pkg-
 
-  #     - name: Cache Go Dependencies
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: .work/pkg
-  #         key: ${{ runner.os }}-pkg-${{ hashFiles('**/go.sum') }}
-  #         restore-keys: ${{ runner.os }}-pkg-
+      - name: Vendor Dependencies
+        run: make vendor vendor.check
 
-  #     - name: Vendor Dependencies
-  #       run: make vendor vendor.check
-
-  #     - name: Check Diff
-  #       run: make check-diff
+      - name: Check Diff
+        run: make check-diff
 
   unit-tests:
     runs-on: ubuntu-24.04
-    needs: detect-noop
-    if: needs.detect-noop.outputs.noop != 'true'
 
     steps:
       - name: Checkout
@@ -201,8 +190,6 @@ jobs:
 
   local-deploy:
     runs-on: ubuntu-24.04
-    needs: detect-noop
-    if: needs.detect-noop.outputs.noop != 'true'
 
     steps:
       - name: Checkout
@@ -250,12 +237,9 @@ jobs:
       attestations: write
       id-token: write
     needs:
-      - detect-noop
-      - report-breaking-changes
       - lint
       - unit-tests
       - local-deploy
-    if: needs.detect-noop.outputs.noop != 'true' && github.ref == 'refs/heads/main'
     steps:
       - name: Setup QEMU
         uses: docker/setup-qemu-action@49b3bc8e6bdd4a60e6116a5414239cba5943d3cf # v3
@@ -267,37 +251,14 @@ jobs:
         with:
           version: ${{ env.DOCKER_BUILDX_VERSION }}
           install: true
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
-
-      - name: Login to Upbound
-        uses: docker/login-action@v3
-        if: env.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR != ''
-        with:
-          registry: xpkg.upbound.io
-          username: ${{ secrets.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR }}
-          password: ${{ secrets.UPBOUND_MARKETPLACE_PUSH_ROBOT_PSW }}
-
+          
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           submodules: true
           persist-credentials: false
-          
-      # - name: Semantic Release
-      #   uses: cycjimmy/semantic-release-action@v4
-      #   id: semantic
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
-
-      - name: Fetch History
-        run: git fetch --prune
-
+          fetch-detpth: 0
+        
       - name: Setup Go
         uses: actions/setup-go@0a12ed9d6a96ab950c8f026ed9f722fe0da7ef32 # v5
         with:
@@ -331,14 +292,20 @@ jobs:
           # builds by default. Specifying --load does so.
           BUILD_ARGS: "--load"
 
+      # - name: Publish Artifacts to Upbound
+      #   if: github.ref == 'refs/heads/main' && env.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR != '' 
+      #   run: make publish CHANNEL=main VERSION=vdo.not.use
+        
       - name: Upload Artifacts to GitHub
         uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4
         with:
           name: output
           path: _output/**
 
-      - name: Publish Artifacts to Upbound
-        run: make publish CHANNEL=main VERSION=v0.0.1
-
-
+      - name: Publish Artifacts to Github
+        run: |
+           echo ${{ secret.REGISTRYTOKEN }} | docker login ghcr.io -u ${GITHUB_ACTOR} --password-stdin
+           image_name=$(docker images | awk '{print $1}' | awk 'NR==2')
+           docker image tag ${image_name}:latest ghcr.io/{{ secret.IMAGENAME }}
+           docker push ghcr.io/{{ secret.IMAGENAME }}
   
