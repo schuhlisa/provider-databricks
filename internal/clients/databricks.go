@@ -18,6 +18,7 @@ import (
 	"github.com/schuhlisa/provider-databricks/apis/v1beta1"
 )
 
+
 const (
 	// error messages
 	errNoProviderConfig     = "no providerConfigRef provided"
@@ -31,6 +32,8 @@ const (
 	keyAzureUseMsi              = "azure_use_msi"
 	keyAzureClientId            = "azure_client_id"
 	keyAzureClientSecret        = "azure_client_secret"
+	keyClientId                 = "client_id"
+	keyClientSecret             = "client_secret"
 	keyAzureTenantId            = "azure_tenant_id"
 	keyAuthType                 = "auth_type"
 	keyAuthToken                = "token"
@@ -97,7 +100,12 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		if v, ok := creds[keyAuthToken]; ok {
 			ps.Configuration[keyAuthToken] = v
 		}
-
+		if v, ok := creds[keyClientId]; ok {
+			ps.Configuration[keyClientId] = v
+		}
+		if v, ok := creds[keyClientSecret]; ok {
+			ps.Configuration[keyClientSecret] = v
+		}
 		return ps, nil
 	}
 }
