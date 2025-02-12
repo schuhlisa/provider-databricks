@@ -34,6 +34,7 @@ const (
 	keyAzureClientSecret        = "azure_client_secret"
 	keyClientId                 = "client_id"
 	keyClientSecret             = "client_secret"
+	keyAccountId                = "account_id"
 	keyAzureTenantId            = "azure_tenant_id"
 	keyAuthType                 = "auth_type"
 	keyAuthToken                = "token"
@@ -105,6 +106,9 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		}
 		if v, ok := creds[keyClientSecret]; ok {
 			ps.Configuration[keyClientSecret] = v
+		}
+		if v, ok := creds[keyAccountId]; ok {
+			ps.Configuration[keyAccountId] = v
 		}
 		return ps, nil
 	}
